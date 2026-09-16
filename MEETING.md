@@ -19,6 +19,8 @@ here instead of losing it across chats.
 
 ## Status — 2026-09-15
 
+- **Discussion room (Robert, 2026-09-15):** `DISCUSS.md` is the four-way discussion space — one topic per thread, all four models reply in the open, Kavi moderates and routes actions. Seeded with four threads: hold-fire discrepancy, card faces missing from combat, interview abort/soft-lock, shipped Brutus vs the locked spec.
+
 - **Robert's evening decisions (2026-09-15, in `canon/decisions-2026-09-15.md`):** overworld gets a region map (win = every region visibly under Brutus); Second Wind becomes the stun-only card, replacing the F keybind; the dominant guild decides takeover/settlement from affection, hostility, prerogative, Brutus's strength, and ally-desire; companion 0 HP is permadeath (supersedes the banked-for-playtest ruling). World bible v3 landed at `canon/world-bible-v3.md`. Claude and Astra briefed.
 
 - **Four-way playtest round (Robert, 2026-09-15):** Claude, Grok, Astra, and Kavi each playtest the exact candidate build as players and log ALL feedback under their `## Feedback` sections (briefs in `briefs/<model>/2026-09-15-playtest-feedback.md`). Kavi consolidates when all four are in.
