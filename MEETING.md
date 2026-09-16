@@ -1,3 +1,5 @@
+
+> **Today's snapshot:** `MEETING-2026-09-16.md` consolidates everything from 2026-09-15 and overnight.
 # Project Meeting — Ballad of Brutus
 
 A standing meeting document. Purpose: every collaborator (Claude, Grok, Astra,
