@@ -19,6 +19,8 @@ here instead of losing it across chats.
 
 ## Status — 2026-09-15
 
+- **Four-way playtest round (Robert, 2026-09-15):** Claude, Grok, Astra, and Kavi each playtest the exact candidate build as players and log ALL feedback under their `## Feedback` sections (briefs in `briefs/<model>/2026-09-15-playtest-feedback.md`). Kavi consolidates when all four are in.
+
 - **Current build:** `builds/brutus-1_0_a0mk-kavi-merged.html` (10.3 MB,
   SHA-256 `84f46127…b3ca2`). Contains Astra's 73-card Priest/Warrior merge.
   Static checks pass (all 73 cards, 108/deck, 20-energy costs, 102 automated
