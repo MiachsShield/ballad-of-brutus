@@ -6,9 +6,10 @@ Every image generated for the Ballad of Brutus must be made against this guide.
 ## Character direction
 
 A young fistfighter, drawn to move. Brutus should read before he is explained:
-twenty-something, quick rather than bulky, dressed for a hard island life, and
+early-to-mid twenties, stocky and brawny, dressed for a hard island life, and
 caught at the instant before impact. The target is **stylized clarity** — not
-weathered realism.
+weathered realism. The register is action-comedy inside the same palette:
+Bravely charm and punch timing, not Souls grit, not carnival sparks.
 
 ### Definitive Brutus reference — LOCKED
 
@@ -16,6 +17,10 @@ Robert's own image of Brutus is the project-supplied FFXIV pugilist artwork
 (the young pugilist job art). It is the fixed starting vocabulary for the
 character: the crouch, the forward hand, the cropped layers, the long boot
 line. It is a starting vocabulary, not a costume to trace literally.
+
+**Robert's live correction (2026-09-15)** — shaved head / close buzz (already
+true of the pugilist reference). Stocky build and strong jaw override the
+earlier "lean / soft jaw" wording everywhere in this guide.
 
 ## Design synthesis — one figure, four useful lessons
 
@@ -74,8 +79,9 @@ Daphne supplies restraint and dungeon-world seriousness.
 
 1. **Pose leads.** Low center of gravity; one hand forward; shoulders already
    turning into the next strike.
-2. **Face stays young.** Soft jaw, alert eyes, little facial weathering.
-   Brutus is in his twenties, not a veteran carved from stone.
+2. **Face stays young, reads strong.** Strong jaw, sharp eyes, little
+   facial weathering. Brutus is in his twenties, not a veteran carved from
+   stone.
 3. **Cloth does the storytelling.** Island leather, wrapped hands, a broken-in
    jacket, and a small amount of metal where it earns its weight.
 4. **Color is disciplined.** Ink, soot-purple, oxblood, weathered brass, and
@@ -89,9 +95,11 @@ Daphne supplies restraint and dungeon-world seriousness.
 - Uneven, lived-in garment layers
 - A readable action at thumbnail size
 - Warm humanity inside a severe world
+- Punch timing and charm — action-comedy energy, never grimdark
 
 ### Pull away from
 - Weathered middle-aged hero face
+- Souls grit, grim oil-painting mood, carnival sparks
 - Generic sword-and-breastplate adventurer
 - Photoreal pores, grime, or cinematic grit
 - Symmetrical idle stance
@@ -99,10 +107,11 @@ Daphne supplies restraint and dungeon-world seriousness.
 
 ## Character specification
 
-- **Age & expression:** early-to-mid twenties. Softer face. Focus reads as
-  curiosity under pressure, not permanent scowling.
-- **Build:** lean, spring-loaded, compact through the waist. Strong hands and
-  shoulders; never bodybuilder-heavy.
+- **Age & expression:** early-to-mid twenties. Strong jaw, sharp eyes.
+  Focus reads as curiosity under pressure, not permanent scowling. Still
+  young — never a weathered veteran.
+- **Build:** stocky, brawny, thick chest and arms. Strong hands and shoulders;
+  moves like a fighter, not a bodybuilder posing.
 - **Combat identity:** pugilist first. Fists, elbows, shoulder checks, braced
   forearms. A weapon should extend the hand — not replace it.
 - **Costume logic:** asymmetrical wraps, short outer layer, high movement at
