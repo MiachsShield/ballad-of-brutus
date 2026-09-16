@@ -14,6 +14,11 @@ available, do it, and note the cross-lane work in your `DONE.md`.
 | Status | Task | Brief |
 |---|---|---|
 | [ ] open | Incorporate the 12 settled rulings into design docs | `briefs/claude/2026-09-15-twelve-rulings-design-update.md` |
+| [ ] open | Astra redistribution: region map + win condition design (C1) | `briefs/claude/2026-09-16-astra-redistribution.md` |
+| [ ] open | Astra redistribution: takeover/settlement five-factor procedure (C2) | `briefs/claude/2026-09-16-astra-redistribution.md` |
+| [ ] open | Astra redistribution: Second Wind card mechanics (C3) | `briefs/claude/2026-09-16-astra-redistribution.md` |
+| [ ] open | Astra redistribution: hold-fire intent ruling (C4, one line) | `PLAYTEST-DISCUSS.md` Thread P4 |
+| [ ] open | Astra redistribution: design review of Kavi's build fixes (C5) | (when Kavi delivers) |
 | [ ] open | Write redo design briefs for the 4 critical-fail card faces | `briefs/claude/2026-09-15-card-redo-design-briefs.md` |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Claude" |
 
@@ -22,19 +27,42 @@ available, do it, and note the cross-lane work in your `DONE.md`.
 | Status | Task | Brief |
 |---|---|---|
 | [ ] open | Redo the 4 critical-fail card faces against the visual guide | `briefs/grok/2026-09-15-critical-redo-faces.md` |
+| [ ] open | Astra redistribution: 38 Priest combat faces, exact ids (G1) | `briefs/grok/2026-09-16-astra-redistribution.md` |
+| [ ] open | Astra redistribution: Brutus replacement art in order (G2) | `briefs/grok/2026-09-16-astra-redistribution.md` |
+| [ ] open | Astra redistribution: Bear Hug Break pass-2 tone reroll (G3) | (after Kavi's one-second read) |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Grok" |
 
 ## Astra — implementation
 
 | Status | Task | Brief |
 |---|---|---|
-| [ ] blocked | Apply the 12 rulings + full fix queue to the next build | `briefs/astra/2026-09-15-implementation-queue.md` |
-| [ ] blocked | Fix Grok's turn-1 findings: card faces absent from live combat hands, interview no-abort + interview/delve action soft-lock, hold-fire inconsistency (allies opened fire on Grok's run), kill-log enemy mismatch (Brute/Skulker), shipped Brutus not matching the locked spec. Details in MEETING.md → "Feedback — Grok", 2026-09-15 playtest. |
-| [ ] blocked | Fix Kavi's two dungeon-playtest blockers: uncaught `syncTells` pageerror (`v.key?.startsWith is not a function`, 2/5 combat runs) and all-support Priest dead hands (no damage answer, hand never auto-cycles). Details in `MEETING.md` → "Feedback — Kavi", 2026-09-15 dungeon playtest. |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Astra" |
 
-Astra's implementation briefs are queued until its ChatGPT lane is connected;
-nothing in the implementation lane can execute before then.
+**Redistributed 2026-09-16 (Robert):** the Astra implementation lane is not
+proceeding, so its workload moved to the other three. Astra gets nothing new.
+- Design specs → Claude (C1–C5, brief `briefs/claude/2026-09-16-astra-redistribution.md`).
+- Art → Grok (G1–G3, brief `briefs/grok/2026-09-16-astra-redistribution.md`).
+- Code fixes in the build → Kavi (K1–K10, below).
+
+## Kavi — implementation (redistributed from Astra, 2026-09-16)
+
+Working rule: edit a copy of the build, never the original; nothing is done
+until Kavi personally playtests the edited build and the acceptance check
+passes.
+
+| Status | Task | Acceptance |
+|---|---|---|
+| [ ] open | K1: fix SFX `syncTells` crash (`v.key?.startsWith is not a function`) | 5 consecutive combats, zero uncaught errors |
+| [ ] open | K2: Priest all-support dead hands auto-cycle to a damage answer | Seeded support-only hand cycles to a damage card |
+| [ ] open | K3: hold-fire — allies hold until the player's first card (after Claude C4) | 3 combats, allies never open fire first |
+| [ ] open | K4: kill-log chronology — kill line before interrupt/loot lines | Observed in playtest |
+| [ ] open | K5: interview abort — visible abandon control, no End-turn soft-lock | Abandon mid-interview, turn proceeds |
+| [ ] open | K6: companion permadeath at 0 HP, no revive path | 0 HP companion dies and leaves the roster |
+| [ ] open | K7: companion XP after every defeated enemy (survivors) | XP gain observed after a kill |
+| [ ] open | K8: wire Grok's card faces into the live combat hand | One-second readability test runnable in-game |
+| [ ] open | K9: Second Wind stun-only card replacing the F-keybind (after Claude C3) | Appears only while stunned, no deck footprint otherwise |
+| [ ] open | K10: SFX P2 (dungeon ambience/interactions) + P3 (overworld UI), procedural like P0/P1 | Waveform checks as in P0/P1 |
+| [ ] queued | Region map + takeover/settlement implementation | After Claude C1/C2 specs land |
 
 ## Unassigned
 
