@@ -252,3 +252,65 @@ more time than the work. My worries, in order:
   Called Shot's only numbers are Claude's audit-design row (cost 3, 6+cripple),
   not canon. PR #2's brief is re-opened against `art/audit/` — Claude can now
   write the four design briefs without inventing card data.
+
+### 2026-09-15 dungeon playtest (Kavi)
+
+Exact candidate build, local WebGL Chrome (SwiftShader): 6 dungeon sessions,
+~25 min live game time, Priest deck every run, 4+ kills, 30 screenshots in
+`~/workspace/playtests/dungeon-2026-09-15/`.
+
+**2026-09-12 suspects — verdicts:**
+- First-contact fights playing themselves: **FIXED.** Allies hold fire —
+  "Ember holds fire — take the first shot" — and wait for the player's first
+  card every run.
+- ATTACK button dead: **FIXED.** Now ATTACK/GUARD, answers with clear
+  feedback ("Basic Attack whiffs — nothing in reach").
+- Off-screen damage direction indicator: **IMPLEMENTED.** Code-verified
+  `showOffscreenDamageBearing` on every damaging hit to Brutus; log text
+  telegraphs ("lands from BEHIND"). The 520ms flash evaded screenshot polls.
+- Card slots empty before refill: **NOT OBSERVED.** Deck 104→103, slot
+  instantly refilled; number keys and clicks both work.
+- Interrupt feel: **GOOD.** "Interrupt! Brutus catches Skulker mid-windup — 9."
+  Companions interrupt too. HEAVY wind-up telegraph is readable and fair.
+- Priest new cards: **GOOD.** ~24 distinct new Priest cards seen in combat,
+  all with correct costs, wind-up/recovery, damage, energy deduction, kill
+  credit.
+- Post-kill log contradictions: **IMPROVED, not clean.** "Ember cancels
+  Firebolt: Skulker is down" is now correct, but the cancel prints *before*
+  "Skulker goes down," and a duplicate "goes down" followed a hit on a downed
+  enemy.
+- SFX cue drops: counters clean (`dropped: 0`, `errors: 0`), but could not
+  auditorily verify in this environment.
+
+**New findings, by player impact:**
+1. **Uncaught pageerror in the SFX engine: `v.key?.startsWith is not a
+   function` in `syncTells`** (2 of 5 combat runs). Escapes the engine's own
+   error counter, so stale enemy wind-up "tell" voices may never clean up.
+   Highest-risk item found.
+2. **All-support Priest hands with no damage answer.** Twice held 4× SUPPORT
+   (one "Weak Cure — OUT OF COMBAT ONLY") while a hostile closed in; only out
+   is basic ATTACK, and the hand never auto-cycles. Feels dead.
+3. Post-kill log sequencing still off (cosmetic, confusing in the moment).
+4. Enemy AI stalled once: hostile Skulker ("!!", 3.0m) attacked once, then did
+   nothing for 40+ s.
+5. Ally open-fire trigger inconsistent: one run they opened fire ~20s in
+   without the player's first shot, another never fired in 50s+.
+6. First-contact spawn can be 0.9m away — enemy fills the screen as an orange
+   blur on the first frame.
+7. Brutus's HP is bar-only (companions show "99/99"). For a protagonist whose
+   death = game over, exact HP matters.
+8. Kill chronology nit: "Interrupt! … — 9" prints *before* "Brutus uses Heavy
+   Blow."
+9. No on-screen control hints in the dungeon (A/D strafe, arrows turn, 1–4
+   cards, G guard, F second wind, R rest, Space jump — had to read the source).
+
+**Positives:** dungeon opens reliably; 3D renders well (torch-lit brick,
+minimap, enemy tracker with distance/HP/HUNTING states); deploy → descend →
+deck-choice is smooth; 108-card deck math checks out; energy regenerates;
+Second Wind is `display:none` when not stunned (matches ruling #11); zero
+other console errors across 6 sessions; no soft-locks, no black screens.
+
+**Bottom line:** the dungeon half plays — first contact, interrupts, card
+flow, and hold-fire all work. Two fixes before calling it good: the
+`syncTells` exception and the all-support dead-hand experience. Routed to
+Astra's queue.
