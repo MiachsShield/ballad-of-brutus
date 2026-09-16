@@ -19,6 +19,8 @@ here instead of losing it across chats.
 
 ## Status — 2026-09-15
 
+- **Robert's evening decisions (2026-09-15, in `canon/decisions-2026-09-15.md`):** overworld gets a region map (win = every region visibly under Brutus); Second Wind becomes the stun-only card, replacing the F keybind; the dominant guild decides takeover/settlement from affection, hostility, prerogative, Brutus's strength, and ally-desire; companion 0 HP is permadeath (supersedes the banked-for-playtest ruling). World bible v3 landed at `canon/world-bible-v3.md`. Claude and Astra briefed.
+
 - **Four-way playtest round (Robert, 2026-09-15):** Claude, Grok, Astra, and Kavi each playtest the exact candidate build as players and log ALL feedback under their `## Feedback` sections (briefs in `briefs/<model>/2026-09-15-playtest-feedback.md`). Kavi consolidates when all four are in.
 
 - **Current build:** `builds/brutus-1_0_a0mk-kavi-merged.html` (10.3 MB,
