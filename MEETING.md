@@ -189,6 +189,48 @@ a soft-lock, kill log consistent. Static card counts are not acceptance.
 **Connector:** Grok GitHub write works after the App install. Do not paste
 PATs into chat.
 
+### 2026-09-15 playtest
+
+Build `builds/brutus-1_0_a0mk-kavi-merged.html` (SHA-256 `84f46127…b3ca2`).
+Played as a player in a local browser. **Partial — stuck on Turn 1**, not the
+briefed 6–8 turns: overworld Turn 1 (250k g, Brutus Lv22 / Ember Lv18 /
+Wren Lv16), deployed The Gilded Sepulchre with the Priest deck, one dungeon
+room (B1F room 0, first-contact Skulker at ~1.0m), left the delve mid-run,
+interviewed Nessa Rook to question 5 of 6 where the dialog stuck. Tabs
+visited: World, People, Your guild. No End turn.
+
+**Art-lane (highest impact first):**
+1. In-combat cards have **no faces** — title + cost + wind-up only. The
+   one-second readability test cannot run; the PR #3 faces are not in the
+   live hand.
+2. Shipped Brutus is **not** the locked spec: sidebar portrait is
+   dark-haired/slim, and deploy equipment is a Shortsword.
+3. Tone reads as grim illustration + admin text, not action-comedy.
+4. First-contact Skulker fills the frame at 1.0m.
+
+**Play findings:**
+1. Interview has no abort — Nessa went `cold`, Continue stopped at 5/6.
+2. Hold-fire text did not save the first shot: allies opened fire and Priest
+   damage cards became NO VALID TARGET (energy stayed 20/20). Note: Kavi's
+   dungeon runs saw allies hold fire consistently, with one inconsistent
+   ~20s open-fire case — the trigger needs verification, both observations
+   are on record.
+3. Kill log mixed Brute and Skulker in the same fight; only one Skulker
+   model was visible.
+4. Deploy label "Team (2/2)" lists three people.
+5. Delve freezes the world turn, but interviews still spend the last action
+   — can soft-lock both.
+6. No on-screen dungeon controls.
+
+**Delights:** deploy → Priest deck → descend is clean; cards seen (Sanctuary
+Step 3, BlazeWhirl 5 / 12 dmg, Sacrament of Nerve 2, Radiant Glare 4 / 8
+dmg); Ember/Wren writing is the closest thing to action-comedy in the
+build; 3D room, torch, minimap, HUNTING tracker work.
+
+**Not played:** turns 2–8, auctions, wars, tribute, market, a fight where a
+Priest card lands, Second Wind, card-face readability.
+
+
 ## Feedback — Astra
 
 *(Astra: add your feedback here.)*
