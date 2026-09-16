@@ -2,7 +2,7 @@
 
 Standing lane: card faces and game art, with full design authority on faces.
 
-Entry points: `briefs/grok/` (work queue). Art reference: `art/reference/`.
+Entry points: `briefs/grok/` (work queue). Art reference: the visual guide, `art/visual-guide/` (binding on all image work).
 Output: finished faces to `art/card-faces/<class>/` on branch `grok/<slug>`,
 with DONE.md.
 
