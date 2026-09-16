@@ -54,13 +54,13 @@ passes.
 |---|---|---|
 | [ ] open | K1: fix SFX `syncTells` crash (`v.key?.startsWith is not a function`) | 5 consecutive combats, zero uncaught errors |
 | [ ] open | K2: Priest all-support dead hands auto-cycle to a damage answer | Seeded support-only hand cycles to a damage card |
-| [ ] open | K3: hold-fire — allies hold until the player's first card (after Claude C4) | 3 combats, allies never open fire first |
+| [x] done (Kavi, 2026-09-16, playtested) | K3: hold-fire — allies hold until the player's first card (after Claude C4) | 3 combats, allies never open fire first |
 | [ ] open | K4: kill-log chronology — kill line before interrupt/loot lines | Observed in playtest |
 | [ ] open | K5: interview abort — visible abandon control, no End-turn soft-lock | Abandon mid-interview, turn proceeds |
 | [ ] open | K6: companion permadeath at 0 HP, no revive path | 0 HP companion dies and leaves the roster |
 | [ ] open | K7: companion XP after every defeated enemy (survivors) | XP gain observed after a kill |
 | [ ] open | K8: wire Grok's card faces into the live combat hand | One-second readability test runnable in-game |
-| [ ] open | K9: Second Wind stun-only card replacing the F-keybind (after Claude C3) | Appears only while stunned, no deck footprint otherwise |
+| [x] done (Kavi, 2026-09-16, playtested) | K9: Second Wind stun-only card replacing the F-keybind (after Claude C3) | Appears only while stunned, no deck footprint otherwise |
 | [ ] open | K10: SFX P2 (dungeon ambience/interactions) + P3 (overworld UI), procedural like P0/P1 | Waveform checks as in P0/P1 |
 | [ ] queued | Region map + takeover/settlement implementation | After Claude C1/C2 specs land |
 
