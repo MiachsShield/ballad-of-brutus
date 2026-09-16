@@ -1,45 +1,50 @@
-# DONE — grok/critical-redos (partial)
+# DONE — grok/critical-redos
 
 **Agent:** Grok  
-**Date:** 2026-09-15  
-**Brief:** `briefs/grok/2026-09-15-critical-redo-faces.md`  
-**Intended branch:** `grok/critical-redos`  
-**Repo write status:** Branch `grok/critical-redos` created and files landed via a fine-grained PAT (Grok connector remains read-only / 403). Revoke that PAT after this push — it was pasted into chat.
+**Date:** 2026-09-16 (afternoon session)  
+**Brief:** `briefs/grok/2026-09-15-critical-redo-faces.md` + `briefs/grok/2026-09-16-astra-redistribution.md`  
+**Branch:** `grok/critical-redos`  
+**Repo write status:** **Works.** Text write succeeded this session (`WRITE-TEST-2026-09-16-session.md`). Branch already existed; no force-push.
 
-## What was done this session
+## Protocol this session
 
-Read MEETING.md, AGENTS.md, TASKS.md, visual guide, canon rulings, and the current merged build.
+Read MEETING.md, AGENTS.md, TASKS.md, briefs/grok/*, art/visual-guide/README.md, art/audit/*, canon/, work/grok/*, work/claude/*. Confirmed Claude's `work/claude/redo-design-briefs/` has **not** landed (only `twelve-rulings/` on main). Audit material is in `art/audit/`.
 
-Claude's per-face briefs (`work/claude/redo-design-briefs/`) have not landed on main. Worked from the failure notes in the Grok brief + visual guide. Did not invent new mechanics.
+## Four critical faces — status
 
-Generated four candidate faces (no baked text):
-
-| File | Card | Class / cost (inferred, not canon-locked) | One-second read | Pass? |
+| File | Card | Class | Audit failure | Current verdict |
 |---|---|---|---|---|
-| `faces/blinding-halo.jpg` | Blinding Halo | Priest · uncommon · ~3 energy · blind | Light burst makes the incoming swing miss | Yes — no text in the art |
-| `faces/stigmata.jpg` | Stigmata | Priest · uncommon · def · wounds that don't slow | Glowing palm/side wounds, still stepping forward | Yes for effect; motion could be stronger |
-| `faces/bear-hug-break.jpg` | Bear Hug Break | Warrior/pugilist · grappling break | Human clinch, no bear | **No** — still reads as "trapped in a hug," not the break. Needs another pass with the grip peeling open. |
-| `faces/called-shot.jpg` | Called Shot | Ranger · precise shot | Arrow through the visor slit | Yes — specific target is obvious |
+| `faces/blinding-halo.jpg` | Blinding Halo | Priest (trait only in build) | garbled text baked in | **Pass** (PR #3 / Kavi) — light into eyes, miss reads; no text |
+| `faces/stigmata.jpg` | Stigmata | Priest (trait only in build) | no effect shown | **Pass** — glowing wounds, still advancing |
+| `faces/called-shot.jpg` | Called Shot | Ranger (not in build) | baseball pitcher / wrong-universe | **Pass** — arrow through visor slit |
+| `faces/bear-hug-break.jpg` | Bear Hug Break | Warrior (not in build) | literal bear; must be grappling *break* | **Needs pass 2** — pass-1 still reads as hold |
 
-Source in the merged build (traits, not the 73 combat cards):
+### Bear Hug Break — pass 2 (open)
 
-- Blinding halo — Priest adept trait, tag `blind`, "Light that makes swings guess"
-- Stigmata — Priest adept trait, tag `def`, "Wounds that don't seem to slow them"
-- Bear Hug Break / Called Shot — **not present** in `builds/brutus-1_0_a0mk-kavi-merged.html` under those names. They belong to the 243-face audit set that is not in this repo.
+- Audit original: literal bear + baked text.
+- Pass 1 (on this branch): human clinch, no bear, but first read is the *hold*; also used old slim/long-hair Brutus.
+- Pass 2 (session 2026-09-16 morning): generated against locked Brutus (shaved buzz, stocky, strong jaw, young) + visual-guide action test. First read = break/punch-out, opponent hands empty, gap between torsos. No text, no bear. JPEG could not be committed through text-only path; lives in prior Grok session as `OXuck.jpg`. Tone still heavier than action-comedy register.
+- **Binding constraint from this session brief:** must read as grappling BREAK (grip peeling), not a hold, and never a literal bear.
 
-## Deferred
+Claude per-face design briefs still missing. Will match them when they land; until then working from `art/audit/cards/*.md` + visual guide only. No invented costs or rules text.
 
-- Redo Bear Hug Break until the break itself is the first read.
-- Re-check all four at in-game card size after they exist in a build.
-- Wait for Claude's written briefs; if they contradict these reads, redo to match.
-- Playtest of the 10.3 MB HTML in a real browser is not possible from this sandbox. Notes from reading the file are in MEETING feedback.
+## Write access
 
-## Decisions needed from Robert / Kavi
+Confirmed working. Binary JPEGs still cannot be cleanly pushed via the text-content tools (double-encoding risk). Kavi: either (a) drop accepted pass-2 JPEG onto `faces/bear-hug-break.jpg`, or (b) grant a binary-safe upload path. Text files and DONE.md land fine.
 
-1. Grant the GitHub connector **Contents: Read and write** (and PRs if you want a draft PR).
-2. Confirm class + energy cost for Bear Hug Break and Called Shot. They are not in the 73-card Priest/Warrior list.
-3. Should Grok keep producing faces before Claude's four design briefs land? Kavi said no; Robert said lanes are not walls. This pass treated the brief's failure list as enough to start.
+## Not started this session
 
-## Cross-lane work
+- G1 (38 Priest combat faces) — highest priority on redistribution brief, but four criticals + binary path first.
+- G2 Brutus replacements (sidebar → deploy → key art).
+- Remaining 22 non-critical flagged faces.
 
-Looked up card text in the implementation build because the art set is not in-repo. Noted in this file.
+## Next concrete step
+
+1. Kavi views pass-2 Bear Hug Break face (session file) and one-second reads it as break vs hold.
+2. If pass: land JPEG on this branch; optional lighter tone reroll (G3) for action-comedy register without changing break pose.
+3. Claude still owes the four written briefs so future passes lock to design direction, not audit shorthand alone.
+4. After Bear Hug Break closes: start G1 Priest faces (`art/card-faces/priest/<id>.jpg`) in batches.
+
+## Cross-lane
+
+Did not touch Astra's blocked implementation rebuild. Did not invent card mechanics for the two cards absent from the build.
