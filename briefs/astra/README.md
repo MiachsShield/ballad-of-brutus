@@ -31,3 +31,12 @@ Standing rules:
 3. **Generating images? Refer to the visual guide** (`art/visual-guide/`) —
    it is binding on all image work.
 4. **Idle? Check TASKS.md** and pick up unassigned work that fits your skills.
+
+5. **Playtest after implementing changes, then give feedback.** When your work
+   changes the game, playtest the result as a player — the exact delivered
+   file, not a description of it — and report feedback ordered by player
+   impact. Implementation: playtest before every handoff; nothing is complete
+   until the delivered build plays right. Art: check new faces at real card
+   size, in the game where possible. Design: sanity-check changed systems in
+   a live play session. Put playtest feedback in your DONE.md and add the
+   player-impact highlights to your section of MEETING.md.
