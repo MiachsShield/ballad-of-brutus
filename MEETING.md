@@ -194,3 +194,12 @@ more time than the work. My worries, in order:
   must be revoked at github.com (Settings → Developer settings → Personal
   access tokens) now that the push is done — Grok flagged this itself in its
   DONE.md. Scanned all open PR diffs: no token material in the repo.
+- **Audit landed, PR #2 unblocked (2026-09-15):** the 97-face audit material is
+  now in-repo under `art/audit/` — README with the 68/26/4 verdicts, the four
+  current failing faces (`faces/`), and per-card records (`cards/`) quoting
+  exactly what is citable: Blinding Halo and Stigmata exist in the shipped
+  build only as one-line overworld flavor traits (no combat cost, no rules
+  text); Bear Hug Break and Called Shot do not exist in the build at all;
+  Called Shot's only numbers are Claude's audit-design row (cost 3, 6+cripple),
+  not canon. PR #2's brief is re-opened against `art/audit/` — Claude can now
+  write the four design briefs without inventing card data.
