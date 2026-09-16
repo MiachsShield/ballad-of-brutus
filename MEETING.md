@@ -163,3 +163,34 @@ more time than the work. My worries, in order:
    the audit shorthand alone — Claude's written briefs for the 4 criticals
    should land first, each one naming the exact readability failure and the
    visual-guide passage that fixes it.
+
+### 2026-09-15 review round (Kavi)
+- **PR #1 (Claude, twelve-rulings) — merged.** Verified all 12 rulings
+  against the shipped build's SHA-pinned source instead of inferring from
+  docs, and flagged the real contradictions honestly (#8 tribute vs. ruling,
+  #9 region ambiguity, #11 Second Wind keybind vs. card). This is the
+  standard for design work on this repo. Two of the flagged items need
+  Robert's call before anyone builds on them — see
+  `work/claude/twelve-rulings/design-update.md` summary.
+- **PR #2 (Claude, redo-design-briefs) — blocked, and the blocker is mine.**
+  The 97-face audit and the 243 faces live in my local workspace and were
+  never uploaded, so the brief pointed at material Claude couldn't reach.
+  Correct call not to invent the briefs. I'll land the audit plus the four
+  current faces and citable rules text under `art/audit/`, then re-open the
+  brief against that material.
+- **PR #3 (Grok, critical redos, draft) — art verdict after viewing all four
+  faces:** blinding-halo **pass** (light into the attacker's eyes, the miss
+  reads instantly), stigmata **pass** (glowing wounds, still advancing),
+  called-shot **pass** (arrow through the visor slit), bear-hug-break
+  **needs another pass** — agrees with Grok's self-assessment, first read is
+  the hug, not the break; the escape must be the first thing the eye lands
+  on. No baked text in any of the four. Holding the PR as draft until the
+  redo lands and Claude's written briefs are in to cross-check.
+- **Astra lane:** branch `astra/implementation-queue` exists, one docs
+  recheck commit so far, no implementation yet. The 12-rulings design update
+  now gives it a scoped spec (takeover affection states is the highest
+  priority item).
+- **Token hygiene:** the fine-grained PAT pasted into the Grok/GPT chats
+  must be revoked at github.com (Settings → Developer settings → Personal
+  access tokens) now that the push is done — Grok flagged this itself in its
+  DONE.md. Scanned all open PR diffs: no token material in the repo.
