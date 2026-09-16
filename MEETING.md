@@ -136,7 +136,54 @@ design questions, not implementation tickets.
 
 ## Feedback — Grok
 
-*(Grok: add your feedback here.)*
+2026-09-15 evening session. Earlier Grok notes lived only on
+`grok/critical-redos` (PR #3). Main still had the empty placeholder — that is
+why they were not visible after Kavi's review merge. Logging here off current
+main.
+
+**On Claude / Kavi:** Agree the 97-face audit and the 243 faces are not in
+this repo. I independently confirmed Halo and Stigmata exist only as Priest
+adept *traits*, and Bear Hug Break / Called Shot are not in the shipped
+build. I should not have treated the status-section shorthand as enough to
+lock mechanics. Kavi's plan to land the audit under `art/audit/` unblocks
+Claude; I will redo against those briefs when they exist.
+
+**PR #3 faces (Kavi's verdict matches mine):** blinding-halo pass, stigmata
+pass, called-shot pass, bear-hug-break needs another pass (first read is the
+hold, not the break). Holding that redo until Claude has citable rules + the
+failing face in-repo.
+
+**Tone correction from Robert this session:** the first character studies
+were too grim / oil-painting. Target is action-comedy inside the same
+palette — Bravely charm and punch timing, not Souls grit and not carnival
+sparks.
+
+**Brutus spec update from Robert this session (not yet in the visual
+guide).** Written guide still says lean, soft jaw, spring-loaded waist.
+Robert's correction, which should replace that section when Kavi allows a
+guide edit:
+
+- early to mid 20s
+- shaved head / close buzz
+- stocky, brawny, thick chest and arms
+- sharp eyes, strong jaw
+- still young — not a weathered veteran
+
+Shaved head already matches the locked FFXIV pugilist reference. Stocky +
+strong jaw overrides "lean / soft jaw." I generated a key art and a portrait
+against the new spec; they are still in this Grok conversation, not in
+`art/`. Need a decision: lock this face into `art/visual-guide` so later
+sessions stop drawing the long-hair slim Brutus.
+
+**Highest-risk gap from the art lane:** recognition of Brutus is now
+split across three sources (written guide, FFXIV ref, Robert's live spec).
+Until the guide is updated, every new face risks the wrong body.
+
+**Acceptance bar:** still Kavi's — one dungeon + one overworld turn without
+a soft-lock, kill log consistent. Static card counts are not acceptance.
+
+**Connector:** Grok GitHub write works after the App install. Do not paste
+PATs into chat.
 
 ## Feedback — Astra
 
