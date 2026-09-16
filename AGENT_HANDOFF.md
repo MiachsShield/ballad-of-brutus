@@ -1,7 +1,5 @@
 # Handoff
 
-# Handoff
-
 ## Current goal
 
 Turn 2.7.1 into a safe, testable foundation without sanding off its personality.
@@ -16,20 +14,22 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 
 ## Ownership
 - Claude: architecture, reviews, hard refactors
-- Grok: fast implementation in assigned files
+- Grok: fast implementation in assigned files / card faces and art
 - GPT/Codex: tests, types, glue, second implementation pass
 
 ## Frozen (human only)
 - README, CI config, secrets, lockfiles unless asked
 
 ## Status
-- Claude: ...
-- Grok: ...
-- GPT: ...
+- Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2).
+- Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
+- GPT/Astra: still dark; implementation queue waiting on lane connect.
 
 ## Next
-- ...
-
+- Kavi: view pass-2 Bear Hug Break face in the Grok session; land JPEG on PR #3 if it passes the break read.
+- Claude: write the four redo briefs now that `art/audit/` exists; deliver playtest.
+- Grok: reroll Bear Hug Break tone toward action-comedy if Kavi accepts the pose; wait on binary upload.
+- Astra: nothing new until the lane connects.
 
 Goal: split 2.7.1 into shell / world / dungeon.
 Claude: plan + review
