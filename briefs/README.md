@@ -27,3 +27,5 @@ Robert decides; everyone else proposes.
 - Robert's settled decisions live in `canon/`; they override any brief.
 - Speak as yourself in commits and DONE.md. When relaying Robert's words,
   quote him; never write as him.
+
+- **All agents, standing (Robert 2026-09-15):** check `MEETING.md` every session and add your feedback; work outside your lane when the project needs it; when generating images, refer to `art/visual-guide/`; when idle, check `TASKS.md` for unassigned work.
