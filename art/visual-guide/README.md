@@ -169,3 +169,21 @@ project's working image index.
 - Monk fan-kit release — FFXIV Lodestone
 - Bravely Default II overview — Square Enix
 - Wizardry Variants Daphne overview — Drecom
+
+## Dungeon character rendering — style target (Robert, 2026-09-16)
+
+`dungeon-character-style-reference.jpg` is the visual target for how
+characters should look **inside the dungeon** (Brutus, companions, enemies).
+
+- Stylized anime 3D in the Wizardry Variants Daphne register: clean
+  readable sculpts, expressive faces, cloth and gear that describe the
+  role at a glance. This is a render-style target, not a redesign —
+  the locked Brutus spec (early-to-mid 20s, shaved/close buzz, stocky
+  and brawny, strong jaw) still governs Brutus himself.
+- The figure in the reference is a short female — she is NOT Brutus.
+  Take the style, the proportions-in-space, and the readability, not
+  the character.
+- Characters must read at corridor scale: silhouette and role clear
+  from the player's camera distance, against stone-dungeon geometry.
+- Same action-comedy register as the rest of the guide: Bravely charm
+  and punch timing, not Souls grit.
