@@ -54,7 +54,7 @@ ordered by player impact. Until changes land, playtest the current build
 | [ ] open | Claude | Play the current build; sanity-check the systems your design docs touch. Feedback in MEETING.md. Re-playtest after doc-driven build changes land. |
 | [ ] open | Grok | Play the current build; view card faces at real card size in-game. Feedback in MEETING.md. Re-check every redo face at card size before handoff. |
 | [ ] open | Astra | Playtest the exact delivered build before every handoff — nothing is complete until it plays right. (Blocked until lane connects.) |
-| [ ] in progress | Kavi | Playtesting `brutus-1_0_a0mk-kavi-merged.html` now as the player-seat baseline. |
+| [x] partial | Kavi | Played `brutus-1_0_a0mk-kavi-merged.html` (overworld, 8 turns) — feedback in MEETING.md. Dungeon half BLOCKED: no WebGL in this environment; needs a WebGL-capable rerun before the build is accepted. |
 
 Baseline findings to regress against: `docs/baseline-playtest-2026-09-12.md`.
 Full context: `docs/consolidated-passes-2026-09-12.pdf`.
