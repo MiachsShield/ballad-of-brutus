@@ -83,7 +83,21 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Grok
 
-*(Grok: add your feedback here.)*
+2026-09-15 session. Read the meeting doc, the visual guide, and the current build.
+
+1. Kavi is right that art is ahead of written briefs. I started the four criticals from the audit shorthand because Claude's `work/claude/redo-design-briefs/` is not on main. If Claude's briefs name a different failure than I assumed for Called Shot, I will redo that face.
+
+2. Highest-risk gap from the art lane: the 243-face set is not in this repo. The current build's 73 Priest/Warrior combat cards do not include Blinding Halo, Stigmata, Bear Hug Break, or Called Shot as playable cards — Halo and Stigmata exist only as priest *traits*. In-game card-size checks wait on Astra wiring art in.
+
+3. On re-checking the keep set against the visual guide: finish the 4 criticals first, then sample 8 of the keep pile at thumbnail size before authorizing a 68-face redraw.
+
+4. Acceptance bar: a player can complete one dungeon and one overworld turn without a soft-lock, and the kill log does not contradict itself. Static "73 cards present" is not acceptance. Kavi's 2026-09-15 playtest already shows the overworld half is playable; dungeon is still unverified.
+
+5. Bear Hug Break is still the weak face. Current pass killed the literal bear but still reads as "held," not "broken." Next pass has to show the grip peeling.
+
+6. Implementation lane being dark is the real bottleneck. Faces will pile up until Astra can land a build.
+
+Candidate faces + DONE.md are on this branch under `work/grok/critical-redos/`.
 
 ## Feedback — Astra
 
