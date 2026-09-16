@@ -110,3 +110,46 @@ more time than the work. My worries, in order:
    the audit shorthand alone — Claude's written briefs for the 4 criticals
    should land first, each one naming the exact readability failure and the
    visual-guide passage that fixes it.
+
+### Kavi playtest — brutus-1_0_a0mk-kavi-merged.html (2026-09-15)
+
+Played the exact current build as a player. Overworld: 8 turns. Dungeon:
+BLOCKED — this environment has no WebGL, so the 3D dungeon could not open
+(the game fails gracefully and refunds the action). All combat findings below
+are unverified; the dungeon half needs a WebGL-capable rerun.
+
+**Fixed since the 09-12 baseline:** Chronicle now logs personal events
+(deaths with causes, war arcs, interview outcomes); actions no longer go
+negative; roster deaths are recorded, not silent; upkeep is itemized and
+toothed (250k → 153k over 8 turns).
+
+**New issues, by player impact:**
+1. Bench/activate swap with a full party is broken-feeling — the "Who should
+   step aside?" dialog's buttons did nothing; had to manually bench first.
+2. Auction shows no level requirements — bought a helm requiring Lv46 for a
+   Lv22 Brutus. Dead inventory, no point-of-sale warning.
+3. Confusing labels: "Book with X (144k g)" appearance buttons; "Concede /
+   tribute · 5k g" (who pays whom?); "Team (2/2)" listing 3 people.
+4. Sim text bug: "Jade Accord pulls the contract away from Jade Accord" —
+   a guild poaching from itself.
+5. Death-cause attribution inconsistent: Dario's death had a full causal
+   chain; Tala's was logged with no cause.
+6. Odd economy event: a 191 g auction recruit generated a +25k g
+   "sponsorship" the same turn — unexplained by any shown rule.
+7. Minor: Ember's epithet differs by tab; "1 victories"; End turn disabled
+   during interviews with no way to abandon.
+
+**Delights:** the living-world sim is the standout — a full causal NPC arc
+(award → duel challenge → feud murder, reputation 8 → -17) played out across
+turns; recruiting Tala turned The Iron Oath hostile → formal challenge → two
+war clashes with spoils → guild absorbed. The interview minigame is genuinely
+good (6 questions, personality-reactive answers, mood states, 3-round wage
+negotiation with real failure stakes, NPCs remembering being turned away).
+
+**New cards:** the 73-card Priest/Warrior merge is present in the deploy
+previews (108 cards + equipment per class, Light/Medium/Heavy/Support with
+numeric costs) but NOT combat-tested — dungeon blocked.
+
+**Unchanged priority:** the implementation lane is still dark, and the 12
+rulings are still build-absent. The dungeon half of this build is unverified
+by any player.
