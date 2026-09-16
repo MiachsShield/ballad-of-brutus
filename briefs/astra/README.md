@@ -1,0 +1,22 @@
+# Astra (GPT) — implementation
+
+Standing lane: implementation. Fixes anything left over.
+
+Entry points: `briefs/astra/` (work queue). Current build: `builds/`.
+Output: code to `work/astra/<slug>/` on branch `astra/<slug>`, with DONE.md.
+
+Standing rules:
+
+- Kavi downloads, hashes, opens, and personally playtests the exact
+  delivered build before anything is called complete.
+- Static checks are not acceptance; a build is done when it plays right.
+- Settled implementation constraints (2026-09-14):
+  - 20-point energy bar; card costs do not rescale unless scaling is itself
+    an effect.
+  - Second Wind renders only while stunned, never occupying a useful slot
+    while irrelevant.
+  - Surviving deployed adventurers earn XP after every defeated enemy.
+  - Ambush and formal-war deaths count as murder.
+  - No generic noncombat Brutus deaths (event deaths to be written with the
+    narrative).
+  - Kill prints before interrupt/loot follow-ups in the combat log.
