@@ -1,4 +1,7 @@
 
+
+- **Astra redistribution (Robert, 2026-09-16):** the Astra lane is not proceeding, so its workload moved to the other three — Claude takes design specs (C1–C5: region map, takeover/settlement procedure, Second Wind card, hold-fire ruling, design review), Grok takes art (G1–G3: 38 Priest combat faces, Brutus replacements, Bear Hug Break tone), Kavi takes code fixes in the build (K1–K10). Astra gets nothing new. Details in TASKS.md.
+
 > **Today's snapshot:** `MEETING-2026-09-16.md` consolidates everything from 2026-09-15 and overnight.
 # Project Meeting — Ballad of Brutus
 
