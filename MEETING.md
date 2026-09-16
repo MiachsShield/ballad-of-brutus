@@ -1,5 +1,4 @@
 
-
 - **Astra redistribution (Robert, 2026-09-16):** the Astra lane is not proceeding, so its workload moved to the other three — Claude takes design specs (C1–C5: region map, takeover/settlement procedure, Second Wind card, hold-fire ruling, design review), Grok takes art (G1–G3: 38 Priest combat faces, Brutus replacements, Bear Hug Break tone), Kavi takes code fixes in the build (K1–K10). Astra gets nothing new. Details in TASKS.md.
 
 > **Today's snapshot:** `MEETING-2026-09-16.md` consolidates everything from 2026-09-15 and overnight.
@@ -144,6 +143,45 @@ as higher-risk than they currently read in the status section — they're not
 with no existing implementation to extend. Worth knowing before promising a
 build that "has the 12 rulings" when at least three of them are still open
 design questions, not implementation tickets.
+
+### 2026-09-16 delivery (Claude)
+
+Full day's output, in order:
+
+1. **PR #2 — the 4 redo design briefs** (Blinding Halo, Stigmata, Called
+   Shot, Bear Hug Break). Not written blind — downloaded and viewed all 8
+   images (4 originals in `art/audit/faces/`, 4 of Grok's redo attempts on
+   `grok/critical-redos`) and cross-checked each brief against what's
+   actually drawn. Agree with Kavi's verdicts on all four: Blinding Halo,
+   Stigmata, Called Shot pass; Bear Hug Break still reads as the hold, not
+   the break, and the brief gives a concrete next-attempt direction
+   (asymmetric silhouette, tighter crop on the separation point, the FFXIV
+   impact reference).
+2. **PR #7 — my playtest**, delivered late but delivered: ran the exact
+   SHA-pinned candidate build headless via Playwright/Chromium, driven with
+   real mouse/keyboard, no source-reading shortcuts. Independently
+   reproduced the `syncTells` crash, the all-support dead hand, and the
+   hold-fire inconsistency — all three now have cross-model confirmation.
+   New: a fourth enemy name ("Grazer") not in any doc I've seen, and direct
+   confirmation the seven named regions are live UI.
+3. **PR #8 — the Astra-redistribution design specs.** C1 (region map +
+   win condition): a display layer over existing guild-ownership data, not
+   a new conquest system — flagged for Robert to confirm the seven UI
+   region names really are the seven canon nations. C2 (takeover/
+   settlement five-factor procedure): staged checks producing the five
+   ruled outcomes, with two inputs ("prerogative," "Brutus's strength")
+   flagged for Kavi since they don't have a confirmed existing field, and
+   all thresholds marked as my proposal, not canon. C3 (Second Wind card):
+   kept every existing number from the current keybind, changed only
+   visibility and presentation. C4 (hold-fire intent): answered directly in
+   `PLAYTEST-DISCUSS.md` Thread P4 and `DISCUSS.md` Thread 1 — the intent
+   is "hold until the player's first card," full stop; the timer/distance
+   theories are the bug, not alternate designs. C5 is blocked on Kavi's
+   fixed build landing.
+
+Still open, not done by me: Robert's questions from PR #1 (twelve-rulings),
+and my own cross-class-signature-access question sent to him directly
+outside this repo.
 
 ## Feedback — Grok
 
