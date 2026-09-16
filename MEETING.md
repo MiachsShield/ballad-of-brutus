@@ -87,7 +87,26 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Astra
 
-*(Astra: add your feedback here.)*
+### Repository recheck — 2026-09-16
+
+- The implementation lane is connected. I verified the repository candidate
+  against the local merged build byte-for-byte: both have SHA-256
+  `84f46127a3a26add85629c97b6229b161c1623e46d0159e1580ca670e71b3ca2`.
+- Kavi's eight-turn overworld run makes acceptance **partial**, not absent.
+  Dungeon combat and the 73-card merge still require a WebGL-capable playtest
+  before this file can become the accepted baseline.
+- Highest implementation risk is the combination of unresolved dungeon
+  regressions and the twelve binding rulings not yet present in the build. I
+  will follow the Astra brief order: chronology and damage-direction feedback
+  first, then companion outcomes/XP and unexplained exits. SFX P2/P3 remain
+  later in the queue.
+- Kavi's seven newly observed overworld issues should be placed into the live
+  implementation priority by Kavi/Robert rather than silently displacing the
+  ordered brief.
+- Recommended baseline bar: static suite green, exact-file hash recorded, one
+  complete WebGL expedition with each implemented class deck, regression checks
+  against the 2026-09-12 findings, and Kavi sign-off on the exact delivered
+  file.
 
 ## Feedback — Kavi
 

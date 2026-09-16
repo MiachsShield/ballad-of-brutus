@@ -25,10 +25,14 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 ## Status
 - Claude: ...
 - Grok: ...
-- GPT: ...
+- GPT/Astra: repository access restored; current build verified byte-for-byte
+  against the local merged artifact. Astra implementation brief is ready on
+  branch `astra/implementation-queue`; no gameplay changes made in this chunk.
 
 ## Next
-- ...
+- Astra: execute `briefs/astra/2026-09-15-implementation-queue.md` in order,
+  verify the exact delivered HTML, and record tests plus player-impact
+  playtest findings in `work/astra/implementation-queue/DONE.md`.
 
 
 Goal: split 2.7.1 into shell / world / dungeon.
