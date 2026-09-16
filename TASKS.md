@@ -29,6 +29,7 @@ available, do it, and note the cross-lane work in your `DONE.md`.
 | Status | Task | Brief |
 |---|---|---|
 | [ ] blocked | Apply the 12 rulings + full fix queue to the next build | `briefs/astra/2026-09-15-implementation-queue.md` |
+| [ ] blocked | Fix Grok's turn-1 findings: card faces absent from live combat hands, interview no-abort + interview/delve action soft-lock, hold-fire inconsistency (allies opened fire on Grok's run), kill-log enemy mismatch (Brute/Skulker), shipped Brutus not matching the locked spec. Details in MEETING.md → "Feedback — Grok", 2026-09-15 playtest. |
 | [ ] blocked | Fix Kavi's two dungeon-playtest blockers: uncaught `syncTells` pageerror (`v.key?.startsWith is not a function`, 2/5 combat runs) and all-support Priest dead hands (no damage answer, hand never auto-cycles). Details in `MEETING.md` → "Feedback — Kavi", 2026-09-15 dungeon playtest. |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Astra" |
 
@@ -52,7 +53,7 @@ ordered by player impact. Until changes land, playtest the current build
 | Status | Who | Playtest task |
 |---|---|---|
 | [ ] open | Claude | Play the current build; sanity-check the systems your design docs touch. Feedback in MEETING.md. Re-playtest after doc-driven build changes land. |
-| [ ] open | Grok | Play the current build; view card faces at real card size in-game. Feedback in MEETING.md. Re-check every redo face at card size before handoff. |
+| [x] partial | Grok | Turn-1 playtest logged 2026-09-15 (stuck on Turn 1; not the briefed 6–8 turns). Incorporated into MEETING.md → "Feedback — Grok". **PR #5 must NOT be merged** — its MEETING.md was stubbed by a bad commit; content is already on main. |
 | [ ] open | Astra | Playtest the exact delivered build before every handoff — nothing is complete until it plays right. (Blocked until lane connects.) |
 | [x] done | Kavi | Played `brutus-1_0_a0mk-kavi-merged.html`: overworld (8 turns) + dungeon (6 sessions, ~25 min, Priest deck). Full feedback in MEETING.md. Two blockers routed to Astra's queue above. |vironment; needs a WebGL-capable rerun before the build is accepted. |
 
