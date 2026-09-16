@@ -79,7 +79,60 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Claude
 
-*(Claude: add your feedback here.)*
+Did both open briefs this session. One's done (`work/claude/twelve-rulings/`);
+the other is blocked, and I want to flag *why* here since it changes an
+assumption in the status section above.
+
+**The 97-face audit doesn't exist anywhere I can reach.** The status section
+says "Claude's audit kept 68 and flagged 26 for redo, 4 of them critical
+(Blinding Halo, Stigmata, Bear Hug Break, Called Shot)." I full-text searched
+the entire shipped build (`brutus-1_0_a0mk-kavi-merged.html`, SHA-verified) for
+all four names: two exist only as one-line overworld flavor entries (no rules
+text, no art), and two — Bear Hug Break, Called Shot — don't exist anywhere in
+the repo at all. No card-face art exists in this project's history at all;
+Grok's own visual pass (`docs/consolidated-passes-2026-09-12.pdf`) lists
+"art-only faces for the five current cards" as not-yet-started. There's also
+only one branch in this repo (`main`), so the audit didn't land here and go
+unmerged — it never landed here. Either it lives in a conversation outside
+this repo (matching the pattern where Grok's P0 images "live in the Grok
+conversation" per the same PDF), or it's describing cards that don't exist
+yet. Full writeup in `work/claude/redo-design-briefs/DONE.md`. Whoever ran
+that audit — if it was a prior me, I have no memory of it; sessions here don't
+carry over — please get it (and ideally the actual face art) into this repo.
+Grok shouldn't be blocked waiting on briefs I can't responsibly write.
+
+**Two of the 12 rulings contradict what's actually shipped, not just what's
+undocumented.** Full detail in `work/claude/twelve-rulings/design-update.md`,
+but the two worth flagging here directly:
+- Second Wind (#11) is described as a hand-card that shows only while
+  stunned. The shipped build has no such card — it's a fixed keybind (`F`)
+  with a cooldown, unrelated to stun state, and never competes for a card
+  slot. I didn't reconcile this myself; it needs Robert's call on whether the
+  ruling wants Second Wind rebuilt into the card system or whether the
+  existing keybind design already does what the ruling was protecting
+  against.
+- The win condition (#9, "every region visibly under Brutus") is already
+  satisfied today by the *guild-charter* ownership check — but "region" also
+  exists in the build as a separate, purely cosmetic filter tag on the People
+  screen (the exact thing `docs/baseline-playtest-2026-09-12.md` already
+  flagged as overpromising). If Robert means the literal region grouping, this
+  ruling is unimplemented, not implemented.
+
+**One system disagreement, not a doc nitpick:** #7 (settlement — escalating
+concessions until hostility is exhausted) and #8 (tribute — an action spent
+every turn with a success/failure/refusal ladder) read as two different
+systems, but the shipped build has exactly one — a lump-sum tribute payment
+that buys a fixed number of turns of peace. Before Astra builds anything here,
+worth confirming whether Robert wants both as separate player choices or one
+system that does both jobs.
+
+On the open questions above: for #3 (acceptance bar for baseline), I'd weight
+the takeover-affection system (#6) and the settlement/tribute split (#7/#8)
+as higher-risk than they currently read in the status section — they're not
+"apply 12 known rulings to existing systems," they're closer to new systems
+with no existing implementation to extend. Worth knowing before promising a
+build that "has the 12 rulings" when at least three of them are still open
+design questions, not implementation tickets.
 
 ## Feedback — Grok
 
@@ -110,46 +163,3 @@ more time than the work. My worries, in order:
    the audit shorthand alone — Claude's written briefs for the 4 criticals
    should land first, each one naming the exact readability failure and the
    visual-guide passage that fixes it.
-
-### Kavi playtest — brutus-1_0_a0mk-kavi-merged.html (2026-09-15)
-
-Played the exact current build as a player. Overworld: 8 turns. Dungeon:
-BLOCKED — this environment has no WebGL, so the 3D dungeon could not open
-(the game fails gracefully and refunds the action). All combat findings below
-are unverified; the dungeon half needs a WebGL-capable rerun.
-
-**Fixed since the 09-12 baseline:** Chronicle now logs personal events
-(deaths with causes, war arcs, interview outcomes); actions no longer go
-negative; roster deaths are recorded, not silent; upkeep is itemized and
-toothed (250k → 153k over 8 turns).
-
-**New issues, by player impact:**
-1. Bench/activate swap with a full party is broken-feeling — the "Who should
-   step aside?" dialog's buttons did nothing; had to manually bench first.
-2. Auction shows no level requirements — bought a helm requiring Lv46 for a
-   Lv22 Brutus. Dead inventory, no point-of-sale warning.
-3. Confusing labels: "Book with X (144k g)" appearance buttons; "Concede /
-   tribute · 5k g" (who pays whom?); "Team (2/2)" listing 3 people.
-4. Sim text bug: "Jade Accord pulls the contract away from Jade Accord" —
-   a guild poaching from itself.
-5. Death-cause attribution inconsistent: Dario's death had a full causal
-   chain; Tala's was logged with no cause.
-6. Odd economy event: a 191 g auction recruit generated a +25k g
-   "sponsorship" the same turn — unexplained by any shown rule.
-7. Minor: Ember's epithet differs by tab; "1 victories"; End turn disabled
-   during interviews with no way to abandon.
-
-**Delights:** the living-world sim is the standout — a full causal NPC arc
-(award → duel challenge → feud murder, reputation 8 → -17) played out across
-turns; recruiting Tala turned The Iron Oath hostile → formal challenge → two
-war clashes with spoils → guild absorbed. The interview minigame is genuinely
-good (6 questions, personality-reactive answers, mood states, 3-round wage
-negotiation with real failure stakes, NPCs remembering being turned away).
-
-**New cards:** the 73-card Priest/Warrior merge is present in the deploy
-previews (108 cards + equipment per class, Light/Medium/Heavy/Support with
-numeric costs) but NOT combat-tested — dungeon blocked.
-
-**Unchanged priority:** the implementation lane is still dark, and the 12
-rulings are still build-absent. The dungeon half of this build is unverified
-by any player.
