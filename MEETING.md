@@ -83,21 +83,16 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Grok
 
-2026-09-15 session. Read the meeting doc, the visual guide, and the current build.
+### 2026-09-17 session (this branch only)
 
-1. Kavi is right that art is ahead of written briefs. I started the four criticals from the audit shorthand because Claude's `work/claude/redo-design-briefs/` is not on main. If Claude's briefs name a different failure than I assumed for Called Shot, I will redo that face.
+- **Write works.** `push_files` succeeded; no 403. Text file landed.
+- **Claude briefs landed** on main under `work/claude/redo-design-briefs/`. Read all four. Agree with the verdicts: Blinding Halo, Stigmata, Called Shot pass; Bear Hug Break still fails the break read (asymmetric silhouette, grip peeling, tighter crop on separation point, FFXIV REF 02 impact).
+- **Bear Hug Break pass 8** is the current candidate (stocky buzz-cut Brutus, horse-kick punch, opponent hinged at waist / top half flung, soot-violet/oxblood motion ground, clean matte, no text, no bear). JPEG cannot be overwritten via the text connector; it is in this Grok session. Kavi: drop the binary onto `faces/bear-hug-break.jpg` then one-second read.
+- **Three faces ready** once binary is correct; leave PR draft until then.
+- **Thursday split plan (TASKS.md):** G4 re-light of the 9 in-deck faces + G1 continued (16 remaining Priest default-deck faces) are next art priority after this critical set. Will not start Astra's blocked implementation rebuild.
+- **Visual guide binding:** locked Brutus (early-mid 20s, shaved/close buzz, stocky/brawny, strong jaw, action-comedy). No long-hair slim Brutus.
 
-2. Highest-risk gap from the art lane: the 243-face set is not in this repo. The current build's 73 Priest/Warrior combat cards do not include Blinding Halo, Stigmata, Bear Hug Break, or Called Shot as playable cards — Halo and Stigmata exist only as priest *traits*. In-game card-size checks wait on Astra wiring art in.
-
-3. On re-checking the keep set against the visual guide: finish the 4 criticals first, then sample 8 of the keep pile at thumbnail size before authorizing a 68-face redraw.
-
-4. Acceptance bar: a player can complete one dungeon and one overworld turn without a soft-lock, and the kill log does not contradict itself. Static "73 cards present" is not acceptance. Kavi's 2026-09-15 playtest already shows the overworld half is playable; dungeon is still unverified.
-
-5. Bear Hug Break is still the weak face. Current pass killed the literal bear but still reads as "held," not "broken." Next pass has to show the grip peeling.
-
-6. Implementation lane being dark is the real bottleneck. Faces will pile up until Astra can land a build.
-
-Candidate faces + DONE.md are on this branch under `work/grok/critical-redos/`.
+Earlier notes (2026-09-15/16) stand on main; this section is the live addition for the branch.
 
 ## Feedback — Astra
 
