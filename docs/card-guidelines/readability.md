@@ -1,104 +1,130 @@
-# Card readability without garish colour (2026-09-17)
+# Card readability: category symbol + rarity gems (2026-09-17)
 
-Robert, on how strongly to colour-code: *"Honestly stumped. Ofc players
-want to easily tell the card. But garish colors make it look ugly."* The
-same tension applies to rarity colours. This is Claude's call under the
-card-balance lane; Robert keeps the veto.
+Robert's direction, 2026-09-17:
+
+> Top symbol on card overlay. Red sword, blue shield etc. Behind name of
+> card, over art.
+>
+> Rarity should be apparent but not by make; there can be extremely
+> valuable bronze gear and such. Use embedded gems or something.
 
 Mockup: `readability.svg` in this folder.
 
-## The answer: don't make colour do all the work
+This supersedes the metal-finish proposal and amends §9's Don'ts (see §4
+below).
 
-Colour is only one of four cues. If the other three carry the read,
-colour can stay quiet and beautiful.
+## 1. The category symbol
 
-| Cue | Carries | Where | Garish risk |
-|---|---|---|---|
-| **1. Glyph** | category, instantly | small bone-on-ink icon, top corner of the card chrome | none: no colour at all |
-| **2. Shape language** | category, at a glance | the art (§9: hard outward = offense, shells = defense, rising motes = heal) | none |
-| **3. Effect light** | category, emotionally | the art's grade (§9, unchanged) | low: lives inside the painting |
-| **4. Frame metal** | rarity (where rarity exists) | frame finish: iron / bronze / silver / blackened gilt | low: materials, not hues |
+A coloured symbol sits at the **top of the card overlay, behind the card
+name, over the art**. It is the card's fastest read: category is named
+before the player has looked at the painting.
 
-The glyph is what fixes "players want to easily tell the card". It works
-for colour-blind players, in greyscale, at thumbnail size, and before
-anyone has learned the colour language. Once it's there, the colour in the
-art no longer has to shout, so §9's "tint the light, not the border" rule
-can stay as strict as it is.
-
-## 1. Category glyphs
-
-One glyph per `category`, drawn in bone (`#E8DFCF`) inside a thin
-soot-violet ring on ink. Same size and position on every card; never
-tinted.
-
-| Category | Glyph |
-|---|---|
-| Offense | blade (diagonal, point up-right) |
-| Defense | shield |
-| Heal | drop with a small cross |
-| Buff | two up chevrons |
-| Debuff | two down chevrons with a drip |
-| Finisher | four-point star, filled, with a thicker ring |
-
-Rules:
-- The glyph sits in the chrome (the UI layer), not baked into the art, so
-  Grok's faces stay text- and icon-free (§9 Don'ts still apply).
-- Hybrid cards show only their dominant `category` glyph.
-- Minimum 20px on mobile; at the smallest hand size keep the ring and drop
-  interior detail.
-- No colour on the glyph, ever. If a playtest shows people still can't
-  tell cards apart, the next step is bigger art light, not a coloured
-  glyph.
-
-Kavi: this adds one rule to §9's "the frame, the card chrome and the UI
-stay neutral and identical for every card": the glyph is the only element
-that differs, and it differs by shape only.
-
-## 2. Rarity: metal, not hue
-
-Today's overworld rarity chips use green / blue / red
-(`--r-uncommon/--r-rare/--r-unique`), which collide with heal / defense /
-offense. Move rarity to material finish:
-
-| Rarity | Finish | Read |
+| Category | Symbol | Colour |
 |---|---|---|
-| Common | **iron**: matte grey, no shine | plain |
-| Uncommon | **bronze**: warm brown, soft sheen | a little special |
-| Rare | **silver**: cool, bright edge highlight | clearly special |
-| Unique | **blackened gilt**: dark metal with a slow light sweep every few seconds | the one you brag about |
+| Offense | **sword**, point up | Ember Oxblood `#E0553A` |
+| Defense | **shield** | Tempered Steel `#7FA8D6` |
+| Heal | **drop with a cross** | Verdigris `#8FD1A0` |
+| Buff | **two up chevrons** | Old Brass `#F0C46A` |
+| Debuff | **two down chevrons with a drip** | Nightshade `#B585E6` |
+| Finisher | **four-point star, solid** | Incandescent `#FFF4DC` |
 
-Why this works:
-- Players already read metal as rank (medals, trophies, loot tiers), so
-  it needs no teaching.
-- Metal is mostly *value and sheen*. It doesn't paint the card a hue, so
-  it can't be mistaken for a category.
-- **Blackened gilt, not bright gold**, so unique doesn't read as buff
-  (Old Brass effect light). The motion sweep does the heavy lifting.
+Placement and treatment:
+- Centred at the top of the overlay. The name renders **on top of** the
+  symbol, so the symbol shows above, below and to the sides of the text.
+- Height about 2× the name's cap height; it is meant to be seen, not
+  hidden.
+- Every symbol carries a thick ink outline (`#0B0910`) so it holds against
+  bright or busy art, and the top of the art carries a soft ink scrim
+  (top-down, ~90% to 0% over the name band) so the name stays legible.
+- The name stays bone `#F4ECE0` with an ink outline.
+- Symbol colour is fixed per category and never tinted by rarity, class or
+  element.
+- Minimum 28px tall on mobile. At thumbnail size the silhouettes stay
+  distinct (see the mockup's bottom row), so colour-blind players read it
+  by shape.
 
-Scope:
-- Class decks have no rarity, so **class card frames stay neutral**
-  (the §9 rule).
-- The metal finish applies wherever rarity already exists: overworld
-  ability and gear chips, and gear signature cards, which inherit their
-  item's metal.
-- It's a UI change on Kavi's side, and it can wait until after K15.
+**This is the only saturated colour on the card chrome.** Because the
+symbol now carries the category, the art's grade (§9) does not have to
+shout: keep the effect light disciplined and beautiful. That's the answer
+to "players want to easily tell the card, but garish colours look ugly" —
+one small loud symbol, a quiet painting.
 
-## 3. Consequences for art (Grok)
+The symbol lives in the UI layer, not in the art. Grok's faces stay free
+of text and icons.
 
-- Nothing new for faces: keep §9 grades and shape language. The glyph is
-  UI.
-- **The 22 older flagged faces go into the G4 re-light pass** instead of
-  a separate brief. Each one gets re-lit to its category grade, re-cropped
-  full-bleed if it has a baked frame, and checked against §10. This
-  replaces "Kavi uploads the old list". If Kavi still has the list, it
-  becomes the order for that pass, not a separate job.
-- **Card faces show a class figure, not Brutus** (Robert, 2026-09-17:
-  "Latter. Grok already privy"). The current hooded Priest figure is
-  correct, and a Warrior figure goes on Warrior faces.
+## 2. Rarity: embedded gems
 
-## 4. Test (add to §10)
+Rarity is **not** the frame's material. Robert: there can be extremely
+valuable bronze gear. An iron-framed card can be unique, and a gilded one
+common.
 
-5. **Glyph read:** with the art hidden, name the category from the glyph
-   alone at the smallest hand size.
-6. **Rarity read:** in greyscale, order four chips common → unique by
-   finish alone.
+Gems are set into the frame, bottom centre:
+
+| Rarity | Gems |
+|---|---|
+| Common | one **dull stone**, uncut, matte |
+| Uncommon | one **cut gem**, polished, small |
+| Rare | **two cut gems** |
+| Unique | **three gems**, the centre one larger, with a slow shimmer sweep |
+
+- Gems are **opal/moonstone**: pale, iridescent, cool. They shift between
+  white, cold blue and pale violet as they catch light, so they never read
+  as one of the six category colours.
+- Rarity reads by **count, cut and brilliance** at a glance, and by the
+  shimmer for unique.
+- The socket is the same size on every card; only what's in it changes.
+- Gear keeps its own frame material for flavour (iron, bronze, silver,
+  gilt as the item deserves) — that's art, not information.
+
+This also frees the overworld rarity chips from green / blue / red
+(`--r-uncommon/--r-rare/--r-unique`), which now mean heal / defense /
+offense. Chips carry the same gem row.
+
+## 3. What each cue carries
+
+| Cue | Carries | Where |
+|---|---|---|
+| Coloured symbol | category, instantly | card overlay, behind the name |
+| Symbol silhouette | category in greyscale and at thumbnail size | same |
+| Shape language in the art | category, at a glance | the painting (§9) |
+| Effect light | category, emotionally — kept quiet | the painting (§9) |
+| Gems | rarity | frame, bottom centre |
+
+## 4. Amendments to `docs/card-guidelines/README.md`
+
+§9 **Don'ts** currently says "no coloured borders, frames, corner gems or
+banners". Amend to:
+- No coloured **borders, frames or banners**, and no colour washes over
+  figures. Unchanged.
+- **The category symbol is the exception**: one coloured symbol in the
+  overlay, per §1 above.
+- **Gems are the rarity carrier**, per §2 — set in the frame, never
+  coloured by category.
+
+§10 **Readability test**, add:
+5. **Symbol read:** name the category from the symbol alone at the
+   smallest hand size, and again in greyscale.
+6. **Rarity read:** order four cards common → unique from the gems alone.
+
+§9 **Heads-up for the UI** is resolved: rarity moves off green/blue/red to
+gems.
+
+## 5. For Grok
+
+- No change to the faces themselves: §9 grades and shape language stand,
+  and the light stays disciplined now that the symbol does the labelling.
+- Card faces show a **class figure, not Brutus** (Robert, 2026-09-17).
+- The 22 older flagged faces go into the G4 re-light pass; no separate
+  brief.
+- Leave the top ~25% of each face free of critical detail (faces, weapon
+  points), since the symbol and name sit there.
+
+## 6. For Kavi
+
+- Symbol layer in the card overlay: fixed position and size, one of six
+  shapes by `category`, with the ink outline and top scrim.
+- Gem row in the frame: 1–3 gems by `rarity`, opal palette, shimmer on
+  unique.
+- Overworld ability and gear chips use the same gem row instead of the
+  rarity colours.
+- Not urgent: it comes after K13/K15.
