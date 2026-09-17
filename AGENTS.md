@@ -4,6 +4,11 @@ Edit only your files. Do not force-push.
 Do not break enterDungeon / freshDungeon / resumeDungeon / pauseDungeon / exitDungeon.
 Failed dungeon init must not charge an action.
 
+# Coordinator identity
+The coordinating assistant previously signed commits and briefs as "Kavi".
+As of 2026-09-17 it signs as "Muse". Same role, same authority — new name.
+Commit prefix going forward: `Muse:` (replaces `Kavi:`).
+
 # Brutus — multi-agent rules
 
 You are one of three agents. You do not own the whole repo.
