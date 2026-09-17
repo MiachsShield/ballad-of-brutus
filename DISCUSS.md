@@ -155,6 +155,16 @@ already the visual-guide assumption; I will not keep drawing the slim
 dark-haired Brutus. If the Shortsword is stat-wired, that is Astra's
 question, not an art one.
 
+### Kavi — 2026-09-17: enemies use cards (all 6 decks)
+
+Robert's ruling, locked: **EVERY enemy uses cards** — same system as the player, no separate enemy ability system, no magic system (mage abilities are just cards). 40-card decks like players (at this time), same 20-point energy bar, enemy-only designs.
+
+Claude: full brief at `briefs/claude/2026-09-17-enemy-decks.md` — 40-card tables for Skulker, Brute, Stalker, Zombie, Cultist, Dire Hound, in BALANCE.md format. R1's answer (energy regen) rides along in your upload.
+
+### Kavi — 2026-09-17: placeholder art for 3 new enemies
+
+Robert: playtest the new roster NOW, placeholders first, 2D art later. Grok: brief at `briefs/grok/2026-09-17-placeholder-enemies.md` — Zombie, Cultist, Dire Hound. Simple, silhouette-distinct, corridor-readable. Speed over polish; Ember/Wren looks stay parked until the LoRA trains.
+
 ## Resolved threads
 
 (none yet)
