@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="Georgia, serif">
+  <title>Brutus card categories — effect-light grades</title>
+  <defs>
+    <radialGradient id="off" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#E0553A"/><stop offset=".45" stop-color="#7A1E22"/><stop offset="1" stop-color="#15161D"/></radialGradient>
+    <radialGradient id="def" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#7FA8D6"/><stop offset=".45" stop-color="#243B5A"/><stop offset="1" stop-color="#15161D"/></radialGradient>
+    <radialGradient id="hea" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#8FD1A0"/><stop offset=".45" stop-color="#24503A"/><stop offset="1" stop-color="#15161D"/></radialGradient>
+    <radialGradient id="buf" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#F0C46A"/><stop offset=".45" stop-color="#7A5A22"/><stop offset="1" stop-color="#15161D"/></radialGradient>
+    <radialGradient id="deb" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#B585E6"/><stop offset=".45" stop-color="#3A2152"/><stop offset="1" stop-color="#101116"/></radialGradient>
+    <radialGradient id="fin" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#FFF4DC"/><stop offset=".22" stop-color="#FFF4DC"/><stop offset=".5" stop-color="#5A1216"/><stop offset="1" stop-color="#050506"/></radialGradient>
+  </defs>
+  <rect width="720" height="300" fill="#15161D"/>
+  <text x="20" y="30" fill="#E6DCC6" font-size="16">Category = colour of the effect light (frame stays neutral)</text>
+  <g font-size="13" fill="#E6DCC6">
+    <rect x="20"  y="50" width="100" height="150" rx="8" fill="url(#off)" stroke="#3B3F4C"/><text x="20"  y="222">Offense</text><text x="20"  y="240" fill="#A9A294">Ember Oxblood</text><text x="20"  y="258" fill="#A9A294">#E0553A / #7A1E22</text>
+    <rect x="137" y="50" width="100" height="150" rx="8" fill="url(#def)" stroke="#3B3F4C"/><text x="137" y="222">Defense</text><text x="137" y="240" fill="#A9A294">Tempered Steel</text><text x="137" y="258" fill="#A9A294">#7FA8D6 / #243B5A</text>
+    <rect x="254" y="50" width="100" height="150" rx="8" fill="url(#hea)" stroke="#3B3F4C"/><text x="254" y="222">Heal</text><text x="254" y="240" fill="#A9A294">Verdigris</text><text x="254" y="258" fill="#A9A294">#8FD1A0 / #24503A</text>
+    <rect x="371" y="50" width="100" height="150" rx="8" fill="url(#buf)" stroke="#3B3F4C"/><text x="371" y="222">Buff</text><text x="371" y="240" fill="#A9A294">Old Brass</text><text x="371" y="258" fill="#A9A294">#F0C46A / #7A5A22</text>
+    <rect x="488" y="50" width="100" height="150" rx="8" fill="url(#deb)" stroke="#3B3F4C"/><text x="488" y="222">Debuff</text><text x="488" y="240" fill="#A9A294">Nightshade</text><text x="488" y="258" fill="#A9A294">#B585E6 / #3A2152</text>
+    <rect x="605" y="50" width="100" height="150" rx="8" fill="url(#fin)" stroke="#3B3F4C"/><text x="605" y="222">Finisher</text><text x="605" y="240" fill="#A9A294">Incandescent</text><text x="605" y="258" fill="#A9A294">#FFF4DC / #5A1216</text>
+  </g>
+  <text x="20" y="288" fill="#7C776D" font-size="11">Shared base on every card: ink shadows, soot-violet atmosphere, bone-cloth figures. See docs/card-guidelines/README.md §9.</text>
+</svg>
