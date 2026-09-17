@@ -2,9 +2,10 @@
 
 **Status:** working rules for every combat card, whether player, companion
 or enemy. Written 2026-09-16 by Claude. Per `canon/decisions-2026-09-15.md`,
-card balance is Claude's call and Robert has veto. Anything marked
-**[Robert]** still needs his answer. `art/visual-guide/README.md` stays
-binding for the art itself; this file adds the card-specific rules on top.
+card balance is Claude's call and Robert has veto. Robert's 2026-09-17
+answers (`canon/decisions-2026-09-17.md`) are folded in.
+`art/visual-guide/README.md` stays binding for the art itself; this file
+adds the card-specific rules on top.
 
 Companion files:
 - `swatches.svg` — the six category colours.
@@ -12,6 +13,8 @@ Companion files:
   chat; Kavi uploads it, since the text connector can't commit images.
 - `work/claude/card-balance-2026-09-16/` — the numbers pass these rules
   produced.
+- `work/claude/bestiary-2026-09-17/BESTIARY.md` — monster types and
+  punish windows.
 
 ---
 
@@ -30,11 +33,12 @@ are marked ◆):
 | `cost` | Energy on Brutus's 20-point bar (ruling #10: no rescaling). |
 | `dmg`, `energy` | Listed damage, and energy gained on play. |
 | `effect` | Player-facing text. It must describe only what the engine actually does (§7). |
-| `deck_copies` | Copies in the default 40-card deck. `0` = in the class pool, not the default deck. |
+| `deck_copies` | Copies in the default 40-card deck. `0` = not in the default deck (class pool, or a gear signature). |
 | ◆ `category` | offense / defense / heal / buff / debuff / finisher. Drives the art colour (§9). |
 | ◆ `startup`, `recovery` | Per-card frames in ms. They override the tier default. |
 | ◆ `exposure` | Punish multiplier while committed (§3). |
-| ◆ `signature` | `true` = the class's recognisably strong card (§5). Always 1 copy. |
+| ◆ `access` | `general` / `class` / `signature`: who may use the card (§5). |
+| ◆ `grantedBy` | Signature cards only: the unique character, ability or gear that grants it. |
 | ◆ `mercyStrike` | Heal card that turns into damage when nobody needs healing (§6). |
 
 ## 2. Speaking real time with turn-based words
@@ -55,8 +59,10 @@ it:
 
 Power is paid for in three currencies: **energy, windup, and recovery.**
 Per the visual guide, a stronger card must visibly cost more of at least
-one. Melee workhorses are fast to start and pay in recovery. Signatures
-are slow in both directions.
+one. Melee workhorses are fast to start and pay in recovery. Finishers
+are slow in both directions. Brutus regenerates 3 energy per second
+(`canon/decisions-2026-09-17.md` #1), so a Heavy is roughly a 3-second
+decision and a finisher a 4-second one.
 
 | Tier | Cost | Startup ms | Recovery ms | Exposure | Listed damage | Role |
 |---|---|---|---|---|---|---|
@@ -64,9 +70,9 @@ are slow in both directions.
 | Medium | 4–6 | 350–450 | 500–650 | 1.3–1.4 (AoE 1.4) | 10–15 | the bread and butter |
 | Heavy | 7–9 | 650–750 | 900–950 | 1.6 | 16–24 | commit swings |
 | Support | 1–5 | 100–300 | 180–400 | 1.1 | 0 | guards, buffs, heals, control |
-| **Signature attack** | 10–14 | **≥ 900** | **≥ 1000** | **1.8** | 26–34 | the card you remember |
+| **Finisher** | 10–14 | **≥ 900** | **≥ 1000** | **1.8** | 26–34 | the card you remember; 1 copy |
 
-Protective signatures are exempt from the signature frame rule, because
+Protective showpieces are exempt from the finisher frame rule, because
 their power is *when* they land. Last Rite (200/350) has to be fast enough
 to save a life. Anthem (800/900) and Bulwark Slam (900/800, Resolute) pay
 in windup instead.
@@ -88,9 +94,12 @@ in windup instead.
   2026-09-16).
 - **The class pool can be bigger than the deck.** Pool cards sit at
   `deck_copies: 0` until a deckbuilder lets players swap them in. The
-  default deck is a curated ~25–28 uniques, not a near-singleton pile of
-  all 38. That keeps workhorses familiar (×2–3) and signatures special
+  default deck is a curated ~24–25 uniques, not a near-singleton pile of
+  all 38. That keeps workhorses familiar (×2–3) and finishers special
   (×1).
+- **Gear signatures ride on top of the 40.** Equipment adds its signature
+  card at **1 copy** per granted card. A class default deck never contains
+  gear cards itself.
 - **No card is dead forever.** Pool cards are there because they're
   situational or waiting on an engine feature, never because something
   strictly better replaced them. Rarity must not be a strict upgrade.
@@ -98,33 +107,42 @@ in windup instead.
 
 | Class | Offense + finisher | Heal | Defense | Buff | Debuff |
 |---|---|---|---|---|---|
-| Priest | ~40% | ~22% | ~15% | ~8% | ~15% |
+| Priest | ~38% | ~22% | ~15% | ~8% | ~18% |
 | Warrior | ~62% | 0% | ~12% | ~8% | ~18% |
 
 - **Dead-hand test:** the chance that a fresh 4-card hand holds no
   damage-capable card must be **under 3%**. It's a hypergeometric check,
-  C(non-damage cards, 4) / C(40, 4). Mercy Strike cards count as damage
-  only when noted.
+  C(non-damage cards, 4) / C(40, 4); `build.py` prints it. Mercy Strike
+  cards count as damage only when noted.
 
-## 5. Signature cards
+## 5. Card access: general, class, signature
 
-Strong on purpose: "a strong card is recognised from the onset" (Robert).
-A signature:
+Robert (2026-09-17): *"Cards are either general- allowed in all, class
+restriction- warrior only, signature- restricted to unique characters,
+abilities, or gear."*
 
-1. Is **1 copy**. A signature attack costs **10–14** and has signature
-   frames and exposure 1.8. A protective signature (Last Rite, Anthem,
-   Bulwark Slam) pays in timing instead (§3).
-2. Is **conditional**: huge in the right moment, merely good otherwise
-   (bonus vs. a type, vs. low HP, when alone…).
-3. **Telegraphs louder than anything else in the hand.** Longest windup,
-   biggest art motion, the finisher colour grade if it's an attack.
-4. Breaks the damage curve freely. The curve exists for workhorses.
+| Access | Who can use it | Examples today |
+|---|---|---|
+| **General** | every deck, any class, any character | Quick Strike, Cleave, Heavy Blow, Weak Cure (Brutus's base kit) |
+| **Class** | only that class's decks | Smite, Last Rite, Anthem of the Unbroken (Priest); Skullcracker, Killing Shout (Warrior) |
+| **Signature** | only the unique character, ability or gear that grants it | Bulwark Slam (Brutus's Resolute stance); BlazeWhirl, Thunderclap, Frostbite Slash, Venom Strike, Radiant Cleave, Umbral Reaper (weapons); Surge, Blessing, Vanish Step, Rime Shell, Toxic Cloud (accessories) |
 
-**Generics don't get signatures**, unless the signature comes through a rare
-ability or magic gear (the existing `WEAPON_CARDS` / `ACCESSORY_CARDS`
-path). Named adventurers can reach signatures regardless of class. **[Robert]**
-Still open: does that mean (A) a shared cross-class signature pool, or
-(B) a guaranteed-include of each adventurer's own-class signature?
+Rules that follow from it:
+
+1. **Generics never get signatures** except through a rare ability or
+   gear. That's the same door everyone else uses, not a special case.
+2. **Signature ≠ strongest.** It says who may hold the card, not how big
+   it is. Power comes from the finisher slot (§3), which can be class or
+   signature.
+3. **Gear signatures don't live in class decks.** They arrive with the
+   equipment, 1 copy each, and leave when it's unequipped (the engine
+   already strips gear cards on a new loadout).
+4. **A unique character's own signature can sit in that character's
+   decks.** Bulwark Slam is in Brutus's Priest deck because both decks are
+   Brutus's.
+5. **Every class needs a class finisher,** so a player without rare gear
+   still has a card worth waiting for: Excommunication (Priest), Killing
+   Shout (Warrior).
 
 ## 6. Mercy Strike (heal → damage)
 
@@ -150,10 +168,11 @@ dungeon. Each of these has already produced a dead card:
 - [ ] **Party size.** Dives carry Brutus + 2. No "4+ allies" conditions.
 - [ ] **Canon.** 0 HP is dead, no revive (09-15 #4). Prevent the fall
       instead.
-- [ ] **Enemy tags.** No enemy is currently Undead, Demon or a caster.
-      Type bonuses are fine as upside; a card whose only effect needs a
-      tag is pool-only until the bestiary tags exist. **[Robert]** decides
-      which kinds carry which tags.
+- [ ] **Enemy tags.** Use the pop-culture convention in
+      `work/claude/bestiary-2026-09-17/BESTIARY.md` (skeleton = Undead,
+      imp = Demon, lich = Undead caster…). A card whose only effect needs a
+      tag stays out of the default deck until a monster with that tag
+      ships.
 - [ ] **Enemy Guard.** Enemies don't have Guard, so "destroy Guard" riders
       must also do something against Resolute.
 - [ ] **Real-time truths.** "May be played after moving" is always true;
@@ -163,6 +182,8 @@ dungeon. Each of these has already produced a dead card:
 - [ ] **Out-of-combat only.** Not in a combat deck.
 - [ ] **Energy numbers** compared against the bar they land on: +3 energy
       is 15% of Brutus's bar but 3% of a companion's.
+- [ ] **Access.** Gear-granted cards are `signature` with `grantedBy`, and
+      never carry class deck copies.
 
 ## 8. Enemy cards
 
@@ -170,14 +191,21 @@ Enemies use the same grammar: windup, active, recovery, damage, armor
 hits. There's no deck and no copies.
 
 - **Kit of 3–5 attacks per kind, spread across the frame range:** one
-  fast poke, one or two mid-weights (most of the damage), one heavy with
-  an unmistakable telegraph, and optionally one control or brace.
-- **An enemy's decisive blow telegraphs at least as clearly as a player
-  signature.** Diegetic tells (body, weapon, sound), no ground markers.
-- **Lethality scales with tier.** A Skulker must never one-shot Brutus;
-  the Overseer can come close.
-- **Enrage (frenzy under 40% HP) should end in an exhausted punish window.**
-  **[Robert]** confirm before this gets built.
+  fast poke, one or two mid-weights (most of the damage), one heavy, and
+  optionally one control or brace.
+- **Monsters are pop-culture monsters,** tagged the way players expect
+  (Robert, 2026-09-17). Convention and current re-skins are in
+  `BESTIARY.md`.
+- **The stronger the monster, the less predictable its windows** (Robert,
+  2026-09-17, "like Monster Hunter"). Tier 1 fights the same way every
+  time. Higher tiers add windup jitter, delayed releases, feints, combos,
+  shared tells and shorter random recovery, and bosses give no guaranteed
+  exhausted state. Per-tier numbers are in `BESTIARY.md` §3.
+- **Always diegetic, always learnable.** Tells come from body, weapon and
+  sound, never ground markers. A feint can change *what* and *when*, never
+  *where*.
+- **Lethality scales with tier.** A tier-1 monster can't take more than
+  35% of Brutus's HP in one hit.
 
 ## 9. Colour language — the art's grade, not the border
 
@@ -206,8 +234,8 @@ light, so BlazeWhirl (offense), Candle Prayer (heal) and Sanctuary Step
 | **Defense** | Tempered Steel | `#7FA8D6` | `#243B5A` | planes, shells, braced edges; light held *between* attacker and defender | Warding Word, Iron Jaw, Bulwark Slam, Anthem |
 | **Heal** | Verdigris | `#8FD1A0` | `#24503A` | soft rising motes, rounded, gathering *into* a body | Weak Cure, Mending Light, Candle Prayer, Last Rite |
 | **Buff** | Old Brass | `#F0C46A` | `#7A5A22` | warm radiating halo *around* an ally; banners, rank, uplift | Blessing, Benediction, War Cry, Rally Banner |
-| **Debuff** | Nightshade | `#B585E6` | `#3A2152` | the curse sits *on the enemy*: clinging, choking, drifting | Dust in the Eyes, Radiant Glare, Pommel Tap, Venom Strike |
-| **Finisher** | Incandescent | `#FFF4DC` (white-hot) | `#5A1216` + black crush | the only grade with true white and maximum contrast; widest motion, frame-breaking | Excommunication, Umbral Reaper |
+| **Debuff** | Nightshade | `#B585E6` | `#3A2152` | the curse sits *on the enemy*: clinging, choking, drifting | Dust in the Eyes, Radiant Glare, Pommel Tap, Kick the Knee |
+| **Finisher** | Incandescent | `#FFF4DC` (white-hot) | `#5A1216` + black crush | the only grade with true white and maximum contrast; widest motion, frame-breaking | Excommunication, Killing Shout, Umbral Reaper (gear) |
 
 ### Making each one work
 
@@ -221,8 +249,8 @@ light, so BlazeWhirl (offense), Candle Prayer (heal) and Sanctuary Step
   light *inside* red darkness, with the darkest blacks and brightest
   whites in the set. It should look like the moment before the room goes
   quiet.
-- **Signatures that aren't attacks** (Bulwark Slam, Last Rite, Anthem)
-  keep their category colour and get the signature treatment: bigger
+- **Showpieces that aren't attacks** (Bulwark Slam, Last Rite, Anthem)
+  keep their category colour and get the showpiece treatment: bigger
   light, broader motion, frame break.
 - **Hybrids:** one dominant grade (~70% of the light) plus at most one
   accent. The dominant one is the card's `category`. Example: Candle
