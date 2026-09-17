@@ -28,10 +28,10 @@ pass. Categories and deck status come from the 2026-09-17 decks
 - **Last Rite is the darkest face in the set.** It has 2.8% bright pixels at
   thumbnail size and a greyscale spread of 93, against 122–210 for the
   others. At hand size it reads as a dark rectangle.
-- **None of these show Brutus.** The figure is a slim, dark-haired, hooded
-  young priest, while the Priest deck belongs to Brutus. Whether the face
-  should be Brutus or a Priest figure is a question for Robert (Grok asked
-  the same in `work/grok/priest-faces/KAVI.md`).
+- **None of these show Brutus, and that's correct.** The figure is a
+  slim, dark-haired, hooded young priest. Robert ruled on 2026-09-17 that
+  class card faces show a class figure, not Brutus ("Latter. Grok already
+  privy"; `canon/decisions-2026-09-17-faces.md`).
 
 ## Per face
 
@@ -61,5 +61,11 @@ Priority follows default-deck copies.
 6. Re-light BlazeWhirl.
 7. Redraw Sanctuary Step last.
 
-Before any redraw, wait for Robert's answer on whether the figure is
-Brutus or a Priest.
+The figure question is settled (class figure), so redraws can go ahead.
+
+**Folded into this pass:** the 22 older flagged faces. Grok re-lights each
+to its category grade, re-crops any baked frame, and checks it against
+§10. There's no separate brief.
+
+For category and rarity readability without garish colour (a UI glyph,
+and metal finishes for rarity), see `docs/card-guidelines/readability.md`.
