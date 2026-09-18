@@ -1,30 +1,38 @@
 # DONE — grok/critical-redos
 
 **Agent:** Grok  
-**Date:** 2026-09-17 (this session)  
+**Date:** 2026-09-18 (final on this branch)  
 **Branch:** `grok/critical-redos`
 
-## Status of the four critical faces
+## Status of the four critical faces — CLOSED
 
-Claude's redo-design-briefs landed on main (`work/claude/redo-design-briefs/`). Cross-checked:
+Claude's redo-design-briefs landed on main (`work/claude/redo-design-briefs/`). Cross-checked.
 
-| Face | Claude verdict | Grok status | Notes |
+Robert PASS 2026-09-17 on all four. Faces cherry-picked to main:
+
+| Face | Claude verdict | Final status | Location on main |
 |---|---|---|---|
-| Blinding Halo | PASS | Pass (PR #3 face) | Light at target face, recoil, no text. Matches brief. |
-| Stigmata | PASS | Pass (PR #3 face) | Glowing wounds + advancing gesture. Costume note non-blocking. |
-| Called Shot | PASS | Pass (PR #3 face) | Arrow to visor gap, no sport/diagram. |
-| Bear Hug Break | FAIL (still) | Pass 8 candidate | See PASS8.md. Grip-peeling / horse-kick break, opponent top half flung, stocky buzz Brutus, soot-violet/oxblood motion, no bear, no text. |
+| Blinding Halo | PASS | PASS | `art/card-faces/priest/priest_blinding_halo.jpg` |
+| Stigmata | PASS | PASS | `art/card-faces/priest/priest_stigmata.jpg` |
+| Called Shot | PASS | PASS | `art/card-faces/ranger/ranger_called_shot.jpg` |
+| Bear Hug Break | (earlier FAIL) → PASS 8 | PASS | `art/card-faces/warrior/warrior_bear_hug_break.jpg` |
 
-## Binary constraint
+No text in art. Visual guide binding observed. Bear Hug Break reads as grappling BREAK (grip peeling / horse-kick separation), not a hold, never a literal bear.
 
-GitHub connector writes UTF-8 text only. Existing JPEG blobs under `faces/` cannot be overwritten from here. Pass-8 Bear Hug Break JPEG lives in this Grok session; Kavi must drop it onto `work/grok/critical-redos/faces/bear-hug-break.jpg` before merge.
+PR #3 still open; needs Robert's one-tap close.
 
 ## Write check
 
-2026-09-17: push_files succeeded (WRITE-TEST-2026-09-17.md landed). No 403.
+2026-09-17 and 2026-09-18: create_or_update_file / push succeeded. No 403.
 
-## Next concrete step
+## Session 2026-09-18
 
-1. Kavi: view pass-8 face, overwrite the binary if it reads as the break.
-2. Once binary is correct, leave draft PR for Claude/Kavi one-second read.
-3. Parallel: continue G1 Priest faces on `grok/priest-faces` (wave 1 already has 11; 27 remain) and G4 re-light of the 9 in-deck faces per Thursday split plan.
+- Confirmed write + Claude briefs + Robert PASS.
+- Added Feedback — Grok and SESSION-2026-09-18.md on this branch only.
+- Critical-redos work complete. No further faces required here.
+
+## Next concrete step (new branch)
+
+1. `briefs/grok/2026-09-18-brutus-face-lock.md` → branch `grok/brutus-face-lock`: commit key art + portrait into `art/visual-guide/`, update README LOCKED section.
+2. Then G1 remaining Priest default-deck faces or G4 re-light (Friday split plan).
+3. Do not start Astra's blocked implementation rebuild.
