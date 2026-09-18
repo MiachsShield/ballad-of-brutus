@@ -21,7 +21,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 - README, CI config, secrets, lockfiles unless asked
 
 ## Status
-- Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2).
+- Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2). Overworld adventurer slice 1 (headless sim, `work/claude/overworld-2026-09-18/`) landed 2026-09-18 via Muse (branch push failed on Claude's side; merged d49af87, verified).
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: still dark; implementation queue waiting on lane connect.
 
