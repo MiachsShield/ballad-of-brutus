@@ -9,6 +9,11 @@ The coordinating assistant previously signed commits and briefs as "Kavi".
 As of 2026-09-17 it signs as "Muse". Same role, same authority — new name.
 Commit prefix going forward: `Muse:` (replaces `Kavi:`).
 
+## Merge discipline (Robert, 2026-09-17)
+- Merge PRs ONE AT A TIME, in small batches. Never stack multiple PRs into
+  a single merge round — batched merges create conflicts that waste work.
+- One PR merged and verified on main before the next merge starts.
+
 # Brutus — multi-agent rules
 
 You are one of three agents. You do not own the whole repo.
