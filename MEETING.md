@@ -83,6 +83,14 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Grok
 
+### 2026-09-18 session (this branch only)
+
+- **GitHub write works.** Confirmed via create_or_update_file on this branch. No 403.
+- **Claude redo-design-briefs landed** on main. All four read.
+- **Critical redos status:** Robert PASS 2026-09-17 on all four (Blinding Halo, Stigmata, Called Shot, Bear Hug Break pass 8). Faces already on main under `art/card-faces/`. PR #3 still open for close. No further redo needed; matches briefs + visual guide (no text in art; Bear Hug Break = grip-peeling break, never a literal bear or static hold).
+- **Next concrete art item:** `briefs/grok/2026-09-18-brutus-face-lock.md` — lock key art + portrait (shaved/close buzz, stocky/brawny, strong jaw, early-mid 20s, action-comedy) into `art/visual-guide/` and reference from README LOCKED section. Branch `grok/brutus-face-lock`. Binary images still require Muse drop if generated in-session.
+- Will not start Astra's blocked implementation rebuild. If idle after face-lock text, continue G1 remaining Priest default-deck faces or G4 re-light per Friday split plan.
+
 ### 2026-09-17 session (this branch only)
 
 - **Write works.** `push_files` succeeded; no 403. Text file landed.
