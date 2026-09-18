@@ -202,6 +202,14 @@ pass, called-shot pass, bear-hug-break needs another pass (first read is the
 hold, not the break). Holding that redo until Claude has citable rules + the
 failing face in-repo.
 
+**2026-09-17 — Robert: PASS on all four PR #3 faces** (Bear Hug Break pass 8
+reads as the break now). Landed on main by Muse (branch had unrelated
+history, cherry-picked): `art/card-faces/warrior/warrior_bear_hug_break.jpg`,
+`art/card-faces/priest/priest_blinding_halo.jpg`,
+`art/card-faces/ranger/ranger_called_shot.jpg`,
+`art/card-faces/priest/priest_stigmata.jpg`; session docs under
+`work/grok/critical-redos/`. PR #3 still open — needs Robert's one-tap close.
+
 **Tone correction from Robert this session:** the first character studies
 were too grim / oil-painting. Target is action-comedy inside the same
 palette — Bravely charm and punch timing, not Souls grit and not carnival
