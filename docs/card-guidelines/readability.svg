@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" font-family="Georgia, serif">
+<defs>
+  <radialGradient id="artA" cx=".45" cy=".55" r=".8"><stop offset="0" stop-color="#7a3a2a"/><stop offset=".5" stop-color="#3a2028"/><stop offset="1" stop-color="#150f18"/></radialGradient>
+  <radialGradient id="artB" cx=".5" cy=".5" r=".8"><stop offset="0" stop-color="#2d4a6b"/><stop offset=".55" stop-color="#1e2a40"/><stop offset="1" stop-color="#121018"/></radialGradient>
+  <radialGradient id="artC" cx=".5" cy=".6" r=".8"><stop offset="0" stop-color="#2f6b4c"/><stop offset=".55" stop-color="#1c3630"/><stop offset="1" stop-color="#101418"/></radialGradient>
+  <radialGradient id="artD" cx=".5" cy=".5" r=".85"><stop offset="0" stop-color="#fff4dc"/><stop offset=".3" stop-color="#8a2420"/><stop offset="1" stop-color="#0d0a10"/></radialGradient>
+  <linearGradient id="band" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c0a10" stop-opacity=".92"/><stop offset="1" stop-color="#0c0a10" stop-opacity="0"/></linearGradient>
+  <radialGradient id="opal" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset=".4" stop-color="#cfe4ff"/><stop offset=".7" stop-color="#e6c8ff"/><stop offset="1" stop-color="#7f8fb0"/></radialGradient>
+  <radialGradient id="stone" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#cfd2d6"/><stop offset="1" stop-color="#6d7176"/></radialGradient>
+</defs>
+<rect width="1000" height="620" fill="#15121a"/>
+<text x="24" y="36" fill="#e8dfcf" font-size="21">Category symbol: top of the overlay, behind the card name, over the art</text>
+<text x="24" y="58" fill="#a89f92" font-size="13">The symbol is the only saturated colour on the card chrome. Art keeps its grade. Rarity = gems in the frame, any metal.</text>
+
+<g transform="translate(40,80)">
+  <g>
+    <rect width="200" height="290" rx="10" fill="#2f2d31"/><rect x="8" y="8" width="184" height="274" rx="6" fill="url(#artA)"/>
+    <path d="M40 210 L95 150 L120 175 L70 235 Z" fill="#E0553A" opacity=".55"/><circle cx="120" cy="150" r="26" fill="#E0553A" opacity=".45"/>
+    <rect x="8" y="8" width="184" height="92" fill="url(#band)"/>
+    <g transform="translate(100,50)" opacity=".95">
+      <g stroke="#0b0910" stroke-width="10" stroke-linejoin="round" fill="#0b0910"><path d="M0 -36 L7 -22 L7 6 L-7 6 L-7 -22 Z"/><rect x="-20" y="6" width="40" height="8" rx="3"/><rect x="-4" y="14" width="8" height="15"/><circle cx="0" cy="32" r="6"/></g>
+      <g fill="#E0553A"><path d="M0 -36 L7 -22 L7 6 L-7 6 L-7 -22 Z"/><rect x="-20" y="6" width="40" height="8" rx="3"/><rect x="-4" y="14" width="8" height="15"/><circle cx="0" cy="32" r="6"/></g>
+    </g>
+    <text x="100" y="62" text-anchor="middle" font-size="19" fill="#f4ece0" stroke="#0b0910" stroke-width="3.5" paint-order="stroke">Quick Strike</text>
+    <circle cx="100" cy="274" r="6" fill="url(#stone)" stroke="#1a1820" stroke-width="2"/>
+    <text x="100" y="316" text-anchor="middle" font-size="14" fill="#e8dfcf">Offense · common</text>
+    <text x="100" y="334" text-anchor="middle" font-size="12" fill="#8a8178">1 dull stone</text>
+  </g>
+  <g transform="translate(240,0)">
+    <rect width="200" height="290" rx="10" fill="#2f2d31"/><rect x="8" y="8" width="184" height="274" rx="6" fill="url(#artB)"/>
+    <path d="M60 150 L140 150 L140 210 C140 240 115 252 100 258 C85 252 60 240 60 210 Z" fill="#7FA8D6" opacity=".45"/>
+    <rect x="8" y="8" width="184" height="92" fill="url(#band)"/>
+    <g transform="translate(100,52)" opacity=".92">
+      <path d="M0 -30 L26 -18 L26 4 C26 20 12 30 0 34 C-12 30 -26 20 -26 4 L-26 -18 Z" stroke="#0b0910" stroke-width="12" fill="none" stroke-linejoin="round"/>
+      <path d="M0 -30 L26 -18 L26 4 C26 20 12 30 0 34 C-12 30 -26 20 -26 4 L-26 -18 Z" stroke="#7FA8D6" stroke-width="7" fill="none" stroke-linejoin="round"/>
+    </g>
+    <text x="100" y="62" text-anchor="middle" font-size="19" fill="#f4ece0" stroke="#0b0910" stroke-width="3.5" paint-order="stroke">Warding Word</text>
+    <circle cx="100" cy="274" r="6.5" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/>
+    <text x="100" y="316" text-anchor="middle" font-size="14" fill="#e8dfcf">Defense · uncommon</text>
+    <text x="100" y="334" text-anchor="middle" font-size="12" fill="#8a8178">1 cut gem</text>
+  </g>
+  <g transform="translate(480,0)">
+    <rect width="200" height="290" rx="10" fill="#6b4526"/><rect x="8" y="8" width="184" height="274" rx="6" fill="url(#artC)"/>
+    <circle cx="100" cy="195" r="34" fill="#8FD1A0" opacity=".45"/><circle cx="100" cy="195" r="14" fill="#8FD1A0" opacity=".75"/>
+    <rect x="8" y="8" width="184" height="92" fill="url(#band)"/>
+    <g transform="translate(100,52)" opacity=".92">
+      <path d="M0 -32 C16 -10 24 4 24 14 C24 28 12 34 0 34 C-12 34 -24 28 -24 14 C-24 4 -16 -10 0 -32 Z M0 2 V22 M-10 12 H10" stroke="#0b0910" stroke-width="12" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M0 -32 C16 -10 24 4 24 14 C24 28 12 34 0 34 C-12 34 -24 28 -24 14 C-24 4 -16 -10 0 -32 Z M0 2 V22 M-10 12 H10" stroke="#8FD1A0" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+    </g>
+    <text x="100" y="62" text-anchor="middle" font-size="19" fill="#f4ece0" stroke="#0b0910" stroke-width="3.5" paint-order="stroke">Candle Prayer</text>
+    <circle cx="86" cy="274" r="6.5" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/><circle cx="114" cy="274" r="6.5" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/>
+    <text x="100" y="316" text-anchor="middle" font-size="14" fill="#e8dfcf">Heal · rare (bronze frame)</text>
+    <text x="100" y="334" text-anchor="middle" font-size="12" fill="#8a8178">cheap metal, real gems</text>
+  </g>
+  <g transform="translate(720,0)">
+    <rect width="200" height="290" rx="10" fill="#2f2d31"/><rect x="8" y="8" width="184" height="274" rx="6" fill="url(#artD)"/>
+    <rect x="8" y="8" width="184" height="92" fill="url(#band)"/>
+    <g transform="translate(100,52)" opacity=".95">
+      <path d="M0 -34 L8 -8 L34 0 L8 8 L0 34 L-8 8 L-34 0 L-8 -8 Z" fill="#0b0910" transform="scale(1.18)"/>
+      <path d="M0 -34 L8 -8 L34 0 L8 8 L0 34 L-8 8 L-34 0 L-8 -8 Z" fill="#FFF4DC"/>
+    </g>
+    <text x="100" y="62" text-anchor="middle" font-size="18" fill="#f4ece0" stroke="#0b0910" stroke-width="3.5" paint-order="stroke">Excommunication</text>
+    <circle cx="72" cy="274" r="6.5" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/><circle cx="100" cy="274" r="8" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/><circle cx="128" cy="274" r="6.5" fill="url(#opal)" stroke="#1a1820" stroke-width="2"/>
+    <text x="100" y="316" text-anchor="middle" font-size="14" fill="#e8dfcf">Finisher · unique</text>
+    <text x="100" y="334" text-anchor="middle" font-size="12" fill="#8a8178">3 gems, centre one larger + shimmer</text>
+  </g>
+</g>
+
+<g transform="translate(40,470)">
+  <text x="0" y="0" fill="#e8dfcf" font-size="16">The six symbols, at hand size and at thumbnail size</text>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <g transform="translate(30,60)"><g fill="#E0553A"><path d="M0 -20 L4 -12 L4 3 L-4 3 L-4 -12 Z"/><rect x="-11" y="3" width="22" height="4.5" rx="2"/><rect x="-2" y="7.5" width="4" height="8"/><circle cx="0" cy="17" r="3.2"/></g></g>
+    <g transform="translate(130,60)"><path d="M0 -17 L15 -10 L15 3 C15 12 7 17 0 20 C-7 17 -15 12 -15 3 L-15 -10 Z" stroke="#7FA8D6" stroke-width="5"/></g>
+    <g transform="translate(230,60)"><path d="M0 -18 C9 -6 14 2 14 8 C14 16 7 20 0 20 C-7 20 -14 16 -14 8 C-14 2 -9 -6 0 -18 Z M0 1 V13 M-6 7 H6" stroke="#8FD1A0" stroke-width="5"/></g>
+    <g transform="translate(330,60)"><path d="M-13 5 L0 -8 L13 5 M-13 17 L0 4 L13 17" stroke="#F0C46A" stroke-width="5"/></g>
+    <g transform="translate(430,60)"><path d="M-13 -16 L0 -3 L13 -16 M-13 -5 L0 8 L13 -5" stroke="#B585E6" stroke-width="5"/><circle cx="0" cy="16" r="3" fill="#B585E6" stroke="none"/></g>
+    <g transform="translate(530,60)"><path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FFF4DC" stroke="none"/></g>
+  </g>
+  <g fill="#a89f92" font-size="11" text-anchor="middle">
+    <text x="30" y="96">offense</text><text x="130" y="96">defense</text><text x="230" y="96">heal</text>
+    <text x="330" y="96">buff</text><text x="430" y="96">debuff</text><text x="530" y="96">finisher</text>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(660,0)">
+    <g transform="translate(0,60) scale(.55)"><g fill="#E0553A"><path d="M0 -20 L4 -12 L4 3 L-4 3 L-4 -12 Z"/><rect x="-11" y="3" width="22" height="4.5" rx="2"/><rect x="-2" y="7.5" width="4" height="8"/><circle cx="0" cy="17" r="3.2"/></g></g>
+    <g transform="translate(50,60) scale(.55)"><path d="M0 -17 L15 -10 L15 3 C15 12 7 17 0 20 C-7 17 -15 12 -15 3 L-15 -10 Z" stroke="#7FA8D6" stroke-width="7"/></g>
+    <g transform="translate(100,60) scale(.55)"><path d="M0 -18 C9 -6 14 2 14 8 C14 16 7 20 0 20 C-7 20 -14 16 -14 8 C-14 2 -9 -6 0 -18 Z M0 1 V13 M-6 7 H6" stroke="#8FD1A0" stroke-width="7"/></g>
+    <g transform="translate(150,60) scale(.55)"><path d="M-13 5 L0 -8 L13 5 M-13 17 L0 4 L13 17" stroke="#F0C46A" stroke-width="7"/></g>
+    <g transform="translate(200,60) scale(.55)"><path d="M-13 -16 L0 -3 L13 -16 M-13 -5 L0 8 L13 -5" stroke="#B585E6" stroke-width="7"/><circle cx="0" cy="16" r="4" fill="#B585E6" stroke="none"/></g>
+    <g transform="translate(250,60) scale(.55)"><path d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z" fill="#FFF4DC" stroke="none"/></g>
+  </g>
+  <text x="660" y="96" fill="#a89f92" font-size="11">thumbnail: shape still reads</text>
+</g>
+</svg>

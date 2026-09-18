@@ -187,3 +187,55 @@ characters should look **inside the dungeon** (Brutus, companions, enemies).
   from the player's camera distance, against stone-dungeon geometry.
 - Same action-comedy register as the rest of the guide: Bravely charm
   and punch timing, not Souls grit.
+
+## Card overlay — category symbol and rarity gems (Robert, 2026-09-17)
+
+Robert's words:
+
+> Top symbol on card overlay. Red sword, blue shield etc. Behind name of
+> card, over art.
+>
+> Rarity should be apparent but not by make; there can be extremely
+> valuable bronze gear and such. Use embedded gems or something.
+
+Binding on card art and card UI. Full spec:
+`docs/card-guidelines/readability.md` (mockup: `readability.svg`). Robert's
+ruling verbatim: `canon/decisions-2026-09-17-faces.md`.
+
+**The symbol.** A coloured category symbol sits at the top of the card
+overlay, behind the card name, over the art. It is the card's fastest
+read.
+
+| Category | Symbol | Colour |
+|---|---|---|
+| Offense | sword, point up | Ember Oxblood `#E0553A` |
+| Defense | shield | Tempered Steel `#7FA8D6` |
+| Heal | drop with a cross | Verdigris `#8FD1A0` |
+| Buff | two up chevrons | Old Brass `#F0C46A` |
+| Debuff | two down chevrons with a drip | Nightshade `#B585E6` |
+| Finisher | four-point star, solid | Incandescent `#FFF4DC` |
+
+It carries a thick ink outline and sits under a soft top-down ink scrim, so
+it holds against bright or busy art. It is the only saturated colour on the
+card chrome.
+
+**Rarity is gems, never the make.** One dull uncut stone (common), one cut
+gem (uncommon), two (rare), three with a larger centre and a slow shimmer
+(unique), set in the frame's bottom edge. Opal/moonstone, so they never
+read as a category colour. Frame material — iron, bronze, silver, gilt —
+is flavour only: a bronze piece can be unique.
+
+**What this means for the art.**
+
+- The symbol and name live in the UI layer. Faces stay free of text,
+  icons, baked frames, gems and banners (this is unchanged).
+- **Leave the top ~25% of every card face clear of critical detail** —
+  no faces, weapon points or the focal impact up there. The symbol and
+  name sit over that band.
+- Because the symbol now labels the category, the effect light in the art
+  can stay disciplined and beautiful. "Colour is disciplined" above still
+  governs: saturation at the point of action, tint the light, never the
+  people.
+- Class card faces show a **class figure, not Brutus** (Robert,
+  2026-09-17). The locked Brutus spec governs Brutus's own art, not the
+  Priest or Warrior card faces.
