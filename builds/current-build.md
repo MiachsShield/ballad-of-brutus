@@ -1,8 +1,14 @@
 # Current build
 
 - File: `builds/brutus-1_0_a0mk-kavi-balanced.html`
-- Size: 10,274,069 bytes
-- SHA-256: `c5cd1f36ed4d12b3061cdec54bccbac17779af8e48eec9a007b455f4f5f84fec`
+- Size: 10,273,862 bytes
+- SHA-256: `00cddcaccc49474d7dab1d2ca53fe5dab46621bc6b32e05762e0e51398d8fafd`
+- Fix patch 2026-09-17 (Muse): Umbral Reaper text 24→32 to match its real
+  dmg (BALANCE.md: cost 10→12, dmg 24→32); removed Anthem of the Unbroken's
+  three unreachable fallen-companion legacy branches (downed-ally targeting
+  pool, 'No fallen companion' gate, downed-target validation) — the card is
+  target 'self', a proactive party-wide ward. build.py decision record
+  updated to match.
 - Contents: Kavi's balance pass over the fixed baseline —
   40-card Priest/Warrior decks (BALANCE.md tables; deploy preview synced,
   0-copy pool cards filtered from listing), Sprinting Cut lunge detection

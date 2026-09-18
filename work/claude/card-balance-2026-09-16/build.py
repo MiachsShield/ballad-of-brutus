@@ -86,7 +86,7 @@ D = {
                              set=dict(cost=11, dmg=30, effect="Deal 30 damage. Costs 2 less if any enemy died this turn."),
                              why="Umbral Reaper is gear (Shadow weapon), so it's a signature and leaves the class deck. The Warrior needs its own class finisher: Killing Shout, already the deck's biggest class hit."),
  W+'umbral_reaper':     dict(copies=0, cat='finisher', frames=(1000,1150), exp=1.8,
-                             set=dict(cost=12, dmg=32),
+                             set=dict(cost=12, dmg=32, effect="Deal 32 damage. Heal for half the damage dealt."),
                              why="Rare gear should out-swing the class finisher (Killing Shout, 30 for 11) without replacing it: 32 for 12, plus its back-attack bonus."),
  W+'line_breaker':      dict(copies=1, cat='offense'),
  W+'dual_hew':          dict(copies=0, cat='offense'),
