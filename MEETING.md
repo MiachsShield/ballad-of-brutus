@@ -29,11 +29,18 @@ here instead of losing it across chats.
 
 - **Four-way playtest round (Robert, 2026-09-15):** Claude, Grok, Astra, and Kavi each playtest the exact candidate build as players and log ALL feedback under their `## Feedback` sections (briefs in `briefs/<model>/2026-09-15-playtest-feedback.md`). Kavi consolidates when all four are in.
 
-- **Current build:** `builds/brutus-1_0_a0mk-kavi-merged.html` (10.3 MB,
-  SHA-256 `84f46127…b3ca2`). Contains Astra's 73-card Priest/Warrior merge.
-  Static checks pass (all 73 cards, 108/deck, 20-energy costs, 102 automated
-  checks). **Not yet player-accepted:** Kavi has not playtested this exact
-  file, so it is the candidate baseline, not the accepted one.
+- **Current build (updated 2026-09-18):** `builds/brutus-1_0_a0mk-kavi-balanced2.html`
+  (10,275,101 bytes, SHA-256 `e9ff9c10…d0df1f0`), on main as `641d38b`.
+  Fixes the two PR #12 follow-ups: card faces stay rendered when launched from
+  `builds/` (fallback URL recognized, one-shot flag resets on card change),
+  and combat-log consequence lines now print after their causing "lands" line
+  (cause, then effect) across ordinary hits, armor breaks, stance absorbs,
+  ward absorbs, and Second Wind. **Player-accepted:** Kavi's exact-file
+  playtest 2026-09-18 — Priest faces at naturalWidth 784 surviving 6+
+  re-renders and a discipline switch, 106 combat-log lines with zero
+  cause/effect inversions, zero page errors across 7 sessions. Umbral Reaper
+  32/32 and Anthem proactive ward regression-checked. Supersedes
+  `builds/brutus-1_0_a0mk-kavi-balanced.html` (kept for reference).
 - **Pipeline change:** this repo is now the shared workspace. Briefs go in,
   branches come out, Kavi reviews before merge. Browser-chat logins are the
   fallback, not the plan.
@@ -65,10 +72,13 @@ here instead of losing it across chats.
 **Near term**
 1. Claude folds the 12 rulings into the design docs without inventing new mechanics.
 2. Grok redoes the 4 critical faces against the visual guide; Claude audits.
+   **DONE 2026-09-17** — Robert PASS on all four, landed on main
+   (`art/card-faces/...`). PR #3 still open; needs Robert's one-tap close.
 3. Astra's lane connects; the 12 rulings and the fix queue become a build Kavi
-   can actually playtest.
+   can actually playtest. (Still dark — weekly limit resets 2026-09-19.)
 4. The merged build becomes the accepted baseline only after Kavi playtests it
-   as a player.
+   as a player. **DONE 2026-09-18** — `builds/brutus-1_0_a0mk-kavi-balanced2.html`
+   is the accepted build (see Status).
 
 **Longer term** (the ten phases: battle playtesting, dungeon variety, new
 enemies, enemy combat, art integration, overworld depth, political layer,
@@ -232,6 +242,11 @@ against the new spec; they are still in this Grok conversation, not in
 `art/`. Need a decision: lock this face into `art/visual-guide` so later
 sessions stop drawing the long-hair slim Brutus.
 
+**2026-09-18 — Robert: YES, lock it in.** Grok to commit the session's key art
+and portrait (shaved buzz, stocky, strong jaw, young) into `art/visual-guide/`
+and reference them from the README's locked section. Brief at
+`briefs/grok/2026-09-18-brutus-face-lock.md`.
+
 **Highest-risk gap from the art lane:** recognition of Brutus is now
 split across three sources (written guide, FFXIV ref, Robert's live spec).
 Until the guide is updated, every new face risks the wrong body.
@@ -305,6 +320,14 @@ Read MEETING.md, MEETING-2026-09-16.md, DISCUSS.md, PLAYTEST-DISCUSS.md, the vis
 *(Astra: add your feedback here.)*
 
 ## Feedback — Kavi
+
+### 2026-09-18 bugfix build (Kavi)
+Shipped `builds/brutus-1_0_a0mk-kavi-balanced2.html` to main (`641d38b`)
+after exact-file verification: the two PR #12 follow-up bugs are fixed —
+card-face fallback from `builds/` and combat-log chronology (consequence
+lines after the causing "lands" line, in all five hit paths). This is now the
+accepted build. Kavi's 2026-09-15 playtest findings #3 (post-kill log
+sequencing) and #8 (kill chronology nit) are closed by it.
 
 The pipeline change is the right call — the browser-login round was eating
 more time than the work. My worries, in order:
