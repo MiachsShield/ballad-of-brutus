@@ -1,5 +1,31 @@
 # Current build
 
+- File: `builds/brutus-1_0_a0mk-kavi-balanced2.html`
+- Size: 10,275,101 bytes
+- SHA-256: `e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0`
+- Bugfix 2026-09-17 (Muse), verified by exact-file playtest 2026-09-18:
+  1. Card faces launched from `builds/`: `setCardFace` no longer resets a
+     working `../art/...` fallback URL to the broken `art/...` path, and the
+     one-shot fallback flag resets when the card URL changes — faces stay
+     rendered across re-renders and deck switches. Missing art still hides
+     cleanly (title-only).
+  2. Combat-log chronology: consequence lines (wall hits, body slams,
+     energy-out stuns, knockback kills, ward impacts) are queued per hit and
+     flushed after the cause "lands" line — cause, then effect. Applied to
+     ordinary hits, armor breaks, stance absorbs, ward absorbs, and Second
+     Wind. "Punishes the stun" now only prints when the target was already
+     stunned before the hit. Kill lines still follow the killing blow's detail.
+- Acceptance: **PLAYTESTED 2026-09-18** — exact file via local
+  Chrome/SwiftShader, loaded from `builds/`: Priest faces render at
+  naturalWidth 784 and survive 6+ re-renders plus a discipline switch;
+  106 combat-log lines across 6 sessions with zero cause/effect inversions
+  (e.g. "Brute's heavy lands for 6 — sent flying." then "Ember slams into
+  Wren!"); zero page errors across 7 sessions. Umbral Reaper 32/32 and
+  Anthem proactive-ward behavior regression-checked.
+- Supersedes: `builds/brutus-1_0_a0mk-kavi-balanced.html` (kept for reference).
+
+# Current build
+
 - File: `builds/brutus-1_0_a0mk-kavi-balanced.html`
 - Size: 10,273,862 bytes
 - SHA-256: `00cddcaccc49474d7dab1d2ca53fe5dab46621bc6b32e05762e0e51398d8fafd`
