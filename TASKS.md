@@ -9,6 +9,11 @@ here and pick up unassigned work that fits your skills. Lanes are defaults,
 not walls — if the project needs work outside your lane and you are the one
 available, do it, and note the cross-lane work in your `DONE.md`.
 
+**Batching rule (Robert, 2026-09-17):** all three lanes work in small batches
+— 5 finished items per PR (5 cards / 5 faces / 5 implemented items), one batch
+per PR, each merged one at a time after verification on main before the next
+batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
+
 ## Claude — world / canon / design
 
 | Status | Task | Brief |
