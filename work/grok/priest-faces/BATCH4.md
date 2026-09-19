@@ -9,3 +9,5 @@ Class cards. Move is the subject. Varied adult women in the scenes.
 | priest_binding_psalm.jpg | Binding Psalm | debuff / nightshade | bands pinning feet |
 | priest_hymn_of_vigor.jpg | Hymn of Vigor | buff / old brass | sparks into several chests |
 | priest_vow_of_silence.jpg | Vow of Silence | debuff / nightshade | hand over the mouth-sigil |
+
+Standing: no blood, no gore on card faces.
