@@ -146,6 +146,98 @@
     this.rows = this.rows.filter(function (r) { return r.from !== id && r.to !== id; });
   };
 
+  /* What each tag SOUNDS like when the party brings it up. Sentiment is only
+   * real to the player if they can see the specific thing it came from — a
+   * number they cannot inspect reads as the game cheating. */
+  var TAG_TEXT = {
+    'owed-my-life':   'You pulled us out on the fourth floor.',
+    'pitied-me':      "We didn't ask for your charity.",
+    'useful-to-me':   'You were useful to us, once.',
+    'walked-past-us': 'You walked past us.',
+    'robbed-us':      'You took what we had and left us down there.',
+    'turned-us-back': 'You turned us back.'
+  };
+
+  /* ------------------------------------------------------------ salient --
+   * The one event the player should be shown. Impact first, recency as the
+   * tie-break: a permanent grudge outranks a fresh slight, but between two
+   * comparable rows the newer one is what is on their mind.
+   */
+  Ledger.prototype.salient = function (from, to) {
+    var best = null, bestScore = -1;
+    for (var i = 0; i < this.rows.length; i++) {
+      var r = this.rows[i];
+      if (r.from !== from || r.to !== to) continue;
+      var score = Math.abs(r.warmth) * 1.5 + Math.abs(r.respect);
+      if (r.decay === null) score *= 1.5;          // it never faded; it matters
+      if (score > bestScore || (score === bestScore && best && r.bornAt > best.bornAt)) {
+        best = r; bestScore = score;
+      }
+    }
+    if (!best) return null;
+    return {
+      tag: best.tag,
+      says: TAG_TEXT[best.tag] || best.tag,
+      permanent: best.decay === null,
+      age: this.now - best.bornAt
+    };
+  };
+
+  /* ------------------------------------------------------------- stance --
+   * Sentiment the player can SEE, because it comes out in behaviour rather
+   * than a meter. Warmth and respect are read as two independent axes, so
+   * "I'd trust him at my back and I can't stand him" is a real stance.
+   *
+   * Deliberately NOT a ladder. There is no progression from hostile to
+   * loyal to climb: a stance is just where the surviving rows currently
+   * put them, and one event can move it in either direction.
+   */
+  function stance(state, partyId) {
+    var L = state.ledger, B = 'brutus';
+    var f = L.feeling(partyId, B);
+    var warm = f.warmth, resp = f.respect;
+    var WT = 2, RT = 2;                      // dead-band; below this they simply do not care
+    var key, acts;
+
+    if (Math.abs(warm) < WT && Math.abs(resp) < RT) {
+      key = 'indifferent';
+      acts = ['passes without stopping'];
+    } else if (warm >= WT && resp >= RT) {
+      key = 'loyal';
+      acts = ['greets him first', 'shares what they found', 'will follow his lead'];
+    } else if (warm >= WT) {
+      key = 'fond';
+      acts = ['glad to see him', 'talks freely', 'will not take his orders'];
+    } else if (resp >= RT) {
+      key = 'wary';
+      acts = ['keeps their distance', 'answers straight', 'watches his hands'];
+    } else if (warm <= -5) {
+      key = 'hostile';
+      acts = ['refuses to deal', 'warns other parties off him', 'may open first'];
+    } else {
+      key = 'cold';
+      acts = ['gives him nothing', 'moves on quickly'];
+    }
+
+    return {
+      key: key,
+      warmth: warm,
+      respect: resp,
+      acts: acts,
+      because: L.salient(partyId, B)       // the event to surface alongside it
+    };
+  }
+
+  /* Player-facing one-liner: stance, then the reason for it. */
+  function describeStance(state, partyId) {
+    var p = state.roster[partyId];
+    if (!p) return null;
+    var s = stance(state, partyId);
+    var line = p.name + ' — ' + s.key;
+    if (s.because) line += '  "' + s.because.says + '"';
+    return line;
+  }
+
   /* ----------------------------------------------------------- encounter --
    * One meeting, one verb. The verb decides what happened; the TRAIT decides
    * what it meant. Rows are written on both sides — Brutus forms an opinion
@@ -316,6 +408,7 @@
     rng: rng, TRAITS: TRAITS, GOALS: GOALS, VERBS: VERBS,
     Ledger: Ledger, makeParty: makeParty, nameUniquely: nameUniquely,
     newState: newState, encounter: encounter, stepParty: stepParty,
+    stance: stance, describeStance: describeStance, TAG_TEXT: TAG_TEXT,
     runWave: runWave, repopulate: repopulate, assassinate: assassinate
   };
 

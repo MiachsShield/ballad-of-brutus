@@ -79,6 +79,20 @@ function verbose() {
   var braced = OW.assassinate(r.state, living, { defended: true });
   console.log('  the same knife, braced: ' + (braced.killed ? 'killed' : 'failed') + ' — ' + braced.why);
 
+  console.log('\n  meeting them again — what Brutus can SEE:');
+  var shown = 0;
+  r.w2.survivors.forEach(function (p) {
+    if (!p.metBrutus) return;
+    var st = OW.stance(r.state, p.id);
+    if (st.key === 'indifferent' && !st.because) return;
+    console.log('    ' + p.name + ' — ' + st.key +
+                (st.because ? '  "' + st.because.says + '"' : ''));
+    console.log('      ' + st.acts.join('; ') +
+                (st.because && st.because.permanent ? '   (has not let it go)' : ''));
+    shown++;
+  });
+  if (!shown) console.log('    nobody he met is still down there.');
+
   console.log('\n  wave 2: ' + r.w2.survivors.length + ' up, ' + r.w2.lost.length + ' lost');
   var veterans = r.w2.survivors.filter(function (p) { return p.wavesSurvived > 1; });
   console.log('  veterans of both waves: ' +
@@ -88,6 +102,7 @@ function verbose() {
 
 function soak(n) {
   var died = 0, total = 0, remembered = 0, metAndLived = 0, permanentRows = 0;
+  var legibleStance = 0, hasReason = 0;
   var rosterSizes = [];
   for (var seed = 1; seed <= n; seed++) {
     var r = oneRun(seed, false);
@@ -98,6 +113,12 @@ function soak(n) {
         metAndLived++;
         if (r.state.ledger.feeling(p.id, 'brutus').tags.length) remembered++;
       }
+    });
+    r.w1.survivors.forEach(function (p) {
+      if (!p.metBrutus) return;
+      var st = OW.stance(r.state, p.id);
+      if (st.key !== 'indifferent') legibleStance++;
+      if (st.because) hasReason++;
     });
     permanentRows += r.state.ledger.rows.filter(function (x) { return x.decay === null; }).length;
     rosterSizes.push(Object.keys(r.state.roster).length);
@@ -110,6 +131,9 @@ function soak(n) {
               ' (' + (metAndLived ? (100 * remembered / metAndLived).toFixed(0) : 0) + '%)');
   console.log('  permanent rows alive  : ' + permanentRows);
   console.log('  avg roster after 2 waves: ' + avgRoster.toFixed(1));
+  console.log('  survivors with a stance : ' + legibleStance +
+              ' (' + (metAndLived ? (100 * legibleStance / metAndLived).toFixed(0) : 0) + '% of those he met)');
+  console.log('  ...with a named reason  : ' + hasReason);
 
   // Invariants the design depends on.
   var fail = [];
