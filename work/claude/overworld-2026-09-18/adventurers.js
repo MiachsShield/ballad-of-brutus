@@ -479,6 +479,7 @@
       p.flashpoint = null;
     } else if (ctx.lethal) {
       p.alive = false; p.causeOfDeath = 'cut down going for Brutus';
+      p.flashpoint = null; delete state.heat[partyId];   // dies resolved, not left stale for the next cull
       L.forget(partyId);
       result = { fired: true, landed: false, killed: true, why: 'defended, and it cost them their life' };
     } else {
@@ -503,6 +504,7 @@
     var L = state.ledger, B = 'brutus', result;
     if (ctx.danger) {
       p.alive = false; p.causeOfDeath = 'died shielding Brutus';
+      p.flashpoint = null; delete state.heat[partyId];   // dies resolved, not left stale for the next cull
       L.forget(partyId);
       result = { fired: true, sacrificed: true, why: 'steps in front of it' };
     } else {

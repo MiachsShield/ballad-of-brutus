@@ -181,6 +181,24 @@ anywhere — it falls out of `demand-refused` sharing the same warmth axis
 `updateHeat` reads. Worth keeping in mind for pacing: refusing a demand is
 not a safe "no," it can be the first domino toward a vendetta.
 
+## Fixed after review
+
+- **A resolver-killed party sat in the roster with a stale `flashpoint` and
+  `heat` entry for one extra wave.** `advanceWave` cleans up `state.heat` for
+  anyone lost in that wave's dungeon runs or rivalry clashes, but
+  `vendettaStrike`'s lethal-defended branch and `devotionAct`'s self-sacrifice
+  branch run *after* `advanceWave` returns (the campaign harness resolves a
+  freshly-primed flashpoint the same tick it's reported), so those deaths
+  weren't caught by that cleanup — the corpse kept its flashpoint and heat
+  object until the *next* wave's `runWave` finally culled it, one wave later
+  than a dungeon death. Not a soundness bug (`updateHeat` and the resolvers
+  both already bail on `!p.alive`, so it never double-fired or skewed the
+  reported percentages), but real state untidiness. Fixed by clearing
+  `p.flashpoint` and `state.heat[partyId]` at the moment either lethal branch
+  fires, matching how a dungeon death is cleaned up same-wave. Re-ran
+  `--soak` and `--escalate` after the fix: every number above is unchanged,
+  as expected — this only touched cleanup timing, not any decision logic.
+
 ## Not done, deliberately
 
 - No mixed-verb-policy campaign mode. Every party in `runCampaign` gets one
