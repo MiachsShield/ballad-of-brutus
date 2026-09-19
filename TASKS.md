@@ -44,6 +44,16 @@ batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
 5 items per PR, one system per PR, branch from main, one merge verified before
 the next.
 
+**Active (Robert 2026-09-19): overworld splice first — `briefs/astra/2026-09-19-overworld-splice.md`:**
+
+| Status | Task | Brief |
+|---|---|---|
+| [ ] open | Splice batch S1: embed window.OW, state lifecycle + save/load, advanceWave hook, encounter routing, harness test | `briefs/astra/2026-09-19-overworld-splice.md` |
+| [ ] open | Splice batch S2: stance + salient reads in roster UI ("what Brutus can SEE") | `briefs/astra/2026-09-19-overworld-splice.md` |
+| [ ] open | Splice batch S3: flashpoint resolution prompts (vendetta/devotion/warning/demand) | `briefs/astra/2026-09-19-overworld-splice.md` |
+
+**Queued behind the splice (from the lane-live brief):**
+
 | Status | Task | Brief |
 |---|---|---|
 | [ ] open | Batch 1: K1 syncTells crash, K2 dead hands, K5 interview soft-lock, K6 permadeath, K7 companion XP | `briefs/astra/2026-09-19-lane-live.md` |
