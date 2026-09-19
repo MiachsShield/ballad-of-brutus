@@ -39,8 +39,16 @@ batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
 
 ## Astra — implementation
 
+**Lane live 2026-09-19.** Standing brief: `briefs/astra/2026-09-19-lane-live.md`
+(reconciles and supersedes the 2026-09-15 queue where they conflict). Batching:
+5 items per PR, one system per PR, branch from main, one merge verified before
+the next.
+
 | Status | Task | Brief |
 |---|---|---|
+| [ ] open | Batch 1: K1 syncTells crash, K2 dead hands, K5 interview soft-lock, K6 permadeath, K7 companion XP | `briefs/astra/2026-09-19-lane-live.md` |
+| [ ] open | Batch 2: enemy card framework (energy bar, 40-card decks, enemy hand + AI), then Claude's 5-card batches as they land | `briefs/astra/2026-09-19-lane-live.md` |
+| [ ] open | Batch 3: SFX P2/P3, off-screen indicator, 17 roster exits, canonical sanity check | `briefs/astra/2026-09-19-lane-live.md` |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Astra" |
 
 **Redistributed 2026-09-16 (Robert):** the Astra implementation lane is not

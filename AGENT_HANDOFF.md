@@ -23,7 +23,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 ## Status
 - Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2). Overworld adventurer slice 1 (headless sim, `work/claude/overworld-2026-09-18/`) landed 2026-09-18 via Muse (branch push failed on Claude's side; merged d49af87, verified).
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
-- GPT/Astra: still dark; implementation queue waiting on lane connect.
+- GPT/Astra: lane live 2026-09-19 (weekly reset). Reconciled queue in `briefs/astra/2026-09-19-lane-live.md`: Batch 1 = K1/K2/K5/K6/K7 fixes, Batch 2 = enemy card framework + Claude's Issue #13 deck batches, Batch 3 = SFX P2/P3 + remaining queue. Baseline is the 2026-09-18 accepted build; verify combat logic via harness (no WebGL), Muse does visual playtest before merge.
 
 ## Next
 - Kavi: view pass-2 Bear Hug Break face in the Grok session; land JPEG on PR #3 if it passes the break read.
