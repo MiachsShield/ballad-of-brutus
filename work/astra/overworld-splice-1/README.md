@@ -12,9 +12,10 @@ This folder is the durable home for the S1 playable-build reconstruction.
 - Advance the overworld simulation once at the selected turn boundary.
 - Route the existing meeting surface through the player's chosen verb.
 - Add a harness proving lifecycle behavior, gossip, rivalry, heat, and flashpoints.
+- Preserve the earlier character-to-character, Sims-esque relationship logic as the meaning layer behind those events.
 
 ## Acceptance boundary
 
 Runtime and DOM checks cover the exact delivered HTML. Visual dungeon/WebGL review remains a Muse/Kavi gate.
 
-See `CHANGELOG.md` and `DONE.md` for implementation status and verification results.
+See `CHARACTER-SIM-LAYER.md` for the relationship-layer bridge, and `CHANGELOG.md` and `DONE.md` for implementation status and verification results.
