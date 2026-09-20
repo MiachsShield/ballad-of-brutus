@@ -1,5 +1,12 @@
 # S1 change log
 
+## 2026-09-20 — character simulation carried forward
+
+- Added `CHARACTER-SIM-LAYER.md` to preserve the earlier Sims-esque character-to-character design.
+- Mapped Notice → Curiosity → Attachment → Memory onto the existing ledger, salient events, stance, gossip, rivalry, heat, flashpoints, and caller-resolved consequences.
+- Kept relationship data world-owned and persistent through New Run, save/load, and the world tick.
+- Explicitly excluded hidden romance meters, generic relationship spreadsheets, and passive character-bio systems.
+
 ## 2026-09-20 — folder recovery
 
 - Created persistent branch `astra/overworld-splice-1` from current `main`.
