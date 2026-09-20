@@ -19,3 +19,7 @@ This folder is the durable home for the S1 playable-build reconstruction.
 Runtime and DOM checks cover the exact delivered HTML. Visual dungeon/WebGL review remains a Muse/Kavi gate.
 
 See `CHARACTER-SIM-LAYER.md` for the relationship-layer bridge, and `CHANGELOG.md` and `DONE.md` for implementation status and verification results.
+
+## Playable candidate — 2026-09-20
+
+The adapter-only handoff below is superseded by the implemented world/dungeon splice. Start with [RUNBOOK.md](RUNBOOK.md) for launcher/build instructions, verification evidence and exact next steps. Visual acceptance is still pending.

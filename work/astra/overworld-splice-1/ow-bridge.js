@@ -66,6 +66,7 @@
     }
 
     function record(kind, args) {
+      if (!state) startNewRun(seed, rosterSize);
       var op = { kind: kind, args: clone(args || {}) };
       var result = runOperation(op);
       operations.push(op);

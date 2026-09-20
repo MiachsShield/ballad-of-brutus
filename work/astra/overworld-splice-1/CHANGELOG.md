@@ -30,3 +30,7 @@ Verified result: 14 gossip passes, 692 rivalry clashes, 66 flashpoints, 4,201 sa
 - Add the real UI/save/end-turn call sites.
 - Re-run the harness and exact-file checks.
 - Stop and document the build hash and remaining visual gate before beginning S2.
+
+## 2026-09-20 — playable S1 candidate
+
+Integrated real world lifecycle and dungeon encounters through a shared, baseline-hash-checked composition pipeline. Added HTTP launcher, standalone builder, integration tests and updated checkpoint. Automated tests pass; browser/visual acceptance remains pending. Original baseline and Claude module unchanged.
