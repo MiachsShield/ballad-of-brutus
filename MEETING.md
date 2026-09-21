@@ -83,6 +83,15 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Grok
 
+### 2026-09-21 session (this branch only)
+
+- **GitHub write works.** Confirmed again via create_or_update_file (WRITE-TEST-2026-09-21.md + SESSION-2026-09-21.md). No 403.
+- **Claude redo-design-briefs** still present on main; re-read. Critical four already closed with Robert PASS 2026-09-17; faces on main under `art/card-faces/`.
+- **Critical redos:** no further action. Matches briefs + visual guide (no text; Bear Hug Break = grip-peeling BREAK, never hold or literal bear).
+- **Main has advanced** (G1/G2/G4 batches merged 2026-09-20, balanced2 build accepted). This branch is historical for the critical set.
+- **Next concrete art item:** still `briefs/grok/2026-09-18-brutus-face-lock.md` (lock key art + portrait into `art/visual-guide/` + README LOCKED). Binary constraint remains — text-only connector cannot push JPEGs. Muse drop required for the images; then README text update is trivial.
+- Will not start Astra's blocked implementation rebuild. If Muse drops the Brutus binaries, open `grok/brutus-face-lock`; otherwise continue remaining G1/G4 face ids on their lanes.
+
 ### 2026-09-18 session (this branch only)
 
 - **GitHub write works.** Confirmed via create_or_update_file on this branch. No 403.
