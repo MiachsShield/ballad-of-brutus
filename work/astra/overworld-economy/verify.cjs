@@ -1,11 +1,23 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert'),crypto=require('crypto');
 const {world,worldSha256}=require('./source.cjs')();
 const html=fs.readFileSync(__dirname+'/brutus-pr34-overworld-economy.html','utf8');
-assert(!html.includes('const DUNGEON_HTML='));assert(html.includes('id="delveBtn" disabled'));
+assert(!html.includes('const DUNGEON_HTML='));
+assert(!html.includes('brutus-living-v1')&&!html.includes('brutus-ended:'),'Study must not touch main saves');
+assert(html.includes('brutus-economy-pr34-v1')&&html.includes('brutus-economy-pr34-ended:'));
 const scripts=h=>[...h.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]);
 const original=scripts(world),delivered=scripts(html);assert.equal(original.length,2);assert.equal(delivered[0],original[0]);
-const displayGuard="const economyRender=render;render=function(){economyRender();$('delveBtn').disabled=true;};\n";
-assert.equal(delivered[1].replace(displayGuard,''),original[1],'Only dungeon button display guard may differ from PR34 world script');delivered.forEach(x=>new vm.Script(x));
+const adapter=fs.readFileSync(__dirname+'/world-only-adapter.js','utf8');
+assert.equal(delivered[1].replace(adapter+'\n','').replaceAll('brutus-economy-pr34-v1','brutus-living-v1').replaceAll('brutus-economy-pr34-ended:','brutus-ended:'),original[1],
+  'Only save isolation and world-only UI adapter may differ from PR34 world script');
+delivered.forEach(x=>new vm.Script(x));
+const controls=[{disabled:false,hidden:false},{disabled:false,hidden:false}],listeners=[];
+const ui={expeditionFocus:()=>'',render:()=>{},S:{event:{wants:'Ranger'},turn:3,gold:200,guilds:{r:{name:'Red',treasury:0}}},
+ guildUpkeep:()=>10,supplyOf:()=>1,fmtGold:n=>n+' g',esc:x=>x,
+ document:{querySelectorAll:()=>controls,addEventListener:(name,fn,capture)=>listeners.push({name,fn,capture})}};
+vm.createContext(ui);vm.runInContext(adapter,ui);assert(ui.expeditionFocus().includes('1 qualified free Rangers'));
+ui.render();assert(controls.every(b=>b.disabled&&b.hidden));
+let prevented=false,stopped=false;listeners[0].fn({target:{closest:()=>controls[0]},preventDefault(){prevented=true},stopImmediatePropagation(){stopped=true}});
+assert(prevented&&stopped&&listeners[0].capture,'Click protection must precede legacy handlers');
 assert.equal(crypto.createHash('sha256').update(world).digest('hex'),worldSha256);
 const mock=()=>({style:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},appendChild(){},remove(){},querySelectorAll(){return []},setAttribute(){},dataset:{},innerHTML:'',textContent:''});
 let result=[];
