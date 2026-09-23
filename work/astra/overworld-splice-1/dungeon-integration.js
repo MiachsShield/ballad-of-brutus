@@ -3,12 +3,15 @@ let owSession=0, owOpen=false, owKey=null, owHidden=false;
 let owFinished=new Set();
 const owTalk=document.createElement('button');
 owTalk.id='owTalk';owTalk.textContent='Talk to adventurers';owTalk.hidden=true;
-owTalk.style.cssText='position:fixed;right:18px;top:110px;z-index:80;padding:12px';
+// Lives in the arena's empty bottom-left corner: clear of the minimap (top-right)
+// and the Attack/Jump pads (bottom-right), and it scrolls with the arena on phones.
+const owArena=document.getElementById?.('arena');
+owTalk.style.cssText=owArena?'position:absolute;left:12px;bottom:12px;z-index:80;padding:12px':'position:fixed;left:18px;bottom:18px;z-index:80;padding:12px';
 const owDialog=document.createElement('section');
 owDialog.id='owMeeting';owDialog.hidden=true;
 owDialog.setAttribute('role','dialog');owDialog.setAttribute('aria-label','Adventurer encounter');
 owDialog.style.cssText='position:fixed;inset:20% 10% auto;z-index:200;background:#17171e;color:#eee;border:1px solid #c9a24b;padding:24px;max-height:65vh;overflow:auto';
-document.body.append(owTalk,owDialog);
+(owArena||document.body).append(owTalk);document.body.append(owDialog);
 document.addEventListener('keydown',e=>{
   if(!owOpen)return;
   if(e.key==='Escape'){e.preventDefault();owClose();}

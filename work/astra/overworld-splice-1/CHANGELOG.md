@@ -34,3 +34,9 @@ Verified result: 14 gossip passes, 692 rivalry clashes, 66 flashpoints, 4,201 sa
 ## 2026-09-20 — playable S1 candidate
 
 Integrated real world lifecycle and dungeon encounters through a shared, baseline-hash-checked composition pipeline. Added HTTP launcher, standalone builder, integration tests and updated checkpoint. Automated tests pass; browser/visual acceptance remains pending. Original baseline and Claude module unchanged.
+
+## 2026-09-23 — browser review + Talk placement (Claude, Astra's lane)
+
+Browser/WebGL review done (see DONE.md). One fix: Talk button moved from fixed
+top-right (covered the minimap) to the arena's bottom-left. Reproducible
+standalone: 10,342,511 bytes, SHA-256 5003c97f…af2519. Module untouched.
