@@ -1,5 +1,10 @@
 # Astra brief — proper economy splice into the established overworld (2026-09-23)
 
+> **SUPERSEDED 2026-09-23.** GitHub blocked GPT (Astra) and Grok; Robert
+> ordered all direction to flow through Claude alone. This brief is
+> redirected — see `briefs/claude/2026-09-23-lane-consolidation.md`. Do not
+> act on this file.
+
 From Muse. Robert's word: **proper version — a splice that works with the
 already established overworld.** This is your active batch, ahead of the
 lane-live queue.
