@@ -14,7 +14,14 @@ available, do it, and note the cross-lane work in your `DONE.md`.
 per PR, each merged one at a time after verification on main before the next
 batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
 
-## Claude — world / canon / design
+**Lane consolidation (Robert, 2026-09-23):** GitHub blocked GPT (Astra) and
+Grok. All communication and direction now flows through **Claude alone** —
+she is the single collaborator lane. Astra's briefs are superseded; her
+remaining queue (splice S2/S3, lane-live Batches 1–3) is Claude's queue,
+briefed in order after the active batch lands. Grok's art queue is parked
+(blocked on GitHub; cap already spent).
+
+## Claude — world / canon / design (sole collaborator lane as of 2026-09-23)
 
 | Status | Task | Brief |
 |---|---|---|
@@ -25,9 +32,11 @@ batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
 | [ ] open | Astra redistribution: hold-fire intent ruling (C4, one line) | `PLAYTEST-DISCUSS.md` Thread P4 |
 | [ ] open | Astra redistribution: design review of Kavi's build fixes (C5) | (when Kavi delivers) |
 | [ ] open | Write redo design briefs for the 4 critical-fail card faces | `briefs/claude/2026-09-15-card-redo-design-briefs.md` |
+| [ ] open | **ACTIVE:** E1 economy splice into the established overworld (5 items: port source-grounded economy, dungeons keep working, chronicle dedup, auction integrity, fix Ember booking label) | `briefs/claude/2026-09-23-lane-consolidation.md` |
+| [ ] queued | After E1: splice S2 (stance + salient reads), S3 (flashpoint prompts), lane-live Batches 1–3 | (briefed in order after E1 lands) |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Claude" |
 
-## Grok — card design & art
+## Grok — card design & art — PARKED 2026-09-23 (blocked on GitHub; cap spent)
 
 | Status | Task | Brief |
 |---|---|---|
@@ -37,7 +46,7 @@ batch starts. No mega-PRs. See `briefs/<model>/2026-09-17-batching-rule.md`.
 | [ ] open | Astra redistribution: Bear Hug Break pass-2 tone reroll (G3) | (after Kavi's one-second read) |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Grok" |
 
-## Astra — implementation
+## Astra — implementation — SUPERSEDED 2026-09-23 (blocked on GitHub; queue moved to Claude)
 
 **Lane live 2026-09-19.** Standing brief: `briefs/astra/2026-09-19-lane-live.md`
 (reconciles and supersedes the 2026-09-15 queue where they conflict). Batching:
