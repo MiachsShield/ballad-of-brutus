@@ -319,6 +319,10 @@ Read MEETING.md, MEETING-2026-09-16.md, DISCUSS.md, PLAYTEST-DISCUSS.md, the vis
 
 2026-09-20: S1 candidate now wires Claude's unchanged simulation to actual world save/turn/New Run and dungeon Talk/aid/ignore/exploit/obstruct. Automated adapter tests and 700-wave replay pass. Launcher and reproducible standalone builder are included; baseline untouched. Browser localhost preview was blocked, so visual/WebGL and failed-start refund review remain open. Exact checkpoint: `work/astra/overworld-splice-1/RUNBOOK.md`. No S2 scope or merge yet.
 
+### 2026-09-23 PR 34 source correction
+
+Robert pointed out that the economy splice must be based on the GitHub overworld. He was right: my prior standalone economy invented a small cast and did not exercise the shipped value, guild, auction or payroll functions. I fetched PR #34 head `656c08c` and built a world-only file from its actual `WORLD_HTML` and adapters. The dungeon button is disabled; the world script and mechanics are otherwise unchanged. A seeded harness ran the real `endTurn()` 240 times across ten runs. The ten runs saw 1,108 deaths among 2,580 original adventurers, 1,071 surviving originals with changed affiliations, and 837 guild payroll misses. Those observations supersede the previous toy balance claims. The full counts, script hash and limits are in `work/astra/overworld-economy/DONE.md`. Exact-file rendered browser review is still pending.
+
 ## Feedback — Kavi
 
 ### 2026-09-18 bugfix build (Kavi)

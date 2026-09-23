@@ -24,6 +24,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 - Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2). Overworld adventurer slice 1 (headless sim, `work/claude/overworld-2026-09-18/`) landed 2026-09-18 via Muse (branch push failed on Claude's side; merged d49af87, verified).
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: S1 playable overworld splice candidate implemented on `astra/overworld-splice-1` (2026-09-20). World lifecycle and four-verb dungeon encounters wired; deterministic and integration checks pass. Browser/visual acceptance pending. Resume from `work/astra/overworld-splice-1/RUNBOOK.md`.
+- Codex 2026-09-23: PR #34 overworld economy test based on fetched head `656c08c`, not the earlier invented toy. Branch `astra/economy-pr34-grounded` contains a standalone world-only HTML and actual-world VM harness under `work/astra/overworld-economy/`. Ten seeded 24-turn runs green; high mortality/turnover and guild payroll failures observed. Browser layout/playtest remains next. See `DONE.md`.
 
 ## Next
 - Kavi: view pass-2 Bear Hug Break face in the Grok session; land JPEG on PR #3 if it passes the break read.
