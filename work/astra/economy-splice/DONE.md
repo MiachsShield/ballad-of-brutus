@@ -59,9 +59,8 @@ identical. Existing save key only.
   "signs on… bench", "comes out ahead", "watched you take"). Same class of
   problem as item 3, but item 3 was scoped to departures and the batch is at
   five items. Good first item for E2.
-- The departure rate is unchanged (84 in 14 turns). The design doc's pacing
-  rule (one prominent opportunity at a time) is the later pressure-model
-  batch.
+- The departure rate itself is unchanged; E1.1 below changes what reaches
+  the player, not what happens.
 
 ## Verify
 
@@ -72,9 +71,75 @@ node work/astra/economy-splice/economy-integration.test.cjs
 ```
 
 HTTP launcher: `builds/brutus-astra-e1.html` (serve the repo root, as in the
-S1 runbook). Standalone from committed sources: **10,349,575 bytes, SHA-256
-`72b1781487164f7ef94ad7c0be269337134f7906bade26ddb4393efe774be742`**.
+S1 runbook). Standalone from committed sources (after E1.1): **10,354,445 bytes, SHA-256
+`f31382b6073d2d66432f10e8ba65190b76376eba630ea4f33351b138f56f51ca`**.
 
 Browser checks ran in headless Chromium with software WebGL; harness hooks
 were injected at fetch time only, never committed. Muse still owes the
 eyes-on playtest before merge.
+
+## E1.1 — player playtest and iteration (same day)
+
+Played 12–14 turns on a phone-width screen as a player, reading each screen.
+
+### What the overworld was doing (by player impact)
+
+1. **A firehose of strangers.** The Chronicle took 30–77 new cards *every
+   turn*, and 80–95% were about people the player has never met. By turn 6
+   the Chronicle screen was ~20 KB of text: deaths, poachings, and
+   "reputation shifts from 0 to -18" for nameless guild members.
+2. **One event, up to three cards.** Item 3 fixed departures only. Deaths
+   still came as "A price was paid" + "X has died", poachings as "X is
+   poached" + "Z pulls X away", and every exit and death was followed by a
+   separate reputation card (86 in 12 turns).
+3. **The named cast is dying off-screen.** In one 12-turn run, 7 of the 13
+   illustrated principal cast died (Yue Vautrin, Iara Vesper, Ren Sable,
+   Tala Maren, Bram Calder, Dario Venn, Amara Sol) before the player could
+   meet any of them. The world population went from 266 to 188.
+4. **Brutus is a spectator.** The treasury drifted by -88 g a turn, and
+   nothing in the economy touched him unless he went to the Guild market.
+5. **Nonsense poaching.** "Jade Accord pulls the contract away from Jade
+   Accord" appeared three times in 12 turns. A recruit move lands on someone
+   who has already joined the same guild. Nothing moves, but it's reported.
+6. **Unbounded Chronicle.** Every departure, death and reputation card was
+   kept forever: 485 stored cards by turn 15, all in the save.
+
+### What changed (still E1: item 3 plus the pacing hard constraint)
+
+- **One card per event**, now for deaths, poachings and departures, in
+  either order. The killer joins the victim's card. A reputation hit from
+  the same event becomes a line on that card ("standing 0 → -18").
+- **Same-guild "poaching" is not reported.** Nothing changed hands.
+- **Pacing.** At the end of each turn, the Chronicle keeps in full every card
+  about someone Brutus has dealt with:
+  - his company past and present, and the named cast;
+  - anyone he has visited, gifted, interviewed, bought at auction or staged;
+  - anyone who remembers him or holds a grudge;
+  - anything naming Brutus or "you".
+
+  Everything else becomes one **"Elsewhere on the Continent"** card under
+  that turn's headlines, with counts ("5 walked out, 1 died, 7 changed
+  guilds…"). It also shows under World developments. Nothing is deleted
+  from the world: strangers' cards stay in their own People histories and
+  age out under the game's existing 70-card routine cap.
+
+Result over the same 12 turns: **1–6 Chronicle cards per turn (was
+30–77)**, nobody with two cards for one event, zero same-guild poachings,
+~110 stored cards at turn 13 (was 485 at turn 15).
+
+Regression on the iterated build:
+- departures, auction dedupe, booking, and save → reload are identical;
+- auction purchase and a full dungeon trip work;
+- dead-control crawl: 156 controls, 0 dead;
+- the Node suite is extended for deaths, reputation folding, self-poach and
+  pacing.
+
+### For Robert
+
+- **Cast mortality (item 3 above) is the biggest open question.** Your
+  stance is that a high level is no immunity ("no MMA fighter can survive
+  a knife"). But at this rate most of the illustrated cast is dead before
+  the player can love or hate them. Possible answers: protect the cast until
+  Brutus has met them, slow the kill tick, or leave it as is. I haven't
+  touched it.
+- **Auction purchases still write four cards** (proposed E2 item 1).
