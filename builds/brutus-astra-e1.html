@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Brutus — E1 candidate</title></head><body style="background:#15151c;color:#eee;font:18px system-ui;padding:32px"><p id="status">Loading the E1 candidate…</p>
+<script src="../work/astra/overworld-splice-1/compose-s1.js"></script>
+<script>
+(async()=>{
+ const root='../work/astra/overworld-splice-1/';
+ async function read(url){const r=await fetch(url);if(!r.ok)throw Error('Cannot load '+url+' ('+r.status+')');return r.text();}
+ const [baseline,core,bridge,world,dungeon]=await Promise.all([
+  read('./brutus-1_0_a0mk-kavi-balanced2.html'),read('../work/claude/overworld-2026-09-18/adventurers.js'),
+  read(root+'ow-bridge.js'),read(root+'world-integration.js').then(async w=>w+'\n'+await read('../work/astra/economy-splice/economy-integration.js')),read(root+'dungeon-integration.js')]);
+ const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(baseline));
+ const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+ if(hash!=='e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0')throw Error('Baseline changed; rebuild against a reviewed version.');
+ const html=composeS1(baseline,{core,bridge,world,dungeon});
+ document.open();document.write(html);document.close();
+})().catch(e=>{document.getElementById('status').textContent=e.message+' Serve the repository over localhost HTTP or HTTPS; file:// is not supported by this launcher.';});
+</script></body></html>
