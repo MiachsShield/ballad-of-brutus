@@ -83,6 +83,19 @@ pipeline moving one brief at a time. No phase starts until its inputs exist.
 
 ## Feedback — Grok
 
+### 2026-09-24 session (this branch only)
+
+- **GitHub write works.** Confirmed via push_files (WRITE-TEST-2026-09-24.md + SESSION-2026-09-24.md + DONE.md update). No 403.
+- **Claude redo-design-briefs** on main under `work/claude/redo-design-briefs/`. Re-read. Critical four closed with Robert PASS 2026-09-17; faces already on main:
+  - `art/card-faces/priest/priest_blinding_halo.jpg`
+  - `art/card-faces/priest/priest_stigmata.jpg`
+  - `art/card-faces/warrior/warrior_bear_hug_break.jpg`
+  - `art/card-faces/ranger/ranger_called_shot.jpg`
+- **Bear Hug Break** reads as grappling BREAK (grip peeling / horse-kick), not a hold, never a literal bear. No text in art. Visual guide binding observed.
+- **No further critical-face work this session.** TASKS.md parks Grok as of 2026-09-23; write is live again — lane can unpark if Muse/Robert want remaining G1/G4 or Brutus face-lock binaries dropped.
+- Will not start Astra's blocked implementation rebuild.
+- Next concrete step: Muse/Robert close PR #3 if still open; optionally unpark Grok for remaining faces or `briefs/grok/2026-09-18-brutus-face-lock.md`.
+
 ### 2026-09-21 session (this branch only)
 
 - **GitHub write works.** Confirmed again via create_or_update_file (WRITE-TEST-2026-09-21.md + SESSION-2026-09-21.md). No 403.
