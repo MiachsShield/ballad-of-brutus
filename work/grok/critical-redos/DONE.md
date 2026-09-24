@@ -1,40 +1,35 @@
 # DONE — grok/critical-redos
 
 **Agent:** Grok  
-**Date:** 2026-09-22 (reconfirmed closed)  
+**Date:** 2026-09-17 (faces) / 2026-09-24 (session status)  
 **Branch:** `grok/critical-redos`
 
-## Status of the four critical faces — CLOSED
+## Status of the four critical faces
 
-Claude's redo-design-briefs landed on main (`work/claude/redo-design-briefs/`). Cross-checked this session and prior.
+Claude's redo-design-briefs landed on main (`work/claude/redo-design-briefs/`). Cross-checked:
 
-Robert PASS 2026-09-17 on all four. Faces on main:
-
-| Face | Claude verdict | Final status | Location on main |
+| Face | Claude verdict | Grok status | Notes |
 |---|---|---|---|
-| Blinding Halo | PASS | PASS | `art/card-faces/priest/priest_blinding_halo.jpg` |
-| Stigmata | PASS | PASS | `art/card-faces/priest/priest_stigmata.jpg` |
-| Called Shot | PASS | PASS | `art/card-faces/ranger/ranger_called_shot.jpg` |
-| Bear Hug Break | (earlier FAIL) → PASS 8 | PASS | `art/card-faces/warrior/warrior_bear_hug_break.jpg` |
+| Blinding Halo | PASS | Pass (on main) | Light at target face, recoil, no text. Matches brief. |
+| Stigmata | PASS | Pass (on main) | Glowing wounds + advancing gesture. Costume note non-blocking. |
+| Called Shot | PASS | Pass (on main) | Arrow to visor gap, no sport/diagram. |
+| Bear Hug Break | FAIL then fixed | Pass 8 on main | Grip-peeling / horse-kick break, opponent top half flung, stocky buzz Brutus, soot-violet/oxblood motion, no bear, no text. Robert PASS 2026-09-17. |
 
-No text in art. Visual guide binding observed. Bear Hug Break reads as grappling BREAK (grip peeling / separation), not a hold, never a literal bear. Matches Claude's brief direction (asymmetric silhouette, tighter crop on break point).
+## 2026-09-24 session
 
-PR #3 still open; needs Robert's one-tap close.
+- Write confirmed working (no 403).
+- Faces already on main; no redo required this session.
+- Logged status under `work/grok/critical-redos/SESSION-2026-09-24.md`.
+- TASKS.md still parks Grok as of 2026-09-23; write is live again.
 
-## Write check
+## Binary note
 
-2026-09-17, 2026-09-18, 2026-09-21, 2026-09-22: create_or_update_file succeeded. No 403.
-
-## Session 2026-09-22
-
-- Protocol complete (MEETING, AGENTS, TASKS, briefs/grok, visual-guide, canon).
-- Write works; Claude briefs present; critical four already closed and on main.
-- SESSION-2026-09-22.md + WRITE-TEST-2026-09-22.md on this branch only.
-- No new face generation required; binaries already landed via Muse.
+GitHub connector writes UTF-8 text only. JPEGs already on main under
+`art/card-faces/`. No binary push needed from this connector.
 
 ## Next concrete step
 
-1. Leave this branch/PR for Robert close of PR #3 if still open.
-2. Brutus face-lock brief still needs binary drop into `art/visual-guide/` (text-only connector cannot push JPEGs).
-3. Any remaining G1/G4 face ids continue on their own branches (many batches already merged 2026-09-20).
-4. Do not start Astra's blocked implementation rebuild.
+1. Muse/Robert: close PR #3 if still open.
+2. Optionally unpark Grok lane for remaining faces (G1/G4) or Brutus
+   visual-guide lock images.
+3. Do not start Astra's blocked implementation rebuild.
