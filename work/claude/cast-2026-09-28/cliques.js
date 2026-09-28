@@ -34,7 +34,7 @@
   }
   function friendsIn(s, p) {
     return s.ledger.rows.some(function (r) {
-      return r.from === p.id && r.tag === 'old-ties' && s.roster[r.to] && s.roster[r.to].m.guild === p.m.guild;
+      return r.from === p.id && ['old-ties', 'friends', 'lovers'].indexOf(r.tag) !== -1 && s.roster[r.to] && s.roster[r.to].m.guild === p.m.guild;
     });
   }
 
@@ -48,6 +48,7 @@
       f += (shared * 0.15 + (q.m.dom === p.m.dom ? 0.15 : -0.05)) / ms.length;
     });
     if (friendsIn(s, p)) f += 0.3;
+    if (p.m.fitBonus && (!gid || gid === saved)) f += p.m.fitBonus;       // passed hazing
     if (p.m.region && p.m.region === g.region) f += 0.1;                  // home region
     if (ms.length) f += 0.05 * ms.filter(function (q) { return q.m.region === p.m.region; }).length / ms.length;  // mates from home
     if (ms.length) {                                                      // usefulness
@@ -72,7 +73,7 @@
       var m = p.m;
       if (!m.guild) { m.strain = 0; m.fit = null; m.cliqueGuild = null; return; }
       var g = s.guilds[m.guild];
-      if (m.cliqueGuild !== m.guild) { m.cliqueGuild = m.guild; m.cliqueSince = s.visit; }
+      if (m.cliqueGuild !== m.guild) { m.cliqueGuild = m.guild; m.cliqueSince = s.visit; m.fitBonus = 0; m.hazedAt = null; }
       m.fit = fit(s, p);
       if (m.fit >= 0) { m.strain = Math.max(0, (m.strain || 0) - 1); return; }
       m.strain = (m.strain || 0) + 1;

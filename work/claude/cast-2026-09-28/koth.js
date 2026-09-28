@@ -21,7 +21,7 @@
     var out = []; for (var id in s.roster) if (s.roster[id].m.guild === gid) out.push(s.roster[id]); return out;
   }
   function friendsOf(s, id) {
-    return s.ledger.rows.filter(function (r) { return r.from === id && r.tag === 'old-ties' && s.roster[r.to]; })
+    return s.ledger.rows.filter(function (r) { return r.from === id && ['old-ties', 'friends', 'lovers'].indexOf(r.tag) !== -1 && s.roster[r.to]; })
                         .map(function (r) { return s.roster[r.to]; });
   }
 
