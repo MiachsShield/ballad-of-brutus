@@ -1,23 +1,27 @@
 /* One labor-market season on the authored cast.
  *   node season.js          — one readable season, seed 7
  *   node season.js --soak   — 300 seeds, survival per adventurer
- * Season = 10 town visits = 10 waves (playtest spec), no repopulation.
+ * Season = 10 town visits = 10 waves (playtest spec). After each visit the
+ * town refills to 10 with unnamed newcomers (Robert, 2026-09-28); the named
+ * cast is never replaced.
  */
 var OW = require('../overworld-2026-09-18/adventurers.js');
 var CS = require('./castState.js'), C = require('./cast.js');
 var VISITS = 10;
+function named(s) { return C.CAST.filter(function (a) { return s.roster[a.id]; }).length; }
 
 function season(seed, verbose) {
   var s = CS.seedFromCast(seed), aliveAt = [];
   for (var v = 1; v <= VISITS; v++) {
     var r = OW.advanceWave(s, 10);
+    OW.repopulate(s, 10);
     if (verbose) {
       var names = function (l) { return l.map(function (p) { return p.name; }).join(', ') || '-'; };
       console.log('visit ' + v + ': lost ' + names(r.lost) +
         (r.clashes.length ? ' | clashes ' + r.clashes.length : '') +
-        ' | alive ' + Object.keys(s.roster).length);
+        ' | named alive ' + named(s) + ' | town ' + Object.keys(s.roster).length);
     }
-    aliveAt.push(Object.keys(s.roster).length);
+    aliveAt.push(named(s));
   }
   return { state: s, aliveAt: aliveAt };
 }
@@ -34,7 +38,7 @@ if (process.argv.indexOf('--soak') !== -1) {
       if (row.tag === 'old-ties' && (!r.state.roster[row.from] || !r.state.roster[row.to])) bad++;
     });
   }
-  console.log('avg alive after visit: ' + curve.map(function (c) { return (c / N).toFixed(1); }).join(' '));
+  console.log('avg NAMED alive after visit: ' + curve.map(function (c) { return (c / N).toFixed(1); }).join(' '));
   console.log('season survival by adventurer (tier):');
   C.CAST.forEach(function (a) {
     console.log('  ' + (a.name + ' (' + a.tier + ')').padEnd(26) + (100 * surv[a.id] / N).toFixed(0) + '%');

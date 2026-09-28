@@ -43,19 +43,21 @@ node season.js          # one readable season (10 visits = 10 waves)
 node season.js --soak   # 300 seeds, survival per adventurer
 ```
 
-Soak (300 seeds, no repopulation, sim numbers unchanged):
+Town refills to 10 with unnamed newcomers after every visit (Robert,
+2026-09-28); the named cast is never replaced. Soak (300 seeds, sim
+numbers unchanged):
 
 ```
-avg alive after visit: 5.9 4.9 4.3 3.7 3.2 2.9 2.5 2.2 2.0 1.8
+avg NAMED alive after visit: 5.9 4.9 4.3 3.7 3.2 2.8 2.5 2.2 1.9 1.8
 Ember 0%  Dagny 0%  Ivo 0%     (all three are reckless)
 Wren 45%  Pell 46%  Morrow 41%
 Odile 12%  Ines 12%  Tibby 10%  Hask 14%
 ```
 
-**Blocker for the playtest:** the slice-1 death rate was tuned for an
-anonymous, repopulating roster. On a fixed authored cast it empties the
-town by mid-season, and the `reckless` trait is a death sentence. Needs a
-ruling before retuning `adventurers.js` (not done here).
+**Open:** refill keeps the town full, but the named cast still dies at
+slice-1 rates and `reckless` is a death sentence. Robert's target for named
+deaths per season: "depends" — mortality stays untouched until he says on
+what.
 
 ## Not done, deliberately
 
