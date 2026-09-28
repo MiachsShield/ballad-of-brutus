@@ -21,6 +21,7 @@
   var KOTH = req ? require('./koth.js') : root.OW_KOTH;
   var CLIQUES = req ? require('./cliques.js') : root.OW_CLIQUES;
   var EVENTS = req ? require('./events.js') : root.OW_EVENTS;
+  var RIPPLE = req ? require('./ripple.js') : root.OW_RIPPLE;
   var BOND = ['old-ties', 'friends', 'lovers'];
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
@@ -126,6 +127,7 @@
     for (var k in s.guilds) {
       var g = s.guilds[k];
       if (!g.alive || m.fame < g.bar || g.id === m.guild || members(s, g.id) >= GUILD_CAP) continue;
+      if (RIPPLE.guildFeeling(s, p, g.id) <= -3) continue;           // not the guild that killed our own
       var friendsIn = friendsOf(s, p.id).some(function (f) { return f.m.guild === g.id; }) ? 1 : 0;
       var score = d.strongGuild * g.renown / 100 + d.friends * friendsIn + d.gold * g.renown / 200;
       if (score > bestScore) { best = g; bestScore = score; }
@@ -204,6 +206,7 @@
       var p = s.roster[id];
       if (p.alive) return;
       friendsOf(s, id).forEach(function (f) { f.m.lostFriend = true; });
+      RIPPLE.onDeath(s, p);                                          // their circle blames whoever did it
       if (p.m.guild) s.guilds[p.m.guild].renown = clamp(s.guilds[p.m.guild].renown - (p.sheet ? 8 : 4), 0, 100);
       s.ledger.forget(id); delete s.roster[id];
     });
