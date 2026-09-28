@@ -22,6 +22,8 @@
   var CLIQUES = req ? require('./cliques.js') : root.OW_CLIQUES;
   var EVENTS = req ? require('./events.js') : root.OW_EVENTS;
   var RIPPLE = req ? require('./ripple.js') : root.OW_RIPPLE;
+  var PEOPLE = req ? require('./people.js') : root.OW_PEOPLE;
+  var GLIFE = req ? require('./guildlife.js') : root.OW_GUILDLIFE;
   var BOND = ['old-ties', 'friends', 'lovers'];
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
@@ -80,11 +82,13 @@
   function members(s, gid) {
     var n = 0; for (var id in s.roster) if (s.roster[id].m && s.roster[id].m.guild === gid) n++; return n;
   }
+  function capOf(s, gid) { return s.guilds[gid].cap || GUILD_CAP; }       // mergers raise a guild's cap
+  function hasRoom(s, gid) { return members(s, gid) < capOf(s, gid); }
 
   function newMarket(seed) {
     var s = CS.seedFromCast(seed);
     s.guilds = {};
-    GUILDS.forEach(function (g) { var c = JSON.parse(JSON.stringify(g)); c.alive = true; s.guilds[g.id] = c; });
+    GUILDS.forEach(function (g) { var c = JSON.parse(JSON.stringify(g)); c.alive = true; c.cap = GUILD_CAP; c.blacklist = []; c.charters = [g.region]; s.guilds[g.id] = c; });
     s.visit = 0; s.news = [];
     for (var id in s.roster) ensure(s, s.roster[id]);
     return s;
@@ -126,8 +130,10 @@
     var m = p.m, d = m.desires, best = null, bestScore = -1;
     for (var k in s.guilds) {
       var g = s.guilds[k];
-      if (!g.alive || m.fame < g.bar || g.id === m.guild || members(s, g.id) >= GUILD_CAP) continue;
+      if (!g.alive || m.fame < g.bar || g.id === m.guild || !hasRoom(s, g.id)) continue;
       if (RIPPLE.guildFeeling(s, p, g.id) <= -3) continue;           // not the guild that killed our own
+      if (GLIFE.blocked(s, p, g)) continue;                          // blacklisted by where you've been
+      if (m.patron === g.id) return g;                               // patron gets first refusal
       var friendsIn = friendsOf(s, p.id).some(function (f) { return f.m.guild === g.id; }) ? 1 : 0;
       var score = d.strongGuild * g.renown / 100 + d.friends * friendsIn + d.gold * g.renown / 200;
       if (score > bestScore) { best = g; bestScore = score; }
@@ -146,7 +152,7 @@
     }
     if (c.act === 'join') {
       var g = s.guilds[c.guild];
-      if (g && g.alive && m.fame >= g.bar && members(s, g.id) < GUILD_CAP) {
+      if (g && g.alive && m.fame >= g.bar && hasRoom(s, g.id) && !GLIFE.blocked(s, p, g)) {
         m.guild = g.id; m.freeFor = 0;
         headline(s, p, 'joined', p.name + ' joins ' + g.name + (c.why ? ' (' + c.why + ')' : ''));
       }
@@ -195,11 +201,15 @@
   function visit(s) {
     s.visit += 1;
     var ids = Object.keys(s.roster);
+    ids.forEach(function (id) { var q = s.roster[id]; if (q.m) q.m.prevGuild = q.m.guild; });
     ids.forEach(function (id) { var p = s.roster[id]; ensure(s, p); resolve(s, p, choose(s, p)); });
 
-    KOTH.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });   // king of the hill
-    CLIQUES.run(s, function (gid) { return members(s, gid) < GUILD_CAP; }); // if you don't fit in
-    EVENTS.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });  // person-to-person
+    var room = function (gid) { return hasRoom(s, gid); };
+    KOTH.run(s, room);                                                // king of the hill
+    CLIQUES.run(s, room);                                             // if you don't fit in
+    PEOPLE.run(s);                                                    // mentor, duel, jealousy...
+    EVENTS.run(s, room);                                              // person-to-person
+    GLIFE.run(s, room);                                               // guild-guild, guild-person
     EVENTS.afterDeaths(s, Object.keys(s.roster).map(function (k) { return s.roster[k]; }).filter(function (p) { return !p.alive; }));
 
     Object.keys(s.roster).forEach(function (id) {
@@ -240,7 +250,7 @@
     return s.news.filter(function (n) { return n.visit === s.visit; });
   }
 
-  var API = { GUILDS: GUILDS, members: members, newMarket: newMarket, visit: visit, choose: choose, bestGuild: bestGuild };
+  var API = { GUILDS: GUILDS, members: members, capOf: capOf, newMarket: newMarket, visit: visit, choose: choose, bestGuild: bestGuild };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.OW_MARKET = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
