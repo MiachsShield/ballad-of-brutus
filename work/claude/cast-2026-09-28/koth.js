@@ -41,6 +41,7 @@
     if (friendsOf(s, p.id).some(function (f) { return f.m.guild === g.id; })) h += 0.2;           // friends here
     if (m.dom === 'strongGuild') h += (g.renown - 50) / 200;
     if (m.fit != null && m.fit > 0.4) h += 0.15;                                             // tight clique: a fortress
+    if (m.officer === g.id) h += 0.25;                                                       // officers don't leave lightly
     return h;
   }
 
@@ -83,7 +84,7 @@
       rivals.forEach(function (g) {
         if (won) return;
         var feud = holder.feuds.indexOf(g.id) !== -1;
-        var tryChance = 0.35 + (m.fame - MVP_FAME) / 100 + (feud ? 0.25 : 0);
+        var tryChance = 0.35 + (m.fame - MVP_FAME) / 100 + (feud ? 0.25 : 0) + (m.officer ? 0.1 : 0);  // officers are bigger targets
         if (r() >= tryChance) return;
         if (g.poaches === 'sabotage') {                                    // weaken the holder instead
           if (r() > 0.35) return;                                           // they pick their moments

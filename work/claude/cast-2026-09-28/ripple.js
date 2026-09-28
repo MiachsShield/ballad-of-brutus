@@ -3,7 +3,7 @@
  *
  * When something is done TO a person (help or harm, by a person or a
  * guild), everyone close to them takes it personally, scaled by closeness:
- *   kin 100%   lovers 75%   friends 50%   guildmates 25% (35% in a tight clique)
+ *   kin 100% (mentor/student too)   lovers 75%   friends 50%   guildmates 25% (35% in a tight clique)
  * One weight per person — the strongest relationship wins, never stacked.
  *
  * Deaths ripple too: if a guild left someone behind, murdered them, or is
@@ -39,6 +39,7 @@
       if (q === p || !q.alive) continue;
       var w = 0;
       if (isKin(s, p, q)) w = W.kin;
+      else if (hasRow(s, q, p, ['mentor', 'mentee'])) w = W.kin;                // a mentor takes it like family
       else if (hasRow(s, q, p, ['lovers'])) w = W.lovers;
       else if (hasRow(s, q, p, ['friends', 'old-ties'])) w = W.friends;
       else if (p.m && q.m && p.m.guild && p.m.guild === q.m.guild) w = (q.m.fit || 0) > 0.4 ? W.tightGuild : W.guild;
