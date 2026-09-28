@@ -20,6 +20,8 @@
   var CS = req ? require('./castState.js') : root.OW_CAST_STATE;
   var KOTH = req ? require('./koth.js') : root.OW_KOTH;
   var CLIQUES = req ? require('./cliques.js') : root.OW_CLIQUES;
+  var EVENTS = req ? require('./events.js') : root.OW_EVENTS;
+  var BOND = ['old-ties', 'friends', 'lovers'];
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
   // region", all 7 in the playtest). bar = fame needed to be accepted.
@@ -70,7 +72,7 @@
   }
 
   function friendsOf(s, id) {
-    return s.ledger.rows.filter(function (r) { return r.from === id && r.tag === 'old-ties' && s.roster[r.to]; })
+    return s.ledger.rows.filter(function (r) { return r.from === id && BOND.indexOf(r.tag) !== -1 && s.roster[r.to]; })
                         .map(function (r) { return s.roster[r.to]; });
   }
 
@@ -134,7 +136,7 @@
   // ----------------------------------------------------------- resolve --
   function resolve(s, p, c) {
     var m = p.m, r = s.rand;
-    m.hurt = false; m.lastDepth = null;
+    m.hurt = false; m.lastDepth = null; m.hauled = 0;
     if (c.act === 'lay-low') { m.fortune = Math.max(0, m.fortune - 5); return; }
     if (c.act === 'leave') {
       headline(s, p, 'left', p.name + ' walks out of ' + s.guilds[m.guild].name + ' (' + c.why + ')');
@@ -167,6 +169,7 @@
     var success = 0.75 - 0.15 * over;
     if (r() < success) {
       var haul = Math.round(c.depth * (8 + r() * 14));
+      m.hauled = haul;
       m.fortune += haul; m.fame = clamp(m.fame + c.depth * 2 + (over ? 4 : 0), 0, 100);
       if ((over >= 1 && haul >= 40) || haul >= 80) headline(s, p, 'haul', p.name + ' hauls ' + haul + ' coins off floor ' + c.depth);
       if (m.guild) s.guilds[m.guild].renown = clamp(s.guilds[m.guild].renown + c.depth, 0, 100);
@@ -194,6 +197,8 @@
 
     KOTH.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });   // king of the hill
     CLIQUES.run(s, function (gid) { return members(s, gid) < GUILD_CAP; }); // if you don't fit in
+    EVENTS.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });  // person-to-person
+    EVENTS.afterDeaths(s, Object.keys(s.roster).map(function (k) { return s.roster[k]; }).filter(function (p) { return !p.alive; }));
 
     Object.keys(s.roster).forEach(function (id) {
       var p = s.roster[id];
