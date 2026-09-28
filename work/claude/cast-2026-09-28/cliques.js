@@ -23,6 +23,8 @@
  *   - shared want: wanting what they want (a kind archer who is in it for
  *     the gold fits the Gilt Hand better than a greedy one who isn't)
  *   - time served: people grow on each other, slowly
+ * Home region helps (the guild's own region, and mates from home) but an
+ * outsider is never barred for it.
  */
 (function (root) {
   'use strict';
@@ -46,6 +48,8 @@
       f += (shared * 0.15 + (q.m.dom === p.m.dom ? 0.15 : -0.05)) / ms.length;
     });
     if (friendsIn(s, p)) f += 0.3;
+    if (p.m.region && p.m.region === g.region) f += 0.1;                  // home region
+    if (ms.length) f += 0.05 * ms.filter(function (q) { return q.m.region === p.m.region; }).length / ms.length;  // mates from home
     if (ms.length) {                                                      // usefulness
       var avg = ms.reduce(function (a, q) { return a + q.m.fame; }, 0) / ms.length;
       if (p.m.fame >= avg + 10) f += 0.15;

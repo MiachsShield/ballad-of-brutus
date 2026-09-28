@@ -40,6 +40,7 @@
     { id: 'crown',   name: 'The Hollow Crown',       region: 'Themelios', leaning: 'evil',    renown: 60, bar: 45,
       holds: ['proud'],               loses: ['kind', 'reckless'], poaches: 'stage',    allies: ['candle'],          feuds: ['iron'] }
   ];
+  var REGIONS = GUILDS.map(function (g) { return g.region; });
   var TOWN = 10, FREE_AGENT_LIMIT = 6, GUILD_CAP = 2;
 
   function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
@@ -61,7 +62,8 @@
       fame:    sh ? sh.fame    : 5 + p.tier * 8 + Math.floor(r() * 10),
       desires: sh ? { gold: sh.desires.gold, strongGuild: sh.desires.strongGuild, friends: sh.desires.friends }
                   : { gold: g, strongGuild: sg, friends: 100 - g - sg },
-      guild: null, freeFor: 0, hurt: false, named: !!sh
+      guild: null, freeFor: 0, hurt: false, named: !!sh,
+      region: sh ? sh.region : REGIONS[Math.floor(r() * REGIONS.length)]
     };
     p.m.dom = dominant(p.m.desires);
     return p.m;
