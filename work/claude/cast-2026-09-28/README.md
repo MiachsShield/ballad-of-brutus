@@ -131,3 +131,18 @@ named deaths 1.1 | named free agents per visit 3.2
 
 Hask stays with whoever serves his grudge (~99% held) — by design of his
 sheet, flagged in case it should be looser.
+
+## Cliques (2026-09-28)
+
+`cliques.js`, run inside `market.visit()` after king of the hill. Fit is
+judged by the clique, not the charter: the guild's taste for your traits
+(holds/loses) + traits and dominant desire shared with the people actually
+in it + friends inside. Misfits build strain each visit; fitting in bleeds
+it off. Ladder: frozen out (smaller cuts, less fame) → restless (shaken,
+easier to poach, may walk to where their people are; evil guilds rarely
+let a misfit go) → scapegoated for bad weeks → left behind on a floor
+(evil guilds and the Iron Oath; good guilds never) → murdered (evil only).
+A tight clique (fit > 0.4) adds hold against poachers.
+
+Soak (300 seeds): frozen out 3.4 | misfit walkouts 0.5 | scapegoated 0.6
+| left behind 0.1 | murdered 0.1 per season; named deaths 1.3 total.
