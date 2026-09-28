@@ -15,6 +15,14 @@
  *                    good guilds never
  *   5 murdered     — evil guilds only
  * A tight clique is a fortress: high fit adds hold in koth via m.fit.
+ *
+ * Robert, 2026-09-28: good vs evil (and region) is difficulty, not
+ * incompatibility. A kind soul CAN be welcome in an evil guild. Three
+ * earned ways in, on top of shared traits:
+ *   - usefulness: out-performing the clique gets you tolerated
+ *   - shared want: wanting what they want (a kind archer who is in it for
+ *     the gold fits the Gilt Hand better than a greedy one who isn't)
+ *   - time served: people grow on each other, slowly
  */
 (function (root) {
   'use strict';
@@ -35,9 +43,14 @@
     var ms = mates(s, p);
     ms.forEach(function (q) {
       var shared = p.traits.filter(function (t) { return has(q, t); }).length;
-      f += (shared * 0.15 + (q.m.dom === p.m.dom ? 0.1 : -0.05)) / ms.length;
+      f += (shared * 0.15 + (q.m.dom === p.m.dom ? 0.15 : -0.05)) / ms.length;
     });
     if (friendsIn(s, p)) f += 0.3;
+    if (ms.length) {                                                      // usefulness
+      var avg = ms.reduce(function (a, q) { return a + q.m.fame; }, 0) / ms.length;
+      if (p.m.fame >= avg + 10) f += 0.15;
+    }
+    if (!gid || gid === saved) f += Math.min(0.2, 0.04 * (s.visit - (p.m.cliqueSince || s.visit)));  // time served
     p.m.guild = saved;
     return f;
   }
@@ -53,8 +66,9 @@
       var p = s.roster[id];
       if (!p || !p.alive) return;
       var m = p.m;
-      if (!m.guild) { m.strain = 0; m.fit = null; return; }
+      if (!m.guild) { m.strain = 0; m.fit = null; m.cliqueGuild = null; return; }
       var g = s.guilds[m.guild];
+      if (m.cliqueGuild !== m.guild) { m.cliqueGuild = m.guild; m.cliqueSince = s.visit; }
       m.fit = fit(s, p);
       if (m.fit >= 0) { m.strain = Math.max(0, (m.strain || 0) - 1); return; }
       m.strain = (m.strain || 0) + 1;
