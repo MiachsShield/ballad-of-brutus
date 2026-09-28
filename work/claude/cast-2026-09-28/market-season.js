@@ -50,7 +50,8 @@ if (process.argv.indexOf('--soak') !== -1) {
       var p = s.roster[a.id];
       if (p) { surv[a.id]++; if (p.m.guild) guilded[a.id]++; }
     });
-    for (var g in s.guilds) if (MK.members(s, g) > 2) bad++;
+    for (var g in s.guilds) if (s.guilds[g].alive && MK.members(s, g) > MK.capOf(s, g)) bad++;
+    for (var g2 in s.guilds) { var G2 = s.guilds[g2]; if (!G2.alive) continue; G2.allies.concat(G2.feuds).forEach(function (o) { var O = s.guilds[o]; if (!O || !O.alive) return; if ( (G2.allies.indexOf(o) !== -1 && O.allies.indexOf(g2) === -1) || (G2.feuds.indexOf(o) !== -1 && O.feuds.indexOf(g2) === -1)) bad++; }); }
     for (var id in s.roster) {
       var m = s.roster[id].m;
       if (m.desires.gold + m.desires.strongGuild + m.desires.friends !== 100) bad++;
