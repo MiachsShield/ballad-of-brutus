@@ -19,6 +19,7 @@
   var OW = req ? require('../overworld-2026-09-18/adventurers.js') : root.OW;
   var CS = req ? require('./castState.js') : root.OW_CAST_STATE;
   var KOTH = req ? require('./koth.js') : root.OW_KOTH;
+  var CLIQUES = req ? require('./cliques.js') : root.OW_CLIQUES;
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
   // region", all 7 in the playtest). bar = fame needed to be accepted.
@@ -190,6 +191,7 @@
     ids.forEach(function (id) { var p = s.roster[id]; ensure(s, p); resolve(s, p, choose(s, p)); });
 
     KOTH.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });   // king of the hill
+    CLIQUES.run(s, function (gid) { return members(s, gid) < GUILD_CAP; }); // if you don't fit in
 
     Object.keys(s.roster).forEach(function (id) {
       var p = s.roster[id];

@@ -3,6 +3,7 @@
 var MK = require('./market.js'), C = require('./cast.js');
 var VISITS = 10;
 
+var CQ = { frozen: 0, walked: 0, scapegoat: 0, leftBehind: 0, murdered: 0 }, CQnamed = 0;
 var FREE = 0, KP = 0, KW = 0, KS = 0, KK = 0, KT = [], BLUE = 0;
 function run(seed, verbose) {
   var s = MK.newMarket(seed);
@@ -30,6 +31,8 @@ if (process.argv.indexOf('--soak') !== -1) {
     var K = s.koth || { poaches: 0, windows: 0, sabotage: 0, knives: 0, tenures: [] };
     KP += K.poaches; KW += K.windows; KS += K.sabotage; KK += K.knives; KT = KT.concat(K.tenures);
     BLUE += s.blueFree || 0;
+    if (s.cliques) for (var q in CQ) CQ[q] += s.cliques[q];
+    s.news.forEach(function (n) { if (n.named && n.kind === 'died' && /left on floor|found dead\. .* says it was/.test(n.text)) CQnamed++; });
     s.news.forEach(function (n) {
       agg.news++; if (n.named) agg.namedNews++;
       if (n.named && n.kind === 'died') agg.deaths++;
@@ -70,6 +73,9 @@ if (process.argv.indexOf('--soak') !== -1) {
   MK.GUILDS.forEach(function (g) { var a = tg[g.id] || []; if (a.length) console.log('  ' + g.name.padEnd(28) +
     (a.reduce(function (x, y) { return x + y; }, 0) / a.length).toFixed(1) + '  (' + a.length + ')'); });
   console.log('blue chips ever unguilded after visit 1 (Morrow/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
+  console.log('cliques (per season): frozen out ' + per(CQ.frozen) + ' | misfit walkouts ' + per(CQ.walked) +
+    ' | scapegoated ' + per(CQ.scapegoat) + ' | left behind ' + per(CQ.leftBehind) + ' | murdered ' + per(CQ.murdered) +
+    ' | named clique deaths ' + per(CQnamed));
   console.log('invariant failures: ' + bad);
   process.exit(bad ? 1 : 0);
 } else run(7, true);
