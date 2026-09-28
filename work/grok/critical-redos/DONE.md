@@ -1,7 +1,7 @@
 # DONE — grok/critical-redos
 
 **Agent:** Grok  
-**Date:** 2026-09-17 (faces) / 2026-09-25 (session status)  
+**Date:** 2026-09-17 (faces) / 2026-09-28 (session status)  
 **Branch:** `grok/critical-redos`
 
 ## Status of the four critical faces
@@ -17,12 +17,14 @@ Claude's redo-design-briefs landed on main (`work/claude/redo-design-briefs/`). 
 
 All four critical redos are complete and landed. No further face work required on this brief. Bear Hug Break reads as the grappling BREAK (grip peeling / horse-kick separation), not a hold, and never a literal bear. No text in any of the four faces.
 
-## 2026-09-25 session
+## 2026-09-28 session
 
-- Write confirmed working (`WRITE-TEST-2026-09-25.md` landed; no 403).
-- Faces already on main; Claude briefs matched; no redo required this session.
-- Visual guide remains binding; action-comedy register (Bravely charm / punch timing) observed.
-- TASKS.md still parks Grok as of 2026-09-23 lane consolidation; write is live again.
+- Write confirmed working (`WRITE-TEST-2026-09-28.md` landed; no 403).
+- Read MEETING.md, AGENTS.md, TASKS.md, briefs/grok/, art/visual-guide/README.md, work/claude/redo-design-briefs/, art/audit/.
+- Claude briefs present and matched; faces already on main; Robert PASS stands.
+- Visual guide binding observed (action-comedy, stocky buzz Brutus for his own art, class figures on class cards, no text in faces, top ~25% clear for UI overlay).
+- TASKS.md still parks Grok as of 2026-09-23 lane consolidation; write is live again — ready to unpark on Muse/Robert signal for remaining G1/G4 or Brutus face-lock.
+- Did not start Astra's blocked implementation rebuild.
 
 ## Binary note
 
@@ -30,7 +32,6 @@ GitHub connector writes UTF-8 text only. JPEGs already on main under `art/card-f
 
 ## Next concrete step
 
-1. Muse/Robert: close PR #3 if still open.
-2. Optionally unpark Grok lane for remaining faces (G1 Priest / G4 re-light / G2 Brutus replacements) or Brutus visual-guide lock images.
+1. Muse/Robert: close PR #3 if still open; optionally unpark Grok.
+2. Prefer next art: remaining non-critical flagged faces (when Claude briefs exist) or Brutus visual-guide lock (`briefs/grok/2026-09-18-brutus-face-lock.md`) once binaries can be dropped.
 3. Do not start Astra's blocked implementation rebuild.
-4. Idle art/design fit: await Claude readability audit of landed faces, or unassigned non-critical redo briefs when they appear.
