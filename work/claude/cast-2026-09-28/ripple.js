@@ -11,6 +11,12 @@
  * Guild grudges live in the ledger as rows toward 'guild:<id>'; they keep
  * people from joining that guild and sour fit inside it.
  *
+ * Robert, 2026-09-28: when a person is hurt by a clique, their friends
+ * hate both the clique and the guild. blameClique() writes both: rows
+ * toward the guild and toward each clique member. The clique never grudges
+ * itself, and someone in the guild only by membership does not turn on
+ * their own guild on the victim's behalf; real friends inside still do.
+ *
  * Ready for Brutus (not in the loop yet): rob one twin, both hate him.
  */
 (function (root) {
@@ -44,10 +50,12 @@
   // Something with (respect, warmth) was done to `target` by `actorId`.
   // `actorId` is a person id or 'guild:<id>'. The target's own row is the
   // caller's job; this writes the circle's secondhand rows.
-  function spread(s, target, actorId, tag, respect, warmth, decay) {
+  function spread(s, target, actorId, tag, respect, warmth, decay, exclude) {
     var n = 0;
     circle(s, target).forEach(function (c) {
       if (c.who.id === actorId) return;                       // you don't grudge yourself
+      if (exclude && exclude.indexOf(c.who.id) !== -1) return;
+      if (c.w <= W.tightGuild && c.who.m && actorId === 'guild:' + c.who.m.guild) return;  // membership alone isn't loyalty to the victim
       var rs = respect * c.w, wm = warmth * c.w;
       if (Math.abs(rs) < 0.5 && Math.abs(wm) < 0.5) return;   // too faint to register
       s.ledger.write(c.who.id, actorId, tag + (c.w === 1 ? '' : '-secondhand'), rs, wm, decay);
@@ -65,8 +73,22 @@
     else if (/^murdered/.test(cause)) tag = 'murdered-our-own';
     else if (/^knifed/.test(cause)) tag = 'knifed-our-own';
     if (!gname || !tag) return 0;                               // the dungeon took them; nobody to blame
+    if (p.cliqueBlamed) return 0;                               // clique + guild already blamed in cliques.js
     var n = spread(s, p, 'guild:' + gname, tag, 0, -6, null);
     s.guildGrudges = (s.guildGrudges || 0) + n;
+    return n;
+  }
+
+  // A clique hurt `victim` inside guild `gid`. Severity is how bad it was.
+  // The victim (if alive) and their circle hate the guild AND the clique.
+  function blameClique(s, victim, gid, clique, tag, severity) {
+    var ids = clique.map(function (q) { return q.id; }), n = 0;
+    var targets = ['guild:' + gid].concat(ids);
+    targets.forEach(function (t) {
+      if (victim.alive) s.ledger.write(victim.id, t, tag, 0, -severity, null);
+      n += spread(s, victim, t, tag, 0, -severity, null, ids);
+    });
+    s.cliqueBlame = (s.cliqueBlame || 0) + n;
     return n;
   }
 
@@ -77,7 +99,7 @@
     return w;
   }
 
-  var API = { W: W, circle: circle, spread: spread, onDeath: onDeath, guildFeeling: guildFeeling, isKin: isKin };
+  var API = { W: W, circle: circle, spread: spread, onDeath: onDeath, blameClique: blameClique, guildFeeling: guildFeeling, isKin: isKin };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.OW_RIPPLE = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

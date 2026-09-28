@@ -15,6 +15,8 @@
  *                    good guilds never
  *   5 murdered     — evil guilds only
  * A tight clique is a fortress: high fit adds hold in koth via m.fit.
+ * Every harm on the ladder is blamed on the clique AND the guild by the
+ * victim and their circle (ripple.js blameClique).
  *
  * Robert, 2026-09-28: good vs evil (and region) is difficulty, not
  * incompatibility. A kind soul CAN be welcome in an evil guild. Three
@@ -28,6 +30,7 @@
  */
 (function (root) {
   'use strict';
+  var RP = typeof require === 'function' ? require('./ripple.js') : root.OW_RIPPLE;
   function has(p, t) { return p.traits.indexOf(t) !== -1; }
   function mates(s, p) {
     var out = []; for (var id in s.roster) { var q = s.roster[id]; if (q !== p && q.alive && q.m.guild === p.m.guild) out.push(q); } return out;
@@ -75,6 +78,11 @@
       var m = p.m;
       if (!m.guild) { m.strain = 0; m.fit = null; m.cliqueGuild = null; return; }
       var g = s.guilds[m.guild];
+      // the clique: guildmates who fit in and aren't close to this person
+      function cliqueOf() {
+        var close = RP.circle(s, p).filter(function (c) { return c.w > RP.W.tightGuild; }).map(function (c) { return c.who.id; });
+        return mates(s, p).filter(function (q) { return (q.m.fit || 0) >= 0 && close.indexOf(q.id) === -1; });
+      }
       if (m.cliqueGuild !== m.guild) { m.cliqueGuild = m.guild; m.cliqueSince = s.visit; m.fitBonus = 0; m.hazedAt = null; }
       m.fit = fit(s, p);
       if (m.fit >= 0) { m.strain = Math.max(0, (m.strain || 0) - 1); return; }
@@ -84,7 +92,7 @@
       if (st >= 1) {                                                     // frozen out
         m.fortune = Math.max(0, m.fortune - 8); m.fame = Math.max(0, m.fame - 3);
         m.frozenAt = m.frozenAt || {};
-        if (!m.frozenAt[g.id]) { m.frozenAt[g.id] = true; C.frozen++; headline(s, p, 'frozen', p.name + " isn't getting the good floors at " + g.name + ' anymore'); }
+        if (!m.frozenAt[g.id]) { m.frozenAt[g.id] = true; C.frozen++; RP.blameClique(s, p, g.id, cliqueOf(), 'froze-out-our-own', 1); headline(s, p, 'frozen', p.name + " isn't getting the good floors at " + g.name + ' anymore'); }
       }
       if (st >= 2) {                                                     // restless
         m.shaken = Math.max(m.shaken || 0, 0.2);
@@ -104,16 +112,21 @@
       }
       if (st >= 3 && g.renownDelta < 0) {                                // scapegoated
         m.fame = Math.max(0, m.fame - 8); C.scapegoat++;
+        RP.blameClique(s, p, g.id, cliqueOf(), 'scapegoated-our-own', 2);
         headline(s, p, 'scapegoat', g.name + ' blames ' + p.name + ' for a bad week');
       }
       var cruel = g.leaning === 'evil' || g.id === 'iron';
       if (st >= 4 && cruel && m.lastDepth && r() < 0.15) {              // left behind
+        var cl1 = cliqueOf();
         p.alive = false; p.causeOfDeath = 'left behind by ' + g.name; C.leftBehind++;
+        RP.blameClique(s, p, g.id, cl1, 'left-our-own', 6); p.cliqueBlamed = true;
         headline(s, p, 'died', p.name + ' was left on floor ' + m.lastDepth + '. ' + g.name + ' came back without them');
         return;
       }
       if (st >= 5 && g.leaning === 'evil' && r() < 0.12) {              // murder
+        var cl2 = cliqueOf();
         p.alive = false; p.causeOfDeath = 'murdered by ' + g.name; C.murdered++;
+        RP.blameClique(s, p, g.id, cl2, 'murdered-our-own', 6); p.cliqueBlamed = true;
         headline(s, p, 'died', p.name + ' is found dead. ' + g.name + ' says it was a bad floor. Nobody believes them');
       }
     });
