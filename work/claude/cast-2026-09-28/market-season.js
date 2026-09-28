@@ -3,12 +3,16 @@
 var MK = require('./market.js'), C = require('./cast.js');
 var VISITS = 10;
 
-var FREE = 0;
+var FREE = 0, KP = 0, KW = 0, KS = 0, KK = 0, KT = [], BLUE = 0;
 function run(seed, verbose) {
   var s = MK.newMarket(seed);
   for (var v = 1; v <= VISITS; v++) {
     var news = MK.visit(s);
     C.CAST.forEach(function (a) { var p = s.roster[a.id]; if (p && !p.m.guild) FREE++; });
+    if (v > 1) ['morrow', 'odile', 'hask'].forEach(function (id) {
+      var p = s.roster[id]; s.seenFree = s.seenFree || {};
+      if (p && !p.m.guild && !s.seenFree[id]) { s.seenFree[id] = true; s.blueFree = (s.blueFree || 0) + 1; }
+    });
     if (verbose) {
       console.log('— visit ' + v + ' —');
       news.forEach(function (n) { console.log('  ' + (n.named ? '* ' : '  ') + n.text); });
@@ -23,6 +27,9 @@ if (process.argv.indexOf('--soak') !== -1) {
   C.CAST.forEach(function (a) { surv[a.id] = 0; guilded[a.id] = 0; });
   for (var i = 1; i <= N; i++) {
     var s = run(i, false);
+    var K = s.koth || { poaches: 0, windows: 0, sabotage: 0, knives: 0, tenures: [] };
+    KP += K.poaches; KW += K.windows; KS += K.sabotage; KK += K.knives; KT = KT.concat(K.tenures);
+    BLUE += s.blueFree || 0;
     s.news.forEach(function (n) {
       agg.news++; if (n.named) agg.namedNews++;
       if (n.named && n.kind === 'died') agg.deaths++;
@@ -56,6 +63,13 @@ if (process.argv.indexOf('--soak') !== -1) {
     console.log('  ' + (a.name + ' (t' + a.tier + ', ' + a.traits.join('/') + ')').padEnd(40) +
       (100 * surv[a.id] / N).toFixed(0).padStart(4) + '%' + (100 * guilded[a.id] / N).toFixed(0).padStart(6) + '%');
   });
+  console.log('king of the hill (per season): poaches ' + per(KP) + ' | MVP walkouts (open windows) ' + per(KW) +
+    ' | sabotage ' + per(KS) + ' | knife attempts ' + per(KK));
+  var tg = {}; KT.forEach(function (t) { (tg[t.guild] = tg[t.guild] || []).push(t.visits); });
+  console.log('avg MVP tenure by holder (visits, n):');
+  MK.GUILDS.forEach(function (g) { var a = tg[g.id] || []; if (a.length) console.log('  ' + g.name.padEnd(28) +
+    (a.reduce(function (x, y) { return x + y; }, 0) / a.length).toFixed(1) + '  (' + a.length + ')'); });
+  console.log('blue chips ever unguilded after visit 1 (Morrow/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
   console.log('invariant failures: ' + bad);
   process.exit(bad ? 1 : 0);
 } else run(7, true);
