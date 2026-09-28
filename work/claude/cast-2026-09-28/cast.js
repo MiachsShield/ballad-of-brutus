@@ -29,9 +29,15 @@
   // (Ember/Wren ruling). charger = the reckless type planned for later.
   var ARCHETYPES = ['frontline', 'ranged-back', 'support', 'charger'];
 
+  // The seven canon regions (= nations). Home region affects clique fit
+  // (Robert, 2026-09-28). Assignments below are first-pass placeholders;
+  // pairs share a home. No nation lore implied.
+  var REGIONS = ['Reyjar', 'Ayusti', 'Themelios', 'Marium', 'Li Trice', 'Edinius', 'Beloufi'];
+
   var CAST = [
     {
       id: 'ember', name: 'Ember', epithet: 'Current ally cast',
+      region: 'Marium',
       class: 'Mage', archetype: 'ranged-back', tier: 2, tone: 'comic',
       combat: { hpScale: 0.75, energyScale: 1.1 },
       traits: ['reckless', 'kind'],
@@ -46,6 +52,7 @@
     },
     {
       id: 'wren', name: 'Wren', epithet: 'Current ally cast',
+      region: 'Marium',
       class: 'Archer', archetype: 'ranged-back', tier: 2, tone: 'comic',
       combat: { hpScale: 0.8, energyScale: 1.0 },
       traits: ['cautious', 'pragmatic'],
@@ -60,6 +67,7 @@
     },
     {
       id: 'dagny', name: 'Dagny Holm', epithet: '"The Ox"',
+      region: 'Beloufi',
       class: 'Warrior', archetype: 'frontline', tier: 3, tone: 'comic',
       combat: { hpScale: 1.4, energyScale: 0.8 },
       traits: ['kind', 'reckless'],
@@ -74,6 +82,7 @@
     },
     {
       id: 'odile', name: 'Sister Odile Varr', epithet: 'The Unforgiving Hand',
+      region: 'Reyjar',
       class: 'Priest', archetype: 'support', tier: 4, tone: 'grim',
       combat: { hpScale: 0.9, energyScale: 1.3 },
       traits: ['proud', 'vengeful'],
@@ -88,6 +97,7 @@
     },
     {
       id: 'pell', name: 'Pell Marrow', epithet: 'Freelance Survivor',
+      region: 'Li Trice',
       class: 'Archer', archetype: 'ranged-back', tier: 2, tone: 'comic',
       combat: { hpScale: 0.7, energyScale: 1.1 },
       traits: ['greedy', 'cautious'],
@@ -102,6 +112,7 @@
     },
     {
       id: 'ines', name: 'Ines Castellane', epithet: 'Elder Twin',
+      region: 'Ayusti',
       class: 'Mage', archetype: 'ranged-back', tier: 3, tone: 'grim',
       combat: { hpScale: 0.8, energyScale: 1.2 },
       traits: ['pragmatic', 'vengeful'],
@@ -116,6 +127,7 @@
     },
     {
       id: 'ivo', name: 'Ivo Castellane', epithet: 'Younger Twin',
+      region: 'Ayusti',
       class: 'Warrior', archetype: 'charger', tier: 2, tone: 'comic',
       combat: { hpScale: 1.1, energyScale: 1.0 },
       traits: ['reckless', 'kind'],
@@ -130,6 +142,7 @@
     },
     {
       id: 'morrow', name: 'Morrow', epithet: 'Last One Standing',
+      region: 'Themelios',
       class: 'Warrior', archetype: 'frontline', tier: 5, tone: 'grim',
       combat: { hpScale: 1.6, energyScale: 0.9 },
       traits: ['cautious', 'proud'],
@@ -144,6 +157,7 @@
     },
     {
       id: 'tibby', name: 'Tibby Quill', epithet: 'Chaplain and Bookmaker',
+      region: 'Beloufi',
       class: 'Priest', archetype: 'support', tier: 2, tone: 'comic',
       combat: { hpScale: 0.85, energyScale: 1.2 },
       traits: ['greedy', 'kind'],
@@ -158,6 +172,7 @@
     },
     {
       id: 'hask', name: 'Hask', epithet: 'The Survivor Nobody Wanted',
+      region: 'Edinius',
       class: 'Mage', archetype: 'ranged-back', tier: 4, tone: 'grim',
       combat: { hpScale: 0.7, energyScale: 1.4 },
       traits: ['vengeful', 'pragmatic'],
@@ -177,7 +192,7 @@
     return null;
   }
 
-  var API = { CLASSES: CLASSES, ARCHETYPES: ARCHETYPES, CAST: CAST, byId: byId };
+  var API = { CLASSES: CLASSES, ARCHETYPES: ARCHETYPES, REGIONS: REGIONS, CAST: CAST, byId: byId };
 
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.OW_CAST = API;
