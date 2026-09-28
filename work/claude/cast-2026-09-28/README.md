@@ -25,7 +25,7 @@ node check-cast.js   # 97 checks: classes, sim traits, desires, ties
 ## Playtest spec (labor market)
 
 Scope: courting + guest runs, rival guilds, news. Guild founding is out.
-10 adventurers, 4–5 rival guilds, one season ≈ 10 town visits, news at the
+10 adventurers, 7 rival guilds (one per region), one season ≈ 10 town visits, news at the
 start of every turn, culling on. Text/menus, real combat on guest runs.
 Brutus starts as a free agent under NPC rules. Courting slots 1–5 by
 renown. Success = market feels alive, choices feel quick, no reloading,
@@ -69,7 +69,7 @@ this playtest (slice-1 code untouched).
 Each visit every adventurer makes one choice (delve / lay low / join /
 leave / follow a friend) from their dominant desire, fortune and traits.
 Outcomes move fortune and fame; desires drift with fortune and loss;
-5 rival guilds (cap 2 members each) recruit by fame bar, gain renown from
+7 rival guilds, one per region (cap 2 members each) recruit by fame bar, gain renown from
 members' delves, lose it to deaths, decay, and can collapse. Death comes
 from choosing floors past your tier; guild members are protected.
 Unnamed free agents vanish after 6 unguilded visits.
@@ -98,3 +98,11 @@ player choices are not in the loop yet.
 
 - No encounter UI or build splice.
 - No retune of slice-1 mortality; the market slice has its own.
+
+## Guild roster (2026-09-28)
+
+One per region, 3 good / 3 evil / 1 between; 4 alliances, 5 feuds, all
+mutual. Data in `market.js` GUILDS (leaning, holds/loses traits, poaching
+method, allies, feuds). The king-of-the-hill mechanic that reads it is
+NOT built yet. Soak with 7 guilds: named deaths 1.0, joins 11.0, walkouts
+2.3, collapses 2.0, named free agents per visit 3.1, quiet visits 0.9%.

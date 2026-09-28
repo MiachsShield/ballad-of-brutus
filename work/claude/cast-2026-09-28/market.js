@@ -19,13 +19,24 @@
   var OW = req ? require('../overworld-2026-09-18/adventurers.js') : root.OW;
   var CS = req ? require('./castState.js') : root.OW_CAST_STATE;
 
-  // 5 rival guilds (spec: 4–5). bar = fame needed to be accepted.
+  // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
+  // region", all 7 in the playtest). bar = fame needed to be accepted.
+  // leaning / likes / allies / feuds are data for king-of-the-hill (not built).
   var GUILDS = [
-    { id: 'iron',   name: 'The Iron Oath',     renown: 75, bar: 55 },
-    { id: 'lantern',name: 'Lantern Company',   renown: 55, bar: 35 },
-    { id: 'gilt',   name: 'Gilt Hand',         renown: 50, bar: 30 },
-    { id: 'ashen',  name: 'Ashen Wardens',     renown: 40, bar: 20 },
-    { id: 'mud',    name: 'Muddy Boots',       renown: 20, bar: 0  }
+    { id: 'iron',    name: 'The Iron Oath',          region: 'Reyjar',    leaning: 'between', renown: 75, bar: 55,
+      holds: ['proud', 'pragmatic'], loses: ['reckless', 'kind'],  poaches: 'stage',    allies: ['gilt'],            feuds: ['mud', 'crown'] },
+    { id: 'lantern', name: 'Lantern Company',        region: 'Marium',    leaning: 'good',    renown: 55, bar: 35,
+      holds: ['kind', 'cautious'],    loses: ['greedy', 'proud'],  poaches: 'friends',  allies: ['mud'],             feuds: ['gilt'] },
+    { id: 'mud',     name: 'Muddy Boots',            region: 'Beloufi',   leaning: 'good',    renown: 20, bar: 0,
+      holds: ['reckless', 'kind'],    loses: ['greedy', 'cautious'], poaches: 'none',   allies: ['lantern'],         feuds: ['iron'] },
+    { id: 'pim',     name: "Saint Pim's Rescue Brigade", region: 'Ayusti', leaning: 'good',   renown: 35, bar: 10,
+      holds: ['kind', 'reckless'],    loses: ['cautious', 'greedy'], poaches: 'friends', allies: ['gilt'],           feuds: ['candle'] },
+    { id: 'gilt',    name: 'Gilt Hand',              region: 'Li Trice',  leaning: 'evil',    renown: 50, bar: 30,
+      holds: ['greedy'],              loses: ['vengeful', 'kind'], poaches: 'gold',     allies: ['iron', 'pim'],     feuds: ['lantern'] },
+    { id: 'candle',  name: 'The Black Candle',       region: 'Edinius',   leaning: 'evil',    renown: 40, bar: 20,
+      holds: ['vengeful', 'cautious'], loses: ['proud'],           poaches: 'sabotage', allies: ['crown'],           feuds: ['pim'] },
+    { id: 'crown',   name: 'The Hollow Crown',       region: 'Themelios', leaning: 'evil',    renown: 60, bar: 45,
+      holds: ['proud'],               loses: ['kind', 'reckless'], poaches: 'stage',    allies: ['candle'],          feuds: ['iron'] }
   ];
   var TOWN = 10, FREE_AGENT_LIMIT = 6, GUILD_CAP = 2;
 
@@ -66,7 +77,7 @@
   function newMarket(seed) {
     var s = CS.seedFromCast(seed);
     s.guilds = {};
-    GUILDS.forEach(function (g) { s.guilds[g.id] = { id: g.id, name: g.name, renown: g.renown, bar: g.bar, alive: true }; });
+    GUILDS.forEach(function (g) { var c = JSON.parse(JSON.stringify(g)); c.alive = true; s.guilds[g.id] = c; });
     s.visit = 0; s.news = [];
     for (var id in s.roster) ensure(s, s.roster[id]);
     return s;
