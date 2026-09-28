@@ -48,6 +48,8 @@
       f += (shared * 0.15 + (q.m.dom === p.m.dom ? 0.15 : -0.05)) / ms.length;
     });
     if (friendsIn(s, p)) f += 0.3;
+    var grudge = 0; s.ledger.rows.forEach(function (r) { if (r.from === p.id && r.to === 'guild:' + g.id) grudge += r.warmth; });
+    if (grudge <= -3) f -= 0.4;                                            // this guild hurt someone of mine
     if (p.m.fitBonus && (!gid || gid === saved)) f += p.m.fitBonus;       // passed hazing
     if (p.m.region && p.m.region === g.region) f += 0.1;                  // home region
     if (ms.length) f += 0.05 * ms.filter(function (q) { return q.m.region === p.m.region; }).length / ms.length;  // mates from home

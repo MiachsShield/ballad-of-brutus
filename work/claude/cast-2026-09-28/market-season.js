@@ -4,7 +4,7 @@ var MK = require('./market.js'), C = require('./cast.js');
 var VISITS = 10;
 
 var CQ = { frozen: 0, walked: 0, scapegoat: 0, leftBehind: 0, murdered: 0 }, CQnamed = 0;
-var EV = {};
+var EV = {}, RIP = 0, GG = 0;
 var FREE = 0, KP = 0, KW = 0, KS = 0, KK = 0, KT = [], BLUE = 0;
 function run(seed, verbose) {
   var s = MK.newMarket(seed);
@@ -32,6 +32,7 @@ if (process.argv.indexOf('--soak') !== -1) {
     var K = s.koth || { poaches: 0, windows: 0, sabotage: 0, knives: 0, tenures: [] };
     KP += K.poaches; KW += K.windows; KS += K.sabotage; KK += K.knives; KT = KT.concat(K.tenures);
     BLUE += s.blueFree || 0;
+    RIP += s.rippled || 0; GG += s.guildGrudges || 0;
     if (s.events) for (var e in s.events) EV[e] = (EV[e] || 0) + s.events[e];
     if (s.cliques) for (var q in CQ) CQ[q] += s.cliques[q];
     s.news.forEach(function (n) { if (n.named && n.kind === 'died' && /left on floor|found dead\. .* says it was/.test(n.text)) CQnamed++; });
@@ -79,6 +80,7 @@ if (process.argv.indexOf('--soak') !== -1) {
     ' | scapegoated ' + per(CQ.scapegoat) + ' | left behind ' + per(CQ.leftBehind) + ' | murdered ' + per(CQ.murdered) +
     ' | named clique deaths ' + per(CQnamed));
   console.log('person-to-person (per season): ' + Object.keys(EV).sort().map(function (e) { return e + ' ' + per(EV[e]); }).join(' | '));
+  console.log('ripple (per season): secondhand rows ' + per(RIP) + ' | people blaming a guild for a death ' + per(GG));
   console.log('invariant failures: ' + bad);
   process.exit(bad ? 1 : 0);
 } else run(7, true);
