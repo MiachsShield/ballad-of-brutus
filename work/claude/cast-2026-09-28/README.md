@@ -103,6 +103,31 @@ player choices are not in the loop yet.
 
 One per region, 3 good / 3 evil / 1 between; 4 alliances, 5 feuds, all
 mutual. Data in `market.js` GUILDS (leaning, holds/loses traits, poaching
-method, allies, feuds). The king-of-the-hill mechanic that reads it is
-NOT built yet. Soak with 7 guilds: named deaths 1.0, joins 11.0, walkouts
+method, allies, feuds). Soak with 7 guilds: named deaths 1.0, joins 11.0, walkouts
 2.3, collapses 2.0, named free agents per visit 3.1, quiet visits 0.9%.
+
+## King of the hill (2026-09-28)
+
+`koth.js`, run inside `market.visit()`. An MVP is anyone guilded with fame
+>= 60. Each visit, non-allied rivals whose fame bar they clear may move on
+them (feuds try harder): gold, bigger stage, or friends pull against the
+holder's hold score (renown + holds/loses traits + personality needs:
+proud wants top billing, kind wants to be needed, pragmatic wants a rising
+guild, friends in the guild anchor). The Black Candle sabotages instead
+(holder loses renown, cautious MVPs get shaken). An evil rival that fails
+twice may try the knife: lands only if the holder's renown < 50. A
+miserable MVP nobody wins walks out as a free agent (Brutus's window).
+One visit of settling-in grace after any move. NPC guilds only.
+
+Soak (300 seeds):
+
+```
+poaches 0.5 | MVP walkouts (open windows) 1.1 | sabotage 4.8 | knives 1.4
+avg MVP tenure: Iron Oath 4.5 | Lantern 2.4 | Black Candle 2.2
+                Gilt Hand 1.7 | Hollow Crown 1.6
+blue chips (Morrow/Odile/Hask) ever free after visit 1: 18%
+named deaths 1.1 | named free agents per visit 3.2
+```
+
+Hask stays with whoever serves his grudge (~99% held) — by design of his
+sheet, flagged in case it should be looser.
