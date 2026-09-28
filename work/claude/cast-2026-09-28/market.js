@@ -18,10 +18,11 @@
   var req = typeof require === 'function';
   var OW = req ? require('../overworld-2026-09-18/adventurers.js') : root.OW;
   var CS = req ? require('./castState.js') : root.OW_CAST_STATE;
+  var KOTH = req ? require('./koth.js') : root.OW_KOTH;
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
   // region", all 7 in the playtest). bar = fame needed to be accepted.
-  // leaning / likes / allies / feuds are data for king-of-the-hill (not built).
+  // leaning / likes / allies / feuds are data for king-of-the-hill (koth.js).
   var GUILDS = [
     { id: 'iron',    name: 'The Iron Oath',          region: 'Reyjar',    leaning: 'between', renown: 75, bar: 55,
       holds: ['proud', 'pragmatic'], loses: ['reckless', 'kind'],  poaches: 'stage',    allies: ['gilt'],            feuds: ['mud', 'crown'] },
@@ -188,7 +189,9 @@
     var ids = Object.keys(s.roster);
     ids.forEach(function (id) { var p = s.roster[id]; ensure(s, p); resolve(s, p, choose(s, p)); });
 
-    ids.forEach(function (id) {
+    KOTH.run(s, function (gid) { return members(s, gid) < GUILD_CAP; });   // king of the hill
+
+    Object.keys(s.roster).forEach(function (id) {
       var p = s.roster[id];
       if (p.alive) return;
       friendsOf(s, id).forEach(function (f) { f.m.lostFriend = true; });
