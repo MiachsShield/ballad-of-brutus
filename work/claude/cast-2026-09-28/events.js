@@ -10,6 +10,7 @@
  */
 (function (root) {
   'use strict';
+  var RP = typeof require === 'function' ? require('./ripple.js') : root.OW_RIPPLE;
   var BOND = ['old-ties', 'friends', 'lovers'];
   var LONG = 400;
   // Ember and Wren are the build's existing ally cast; their relationships
@@ -64,6 +65,7 @@
       if (sameFloor && (a.m.hurt !== b.m.hurt) && r() < 0.3) {                         // saved my life
         var saver = a.m.hurt ? b : a, saved = a.m.hurt ? a : b;
         s.ledger.write(saved.id, saver.id, 'owes', 2, 3, null);
+        RP.spread(s, saved, saver.id, 'owes', 2, 3, null);                     // save one twin, both owe you
         if (!friends) bond(s, a, b, 'friends', 1, 2);
         saved.m.hurt = false;
         headline(s, saved, 'saved', saver.name + ' drags ' + saved.name + ' off floor ' + saver.m.lastDepth + '. ' + saved.name + ' owes them now');
@@ -79,6 +81,7 @@
         var star = a.m.fame >= b.m.fame ? a : b, robbed = star === a ? b : a;
         robbed.m.fame = Math.max(0, robbed.m.fame - 3);
         s.ledger.write(robbed.id, star.id, 'grudge', 0, -3, LONG);
+        RP.spread(s, robbed, star.id, 'grudge', 0, -3, LONG);
         headline(s, robbed, 'rivalry', robbed.name + ' says ' + star.name + ' stole the kill on floor ' + a.m.lastDepth);
         return mark(a, b);
       }
@@ -112,6 +115,8 @@
         if (rich.m.fortune > 80 && poor.m.fortune < 10 && r() < 0.4) {
           rich.m.fortune -= 25; poor.m.fortune += 25;
           poor.m.loan = { to: rich.id, amount: 25, since: s.visit };
+          s.ledger.write(poor.id, rich.id, 'lent-me', 1, 2, LONG);
+          RP.spread(s, poor, rich.id, 'lent-me', 1, 2, LONG);
           headline(s, poor, 'loan', rich.name + ' lends ' + poor.name + ' 25 coins. "Pay me back when you can"');
           return mark(a, b);
         }
@@ -120,10 +125,12 @@
         var earner = a.m.hauled ? a : b, mate = earner === a ? b : a;
         if (has(earner, 'greedy')) {
           s.ledger.write(mate.id, earner.id, 'grudge', 0, -2, LONG);
+          RP.spread(s, mate, earner.id, 'grudge', 0, -2, LONG);
           headline(s, mate, 'split', earner.name + ' keeps the whole haul. ' + mate.name + ' noticed');
         } else if (has(earner, 'kind')) {
           var share = Math.round(earner.m.hauled / 3); earner.m.fortune -= share; mate.m.fortune += share;
           s.ledger.write(mate.id, earner.id, 'shared-haul', 1, 2, LONG);
+          RP.spread(s, mate, earner.id, 'shared-haul', 1, 2, LONG);
           headline(s, mate, 'split', earner.name + ' splits the haul with ' + mate.name + ' without being asked');
         } else return;
         return mark(a, b);
@@ -153,6 +160,7 @@
         } else if (s.visit - m.loan.since >= 4) {
           unbond(s, p, lender, 'friends');
           s.ledger.write(lender.id, p.id, 'grudge', 0, -3, LONG); m.loan = null;
+          RP.spread(s, lender, p.id, 'grudge', 0, -3, LONG);
           headline(s, lender, 'debt', lender.name + ' is done waiting on ' + p.name + "'s debt"); return mark(p);
         }
       }
