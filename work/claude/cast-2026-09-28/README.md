@@ -59,7 +59,42 @@ slice-1 rates and `reckless` is a death sentence. Robert's target for named
 deaths per season: "depends" — mortality stays untouched until he says on
 what.
 
+## Labor market slice (2026-09-28)
+
+Robert: "Deaths are not a target. Volatility of the market and people
+making choices." Named deaths depend on tier and traits, player choices
+to a lesser extent. `market.js` replaces the slice-1 wave mortality for
+this playtest (slice-1 code untouched).
+
+Each visit every adventurer makes one choice (delve / lay low / join /
+leave / follow a friend) from their dominant desire, fortune and traits.
+Outcomes move fortune and fame; desires drift with fortune and loss;
+5 rival guilds (cap 2 members each) recruit by fame bar, gain renown from
+members' delves, lose it to deaths, decay, and can collapse. Death comes
+from choosing floors past your tier; guild members are protected.
+Unnamed free agents vanish after 6 unguilded visits.
+
+```
+node market-season.js          # one season's news, seed 7
+node market-season.js --soak   # 300 seeds, volatility metrics
+```
+
+Soak (300 seeds):
+
+```
+per season: headlines 43.7 (named 40.0) | named deaths 1.1 | joins 11.5
+  | desire shifts 4.3 | big hauls 15.9 | walkouts 3.5 | guild collapses 1.0
+named free agents available per visit: 3.4
+quiet visits: 0.5%
+survive%: t4–t5 (Odile, Morrow, Hask) ~100%, broke/greedy Tibby 58%,
+          reckless t2 (Ember, Ivo) ~80%
+```
+
+Known gaps: Morrow/Odile/Hask sign on visit 1 and never leave, so the
+blue chips are never courtable; newcomers rarely make news; Brutus and
+player choices are not in the loop yet.
+
 ## Not done, deliberately
 
 - No encounter UI or build splice.
-- No retune of sim mortality (see blocker).
+- No retune of slice-1 mortality; the market slice has its own.
