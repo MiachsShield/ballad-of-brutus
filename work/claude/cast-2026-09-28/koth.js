@@ -40,6 +40,7 @@
     if (has(p, 'reckless') && g.leaning !== 'good' && g.id === 'iron') h -= 0.1;                  // rules bore them
     if (friendsOf(s, p.id).some(function (f) { return f.m.guild === g.id; })) h += 0.2;           // friends here
     if (m.dom === 'strongGuild') h += (g.renown - 50) / 200;
+    if (m.fit != null && m.fit > 0.4) h += 0.15;                                             // tight clique: a fortress
     return h;
   }
 
