@@ -21,7 +21,7 @@
  *
  * Names (Robert, 2026-09-28: no anachronistic names; epithets are the
  * "celebrity" layer and stay): see names.js for the rules. ids are stable
- * code keys and do NOT track display names (id 'pell' is now Perrin Dao, id
+ * code keys and do NOT track display names (id 'pell' is now Remy Jonque, id 'odile' is Aline Laque, id
  * 'morrow' is Nikandros, id 'tibby' is Mabel Quill). Ember and Wren are the
  * build's existing ally cast and keep their names.
  */
@@ -40,7 +40,8 @@
   // Roman, Themelios Grecian, Reyjar Norse-Spanish, Li Trice French-Chinese,
   // Ayusti Japanese-Brazilian, Beloufi Americana-Irish, Edinius
   // English-Lithuanian). Which region each character comes from is my
-  // placeholder; pairs share a home. `look` is a one-line ART SUGGESTION
+  // placeholder; pairs share a home. NATIONS.md organizes each nation's looks,
+  // names and manner. `look` is a one-line ART SUGGESTION
   // for Robert to veto; Ember and Wren have none because the build's art
   // defines them.
   var REGIONS = ['Reyjar', 'Ayusti', 'Themelios', 'Marium', 'Li Trice', 'Edinius', 'Beloufi'];
@@ -77,7 +78,7 @@
       bio: 'Placeholder sheet: Wren keeps her existing personality and voice from the build. Market stats only. The harder sell of the pair, and the one who decides whether they both stay.'
     },
     {
-      id: 'dagny', name: 'Dagny Holm', epithet: '"The Ox"',
+      id: 'dagny', name: 'Dagny Halvardez', epithet: '"The Ox"',
       region: 'Reyjar',
       look: 'Tall and broad, thick braids the color of old oak, weathered olive-tan skin and deep laugh lines; a ladle hung at the belt like a sidearm.',
       class: 'Warrior', archetype: 'frontline', tier: 3, tone: 'comic',
@@ -93,7 +94,7 @@
       bio: 'Enormous, cheerful, and constantly eating. She once carried a wounded rival guild\'s entire party out of the third floor because "they looked sad," then billed nobody. Easiest person in town to recruit and the worst at keeping money. Takes Brutus\'s insults as affection, which is sometimes correct.'
     },
     {
-      id: 'odile', name: 'Sister Odile Lin', epithet: 'The Unforgiving Hand',
+      id: 'odile', name: 'Sister Aline Laque', epithet: 'The Unforgiving Hand',
       region: 'Li Trice',
       look: 'Narrow and upright, black hair streaked grey under a plain white coif; a scarred hand that never shakes; a habit with no ornament at all.',
       class: 'Priest', archetype: 'support', tier: 4, tone: 'grim',
@@ -109,7 +110,7 @@
       bio: 'A field priest who decides mid-battle who deserves mending, and says so out loud. She has let people die over manners. Brilliant, feared, and completely unbuyable with gifts. The long bet of the cast: hard to land, and once she joins, the most loyal person in the game, because she only swears to the worthy.'
     },
     {
-      id: 'pell', name: 'Perrin Dao', epithet: 'The Early Leaver',
+      id: 'pell', name: 'Remy Jonque', epithet: 'The Early Leaver',
       region: 'Li Trice',
       look: 'Wiry and quick, always half-turned toward the exit; sharp features, restless eyes; a pack that is never fully unpacked and a worn lucky coin on a cord.',
       class: 'Archer', archetype: 'ranged-back', tier: 2, tone: 'comic',
@@ -125,7 +126,7 @@
       bio: 'A decent shot and a magnificent coward who has survived four party wipes by leaving early, every time. He sells loot before the fight is over. Cheap to hire, easy to lose to a better bid, and a strong penny-stock bet: if he ever gets rich, he becomes loyal to whoever protects the pile.'
     },
     {
-      id: 'ines', name: 'Ines Sakai', epithet: 'Elder Twin',
+      id: 'ines', name: 'Ines Kawario', epithet: 'Elder Twin',
       region: 'Ayusti',
       look: 'Slight and composed, black hair cut blunt at the jaw, ink-stained fingers; a narrow ledger of her brother\'s enemies in her coat pocket.',
       class: 'Mage', archetype: 'ranged-back', tier: 3, tone: 'grim',
@@ -138,10 +139,10 @@
       shiftsWhen: 'If Ivo dies on Brutus\'s watch, she becomes permanently hostile. If he dies elsewhere, she comes to Brutus for revenge.',
       ties: [{ with: 'ivo', kind: 'twin' }],
       pitch: 'Whatever you offer my brother, offer to me first.',
-      bio: 'The cold half of the Sakai twins. She has spent her life cleaning up after Ivo and keeps a written list of everyone who has endangered him. She negotiates for both of them. Winning her means winning Ivo, and failing him means making an enemy who never forgets.'
+      bio: 'The cold half of the Kawario twins. She has spent her life cleaning up after Ivo and keeps a written list of everyone who has endangered him. She negotiates for both of them. Winning her means winning Ivo, and failing him means making an enemy who never forgets.'
     },
     {
-      id: 'ivo', name: 'Ivo Sakai', epithet: 'Younger Twin',
+      id: 'ivo', name: 'Ivo Kawario', epithet: 'Younger Twin',
       region: 'Ayusti',
       look: 'His sister\'s face with a full head of unruly hair and a wide grin; a sword slightly too big for him, the scabbard held together with string.',
       class: 'Warrior', archetype: 'charger', tier: 2, tone: 'comic',
