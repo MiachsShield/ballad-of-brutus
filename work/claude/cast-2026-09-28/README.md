@@ -164,8 +164,10 @@ not Chinese in French clothing").
 
 **`NATIONS.md`** (Tier B proposal) organizes looks, names, dress and manner for all
 seven nations, with an invented history that makes each meld hold together.
-`names.js` holds the matching data: the basis table, a 14-16 name pool per nation
-for newcomers, and house names for the named cast. Highlights:
+`names.js` holds the matching data: the basis table, house names for the named cast,
+and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
+by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
+list (1,192 names; regenerate with `node build-names-doc.js`). Highlights:
 
 | Nation | Basis | The meld |
 |---|---|---|
@@ -192,9 +194,10 @@ Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
 Home regions are my placeholders. Each authored character (not Ember or Wren, whose
 art the build defines) has a one-line `look` in `cast.js`: an ART SUGGESTION for
 Robert to veto. Guilds: Muddy Boots -> The Merry Rabble, Saint Pim's Rescue Brigade
--> The Brethren of Saint Piran. `node check-names.js` (21 checks) lints names, checks
-every newcomer matches their home region, and fails if `names.js` and `NATIONS.md`
-drift apart.
+-> The Brethren of Saint Piran. `node check-names.js` (26 checks) lints names, checks
+every newcomer matches their home region, keeps pools free of canon and cast names, and
+fails if `names.js`, `NATIONS.md` or `NAMES.md` drift apart. Pool size has no effect on
+the sim: a 300-season soak is byte-identical before and after.
 
 Bug found along the way: the sim keys newcomer ids by wave and the market never
 advanced it, so newcomers overwrote live people with the same id (~1.25 per
