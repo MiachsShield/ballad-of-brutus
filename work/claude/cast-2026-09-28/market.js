@@ -24,19 +24,21 @@
   var RIPPLE = req ? require('./ripple.js') : root.OW_RIPPLE;
   var PEOPLE = req ? require('./people.js') : root.OW_PEOPLE;
   var GLIFE = req ? require('./guildlife.js') : root.OW_GUILDLIFE;
+  var NAMES = req ? require('./names.js') : root.OW_NAMES;
   var BOND = ['old-ties', 'friends', 'lovers'];
 
   // 7 rival guilds, one per region (Robert, 2026-09-28: "one guild for every
   // region", all 7 in the playtest). bar = fame needed to be accepted.
-  // leaning / likes / allies / feuds are data for king-of-the-hill (koth.js).
+  // leaning / holds / loses / allies / feuds are data for koth.js, cliques.js
+  // and guildlife.js. ids ('mud', 'pim') are code keys, not display names.
   var GUILDS = [
     { id: 'iron',    name: 'The Iron Oath',          region: 'Reyjar',    leaning: 'between', renown: 75, bar: 55,
       holds: ['proud', 'pragmatic'], loses: ['reckless', 'kind'],  poaches: 'stage',    allies: ['gilt'],            feuds: ['mud', 'crown'] },
     { id: 'lantern', name: 'Lantern Company',        region: 'Marium',    leaning: 'good',    renown: 55, bar: 35,
       holds: ['kind', 'cautious'],    loses: ['greedy', 'proud'],  poaches: 'friends',  allies: ['mud'],             feuds: ['gilt'] },
-    { id: 'mud',     name: 'Muddy Boots',            region: 'Beloufi',   leaning: 'good',    renown: 20, bar: 0,
+    { id: 'mud',     name: 'The Merry Rabble',       region: 'Beloufi',   leaning: 'good',    renown: 20, bar: 0,
       holds: ['reckless', 'kind'],    loses: ['greedy', 'cautious'], poaches: 'none',   allies: ['lantern'],         feuds: ['iron'] },
-    { id: 'pim',     name: "Saint Pim's Rescue Brigade", region: 'Ayusti', leaning: 'good',   renown: 35, bar: 10,
+    { id: 'pim',     name: 'The Brethren of Saint Piran', region: 'Ayusti', leaning: 'good', renown: 35, bar: 10,
       holds: ['kind', 'reckless'],    loses: ['cautious', 'greedy'], poaches: 'friends', allies: ['gilt'],           feuds: ['candle'] },
     { id: 'gilt',    name: 'Gilt Hand',              region: 'Li Trice',  leaning: 'evil',    renown: 50, bar: 30,
       holds: ['greedy'],              loses: ['vengeful', 'kind'], poaches: 'gold',     allies: ['iron', 'pim'],     feuds: ['lantern'] },
@@ -71,6 +73,7 @@
       region: sh ? sh.region : REGIONS[Math.floor(r() * REGIONS.length)]
     };
     p.m.dom = dominant(p.m.desires);
+    NAMES.rename(s, p);                                              // period names for newcomers (names.js)
     return p.m;
   }
 
@@ -89,7 +92,7 @@
     var s = CS.seedFromCast(seed);
     s.guilds = {};
     GUILDS.forEach(function (g) { var c = JSON.parse(JSON.stringify(g)); c.alive = true; c.cap = GUILD_CAP; c.blacklist = []; c.charters = [g.region]; s.guilds[g.id] = c; });
-    s.visit = 0; s.news = [];
+    s.visit = 0; s.news = []; s.nameSalt = seed;
     for (var id in s.roster) ensure(s, s.roster[id]);
     return s;
   }
@@ -244,7 +247,7 @@
       }
     }
 
-    var before = Object.keys(s.roster).length;
+    s.wave = s.visit;                                                 // the sim keys newcomer ids by wave; without this they collide and overwrite live people
     OW.repopulate(s, TOWN);                                           // unnamed newcomers
     for (var id3 in s.roster) ensure(s, s.roster[id3]);
     return s.news.filter(function (n) { return n.visit === s.visit; });
