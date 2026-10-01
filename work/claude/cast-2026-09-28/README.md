@@ -50,8 +50,8 @@ numbers unchanged):
 ```
 avg NAMED alive after visit: 5.9 4.9 4.3 3.7 3.2 2.8 2.5 2.2 1.9 1.8
 Ember 0%  Dagny 0%  Ivo 0%     (all three are reckless)
-Wren 45%  Perrin 46%  Nikandros 41%
-Odile 12%  Ines 12%  Mabel 10%  Hask 14%
+Wren 45%  Remy 46%  Nikandros 41%
+Aline 12%  Ines 12%  Mabel 10%  Hask 14%
 ```
 
 **Open:** refill keeps the town full, but the named cast still dies at
@@ -87,11 +87,11 @@ per season: headlines 43.7 (named 40.0) | named deaths 1.1 | joins 11.5
   | desire shifts 4.3 | big hauls 15.9 | walkouts 3.5 | guild collapses 1.0
 named free agents available per visit: 3.4
 quiet visits: 0.5%
-survive%: t4–t5 (Odile, Nikandros, Hask) ~100%, broke/greedy Mabel 58%,
+survive%: t4–t5 (Aline, Nikandros, Hask) ~100%, broke/greedy Mabel 58%,
           reckless t2 (Ember, Ivo) ~80%
 ```
 
-Known gaps: Nikandros/Odile/Hask sign on visit 1 and never leave, so the
+Known gaps: Nikandros/Aline/Hask sign on visit 1 and never leave, so the
 blue chips are never courtable; newcomers rarely make news; Brutus and
 player choices are not in the loop yet.
 
@@ -126,7 +126,7 @@ Soak (300 seeds):
 poaches 0.5 | MVP walkouts (open windows) 1.1 | sabotage 4.8 | knives 1.4
 avg MVP tenure: Iron Oath 4.5 | Lantern 2.4 | Black Candle 2.2
                 Gilt Hand 1.7 | Hollow Crown 1.6
-blue chips (Nikandros/Odile/Hask) ever free after visit 1: 18%
+blue chips (Nikandros/Aline/Hask) ever free after visit 1: 18%
 named deaths 1.1 | named free agents per visit 3.2
 ```
 
@@ -155,45 +155,47 @@ whose traits an evil guild dislikes ends up accepted in ~20% of stints.
 Soak after the change: frozen out 2.5 | misfit walkouts 0.3 | scapegoated
 0.3 | left behind 0.1 | murdered <0.1 per season; named deaths 1.2.
 
-## Names (2026-10-01)
+## Nations and names (2026-10-01)
 
-Robert: no anachronistic names (the fame/epithet "celebrity" layer stays), and
-the inspiration follows each nation's phenotype basis from his world bible:
+Robert: no anachronistic names (the fame/epithet "celebrity" layer stays); names
+and looks follow each nation's phenotype basis from his world bible; and a mixed
+nation is **a third thing, not one culture in the other's clothes** ("Li Trice is
+not Chinese in French clothing").
 
-| Region | Basis | Region | Basis |
-|---|---|---|---|
-| Marium | Roman | Li Trice | French-Chinese |
-| Themelios | Grecian | Ayusti | Japanese-Brazilian |
-| Reyjar | Norse-Spanish | Beloufi | Americana-Irish |
-| Edinius | English-Lithuanian | | |
+**`NATIONS.md`** (Tier B proposal) organizes looks, names, dress and manner for all
+seven nations, with an invented history that makes each meld hold together.
+`names.js` holds the matching data: the basis table, a 14-16 name pool per nation
+for newcomers, and house names for the named cast. Highlights:
 
-`names.js` holds the rules, the basis table and a 14-16 name pool per region
-(no name in two regions, so a name says where its bearer is from). Mixed-basis
-nations blend the way real mixed communities do: a given name from one side, a
-surname from the other (Odile Lin, Perrin Dao, Ines and Ivo Sakai). Repeats in
-one town get seniority ("the Younger"), never a numeral. Picks hash the market
-seed + id, so naming never touches the sim's random stream. Names are ASCII.
+| Nation | Basis | The meld |
+|---|---|---|
+| Marium | Roman | single source; the cognomen is the celebrity byname |
+| Themelios | Grecian | single source; meaning-compound names, -ides lines |
+| Reyjar | Norse-Spanish | Norse stems in Iberian shape; -ez patronymics (Spain's own names are Germanic) |
+| Li Trice | French-Chinese | a port republic of trading houses; convergence given names; house-first or given-first order |
+| Ayusti | Japanese-Brazilian | convergence names; doubled house names (Kawario = river-river) |
+| Beloufi | Americana-Irish | Biblical and Irish names; clan prefixes on frontier trades; tall-tale bynames |
+| Edinius | English-Lithuanian | shared Germanic names in two shapes; English stem + -aitis/-aite |
 
-Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'mud', 'pim'):
+Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
 
 | Character | Home | Note |
 |---|---|---|
-| Ember, Wren | Edinius | build cast, names kept (English side of the basis) |
-| Dagny Holm, Hask | Reyjar | kept, Norse |
-| Sister Odile Lin | Li Trice | was Varr |
-| Perrin Dao | Li Trice | was Pell Marrow, then Piers Daw |
-| Ines Sakai, Ivo Sakai | Ayusti | Portuguese given names, was Castellane |
+| Ember, Wren | Edinius | build cast, names kept |
+| Dagny Halvardez, Hask | Reyjar | Dagny was Holm; Hask has dropped his family name |
+| Sister Aline Laque | Li Trice | was Odile Varr, then Odile Lin |
+| Remy Jonque | Li Trice | was Pell Marrow, Piers Daw, Perrin Dao |
+| Ines Kawario, Ivo Kawario | Ayusti | were Castellane, then Sakai |
 | Nikandros | Themelios | was Morrow, then Osmund |
 | Mabel Quill | Beloufi | |
 
-Home regions are my placeholders. Each authored character (not Ember or Wren,
-whose art the build defines) has a one-line `look` in `cast.js`: an ART
-SUGGESTION for Robert to veto, written from build, bearing and a signature
-detail rather than from the regional basis.
-Guilds: Muddy Boots -> The Merry Rabble, Saint Pim's Rescue Brigade -> The
-Brethren of Saint Piran. `node check-names.js` (16 checks) lints cast, guild and
-newcomer names and checks every newcomer matches their home region.
+Home regions are my placeholders. Each authored character (not Ember or Wren, whose
+art the build defines) has a one-line `look` in `cast.js`: an ART SUGGESTION for
+Robert to veto. Guilds: Muddy Boots -> The Merry Rabble, Saint Pim's Rescue Brigade
+-> The Brethren of Saint Piran. `node check-names.js` (21 checks) lints names, checks
+every newcomer matches their home region, and fails if `names.js` and `NATIONS.md`
+drift apart.
 
-Bug found while doing this: the sim keys newcomer ids by wave and the market
-never advanced it, so newcomers overwrote live people with the same id
-(~1.25 per season). Fixed in `market.js` (`s.wave = s.visit`).
+Bug found along the way: the sim keys newcomer ids by wave and the market never
+advanced it, so newcomers overwrote live people with the same id (~1.25 per
+season). Fixed in `market.js` (`s.wave = s.visit`).
