@@ -8,6 +8,9 @@
  * regions, nothing that collides with the named cast or canon characters,
  * nothing from the BLOCK lint. Names are given names only; house names live in
  * names.js HOUSES and are used for named characters.
+ *
+ * Ayusti is Japanese + Brazilian and nothing else (Robert's table). An earlier
+ * draft added a Tupi-and-African group on my own initiative; it is removed.
  */
 (function (root) {
   'use strict';
@@ -37,8 +40,7 @@
     },
     'Ayusti': {
       'japanese': L(`Takeo Haru Saburo Tomo Iori Genji Shiro Jiro Taro Ichiro Goro Rokuro Hachiro Yoshi Nobu Toshi Masa Hiro Kazu Kane Sen Ryo Kai Daichi Eiji Fumio Gen Hayato Isamu Jun Katsu Kiyo Makoto Michi Noboru Osamu Seiji Shin Tadashi Taka Tetsu Yasu Yukio Zen Ume Kiku Tomoe Aoi Natsu Fuyu Aki Sumire Sakura Hana Yuki Chiyo Shizu Tsuru Matsu Kame Ran Rin Sayo Yone Nami Mio Fumi Hoshi Kimi Kiyoko Miyo Nao Noriko Sachi Setsu Shino Suzu Tama Tsuya`),
-      'portuguese': L(`Tiago Caetano Lourenco Beatriz Luzia Henrique Duarte Afonso Joaquim Manuel Vasco Gaspar Baltasar Dinis Estevao Goncalo Jorge Lucas Mateus Pedro Simao Teodoro Vicente Matilde Filipa Catarina Isabel Joana Madalena Margarida Mariana Teresa Rosa Violeta Constanca Dulce Graca Helena Luisa Nazare Rafaela Amadeu Bento Cristovao Domingos Fernao Gil Jacinto`),
-      'tupi and african roots': L(`Iara Jurema Araci Ceci Moema Iracema Ubirajara Jandira Guaraci Jacira Potira Ubiratan Caua Raoni Tainara Anaue Janaina Naiara Dandara Nzinga Aqualtune Kiluanje Arani Jaci`),
+      'brazilian (Portuguese-language names as used in Brazil)': L(`Tiago Caetano Lourenco Beatriz Luzia Henrique Duarte Afonso Joaquim Manuel Vasco Gaspar Baltasar Dinis Estevao Goncalo Jorge Lucas Mateus Pedro Simao Teodoro Vicente Matilde Filipa Catarina Isabel Joana Madalena Margarida Mariana Teresa Rosa Violeta Constanca Dulce Graca Helena Luisa Nazare Rafaela Amadeu Bento Cristovao Domingos Fernao Gil Jacinto`),
       'meld (names at home in both languages)': L(`Rui Iuri Nina Caio Aya Mayara Mika Sora Lia Rei Rio Mari Rika Maya Mina Naomi Kaito Ana Ayumi Emi Yumi Nanami Leo Noa Niko Reina Rina Saori Aiko Yuna Sol Mara Taina Tais Tatsu Lara`)
     },
     'Beloufi': {
