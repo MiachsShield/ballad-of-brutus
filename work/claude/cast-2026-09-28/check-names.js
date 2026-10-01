@@ -3,7 +3,16 @@ var MK = require('./market.js'), NM = require('./names.js'), C = require('./cast
 var fails = 0, n = 0;
 function ok(c, m) { n++; if (!c) { fails++; console.log('FAIL', m); } }
 var regions = Object.keys(NM.BASIS), fs = require('fs');
-ok(regions.length === 7 && regions.every(function (r) { return NM.POOLS[r] && NM.POOLS[r].length >= 12; }), 'seven regions, each with a pool of 12+ names');
+ok(regions.length === 7 && regions.every(function (r) { return NM.POOLS[r] && NM.POOLS[r].length >= 150; }), 'seven regions, each with 150+ given names (' + regions.map(function (r) { return NM.POOLS[r].length; }).join('/') + ')');
+ok(['Li Trice', 'Ayusti', 'Reyjar', 'Beloufi', 'Edinius'].every(function (r) {
+  var g = Object.keys(NM.DATA[r]).filter(function (k) { return /^meld/.test(k); })[0];
+  return g && NM.DATA[r][g].length >= 25;
+}), 'every mixed nation has a meld group of 25+ names');
+var RESERVED = ['Ember', 'Wren', 'Dagny', 'Aline', 'Remy', 'Ines', 'Ivo', 'Nikandros', 'Mabel', 'Hask', 'Odile', 'Brutus', 'Cassius', 'Abel', 'Freja', 'Varvara'];
+ok(RESERVED.every(function (r) { return NM.POOL.indexOf(r) === -1; }), 'no pool name is a canon character or a named-cast name');
+ok(regions.every(function (r) { var all = []; Object.keys(NM.DATA[r]).forEach(function (g) { all = all.concat(NM.DATA[r][g]); }); return all.length === new Set(all).size; }), 'no repeats inside a region');
+var namesDoc = fs.readFileSync(__dirname + '/NAMES.md', 'utf8');
+ok(NM.POOL.every(function (n) { return namesDoc.indexOf(n) !== -1; }) && /(\d+) names across 7 nations/.test(namesDoc) && +namesDoc.match(/(\d+) names across 7 nations/)[1] === NM.POOL.length, 'NAMES.md lists every name and is up to date (run node build-names-doc.js)');
 ok(regions.every(function (r) { return NM.HOUSES[r] && NM.HOUSES[r].length >= 6 && NM.HOUSES[r].every(function (h) { return /^[A-Za-z']+$/.test(h) && !NM.BLOCK.test(h); }); }), 'each region has 6+ house names, plain ASCII');
 var allHouses = []; regions.forEach(function (r) { allHouses = allHouses.concat(NM.HOUSES[r]); });
 ok(allHouses.length === new Set(allHouses).size, 'no house name sits in two regions');
@@ -43,19 +52,20 @@ ok(/ (the Younger|the Elder|the Third)$/.test(p1.name) && !/\d/.test(p1.name), '
 var p2 = { id: 'new2', name: 'x', m: { region: 'Beloufi' } }; s2.roster.new2 = p2; s2.roster.new1.name = p1.name; NM.rename(s2, p2);
 ok(!/\d/.test(p2.name) && p2.name !== p1.name, 'second clash gets a different seniority, never a numeral (' + p2.name + ')');
 // a whole season: nobody shares a display name, nobody wears a numeral
-var dup = 0, digit = 0, wrongRegion = 0, plain = {};
+var dup = 0, digit = 0, wrongRegion = 0, plain = {}, seniority = 0;
 for (var i = 1; i <= 60; i++) {
   var m = MK.newMarket(i);
   for (var v = 1; v <= 10; v++) {
     MK.visit(m); var names = {};
     for (var id in m.roster) {
-      var q = m.roster[id], nm = q.name; if (names[nm]) dup++; names[nm] = 1; if (/\d/.test(nm)) digit++;
+      var q = m.roster[id], nm = q.name; if (names[nm]) dup++; names[nm] = 1; if (/\d/.test(nm)) digit++; if (/ the /.test(nm)) seniority++;
       if (!q.sheet) { var first = nm.split(' ')[0]; plain[first] = 1; if (NM.POOLS[q.m.region].indexOf(first) === -1) wrongRegion++; }
     }
   }
 }
 ok(dup === 0, 'no two people share a name in the same town (60 seasons)');
 ok(digit === 0, 'no numerals in any name (60 seasons)');
+ok(seniority === 0, 'with 150+ names a region never runs out, so no "the Younger" in play (60 seasons)');
 ok(wrongRegion === 0, 'every newcomer\'s name matches their home region (60 seasons)');
 console.log(n - fails + '/' + n + ' name checks pass');
 process.exit(fails ? 1 : 0);

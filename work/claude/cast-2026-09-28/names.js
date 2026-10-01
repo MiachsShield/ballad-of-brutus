@@ -19,7 +19,7 @@
  *     regions' pools
  *   - a repeat in the same town is told apart by seniority ("the Younger"),
  *     never "Marta 2"
- * Newcomers are named from their region's pool. Picks hash the market seed and
+ * Newcomers are named from their region's pool (150+ names each). Picks hash the market seed and
  * the person's id, so naming never touches the sim's random stream.
  * Names are ASCII so any UI font can show them. Ember and Wren are the
  * build's existing ally cast and keep their names.
@@ -30,18 +30,15 @@
     'Marium': 'Roman', 'Themelios': 'Grecian', 'Reyjar': 'Norse-Spanish', 'Li Trice': 'French-Chinese',
     'Ayusti': 'Japanese-Brazilian', 'Beloufi': 'Americana-Irish', 'Edinius': 'English-Lithuanian'
   };
-  // Newcomer given names, one pool per nation (see NATIONS.md for the logic).
-  // Mixed nations lean on CONVERGENCE names, ones equally at home in both
-  // source cultures, so the people read as one people, not two in costume.
-  var POOLS = {
-    'Marium':    ['Lucan', 'Aurelia', 'Cassian', 'Livia', 'Marcellus', 'Valeria', 'Quintus', 'Sabina', 'Decimus', 'Flavia', 'Rufus', 'Cornelia', 'Octavia', 'Severus'],
-    'Themelios': ['Theron', 'Eudora', 'Callista', 'Demetra', 'Alexios', 'Zoe', 'Leandros', 'Kosmas', 'Ioanna', 'Stavros', 'Melina', 'Dorothea', 'Argyros', 'Xenia'],
-    'Reyjar':    ['Halvard', 'Sigrun', 'Torvald', 'Ragna', 'Eirik', 'Gudrun', 'Ottar', 'Alonso', 'Leonor', 'Rodrigo', 'Beltran', 'Ximena', 'Inigo', 'Alvaro', 'Elvira', 'Gonzalo'],
-    'Li Trice':  ['Yann', 'Mai', 'Luce', 'Lanne', 'Meline', 'Aubin', 'Sorel', 'Ange', 'Linet', 'Liane', 'Jehan', 'Mirel', 'Lise', 'Anlin'],
-    'Ayusti':    ['Rui', 'Iuri', 'Nina', 'Caio', 'Aya', 'Mayara', 'Mika', 'Sora', 'Lia', 'Tomo', 'Haru', 'Beatriz', 'Takeo', 'Luzia'],
-    'Beloufi':   ['Cormac', 'Niall', 'Aoife', 'Orla', 'Brigid', 'Fionn', 'Maeve', 'Silas', 'Amos', 'Eben', 'Hepzibah', 'Prudence', 'Josiah', 'Gideon'],
-    'Edinius':   ['Oswin', 'Wulfric', 'Godric', 'Hilda', 'Aldith', 'Edmundas', 'Alfreda', 'Tamsin', 'Henrikas', 'Vytas', 'Jurgis', 'Rasa', 'Daiva', 'Milda', 'Gedas', 'Aldona']
-  };
+  // Newcomer given names, 150+ per nation, grouped by origin (names-data.js;
+  // NAMES.md is the browsable list). Mixed nations carry a `meld` group of
+  // names that belong to the blended people, not just two lists side by side.
+  var DATA = (typeof require === 'function' ? require('./names-data.js') : root.OW_NAMES_DATA).DATA;
+  var POOLS = {};
+  Object.keys(DATA).forEach(function (r) {
+    POOLS[r] = [];
+    Object.keys(DATA[r]).forEach(function (g) { POOLS[r] = POOLS[r].concat(DATA[r][g]); });
+  });
   // Family and house names, per nation (data for named characters; NATIONS.md
   // explains each system: Roman nomina, Greek -ides, Iberian -ez patronymics,
   // Li Trice trade-houses, Ayusti doubled place-names, Irish-frontier names,
@@ -88,7 +85,7 @@
   }
 
   var ALL = []; Object.keys(POOLS).forEach(function (r) { ALL = ALL.concat(POOLS[r]); });
-  var API = { BASIS: BASIS, POOLS: POOLS, HOUSES: HOUSES, POOL: ALL, BLOCK: BLOCK, rename: rename };
+  var API = { BASIS: BASIS, DATA: DATA, POOLS: POOLS, HOUSES: HOUSES, POOL: ALL, BLOCK: BLOCK, rename: rename };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.OW_NAMES = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
