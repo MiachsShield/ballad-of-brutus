@@ -18,6 +18,12 @@
  * Combat numbers are SCALES against Brutus's baseline (1.0 = Brutus), not
  * absolute values, so they can't drift from the build's real HP/energy.
  * Everything numeric is first-pass and meant to be argued with.
+ *
+ * Names (Robert, 2026-09-28: no anachronistic names; epithets are the
+ * "celebrity" layer and stay): see names.js for the rules. ids are stable
+ * code keys and do NOT track display names (id 'pell' is now Piers Daw, id
+ * 'morrow' is Osmund, id 'tibby' is Mabel Quill). Ember and Wren are the
+ * build's existing ally cast and keep their names.
  */
 (function (root) {
   'use strict';
@@ -96,7 +102,7 @@
       bio: 'A field priest who decides mid-battle who deserves mending, and says so out loud. She has let people die over manners. Brilliant, feared, and completely unbuyable with gifts. The long bet of the cast: hard to land, and once she joins, the most loyal person in the game, because she only swears to the worthy.'
     },
     {
-      id: 'pell', name: 'Pell Marrow', epithet: 'Freelance Survivor',
+      id: 'pell', name: 'Piers Daw', epithet: 'The Early Leaver',
       region: 'Li Trice',
       class: 'Archer', archetype: 'ranged-back', tier: 2, tone: 'comic',
       combat: { hpScale: 0.7, energyScale: 1.1 },
@@ -141,7 +147,7 @@
       bio: 'A golden retriever with a sword. He charges first and plans never. Adores Brutus instantly because Brutus is also terrible at thinking ahead. Easy to court and impossible to recruit without his sister signing off. He is the one who gets both twins killed if nobody reins him in.'
     },
     {
-      id: 'morrow', name: 'Morrow', epithet: 'Last One Standing',
+      id: 'morrow', name: 'Osmund', epithet: 'The Gravedigger',
       region: 'Themelios',
       class: 'Warrior', archetype: 'frontline', tier: 5, tone: 'grim',
       combat: { hpScale: 1.6, energyScale: 0.9 },
@@ -156,7 +162,7 @@
       bio: 'The strongest adventurer in town and the only survivor of three guild wipes. He refuses to learn names anymore. Every guild wants him and none can keep him. The blue-chip stock: expensive, slow to move, and the headline of the season if Brutus lands him. Also the proof that level is no protection from a knife, if a rival decides he is worth killing.'
     },
     {
-      id: 'tibby', name: 'Tibby Quill', epithet: 'Chaplain and Bookmaker',
+      id: 'tibby', name: 'Mabel Quill', epithet: 'Chaplain and Keeper of the Book',
       region: 'Beloufi',
       class: 'Priest', archetype: 'support', tier: 2, tone: 'comic',
       combat: { hpScale: 0.85, energyScale: 1.2 },

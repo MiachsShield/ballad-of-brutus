@@ -4,7 +4,7 @@
 var MK = require('./market.js'), C = require('./cast.js'), B = require('./bulletin.js');
 var FULL = process.argv.indexOf('--full') !== -1;
 var BMISS = 0, BSTORIES = 0, BVISITS = 0;
-var VISITS = 10;
+var VISITS = 10, N_BLOCK = require('./names.js').BLOCK;
 
 var CQ = { frozen: 0, walked: 0, scapegoat: 0, leftBehind: 0, murdered: 0 }, CQnamed = 0;
 var EV = {}, RIP = 0, GG = 0;
@@ -59,6 +59,7 @@ if (process.argv.indexOf('--soak') !== -1) {
     });
     for (var g in s.guilds) if (s.guilds[g].alive && MK.members(s, g) > MK.capOf(s, g)) bad++;
     for (var g2 in s.guilds) { var G2 = s.guilds[g2]; if (!G2.alive) continue; G2.allies.concat(G2.feuds).forEach(function (o) { var O = s.guilds[o]; if (!O || !O.alive) return; if ( (G2.allies.indexOf(o) !== -1 && O.allies.indexOf(g2) === -1) || (G2.feuds.indexOf(o) !== -1 && O.feuds.indexOf(g2) === -1)) bad++; }); }
+    var seenN = {}; for (var id0 in s.roster) { var nm = s.roster[id0].name; if (seenN[nm] || N_BLOCK.test(nm)) bad++; seenN[nm] = true; }
     for (var id in s.roster) {
       var m = s.roster[id].m;
       if (m.desires.gold + m.desires.strongGuild + m.desires.friends !== 100) bad++;
@@ -83,7 +84,7 @@ if (process.argv.indexOf('--soak') !== -1) {
   console.log('avg MVP tenure by holder (visits, n):');
   MK.GUILDS.forEach(function (g) { var a = tg[g.id] || []; if (a.length) console.log('  ' + g.name.padEnd(28) +
     (a.reduce(function (x, y) { return x + y; }, 0) / a.length).toFixed(1) + '  (' + a.length + ')'); });
-  console.log('blue chips ever unguilded after visit 1 (Morrow/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
+  console.log('blue chips ever unguilded after visit 1 (Osmund/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
   console.log('cliques (per season): frozen out ' + per(CQ.frozen) + ' | misfit walkouts ' + per(CQ.walked) +
     ' | scapegoated ' + per(CQ.scapegoat) + ' | left behind ' + per(CQ.leftBehind) + ' | murdered ' + per(CQ.murdered) +
     ' | named clique deaths ' + per(CQnamed));
