@@ -5,9 +5,8 @@ function ok(c, m) { n++; if (!c) { fails++; console.log('FAIL', m); } }
 var regions = Object.keys(NM.BASIS), fs = require('fs');
 ok(regions.length === 7 && regions.every(function (r) { return NM.POOLS[r] && NM.POOLS[r].length >= 150; }), 'seven regions, each with 150+ given names (' + regions.map(function (r) { return NM.POOLS[r].length; }).join('/') + ')');
 ok(['Li Trice', 'Ayusti', 'Reyjar', 'Beloufi', 'Edinius'].every(function (r) {
-  var g = Object.keys(NM.DATA[r]).filter(function (k) { return /^meld/.test(k); })[0];
-  return g && NM.DATA[r][g].length >= 25;
-}), 'every mixed nation has a meld group of 25+ names');
+  return Object.keys(NM.DATA[r]).every(function (k) { return /^meld/.test(k); });
+}), 'every group in a mixed nation is a meld group: no pure-source lists (Robert: ideal meld of the inspirations)');
 var RESERVED = ['Ember', 'Wren', 'Dagny', 'Aline', 'Remy', 'Ines', 'Ivo', 'Nikandros', 'Mabel', 'Hask', 'Odile', 'Brutus', 'Cassius', 'Abel', 'Freja', 'Varvara'];
 ok(RESERVED.every(function (r) { return NM.POOL.indexOf(r) === -1; }), 'no pool name is a canon character or a named-cast name');
 ok(regions.every(function (r) { var all = []; Object.keys(NM.DATA[r]).forEach(function (g) { all = all.concat(NM.DATA[r][g]); }); return all.length === new Set(all).size; }), 'no repeats inside a region');
