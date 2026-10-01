@@ -29,7 +29,7 @@ the melds hold together; the world bible has the final word.
 | Themelios | Grecian | single source: city-states, island sailors, mountain shepherds |
 | Reyjar | Norse-Spanish | a seafaring warrior gentry that settled sun-baked uplands |
 | Li Trice | French-Chinese | a port republic run by trading houses |
-| Ayusti | Japanese-Brazilian | a monsoon coast of settlers and a mixed local people |
+| Ayusti | Japanese-Brazilian | a monsoon coast where Japanese and Brazilian settlers made one people |
 | Beloufi | Americana-Irish | a frontier of Irish settlers and every other newcomer |
 | Edinius | English-Lithuanian | a cold forest north of wool, amber and shared rivers |
 
@@ -102,13 +102,13 @@ the melds hold together; the world bible has the final word.
   and a Chinese word (a ward, a measure of road); *Trice* leans Latin.
 
 ## Ayusti — Japanese-Brazilian
-- **How they meet:** a monsoon coast where Japanese settler families and an
-  already mixed, Portuguese-speaking local people (Indigenous, African and European
-  roots) built one new people, not two neighbouring communities. "Brazilian" here
-  is a continuum, not a type.
-- **Looks:** hair from straight black through wavy brown to tight curls; skin from
-  light to deep brown; eyes mostly dark; eyelid shapes vary; builds from slight to
-  stocky. There is no Ayusti type.
+- **How they meet:** a monsoon coast where Japanese settler families and
+  Portuguese-speaking Brazilian settlers built one new people, not two
+  neighbouring communities. The real Japanese-Brazilian community is the model:
+  two cultures that married, cooked and celebrated into each other.
+- **Looks:** hair from straight black to wavy dark brown; skin from light to warm
+  brown; eyes mostly dark; eyelid shapes vary; builds from slight to stocky. There
+  is no single Ayusti type.
 - **Names:** *convergence* given names that sit in both languages: Rui, Iuri
   (Yuri), Nina, Caio, Aya, Mayara, Mika; Ine and Inês (Ine is the rice plant), Ivo
   and Iyo. Ordinary names from either side sit beside them (Haru, Takeo, Beatriz,
@@ -162,5 +162,7 @@ the melds hold together; the world bible has the final word.
 ## Open for Robert
 - Which of these melds are right and which should change. Everything above is a
   proposal; the world bible overrides it.
+- Ayusti is Japanese plus Brazilian and nothing else, as your table says. If
+  "Brazilian" should carry a wider range of looks, tell me which.
 - Marium and Themelios have no second source in your table. Say if a provincial
   or foreign strand should sit inside either one.
