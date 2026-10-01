@@ -19,6 +19,9 @@ the melds hold together; the world bible has the final word.
    manner tell you where someone is from before their face does.
 4. **Single-source nations** (Marium, Themelios) get their distinctiveness from
    internal variety instead of a second source.
+5. **Name pools.** `NAMES.md` lists 150+ given names per nation, grouped by source;
+   in the five mixed nations a `meld` group holds the names that belong to the
+   blended people itself. `names.js` holds the family and house names.
 
 | Nation | Basis | Where the two meet |
 |---|---|---|
