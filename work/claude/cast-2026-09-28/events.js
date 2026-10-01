@@ -208,14 +208,14 @@
     });
   }
 
-  // After deaths are known: Tibby's book.
+  // After deaths are known: the chaplain's book (id 'tibby').
   function afterDeaths(s, dead) {
     var t = s.roster.tibby;
     if (!t || !t.alive) return;
     dead.forEach(function (p) {
       if (p.id === 'tibby' || !p.sheet) return;
       t.m.fortune += 15;
-      headline(s, t, 'book', 'Tibby Quill quietly pays out on ' + p.name + '. Nobody buys her a drink');
+      headline(s, t, 'book', t.name + ' quietly pays out on ' + p.name + '. Nobody buys her a drink');
     });
   }
 

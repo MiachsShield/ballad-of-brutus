@@ -4,7 +4,7 @@ Robert's rulings, 2026-09-28. Data only: nothing is wired into `sim.js`,
 the dungeon, or `builds/`. Attaches as `window.OW_CAST`.
 
 ```
-node check-cast.js   # 97 checks: classes, sim traits, desires, ties
+node check-cast.js   # 111 checks: classes, sim traits, desires, ties, regions
 ```
 
 ## Rulings this sheet is built on
@@ -50,8 +50,8 @@ numbers unchanged):
 ```
 avg NAMED alive after visit: 5.9 4.9 4.3 3.7 3.2 2.8 2.5 2.2 1.9 1.8
 Ember 0%  Dagny 0%  Ivo 0%     (all three are reckless)
-Wren 45%  Pell 46%  Morrow 41%
-Odile 12%  Ines 12%  Tibby 10%  Hask 14%
+Wren 45%  Piers 46%  Osmund 41%
+Odile 12%  Ines 12%  Mabel 10%  Hask 14%
 ```
 
 **Open:** refill keeps the town full, but the named cast still dies at
@@ -75,7 +75,8 @@ from choosing floors past your tier; guild members are protected.
 Unnamed free agents vanish after 6 unguilded visits.
 
 ```
-node market-season.js          # one season's news, seed 7
+node market-season.js          # one season as the player sees it (top 3 stories a visit)
+node market-season.js --full   # the same season, every headline
 node market-season.js --soak   # 300 seeds, volatility metrics
 ```
 
@@ -86,11 +87,11 @@ per season: headlines 43.7 (named 40.0) | named deaths 1.1 | joins 11.5
   | desire shifts 4.3 | big hauls 15.9 | walkouts 3.5 | guild collapses 1.0
 named free agents available per visit: 3.4
 quiet visits: 0.5%
-survive%: t4–t5 (Odile, Morrow, Hask) ~100%, broke/greedy Tibby 58%,
+survive%: t4–t5 (Odile, Osmund, Hask) ~100%, broke/greedy Mabel 58%,
           reckless t2 (Ember, Ivo) ~80%
 ```
 
-Known gaps: Morrow/Odile/Hask sign on visit 1 and never leave, so the
+Known gaps: Osmund/Odile/Hask sign on visit 1 and never leave, so the
 blue chips are never courtable; newcomers rarely make news; Brutus and
 player choices are not in the loop yet.
 
@@ -125,7 +126,7 @@ Soak (300 seeds):
 poaches 0.5 | MVP walkouts (open windows) 1.1 | sabotage 4.8 | knives 1.4
 avg MVP tenure: Iron Oath 4.5 | Lantern 2.4 | Black Candle 2.2
                 Gilt Hand 1.7 | Hollow Crown 1.6
-blue chips (Morrow/Odile/Hask) ever free after visit 1: 18%
+blue chips (Osmund/Odile/Hask) ever free after visit 1: 18%
 named deaths 1.1 | named free agents per visit 3.2
 ```
 
@@ -146,3 +147,28 @@ A tight clique (fit > 0.4) adds hold against poachers.
 
 Soak (300 seeds): frozen out 3.4 | misfit walkouts 0.5 | scapegoated 0.6
 | left behind 0.1 | murdered 0.1 per season; named deaths 1.3 total.
+
+Robert, 2026-09-28: good vs evil (and region) means difficult, not
+incompatible. Fit now also rewards usefulness (out-performing the clique),
+wanting what they want, and time served. `node acceptance.js`: a member
+whose traits an evil guild dislikes ends up accepted in ~20% of stints.
+Soak after the change: frozen out 2.5 | misfit walkouts 0.3 | scapegoated
+0.3 | left behind 0.1 | murdered <0.1 per season; named deaths 1.2.
+
+## Names (2026-10-01)
+
+Robert: no anachronistic names (the fame/epithet "celebrity" layer stays).
+`names.js` holds the rules and a 45-name period pool for newcomers; duplicates
+are told apart by home region, then seniority ("Marta of Beloufi"), never a
+numeral. Picks hash the market seed + id, so naming never touches the sim's
+random stream. Renamed: Pell Marrow -> Piers Daw, Morrow -> Osmund, Tibby
+Quill -> Mabel Quill (epithets: The Early Leaver, The Gravedigger, Chaplain
+and Keeper of the Book); guilds Muddy Boots -> The Merry Rabble, Saint Pim's
+Rescue Brigade -> The Brethren of Saint Piran. Code ids are unchanged ('pell',
+'morrow', 'tibby', 'mud', 'pim'). Ember and Wren keep their names (existing
+build cast). `node check-names.js` lints cast, guild and newcomer names.
+
+Bug found while doing this: the sim keys newcomer ids by wave and the market
+never advanced it, so newcomers overwrote live people with the same id
+(~1.25 per season). Fixed in `market.js` (`s.wave = s.visit`); soak numbers
+moved by noise only.
