@@ -1,6 +1,9 @@
-/* node market-season.js         — one readable season (seed 7): the news
+/* node market-season.js         — one season (seed 7) as the player sees it: top 3 stories a visit
+ * node market-season.js --full  — the same season, every headline
  * node market-season.js --soak  — 300 seeds: volatility, not deaths      */
-var MK = require('./market.js'), C = require('./cast.js');
+var MK = require('./market.js'), C = require('./cast.js'), B = require('./bulletin.js');
+var FULL = process.argv.indexOf('--full') !== -1;
+var BMISS = 0, BSTORIES = 0, BVISITS = 0;
 var VISITS = 10;
 
 var CQ = { frozen: 0, walked: 0, scapegoat: 0, leftBehind: 0, murdered: 0 }, CQnamed = 0;
@@ -10,6 +13,9 @@ function run(seed, verbose) {
   var s = MK.newMarket(seed);
   for (var v = 1; v <= VISITS; v++) {
     var news = MK.visit(s);
+    var top = B.bulletin(s, news);
+    BVISITS++; BSTORIES += top.length;
+    if (news.some(function (n) { return n.named && n.kind === 'died'; }) && !top.some(function (t) { return t.group === 'Deaths'; })) BMISS++;
     C.CAST.forEach(function (a) { var p = s.roster[a.id]; if (p && !p.m.guild) FREE++; });
     if (v > 1) ['morrow', 'odile', 'hask'].forEach(function (id) {
       var p = s.roster[id]; s.seenFree = s.seenFree || {};
@@ -17,7 +23,8 @@ function run(seed, verbose) {
     });
     if (verbose) {
       console.log('— visit ' + v + ' —');
-      news.forEach(function (n) { console.log('  ' + (n.named ? '* ' : '  ') + n.text); });
+      if (FULL) news.forEach(function (n) { console.log('  ' + (n.named ? '* ' : '  ') + n.text); });
+      else top.forEach(function (t) { console.log('  ' + B.format(t)); });
     }
   }
   return s;
@@ -82,6 +89,8 @@ if (process.argv.indexOf('--soak') !== -1) {
     ' | named clique deaths ' + per(CQnamed));
   console.log('person-to-person (per season): ' + Object.keys(EV).sort().map(function (e) { return e + ' ' + per(EV[e]); }).join(' | '));
   console.log('ripple (per season): secondhand rows ' + per(RIP) + ' | people blaming a guild for a death ' + per(GG));
+  console.log('bulletin: avg stories shown per visit ' + (BSTORIES / BVISITS).toFixed(1) + ' | named deaths left off the bulletin ' + BMISS);
+  if (BMISS) bad += BMISS;
   console.log('invariant failures: ' + bad);
   process.exit(bad ? 1 : 0);
 } else run(7, true);
