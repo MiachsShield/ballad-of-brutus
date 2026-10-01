@@ -8,9 +8,11 @@
  *   Edinius   English-Lithuanian
  *
  * Rules:
- *   - a person's name draws on their home nation's two cultures; mixed-basis
- *     nations blend them the way real mixed communities do (a given name from
- *     one side, a surname from the other)
+ *   - a person's name draws on their home nation's two cultures, MELDED, not
+ *     stacked: a mixed nation is one people with its own naming system (see
+ *     NATIONS.md), never one culture's name wearing the other's surname
+ *   - where the two traditions already rhyme (a shared name, a shared meaning)
+ *     the system grows from that: convergence given names, doubled house names
  *   - pre-modern roots only: no nicknames or diminutives as given names, no
  *     numerals, no gamer tags, no modern trade or institution words
  *   - a name should say where its bearer is from, so no name sits in two
@@ -28,14 +30,30 @@
     'Marium': 'Roman', 'Themelios': 'Grecian', 'Reyjar': 'Norse-Spanish', 'Li Trice': 'French-Chinese',
     'Ayusti': 'Japanese-Brazilian', 'Beloufi': 'Americana-Irish', 'Edinius': 'English-Lithuanian'
   };
+  // Newcomer given names, one pool per nation (see NATIONS.md for the logic).
+  // Mixed nations lean on CONVERGENCE names, ones equally at home in both
+  // source cultures, so the people read as one people, not two in costume.
   var POOLS = {
     'Marium':    ['Lucan', 'Aurelia', 'Cassian', 'Livia', 'Marcellus', 'Valeria', 'Quintus', 'Sabina', 'Decimus', 'Flavia', 'Rufus', 'Cornelia', 'Octavia', 'Severus'],
     'Themelios': ['Theron', 'Eudora', 'Callista', 'Demetra', 'Alexios', 'Zoe', 'Leandros', 'Kosmas', 'Ioanna', 'Stavros', 'Melina', 'Dorothea', 'Argyros', 'Xenia'],
-    'Reyjar':    ['Halvard', 'Sigrun', 'Torvald', 'Ragna', 'Eirik', 'Gudrun', 'Ottar', 'Marta', 'Alonso', 'Leonor', 'Rodrigo', 'Beltran', 'Ximena', 'Sancho', 'Inigo'],
-    'Li Trice':  ['Aimery', 'Mahaut', 'Guilhem', 'Berenger', 'Clemence', 'Hugues', 'Isaut', 'Brice', 'Meilin', 'Lanying', 'Wenzhao', 'Jinhai', 'Ruolan', 'Shuyi', 'Yingtai'],
-    'Ayusti':    ['Haru', 'Ume', 'Kiku', 'Tomoe', 'Iori', 'Takeo', 'Saburo', 'Aoi', 'Tiago', 'Caetano', 'Luzia', 'Lourenco', 'Beatriz', 'Iara', 'Roque'],
+    'Reyjar':    ['Halvard', 'Sigrun', 'Torvald', 'Ragna', 'Eirik', 'Gudrun', 'Ottar', 'Alonso', 'Leonor', 'Rodrigo', 'Beltran', 'Ximena', 'Inigo', 'Alvaro', 'Elvira', 'Gonzalo'],
+    'Li Trice':  ['Yann', 'Mai', 'Luce', 'Lanne', 'Meline', 'Aubin', 'Sorel', 'Ange', 'Linet', 'Liane', 'Jehan', 'Mirel', 'Lise', 'Anlin'],
+    'Ayusti':    ['Rui', 'Iuri', 'Nina', 'Caio', 'Aya', 'Mayara', 'Mika', 'Sora', 'Lia', 'Tomo', 'Haru', 'Beatriz', 'Takeo', 'Luzia'],
     'Beloufi':   ['Cormac', 'Niall', 'Aoife', 'Orla', 'Brigid', 'Fionn', 'Maeve', 'Silas', 'Amos', 'Eben', 'Hepzibah', 'Prudence', 'Josiah', 'Gideon'],
-    'Edinius':   ['Oswin', 'Wulfric', 'Godric', 'Hilda', 'Aldith', 'Cenred', 'Alfreda', 'Tamsin', 'Wilda', 'Vytas', 'Jurgis', 'Rasa', 'Daiva', 'Milda', 'Gedas', 'Aldona']
+    'Edinius':   ['Oswin', 'Wulfric', 'Godric', 'Hilda', 'Aldith', 'Edmundas', 'Alfreda', 'Tamsin', 'Henrikas', 'Vytas', 'Jurgis', 'Rasa', 'Daiva', 'Milda', 'Gedas', 'Aldona']
+  };
+  // Family and house names, per nation (data for named characters; NATIONS.md
+  // explains each system: Roman nomina, Greek -ides, Iberian -ez patronymics,
+  // Li Trice trade-houses, Ayusti doubled place-names, Irish-frontier names,
+  // English stems with Lithuanian -aitis/-aite).
+  var HOUSES = {
+    'Marium':    ['Aurelius', 'Cornelius', 'Fabius', 'Claudius', 'Domitius', 'Flavius', 'Livius', 'Septimius'],
+    'Themelios': ['Kleonides', 'Demetrides', 'Theodorides', 'Philippides', 'Aristides', 'Alexides'],
+    'Reyjar':    ['Halvardez', 'Torvaldez', 'Eirikez', 'Ottarez', 'Sigurdez', 'Ragnez', 'Gudmundez'],
+    'Li Trice':  ['Laque', 'Soie', 'Encre', 'Jonque', 'Sel', 'Papier', 'Lanterne'],
+    'Ayusti':    ['Kawario', 'Moriselva', 'Yamaserra', 'Ishipedra', 'Umimar', 'Hoshiestrela'],
+    'Beloufi':   ['Calloway', 'Tolliver', "O'Dell", 'Brannock', 'McTierney', 'Harkness', 'Gallagher', 'Quill'],
+    'Edinius':   ['Godricaitis', 'Wulfaitis', 'Oswinaitis', 'Aldraitis', 'Edmundaitis', 'Harraitis']
   };
   var SENIORITY = ['the Younger', 'the Elder', 'the Third'];
   // Lint: things that must never show up in a name or epithet.
@@ -70,7 +88,7 @@
   }
 
   var ALL = []; Object.keys(POOLS).forEach(function (r) { ALL = ALL.concat(POOLS[r]); });
-  var API = { BASIS: BASIS, POOLS: POOLS, POOL: ALL, BLOCK: BLOCK, rename: rename };
+  var API = { BASIS: BASIS, POOLS: POOLS, HOUSES: HOUSES, POOL: ALL, BLOCK: BLOCK, rename: rename };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.OW_NAMES = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

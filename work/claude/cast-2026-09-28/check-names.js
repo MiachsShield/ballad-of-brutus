@@ -2,8 +2,18 @@
 var MK = require('./market.js'), NM = require('./names.js'), C = require('./cast.js');
 var fails = 0, n = 0;
 function ok(c, m) { n++; if (!c) { fails++; console.log('FAIL', m); } }
-var regions = Object.keys(NM.BASIS);
+var regions = Object.keys(NM.BASIS), fs = require('fs');
 ok(regions.length === 7 && regions.every(function (r) { return NM.POOLS[r] && NM.POOLS[r].length >= 12; }), 'seven regions, each with a pool of 12+ names');
+ok(regions.every(function (r) { return NM.HOUSES[r] && NM.HOUSES[r].length >= 6 && NM.HOUSES[r].every(function (h) { return /^[A-Za-z']+$/.test(h) && !NM.BLOCK.test(h); }); }), 'each region has 6+ house names, plain ASCII');
+var allHouses = []; regions.forEach(function (r) { allHouses = allHouses.concat(NM.HOUSES[r]); });
+ok(allHouses.length === new Set(allHouses).size, 'no house name sits in two regions');
+var doc = fs.readFileSync(__dirname + '/NATIONS.md', 'utf8');
+ok(regions.every(function (r) { return doc.indexOf('## ' + r) !== -1 && doc.indexOf(NM.BASIS[r].replace('-', '-')) !== -1; }), 'NATIONS.md covers every region and its basis');
+ok(allHouses.every(function (h) { return doc.indexOf(h) !== -1; }), 'every house name in names.js appears in NATIONS.md (data and doc agree)');
+ok(C.CAST.every(function (a) {
+  var t = a.name.replace(/^Sister /, '').split(' ');
+  return t.length === 1 || NM.HOUSES[a.region].indexOf(t[t.length - 1]) !== -1;
+}), 'every cast surname comes from the home region\'s house names');
 ok(NM.POOL.length === new Set(NM.POOL).size, 'no name sits in two regions (a name says where you are from)');
 ok(NM.POOL.every(function (x) { return !NM.BLOCK.test(x) && /^[A-Z][a-z]+$/.test(x); }), 'pool: plain ASCII period names, no digits or modern words');
 ok(JSON.stringify(regions.sort()) === JSON.stringify(C.REGIONS.slice().sort()), 'names.js and cast.js agree on the seven regions');
