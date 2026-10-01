@@ -65,19 +65,15 @@ Meilin, Lanying, Wenzhao, Jinhai, Ruolan, Shuyi, Yingtai, Xiulan, Hualing, Yuehu
 
 Yann, Luc, Lu, Line, Lin, Lian, Liane, Lianne, Lanne, Linet, Linette, Lanette, Jinette, Meline, Meiline, Mai, Lise, Luce, Lucie, Anlin, Anmei, Ange, Ang, Sorel, Mirel, Yvon, Yun, Rene, Ren, Lou, Fanette, Fan, Ninon, Lanmei, Meilan, Lingette, Yuelle, Jinelle, Lumei, Luming, Lulan, Yuline, Yveline, Remei, Anyan, Mathis, Aumei, Lilou
 
-## Ayusti — Japanese-Brazilian (187 names)
+## Ayusti — Japanese-Brazilian (163 names)
 
 **japanese** (79)
 
 Takeo, Haru, Saburo, Tomo, Iori, Genji, Shiro, Jiro, Taro, Ichiro, Goro, Rokuro, Hachiro, Yoshi, Nobu, Toshi, Masa, Hiro, Kazu, Kane, Sen, Ryo, Kai, Daichi, Eiji, Fumio, Gen, Hayato, Isamu, Jun, Katsu, Kiyo, Makoto, Michi, Noboru, Osamu, Seiji, Shin, Tadashi, Taka, Tetsu, Yasu, Yukio, Zen, Ume, Kiku, Tomoe, Aoi, Natsu, Fuyu, Aki, Sumire, Sakura, Hana, Yuki, Chiyo, Shizu, Tsuru, Matsu, Kame, Ran, Rin, Sayo, Yone, Nami, Mio, Fumi, Hoshi, Kimi, Kiyoko, Miyo, Nao, Noriko, Sachi, Setsu, Shino, Suzu, Tama, Tsuya
 
-**portuguese** (48)
+**brazilian (Portuguese-language names as used in Brazil)** (48)
 
 Tiago, Caetano, Lourenco, Beatriz, Luzia, Henrique, Duarte, Afonso, Joaquim, Manuel, Vasco, Gaspar, Baltasar, Dinis, Estevao, Goncalo, Jorge, Lucas, Mateus, Pedro, Simao, Teodoro, Vicente, Matilde, Filipa, Catarina, Isabel, Joana, Madalena, Margarida, Mariana, Teresa, Rosa, Violeta, Constanca, Dulce, Graca, Helena, Luisa, Nazare, Rafaela, Amadeu, Bento, Cristovao, Domingos, Fernao, Gil, Jacinto
-
-**tupi and african roots** (24)
-
-Iara, Jurema, Araci, Ceci, Moema, Iracema, Ubirajara, Jandira, Guaraci, Jacira, Potira, Ubiratan, Caua, Raoni, Tainara, Anaue, Janaina, Naiara, Dandara, Nzinga, Aqualtune, Kiluanje, Arani, Jaci
 
 **meld (names at home in both languages)** (36)
 
@@ -113,4 +109,4 @@ Edmundas, Henrikas, Alfredas, Albertas, Arnoldas, Edgaras, Edvardas, Hermanas, H
 
 ---
 
-1192 names across 7 nations.
+1168 names across 7 nations.
