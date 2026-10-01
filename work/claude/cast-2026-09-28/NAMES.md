@@ -37,76 +37,92 @@ Eudora, Callista, Demetra, Zoe, Ioanna, Melina, Dorothea, Xenia, Thaleia, Theodo
 
 Aikaterine, Ambrosia, Briseis, Charikleia, Chryseis, Eleftheria, Eugenia, Galene, Glykeria, Kalypso, Kleopatra, Lais, Leto, Myrine, Nephele, Olympia
 
-## Reyjar — Norse-Spanish (167 names)
+## Reyjar — Norse-Spanish (153 names)
 
-**norse** (69)
+**meld: Norse stems, Iberian music (men)** (44)
 
-Halvard, Sigrun, Torvald, Ragna, Eirik, Gudrun, Ottar, Ragnar, Sigurd, Gunnar, Leif, Bjorn, Ulf, Harald, Olaf, Thorstein, Haakon, Hrolf, Orm, Sven, Knut, Arne, Asgeir, Einar, Finn, Geir, Gisli, Grim, Ivar, Kolbein, Magnus, Njal, Odd, Snorri, Steinar, Sturla, Thorbjorn, Thorkel, Trygve, Ingrid, Astrid, Thora, Helga, Gunhild, Hallgerd, Ingebjorg, Jorunn, Liv, Ragnhild, Signe, Sigrid, Solveig, Thyra, Unn, Aslaug, Alfhild, Bergljot, Brynhild, Eir, Embla, Gerd, Gunnvor, Hild, Ingunn, Randi, Svanhild, Tove, Yrsa, Vigdis
+Halvardo, Torvaldo, Torbaldo, Eirico, Ragnaldo, Ragnaro, Sigurdo, Gunnaro, Gunnardo, Ulfrico, Ottaro, Ottilio, Arnaldo, Sveno, Haraldo, Olavo, Ivaro, Einaro, Magno, Bjornardo, Canuto, Ormando, Ingvaro, Grimaldo, Esteinar, Thoralfo, Gudmundo, Leifardo, Orvaldo, Sigvaldo, Sigfrido, Halfredo, Gunfrido, Haukardo, Magnaldo, Einaldo, Svenardo, Arnardo, Esvaldo, Orlando, Rolando, Arnulfo, Gundulfo, Ragnulfo
 
-**iberian (many of them Germanic in origin)** (58)
+**meld: Norse stems, Iberian music (women)** (34)
 
-Alonso, Leonor, Rodrigo, Beltran, Ximena, Inigo, Alvaro, Elvira, Gonzalo, Fernando, Ramiro, Garcia, Ordono, Bermudo, Pelayo, Velasco, Nuno, Munio, Froila, Gutierre, Rodulfo, Hermenegildo, Diego, Jimeno, Lope, Fortun, Aznar, Sancho, Alfonso, Urraca, Ermesinda, Brunilda, Gontroda, Gosinda, Sunilda, Munia, Ingunda, Sancha, Toda, Oneca, Velasquita, Aldonza, Mayor, Berenguela, Marta, Teodomiro, Recaredo, Wamba, Alarico, Ataulfo, Leovigildo, Teodorico, Gundemaro, Sigerico, Eurico, Amalarico, Teudis, Witerico
+Sigruna, Gudruna, Ragnilda, Ingrida, Astrida, Estrida, Torilda, Solveiga, Gunilda, Hildegunda, Thorgunna, Brynhilda, Svanilda, Ingeborga, Sigrida, Alfhilda, Aslauga, Hallgerda, Jorunna, Ingunna, Gunnvora, Liva, Eira, Tora, Gerda, Embla, Helga, Yrsa, Unna, Signa, Esvena, Alva, Ermengarda, Ottilia
 
-**meld (Norse stems in Iberian shape, and back)** (40)
+**meld: Iberian stems, Norse bite** (18)
 
-Halvardo, Torvaldo, Ottaro, Eirico, Olavo, Haraldo, Sigurdo, Gunnaro, Ragnaldo, Reinaldo, Ingvaro, Alvar, Rodrik, Ramundo, Gundar, Ataulf, Hildefons, Leovard, Thorgeiro, Sveno, Orlando, Rolando, Arnaldo, Gudmundo, Sigruna, Gudruna, Ragnilda, Ingrida, Astrida, Torilda, Solveiga, Gunilda, Hildegunda, Ermengarda, Thorgunna, Alfhilda, Brunhilda, Svanilda, Ingeborga, Sigerica
+Ramund, Bermund, Velmund, Fernulf, Fernhild, Gonzulf, Leonulf, Leovard, Leovald, Rodrik, Alvar, Elvhild, Elvrun, Velhild, Velrun, Ermenhild, Ermenulf, Brunhild
 
-## Li Trice — French-Chinese (162 names)
+**meld: where north and south already met** (57)
 
-**french and Occitan** (61)
+Rodrigo, Alvaro, Gonzalo, Elvira, Alonso, Alfonso, Fernando, Ramiro, Alarico, Ataulfo, Recaredo, Leovigildo, Teodorico, Gundemaro, Sigerico, Eurico, Amalarico, Teudis, Witerico, Wamba, Hermenegildo, Ermesinda, Brunilda, Gontroda, Gosinda, Sunilda, Munia, Ingunda, Froila, Munio, Nuno, Rodulfo, Gutierre, Velasco, Ordono, Bermudo, Pelayo, Aznar, Jimeno, Lope, Fortun, Sancho, Sancha, Urraca, Ximena, Leonor, Inigo, Beltran, Berenguela, Aldonza, Toda, Oneca, Velasquita, Diego, Garcia, Mayor, Teodomiro
 
-Aimery, Aubin, Guilhem, Berenger, Jehan, Perrin, Colin, Hugues, Renaud, Thibault, Gaucelm, Raimbaut, Bertrand, Arnaud, Bernart, Peire, Folquet, Gui, Giraut, Amiel, Anselme, Aymar, Baudouin, Clement, Denis, Estienne, Evrard, Foulques, Gaston, Gautier, Herve, Mahaut, Isaut, Clemence, Ysabeau, Alienor, Agnes, Alix, Blanche, Berthe, Colette, Constance, Eglantine, Esclarmonde, Garsende, Guillemette, Heloise, Jacquette, Jehanne, Laurette, Marguerite, Mathilde, Mirabelle, Oriane, Perrette, Philippa, Sibylle, Sidonie, Soline, Tiphaine, Yolande
+## Li Trice — French-Chinese (159 names)
 
-**chinese (in the port spelling)** (53)
+**meld: Chinese syllables, French endings** (74)
 
-Meilin, Lanying, Wenzhao, Jinhai, Ruolan, Shuyi, Yingtai, Xiulan, Hualing, Yuehua, Zhenmei, Qingyun, Chunmei, Baolin, Mingyu, Weiming, Zhiyuan, Haoran, Jianhua, Kaiwen, Liwei, Xinyi, Yanling, Zihan, Ruixi, Jinglan, Anqi, Mei, Lan, Ying, Jin, Shu, Wen, Yue, Xiu, Zhen, Hui, Fang, Ling, Xin, Qing, Bao, Chun, Hua, Ming, Ning, Ping, Qiu, Rong, Tao, Wei, Yi, Yu
+Lanette, Lanelle, Lanie, Lanou, Lanon, Linette, Linelle, Linon, Linot, Linie, Jinette, Jinelle, Jinon, Jinot, Jinie, Wenette, Wenelle, Wenon, Wenie, Fanelle, Fanie, Fanon, Yanette, Yanelle, Yanick, Yanie, Yanon, Zhenette, Zhenelle, Zhenie, Xinette, Xinelle, Xinie, Xinon, Qinette, Qinelle, Ninette, Ninelle, Lingette, Lingelle, Yinette, Yinelle, Yinon, Anette, Anelle, Lulette, Meilette, Meilene, Shulette, Hualine, Lanise, Linise, Jinise, Wenise, Fanise, Zhenise, Xinise, Lanois, Linois, Jinois, Wenois, Yanois, Lanaud, Linaud, Jinaud, Wenaud, Yanaud, Linard, Jinard, Wenard, Lanien, Jinien, Wenien, Yanien
 
-**meld (names at home in both mouths, and creole blends)** (48)
+**meld: French stems, Chinese endings** (38)
 
-Yann, Luc, Lu, Line, Lin, Lian, Liane, Lianne, Lanne, Linet, Linette, Lanette, Jinette, Meline, Meiline, Mai, Lise, Luce, Lucie, Anlin, Anmei, Ange, Ang, Sorel, Mirel, Yvon, Yun, Rene, Ren, Lou, Fanette, Fan, Ninon, Lanmei, Meilan, Lingette, Yuelle, Jinelle, Lumei, Luming, Lulan, Yuline, Yveline, Remei, Anyan, Mathis, Aumei, Lilou
+Mirlan, Mirlin, Mirwen, Mirmei, Sorlan, Sorlin, Sorwen, Sormei, Ysalin, Ysamei, Ysawen, Marlin, Marlan, Marwen, Loulan, Louwen, Loumei, Louling, Camlin, Camwen, Cammei, Luclin, Lucwen, Lucmei, Aurlin, Aurmei, Aurlan, Selmei, Sellan, Selwen, Anglan, Angmei, Berlan, Berwen, Julmei, Julwen, Hellan, Helwen
 
-## Ayusti — Japanese-Brazilian (163 names)
+**meld: names at home in both mouths** (38)
 
-**japanese** (79)
+Yann, Mai, Luce, Lise, Lin, Lian, Liane, Lianne, Lanne, Line, Ange, Ang, Lou, Yun, Yvon, Fan, Ren, Rene, Luc, Lu, Mirel, Sorel, Lilou, Lucie, Anlin, Anmei, Lanmei, Meilan, Lumei, Luming, Lulan, Yuline, Yveline, Remei, Anyan, Aumei, Meline, Meiline
 
-Takeo, Haru, Saburo, Tomo, Iori, Genji, Shiro, Jiro, Taro, Ichiro, Goro, Rokuro, Hachiro, Yoshi, Nobu, Toshi, Masa, Hiro, Kazu, Kane, Sen, Ryo, Kai, Daichi, Eiji, Fumio, Gen, Hayato, Isamu, Jun, Katsu, Kiyo, Makoto, Michi, Noboru, Osamu, Seiji, Shin, Tadashi, Taka, Tetsu, Yasu, Yukio, Zen, Ume, Kiku, Tomoe, Aoi, Natsu, Fuyu, Aki, Sumire, Sakura, Hana, Yuki, Chiyo, Shizu, Tsuru, Matsu, Kame, Ran, Rin, Sayo, Yone, Nami, Mio, Fumi, Hoshi, Kimi, Kiyoko, Miyo, Nao, Noriko, Sachi, Setsu, Shino, Suzu, Tama, Tsuya
+**meld: the tail of a French name on a Chinese syllable** (9)
 
-**brazilian (Portuguese-language names as used in Brazil)** (48)
+Meianne, Yuelise, Xiulise, Wenlise, Jinlise, Linlise, Meilise, Fanlise, Yinglise
 
-Tiago, Caetano, Lourenco, Beatriz, Luzia, Henrique, Duarte, Afonso, Joaquim, Manuel, Vasco, Gaspar, Baltasar, Dinis, Estevao, Goncalo, Jorge, Lucas, Mateus, Pedro, Simao, Teodoro, Vicente, Matilde, Filipa, Catarina, Isabel, Joana, Madalena, Margarida, Mariana, Teresa, Rosa, Violeta, Constanca, Dulce, Graca, Helena, Luisa, Nazare, Rafaela, Amadeu, Bento, Cristovao, Domingos, Fernao, Gil, Jacinto
+## Ayusti — Japanese-Brazilian (151 names)
 
-**meld (names at home in both languages)** (36)
+**meld: Japanese stems, Brazilian lilt** (79)
+
+Yukinha, Harinha, Mikinha, Sorinha, Akinha, Takinho, Naminha, Uminha, Kikinha, Tominho, Kazinho, Suminha, Fuminho, Fumina, Kiminha, Yoshinho, Toshinho, Masinha, Sakinha, Hirinho, Nobinho, Natsinha, Juninho, Geninho, Zeninho, Seninho, Iorinho, Shirinho, Tarinho, Gorinho, Eijinho, Makotinho, Seijinho, Yasinho, Yukinho, Katsinho, Aoinha, Haninha, Shizinha, Tsurinha, Kaminha, Raninha, Sayinha, Yoninha, Norikinha, Sachinha, Shininha, Suzinha, Taminha, Fuyinha, Sumirinha, Rinara, Namira, Sumira, Miyara, Kimira, Hanina, Mikaela, Soraia, Takazinho, Mikazinha, Sorazinha, Akizinha, Haruzinho, Hanazinha, Namizinha, Tomozinho, Kazuzinho, Miyozinha, Fumizinha, Kimizinha, Aoizinha, Sumizinha, Hirozinho, Shirozinho, Tarozinho, Gorozinho, Yukizinha, Natsuzinha
+
+**meld: Portuguese stems, Japanese lilt** (16)
+
+Mariko, Marika, Marimi, Luzumi, Luzuko, Rosami, Rosuke, Rosuko, Lucaro, Caetaro, Pedoro, Tiagoro, Teresumi, Beatriko, Catsumi, Dulsumi
+
+**meld: new names built from both sound-worlds** (20)
+
+Akaro, Takaru, Takari, Mikaru, Mikari, Sorano, Soraru, Yukaro, Yukari, Natsiana, Namiara, Tomaru, Tomari, Sakaio, Sakari, Mitsara, Mitsari, Ayumara, Kiyara, Kazuara
+
+**meld: names at home in both languages** (36)
 
 Rui, Iuri, Nina, Caio, Aya, Mayara, Mika, Sora, Lia, Rei, Rio, Mari, Rika, Maya, Mina, Naomi, Kaito, Ana, Ayumi, Emi, Yumi, Nanami, Leo, Noa, Niko, Reina, Rina, Saori, Aiko, Yuna, Sol, Mara, Taina, Tais, Tatsu, Lara
 
-## Beloufi — Americana-Irish (181 names)
+## Beloufi — Americana-Irish (164 names)
 
-**irish** (58)
+**meld: Irish clan names as frontier first names** (90)
 
-Cormac, Niall, Fionn, Aidan, Brendan, Cathal, Ciaran, Colm, Conall, Declan, Dermot, Donal, Eamon, Eoghan, Fergus, Finbar, Kieran, Lorcan, Malachy, Oisin, Padraig, Rory, Ruairi, Seamus, Turlough, Ronan, Cian, Darragh, Diarmuid, Aoife, Orla, Brigid, Maeve, Niamh, Siobhan, Sinead, Deirdre, Grainne, Eithne, Fionnuala, Ide, Mairead, Nuala, Oonagh, Roisin, Sorcha, Una, Caoimhe, Clodagh, Eibhlin, Emer, Etain, Gormlaith, Ita, Muirne, Neasa, Orlaith, Sadhbh
+Brennan, Keegan, Delaney, Madigan, Quinlan, Riordan, Sheridan, Donovan, Rafferty, Tierney, Kerrigan, Callahan, Hanlon, Mulligan, Doyle, Boyle, Murphy, Nolan, Quinn, Rooney, Sullivan, Cleary, Dempsey, Fallon, Maguire, Brannigan, Flanagan, Hennessy, Kavanagh, Lafferty, Mahoney, Monaghan, Nugent, Oneill, Quigley, Reagan, Shannon, Sweeney, Tiernan, Whelan, Gilroy, Hogan, Kearney, Moran, Brogan, Carrigan, Cassidy, Connolly, Costigan, Darcy, Egan, Fagan, Farrell, Finnegan, Galvin, Gannon, Geary, Grady, Keane, Kehoe, Larkin, Logan, Molloy, Mooney, Neville, Phelan, Regan, Rourke, Ryan, Teague, Tully, Kilroy, Mallory, Lennon, Keenan, Doran, Devlin, Casey, Conroy, Dolan, Duffy, Garvey, Healy, Joyce, Kirby, Lowry, Madden, Nealon, Rafter, Slattery
 
-**americana (biblical and virtue names, frontier names)** (87)
+**meld: ogham trees and frontier nature** (34)
 
-Silas, Amos, Eben, Josiah, Gideon, Hepzibah, Prudence, Jedediah, Ezekiel, Elijah, Ezra, Abner, Obadiah, Zebulon, Zephaniah, Ephraim, Eliphalet, Lemuel, Nathaniel, Thaddeus, Cyrus, Micah, Asa, Enoch, Hiram, Ira, Jethro, Levi, Reuben, Seth, Tobias, Caleb, Ebenezer, Ethan, Hezekiah, Isaac, Jacob, Jeremiah, Joel, Moses, Nehemiah, Noah, Solomon, Wesley, Zachariah, Gabriel, Hollis, Wyatt, Tucker, Jasper, Horace, Ambrose, Barnabas, Temperance, Charity, Patience, Mercy, Verity, Faith, Hope, Honor, Abigail, Keziah, Jemima, Lydia, Martha, Mehitabel, Ruth, Tabitha, Thankful, Comfort, Dorcas, Eunice, Hannah, Huldah, Jerusha, Mahala, Orpha, Rhoda, Zilpah, Cordelia, Eliza, Lucinda, Minerva, Ophelia, Josephine, Clementine
+Rowan, Alder, Birch, Hazel, Holly, Willow, Briar, Bracken, Clover, Juniper, Sage, Fern, Heather, Thistle, Linden, Aspen, Laurel, Ivy, Cedar, Hawthorn, Sorrel, Bryony, Linnet, Finch, Lark, Starling, Robin, Piper, Sparrow, Heron, Kestrel, Marigold, Primrose, Rosemary
 
-**meld (Irish names worn the frontier way)** (36)
+**meld: saints and scripture (Irish calendar, American Bible)** (40)
 
-Patrick, Bridget, Kathleen, Moira, Garrett, Dennis, Owen, Rowan, Colum, Finnian, Brennan, Keegan, Delaney, Madigan, Quinlan, Riordan, Sheridan, Donovan, Rafferty, Tierney, Kerrigan, Callahan, Hanlon, Mulligan, Doyle, Boyle, Kilian, Murphy, Nolan, Quinn, Rooney, Sullivan, Cleary, Dempsey, Fallon, Maguire
+Patrick, Bridget, Colum, Brendan, Declan, Ciaran, Finnian, Kilian, Malachy, Moira, Kathleen, Garrett, Dennis, Owen, Columba, Colman, Fintan, Gerard, Kevin, Aidan, Enda, Fiachra, Ita, Kieran, Brigid, Maura, Michael, Joseph, Thomas, Daniel, Matthew, Timothy, Bartholomew, Jeremiah, Hannah, Rachel, Rebecca, Susanna, Seamus, Eamon
 
 ## Edinius — English-Lithuanian (153 names)
 
-**english** (52)
+**meld: English stems in Lithuanian dress** (45)
 
-Oswin, Wulfric, Godric, Hilda, Aldith, Cenred, Alfreda, Tamsin, Wilda, Eadric, Ealdred, Cuthbert, Leofric, Osric, Wystan, Aelfric, Athelstan, Beorn, Brand, Cedric, Dunstan, Egbert, Ethelred, Godwin, Harold, Hereward, Leofwin, Osmund, Redwald, Sigebert, Swithin, Tostig, Ulric, Wulfstan, Ethelreda, Godiva, Leofrun, Mildred, Osburga, Wulfhild, Aelfgifu, Aethelflaed, Eanswith, Ebba, Eormenhild, Frideswide, Hereswith, Lioba, Redburga, Sexburga, Tova, Wynflaed
+Godrikas, Wulfrikas, Oswinas, Ulrikas, Aldrikas, Eadrikas, Leofrikas, Cuthbertas, Godvinas, Wulfstanas, Atelstanas, Haroldas, Egbertas, Dunstanas, Cedrikas, Brandas, Osrikas, Tostigas, Beornas, Cenredas, Wystanas, Elfrikas, Sigebertas, Svitinas, Redvaldas, Hervardas, Leofvinas, Osmundas, Eadmundas, Eadwardas, Aldredas, Ethelredas, Hilde, Aldite, Etelreda, Wulfilda, Mildreda, Osburga, Ebbe, Tove, Hildegarda, Fridesvyda, Eanswita, Leofruna, Atelflede
 
-**lithuanian** (67)
+**meld: Lithuanian stems, English iron** (63)
 
-Vytas, Jurgis, Gedas, Rimas, Dainius, Algis, Algirdas, Gediminas, Vytautas, Kestutis, Mindaugas, Jogaila, Kazimieras, Vaidotas, Vaidas, Rokas, Tomas, Mantas, Lukas, Saulius, Zygimantas, Butautas, Daumantas, Dovydas, Eimantas, Gintaras, Jaunius, Kristupas, Liudas, Rytis, Skirmantas, Tauras, Traidenis, Vilius, Vykintas, Jonas, Petras, Antanas, Juozas, Algimantas, Rasa, Daiva, Milda, Aldona, Birute, Egle, Gabija, Giedre, Grazina, Jurate, Laima, Vaiva, Ausra, Danute, Dalia, Dovile, Gintare, Ieva, Jadvyga, Kotryna, Rugile, Saule, Skaiste, Vaida, Vilija, Ugne, Zivile
+Vytwin, Vytric, Vytwald, Gedwin, Gedric, Gedwulf, Rimwald, Rimwin, Dainwulf, Dainwin, Algric, Algwin, Algmund, Saulric, Saulwin, Gintric, Gintwin, Gintwulf, Mantwin, Mantric, Rokwald, Rokwin, Tauric, Taurwald, Vaidric, Rytwin, Rytric, Vilwin, Vilric, Kazwin, Kazric, Jaunwin, Ludwin, Kestwin, Kestric, Mindwald, Mindwulf, Daumwin, Eimwin, Eimric, Zygwald, Skirwin, Traiwin, Vykwin, Jogwin, Jogric, Gedmund, Rimmund, Dainmund, Saulmund, Gintmund, Laimhild, Rashild, Daivhild, Mildburg, Aldhild, Eglehild, Gabihild, Giedhild, Vaivhild, Ausrhild, Dalhild, Ievhild
 
-**meld (one Germanic name, two spellings)** (34)
+**meld: diminutives worn both ways** (14)
 
-Edmundas, Henrikas, Alfredas, Albertas, Arnoldas, Edgaras, Edvardas, Hermanas, Herbertas, Ernestas, Ricardas, Vilhelmas, Adolfas, Oskaras, Rolandas, Rodolfas, Leopoldas, Konradas, Gerardas, Reinoldas, Edvinas, Osvaldas, Godrikas, Oswinas, Wulfrikas, Edita, Matilda, Adela, Berta, Elzbieta, Gertruda, Hildegarda, Vilhelmina, Ludvika
+Wulfukas, Oswinukas, Godrukas, Aldrukas, Hildute, Aldute, Edute, Berute, Etelute, Mildute, Osbute, Wulfute, Godute, Aldrute
+
+**meld: shared Germanic names, two spellings** (31)
+
+Edmundas, Henrikas, Alfredas, Albertas, Arnoldas, Edgaras, Edvardas, Hermanas, Herbertas, Ernestas, Ricardas, Vilhelmas, Adolfas, Oskaras, Rolandas, Rodolfas, Leopoldas, Konradas, Gerardas, Reinoldas, Edvinas, Osvaldas, Edita, Matilda, Adela, Berta, Elzbieta, Gertruda, Vilhelmina, Ludvika, Alfreda
 
 ---
 
-1168 names across 7 nations.
+1122 names across 7 nations.
