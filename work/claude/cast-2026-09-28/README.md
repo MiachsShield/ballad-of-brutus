@@ -165,6 +165,9 @@ mixed nations every name group is a meld group (a check enforces it).
 
 **`NATIONS.md`** (Tier B proposal) organizes looks, names, dress, places and manner for
 all seven nations as ideal melds, with no real-world justification required.
+**`LOOKS.md`** elaborates the physical features of each nation (face, eyes and brows, skin,
+hair, build, hands and marks, aging, variation, plus an art cheat-sheet);
+`node check-looks.js` keeps it complete and keeps Ayusti to Japanese plus Brazilian only.
 `names.js` holds the matching data: the basis table, house names for the named cast,
 and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
 by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
