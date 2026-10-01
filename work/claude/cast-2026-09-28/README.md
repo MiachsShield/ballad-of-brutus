@@ -160,24 +160,25 @@ Soak after the change: frozen out 2.5 | misfit walkouts 0.3 | scapegoated
 Robert: no anachronistic names (the fame/epithet "celebrity" layer stays); names
 and looks follow each nation's phenotype basis from his world bible; and a mixed
 nation is **a third thing, not one culture in the other's clothes** ("Li Trice is
-not Chinese in French clothing").
+not Chinese in French clothing"), an *ideal* meld "regardless of reality". In the five
+mixed nations every name group is a meld group (a check enforces it).
 
-**`NATIONS.md`** (Tier B proposal) organizes looks, names, dress and manner for all
-seven nations, with an invented history that makes each meld hold together.
+**`NATIONS.md`** (Tier B proposal) organizes looks, names, dress, places and manner for
+all seven nations as ideal melds, with no real-world justification required.
 `names.js` holds the matching data: the basis table, house names for the named cast,
 and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
 by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
-list (1,168 names; regenerate with `node build-names-doc.js`). Highlights:
+list (1,122 names; regenerate with `node build-names-doc.js`). Highlights:
 
-| Nation | Basis | The meld |
+| Nation | Basis | The ideal meld |
 |---|---|---|
-| Marium | Roman | single source; the cognomen is the celebrity byname |
-| Themelios | Grecian | single source; meaning-compound names, -ides lines |
-| Reyjar | Norse-Spanish | Norse stems in Iberian shape; -ez patronymics (Spain's own names are Germanic) |
-| Li Trice | French-Chinese | a port republic of trading houses; convergence given names; house-first or given-first order |
-| Ayusti | Japanese-Brazilian | Japanese plus Brazilian only; convergence names; doubled house names (Kawario = river-river) |
-| Beloufi | Americana-Irish | Biblical and Irish names; clan prefixes on frontier trades; tall-tale bynames |
-| Edinius | English-Lithuanian | shared Germanic names in two shapes; English stem + -aitis/-aite |
+| Marium | Roman | Rome as it dreamed itself; the cognomen is the celebrity byname |
+| Themelios | Grecian | Hellas as it dreamed itself; meaning-compound names |
+| Reyjar | Norse-Spanish | the sunlit north: Norse stems in Iberian music, -ez patronymics, courtyard long-halls |
+| Li Trice | French-Chinese | the city of lanterns and lattice: Chinese syllables with French endings, house-first or given-first |
+| Ayusti | Japanese-Brazilian | the lantern coast: Japanese stems with a Brazilian lilt (and back), doubled house names |
+| Beloufi | Americana-Irish | the porch and the hearth: clan names as first names, ogham trees, tall-tale bynames |
+| Edinius | English-Lithuanian | the amber north: English stems in Lithuanian dress, English iron on Lithuanian roots |
 
 Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
 
