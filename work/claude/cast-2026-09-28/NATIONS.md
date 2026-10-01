@@ -22,6 +22,8 @@ Edinius English-Lithuanian). The world bible has the final word.
    it: Rome and Hellas as they dreamed themselves.
 6. **Name pools.** `NAMES.md` lists 150+ given names per nation. `names.js` holds
    the family and house names.
+7. **Physical features.** `LOOKS.md` elaborates every "Looks" line below: face, eyes,
+   skin, hair, build, hands and marks, aging and variation, plus an art cheat-sheet.
 
 | Nation | Basis | The meld, in a line |
 |---|---|---|
