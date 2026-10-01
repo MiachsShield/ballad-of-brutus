@@ -84,7 +84,7 @@ if (process.argv.indexOf('--soak') !== -1) {
   console.log('avg MVP tenure by holder (visits, n):');
   MK.GUILDS.forEach(function (g) { var a = tg[g.id] || []; if (a.length) console.log('  ' + g.name.padEnd(28) +
     (a.reduce(function (x, y) { return x + y; }, 0) / a.length).toFixed(1) + '  (' + a.length + ')'); });
-  console.log('blue chips ever unguilded after visit 1 (Osmund/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
+  console.log('blue chips ever unguilded after visit 1 (Nikandros/Odile/Hask): ' + (100 * BLUE / (N * 3)).toFixed(0) + '%');
   console.log('cliques (per season): frozen out ' + per(CQ.frozen) + ' | misfit walkouts ' + per(CQ.walked) +
     ' | scapegoated ' + per(CQ.scapegoat) + ' | left behind ' + per(CQ.leftBehind) + ' | murdered ' + per(CQ.murdered) +
     ' | named clique deaths ' + per(CQnamed));
