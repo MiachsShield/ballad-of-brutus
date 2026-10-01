@@ -167,7 +167,7 @@ seven nations, with an invented history that makes each meld hold together.
 `names.js` holds the matching data: the basis table, house names for the named cast,
 and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
 by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
-list (1,192 names; regenerate with `node build-names-doc.js`). Highlights:
+list (1,168 names; regenerate with `node build-names-doc.js`). Highlights:
 
 | Nation | Basis | The meld |
 |---|---|---|
@@ -175,7 +175,7 @@ list (1,192 names; regenerate with `node build-names-doc.js`). Highlights:
 | Themelios | Grecian | single source; meaning-compound names, -ides lines |
 | Reyjar | Norse-Spanish | Norse stems in Iberian shape; -ez patronymics (Spain's own names are Germanic) |
 | Li Trice | French-Chinese | a port republic of trading houses; convergence given names; house-first or given-first order |
-| Ayusti | Japanese-Brazilian | convergence names; doubled house names (Kawario = river-river) |
+| Ayusti | Japanese-Brazilian | Japanese plus Brazilian only; convergence names; doubled house names (Kawario = river-river) |
 | Beloufi | Americana-Irish | Biblical and Irish names; clan prefixes on frontier trades; tall-tale bynames |
 | Edinius | English-Lithuanian | shared Germanic names in two shapes; English stem + -aitis/-aite |
 
