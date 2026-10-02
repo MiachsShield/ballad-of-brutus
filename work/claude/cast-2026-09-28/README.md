@@ -167,7 +167,10 @@ mixed nations every name group is a meld group (a check enforces it).
 all seven nations as ideal melds, with no real-world justification required.
 **`LOOKS.md`** elaborates the physical features of each nation (face, eyes and brows, skin,
 hair, build, hands and marks, aging, variation, plus an art cheat-sheet);
-`node check-looks.js` keeps it complete and keeps Ayusti to Japanese plus Brazilian only.
+`node check-looks.js` keeps it complete, keeps Ayusti to Japanese plus Brazilian only, and
+checks that Robert's locked rulings on the seven peoples appear in it. **Those rulings now
+live in the world bible, `canon/world-bible-v3.md` §4.6** (verbatim, plus a clearly marked
+zero-canon continuation); these docs follow it and the bible wins any conflict.
 `names.js` holds the matching data: the basis table, house names for the named cast,
 and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
 by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
@@ -175,13 +178,13 @@ list (1,122 names; regenerate with `node build-names-doc.js`). Highlights:
 
 | Nation | Basis | The ideal meld |
 |---|---|---|
-| Marium | Roman | Rome as it dreamed itself; the cognomen is the celebrity byname |
-| Themelios | Grecian | Hellas as it dreamed itself; meaning-compound names |
-| Reyjar | Norse-Spanish | the sunlit north: Norse stems in Iberian music, -ez patronymics, courtyard long-halls |
-| Li Trice | French-Chinese | the city of lanterns and lattice: Chinese syllables with French endings, house-first or given-first |
-| Ayusti | Japanese-Brazilian | the lantern coast: Japanese stems with a Brazilian lilt (and back), doubled house names |
-| Beloufi | Americana-Irish | the porch and the hearth: clan names as first names, ogham trees, tall-tale bynames |
-| Edinius | English-Lithuanian | the amber north: English stems in Lithuanian dress, English iron on Lithuanian roots |
+| Marium | Roman | Rome as it dreamed itself, brawnier and bronzed by island life; the cognomen is the celebrity byname |
+| Themelios | Grecian | a merchant crossroads: the most diverse people, a warm smile and a sharp tongue |
+| Reyjar | Norse-Spanish | the pale north: porcelain, slender, black lace and iron; Norse stems in Iberian music, -ez patronymics |
+| Li Trice | French-Chinese | lanterns and lattice, forefront of fashion (contour and drama); Chinese syllables with French endings |
+| Ayusti | Japanese-Brazilian | the lantern coast: light tan, bright, quick and cute; Japanese stems with a Brazilian lilt, doubled house names |
+| Beloufi | Americana-Irish | the porch and the hearth: six-to-seven-foot giants who love hard and never forget; clan names as first names |
+| Edinius | English-Lithuanian | the amber north: tall, pale, direct, dry; English stems in Lithuanian dress |
 
 Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
 
@@ -195,7 +198,9 @@ Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
 | Nikandros | Themelios | was Morrow, then Osmund |
 | Mabel Quill | Beloufi | |
 
-Home regions are my placeholders. Each authored character (not Ember or Wren, whose
+The cast sheets are zero-canon placeholders and now conflict with the locked rulings in places
+(Dagny reads as Beloufi, Mabel should be six to seven feet, Remy should be stocky; see
+`NATIONS.md` "Open for Robert"). Home regions are my placeholders. Each authored character (not Ember or Wren, whose
 art the build defines) has a one-line `look` in `cast.js`: an ART SUGGESTION for
 Robert to veto. Guilds: Muddy Boots -> The Merry Rabble, Saint Pim's Rescue Brigade
 -> The Brethren of Saint Piran. `node check-names.js` (26 checks) lints names, checks
