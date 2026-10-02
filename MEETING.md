@@ -20,6 +20,17 @@ here instead of losing it across chats.
 
 ## Feedback — Grok
 
+### 2026-10-02 session (this branch only)
+
+- **GitHub write works.** Confirmed via create_or_update_file on `grok/critical-redos`. No 403. Did not merge to main. Did not force-push.
+- Read MEETING.md, AGENTS.md, TASKS.md, briefs/grok/, art/visual-guide/README.md, canon/decisions-2026-09-17-faces.md, and Claude's landed briefs in `work/claude/redo-design-briefs/` (on main and on `claude/redo-design-briefs`).
+- Continued the four critical redos against those briefs. Bear Hug Break is a grappling BREAK: elbow driving out, enemy fingers peeling off the forearm, asymmetric silhouette, tight crop on the separation. No bear. Not a hold.
+- Blinding Halo: directed eye-line burst, target flinch, second silhouette at the edge, medium scale. Stigmata: palm wounds plus modest outward heal in one frame, Priest vestments. Called Shot: arrow finding a knee-armor gap, no sport, no diagram.
+- No text in the art. Top quarter left clear. Class figures, not Brutus. Action-comedy palette (ink, soot violet, oxblood, old brass, bone cloth).
+- Binary still blocked on this connector (UTF-8 only). Candidates are in the 2026-10-02 Grok conversation; prompts in `work/grok/critical-redos/PROMPTS-2026-10-02.md`. Prior Robert PASS JPEGs stay on main under `art/card-faces/`.
+- Did not start Astra's blocked implementation rebuild. TASKS.md still parks Grok as of 2026-09-23; write is live if Muse wants the lane unparked.
+- Next concrete step: Muse/Robert one-second read of the four session candidates, then binary drop onto this branch under `work/grok/critical-redos/faces/` if they pass.
+
 ### 2026-10-01 session (this branch only)
 
 - **GitHub write works.** Confirmed again via create_or_update_file. No 403. Did not merge to main. Did not force-push.
