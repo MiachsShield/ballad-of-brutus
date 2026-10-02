@@ -16,7 +16,7 @@ rulings.
    needs a backstory to justify it.
 2. **A meld is a third thing**, never one culture in the other's clothes. Names,
    dress, buildings and manner are all designed as one fused style. In the five
-   mixed nations there are no pure-source names at all.
+   mixed nations the newcomer name pools hold no pure-source names at all.
 3. **Ranges, not types.** Looks say what is *common*, never what is *required*.
    Any adventurer can break any of it.
 4. **Culture identifies, phenotype only colours.** Name, dress and manner tell
@@ -156,7 +156,7 @@ rulings.
   embarrasses, humiliates or betrays them. Loyalty is personal, not national: Beloufi
   have no common love for one another, and vitriol toward liars and betrayers makes
   them the least united of the seven regions. They are not savages (locked, bible §4.6).
-- **Fits:** The Merry Rabble, Mabel Quill.
+- **Fits:** The Merry Rabble, Bramble Calloway ("The Ox"), Mabel Quill.
 
 ## Edinius — English-Lithuanian
 - **The meld:** the amber north. Tall, pale, direct and dry: people who say a thing
@@ -184,10 +184,9 @@ rulings.
   Beloufi are muscular men and generously proportioned women, not savages and not
   united; Edinius light green is both eye colour and a colour worn on every outfit;
   Marium peers are fellow Mariumites, and Brutus overflows with life force.
-- **The cast sheets now conflict in places** and are zero-canon placeholders:
-  Dagny (Reyjar, broad, olive-tan) reads as Beloufi; Mabel Quill (Beloufi) should be
-  six to seven feet and generously proportioned; Remy Jonque (Li Trice, "wiry")
-  should be stocky but agile. Say the word and I will fix them, including re-homing
-  Dagny.
-- **Aline Laque and Remy Jonque** (Li Trice) still lean French. I can fuse them
-  (e.g. Linelle, Remei).
+- **The cast sheets now follow the locked rulings** (a check enforces it): Dagny moved
+  to Beloufi as Bramble Calloway, "The Ox", six and a half feet; Mabel Quill is well
+  over six feet; Remy is stocky; the Li Trice and Ayusti cast are petite, with beauty
+  marks and light tan respectively; Hask is porcelain-pale.
+- **Named characters keep their names**, though Aline, Remy (Li Trice) and Mabel
+  (Beloufi) lean toward one source. I can fuse them if you want.
