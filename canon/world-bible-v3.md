@@ -18,8 +18,9 @@ Ledger) and the fully-proposed batches (17–20, 22–28, 32).
   themselves or explicitly reserved for Robert's own narrative authorship.
 
 **Addendum, 2026-10-01:** §4.6 adds Robert's locked rulings on the seven peoples
-(physical features and temperament), recorded exactly as he wrote them, plus a
-clearly separated zero-canon continuation. Nothing else in v3 changed.
+(physical features and temperament) and his four confirmations of the compiler's
+readings, all recorded exactly as he wrote them, plus a clearly separated zero-canon
+continuation. Nothing else in v3 changed.
 
 ---
 
@@ -98,23 +99,42 @@ people.
 **Edinius**
 > Direct. Curt. Pale white. Light green. Their colors. conservative wear, dignified. Muted colors. Dry humor. Tall. Lithuanian face shape and eyes.
 
-**Compiler's readings (NOT canon; flagged so Robert can correct them):**
-- **Marium:** "his peers" is read as Brutus's fellow Mariumites. The entry sits under
-  Marium but does not itself state Brutus's nation. It records physical vigour only:
+**Confirmations (locked, Robert directly, 2026-10-01).** His answers to the four
+readings the compiler had flagged, recorded exactly:
+
+*On Beloufi, "very physically well endowed":*
+> Well endowed. Men are muscular even with the height , and women tend to be generously proportioned without the extra chunkiness.
+
+*On Beloufi, "They just don't care for the misery it will cause":*
+> Well, they're not savages. Nor do they have a common love for other beloufi- you could even say they are the least united of all the regions due to their vitriol to liars, embarrassment, humiliation, betrayal, etc.
+
+*On Edinius, "Light green":*
+> Both. They tend to wear light green somewhere too
+
+*On Marium, "his peers":*
+> yes. It's like brutus is overflowing with life force
+
+**Compiler's readings (NOT canon; confirmed or corrected by Robert's answers above):**
+- **Marium:** CONFIRMED: "his peers" are Brutus's fellow Mariumites. (This implies Brutus
+  is counted among the Mariumites; v2 was not re-checked for his stated origin this
+  pass.) Brutus is "overflowing with life force". This records vigour only:
   **Brutus's core trait (brave/reckless vs. lazy) stays reserved for Robert (§3).**
 - **Reyjar:** "sunkeness" is read as "sunkenness": a slight natural hollowing around
-  the eyes (deep-set eyes).
+  the eyes (deep-set eyes). Not queried.
 - **Li Trice:** "Almond hair" is read as the warm light brown of an almond, running
   to black; "Red brown black eyes" as eye colours from red-brown to brown to black.
+  Not queried.
 - **Ayusti:** the face leans Japanese; skin (light tan) and temperament are as stated.
-- **Beloufi:** "very physically well endowed" is read as physically large and
-  powerfully built, which fits "6-7 feet". "They just don't care for the misery it will
-  cause" is read as *dislike*: they could conquer the world and don't, because they
-  don't like the misery it would cause. (If "don't care for" meant *indifferent to*,
-  that reverses the meaning. Please confirm.)
-- **Edinius:** "Pale white. Light green. Their colors." is read as the national
-  colours (pale white and light green) with pale skin. If "light green" also means
-  eye colour, please say.
+- **Beloufi:** CONFIRMED and CORRECTED. "Well endowed" means men muscular even at their
+  height and women generously proportioned without extra chunkiness (not merely
+  "large"). The "dislike" reading of the restraint is confirmed: they are *not savages*.
+  Robert adds, separately, that **they are not a united people at all**: no common love
+  for one another, the least united of the seven regions, riven by vitriol toward
+  liars, embarrassment, humiliation and betrayal. Loyalty is personal, never national.
+  (The compiler's link between the two, that disunity also stops them conquering
+  together, is a proposal and appears only in the zero-canon continuation.)
+- **Edinius:** CONFIRMED: light green is both a national colour and an eye colour, and
+  they tend to wear light green somewhere on every outfit.
 
 **Proposed continuation (zero canon; written by the compiler to carry the rulings
 forward, in the same register, and to be reviewed per entry):**
@@ -123,7 +143,8 @@ forward, in the same register, and to be reviewed per entry):**
   thick forearms from hauling nets, cutting stone and rowing, skin bronzed by a life
   on water and rock, with the old Roman gravitas worn over a body built for work.
   Strength is ordinary here, so being *exceptionally* vigorous even among them is a
-  mark of distinction. Proposed guild fit: Lantern Company.
+  mark of distinction, and Brutus has it: he seems to overflow with life force. Proposed
+  guild fit: Lantern Company.
 - **Themelios.** A republic of counting-houses more than temples, run by merchants, so
   travellers of every origin have settled here and the crowd looks like no single
   people. Hospitality is a trade skill: a dinner invitation is an investment, a
@@ -149,17 +170,23 @@ forward, in the same register, and to be reviewed per entry):**
   like old friends, and treat every task as a reason to make noise. Proposed guild fit:
   The Brethren of Saint Piran, whose enthusiasm is the national temperament turned
   into a vocation.
-- **Beloufi.** Giants of six to seven feet, powerfully built, who love with the same
-  force they feast, drink and sing, and are the most loyal people on the island:
-  friends are family. Disgrace or humiliation done to one of them brings quick,
-  severe retribution; the betrayed Beloufi weeps harder than the traitor does after
-  the beating, and those are the gentle ones. The rest take no nonsense and settle
-  disputes fast and bluntly. Collectively they could conquer everything and do not,
-  because they dislike the misery it would cause. Proposed guild fit: The Merry Rabble.
+- **Beloufi.** Giants of six to seven feet, the men muscular even at that height and the
+  women generously proportioned without extra chunkiness. They love, feast, drink and
+  sing with the same force, and are fiercely loyal to the individuals they care about,
+  but that loyalty is personal, not national: Beloufi have no common love for one
+  another and are the least united of the seven regions, because liars, embarrassment,
+  humiliation and betrayal draw vitriol even from their own kind. Disgrace or
+  humiliation done to one of them brings quick, severe retribution; the betrayed Beloufi
+  weeps harder than the traitor does after the beating, and those are the gentle ones.
+  The rest take no nonsense and settle disputes fast and bluntly. They are strong enough
+  to conquer everything and do not: they are not savages, they dislike the misery it
+  would cause, and they could never agree to do it together. Proposed guild fit: The
+  Merry Rabble.
 - **Edinius.** Direct and curt, pale-skinned and tall, with Lithuanian face shapes and
-  eyes. Their colours are pale white and light green; dress is conservative,
-  dignified and muted; humour is dry. A thing is said once, plainly, and silence is
-  not rudeness. Proposed guild fit: The Black Candle.
+  light green eyes. Light green is also their national colour and they tend to wear it
+  somewhere on every outfit; the rest of the dress is conservative, dignified and muted;
+  humour is dry. A thing is said once, plainly, and silence is not rudeness. Proposed
+  guild fit: The Black Candle.
 
 ## 5. Relationship System — STATUS UPDATE, still pending
 
@@ -208,8 +235,8 @@ Carried from v2, with resolutions applied:
 9. **New: Brutus's arrival vs. peace cracking** — **RESOLVED** (see §2): narrative
    guidance, not a scene-level mechanism.
 10. **New: the seven peoples** — physical features and temperament **LOCKED** (see
-    §4.6); the continuation beneath the rulings is zero canon, and four readings are
-    flagged there for Robert to confirm.
+    §4.6), with Robert's four confirmations recorded there; the continuation beneath
+    them is zero canon. Nothing in this item remains open.
 
 ## 8. Sourcing
 
