@@ -35,7 +35,7 @@ rulings.
 | Reyjar | Norse-Spanish | the pale north: porcelain, black lace and iron |
 | Li Trice | French-Chinese | the city of lanterns and lattice, forefront of fashion |
 | Ayusti | Japanese-Brazilian | the lantern coast: bright, quick and cute |
-| Beloufi | Americana-Irish | the porch and the hearth: giants who love hard and never forget |
+| Beloufi | Americana-Irish | the porch and the hearth: muscular giants, loyal one by one, the least united people on the island |
 | Edinius | English-Lithuanian | the amber north: tall, pale, direct, dry |
 
 ---
@@ -44,7 +44,8 @@ rulings.
 - **Looks:** Roman, but brawnier and bronzed by island life. Dark brown to black
   wavy hair; deep sun-and-sea bronze; dark eyes, some hazel; strong level brows, a
   straight or high-bridged nose; broad, thick-necked, heavy-armed builds. Even
-  Brutus's peers think him exceptionally vigorous (locked, bible §4.6).
+  Brutus's peers think him exceptionally vigorous: he seems to overflow with life
+  force (locked, bible §4.6).
 - **Names:** given name + family name (-ius / -ia) + a **cognomen**, the earned
   byname from a look or a deed (Rufus, "the red"), which is the celebrity layer.
   *Families:* Aurelius, Cornelius, Fabius, Claudius, Domitius, Flavius, Livius,
@@ -133,11 +134,13 @@ rulings.
 - **Fits:** The Brethren of Saint Piran, Ines and Ivo Kawario.
 
 ## Beloufi — Americana-Irish
-- **The meld:** the porch and the hearth. Giants who love hard and feast harder,
-  the most loyal people on the island, with a long memory for betrayal.
-- **Looks:** very physically large and powerful, six to seven feet tall (locked,
-  bible §4.6). Hair from copper and auburn to black, any eye colour, ruddy cheeks and
-  laugh lines.
+- **The meld:** the porch and the hearth. Giants who love hard and feast harder, fiercely
+  loyal to the people they care about and hard on everyone else, the least united
+  people on the island.
+- **Looks:** six to seven feet tall and well endowed: the men muscular even at that
+  height, the women generously proportioned without extra chunkiness (locked, bible
+  §4.6). Hair from copper and auburn to black, any eye colour, ruddy cheeks and laugh
+  lines.
 - **Names:** clan names worn as first names (Brennan, Keegan), ogham trees and
   prairie plants (Rowan, Juniper, Linnet), and saints and scripture (Patrick,
   Malachy, Hannah). **Bynames are tall-tale nicknames** ("Hardtack", "Two-Bucket"),
@@ -148,16 +151,18 @@ rulings.
   quilt makes a fine cloak.
 - **Places:** stone cottages with doorways cut tall and deep porches, a fiddle or
   banjo in every doorway, barn dances, pubs that are also general stores.
-- **Bearing:** love shown loudly, merriment as a way of life, blunt dispute
-  settling, and quick, severe retribution on anyone who disgraces one of their own
-  (locked, bible §4.6).
+- **Bearing:** love shown loudly to those they care about, merriment as a way of life,
+  blunt dispute settling, and quick, severe retribution on anyone who lies to,
+  embarrasses, humiliates or betrays them. Loyalty is personal, not national: Beloufi
+  have no common love for one another, and vitriol toward liars and betrayers makes
+  them the least united of the seven regions. They are not savages (locked, bible §4.6).
 - **Fits:** The Merry Rabble, Mabel Quill.
 
 ## Edinius — English-Lithuanian
 - **The meld:** the amber north. Tall, pale, direct and dry: people who say a thing
   once and mean it.
-- **Looks:** pale white skin, tall, Lithuanian face shape and eyes. National colours
-  pale white and light green (locked, bible §4.6).
+- **Looks:** pale white skin, tall, Lithuanian face shape, and light green eyes.
+  Light green is also a national colour, alongside pale white (locked, bible §4.6).
 - **Names:** English heroic stems in Lithuanian dress (Godrikas, Atelstanas),
   Lithuanian stems with English iron (Gedwin, Algric, Laimhild), diminutives both
   ways (Wulfukas, Hildute), and Germanic names in two spellings (Edmund,
@@ -165,8 +170,8 @@ rulings.
   daughter of"). *Families:* Godricaitis, Wulfaitis, Oswinaitis, Aldraitis,
   Edmundaitis, Harraitis.
 - **Dress:** conservative and dignified in muted tones, with pale white and light
-  green as the national colours; wool kirtles and long coats; one amber bead is
-  plenty.
+  green as the national colours; light green appears somewhere on every outfit (a
+  lining, ribbon, trim or pin); wool kirtles and long coats; one amber bead is plenty.
 - **Places:** timber halls with steep thatched roofs and carved sun-wheels; sacred
   groves with a hearth-fire at the centre; plain, orderly amber markets.
 - **Bearing:** direct, curt, dry-humoured, dignified.
@@ -175,13 +180,14 @@ rulings.
 ---
 
 ## Open for Robert
-- **Four readings in the world bible (§4.6) need your confirmation:** Beloufi "well
-  endowed" read as physically large; Beloufi "don't care for the misery" read as
-  *dislike*; Edinius "light green" read as a national colour, not eye colour; Marium
-  "his peers" read as fellow Mariumites.
+- **All four readings in the world bible are now confirmed or corrected** (§4.6):
+  Beloufi are muscular men and generously proportioned women, not savages and not
+  united; Edinius light green is both eye colour and a colour worn on every outfit;
+  Marium peers are fellow Mariumites, and Brutus overflows with life force.
 - **The cast sheets now conflict in places** and are zero-canon placeholders:
   Dagny (Reyjar, broad, olive-tan) reads as Beloufi; Mabel Quill (Beloufi) should be
-  six to seven feet; Remy Jonque (Li Trice, "wiry") should be stocky but agile. Say
-  the word and I will fix them, including re-homing Dagny.
+  six to seven feet and generously proportioned; Remy Jonque (Li Trice, "wiry")
+  should be stocky but agile. Say the word and I will fix them, including re-homing
+  Dagny.
 - **Aline Laque and Remy Jonque** (Li Trice) still lean French. I can fuse them
   (e.g. Linelle, Remei).

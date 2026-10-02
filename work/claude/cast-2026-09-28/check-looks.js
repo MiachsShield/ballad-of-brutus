@@ -27,7 +27,10 @@ ok(has('Reyjar', /porcelain/i) && has('Reyjar', /slender/i) && has('Reyjar', /su
 ok(!/bronze|sun-bronzed/i.test(section('Reyjar')), 'Reyjar is not bronzed (an earlier draft was)');
 ok(has('Li Trice', /petite to average/i) && has('Li Trice', /beauty marks/i) && has('Li Trice', /almond/i) && has('Li Trice', /red-brown/i) && has('Li Trice', /stockier/i) && has('Li Trice', /hip\s+and\s+thigh/i), 'Li Trice: petite to average, beauty marks, almond hair, red-brown eyes, stockier men, fuller women');
 ok(has('Ayusti', /light tan/i) && has('Ayusti', /petite to average/i) && has('Ayusti', /cute/i) && has('Ayusti', /Japanese/i), 'Ayusti: light tan, petite to average, cute, Japanese-leaning face');
-ok(has('Beloufi', /six to seven feet/i), 'Beloufi: six to seven feet');
+ok(has('Beloufi', /six to seven feet/i) && has('Beloufi', /muscular/i) && has('Beloufi', /generously\s+proportioned/i) && has('Beloufi', /without\s+extra\s+chunkiness/i), 'Beloufi: six to seven feet, muscular men, generously proportioned women without extra chunkiness');
+ok(has('Beloufi', /least\s+united/i), 'Beloufi: the least united of the seven');
+ok(has('Marium', /life\s+force/i), 'Marium: Brutus overflows with life force');
+ok(has('Edinius', /light\s+green\s+and\s+clear/i) && has('Edinius', /light-green\s+ribbon/i), 'Edinius: light green eyes, and light green worn somewhere on every outfit');
 ok(has('Edinius', /pale white/i) && has('Edinius', /tall/i) && has('Edinius', /Lithuanian/i) && has('Edinius', /light green/i), 'Edinius: pale white, tall, Lithuanian face and eyes, light green');
 ok(/Height and build/.test(doc), 'the cheat-sheet carries a height column');
 // the bible, when present, must hold all seven rulings word for word
@@ -36,7 +39,8 @@ var bible = null; cands.forEach(function (c) { if (!bible && fs.existsSync(c)) b
 if (bible) {
   ['exceptionally vigorous', 'as likely to gossip about you negatively as inviting you for dinner', 'slight natural sunkeness in their eyes',
    'Beauty marks on face, arms legs', 'Face leands to be more Japanese esque', "They just don't care for the misery it will cause",
-   'Lithuanian face shape and eyes'].forEach(function (q) { ok(bible.indexOf(q) !== -1, 'world bible 4.6 holds the ruling verbatim: "' + q + '"'); });
+   'Lithuanian face shape and eyes', 'generously proportioned without the extra chunkiness', 'the least united of all the regions',
+   'They tend to wear light green somewhere too', 'overflowing with life force'].forEach(function (q) { ok(bible.indexOf(q) !== -1, 'world bible 4.6 holds the ruling verbatim: "' + q + '"'); });
   ok(/Compiler's readings \(NOT canon/.test(bible) && /Proposed continuation \(zero canon/.test(bible), 'the bible keeps readings and continuation marked as not canon');
 }
 console.log(n - fails + '/' + n + ' looks checks pass');
