@@ -49,7 +49,8 @@ else). The one-line `look` on each cast sheet is an art suggestion for Robert to
 - **Build and carriage:** brawny: broad-backed, thick-necked, deep-chested, heavy in
   the forearm and calf, medium height. Compact power; even the clerks look as though
   they could pull an oar. An unhurried, upright stride. Brutus is this type at its
-  limit: exceptionally vigorous even among his peers (bible §4.6).
+  limit: exceptionally vigorous even among his peers, as though overflowing with life
+  force (bible §4.6).
 - **Hands and marks:** broad scarred hands hardened by rope and stone, short nails,
   the pale line of a signet ring, a proudly shown scar, shoulders bronzed to the
   cloth line.
@@ -167,26 +168,29 @@ else). The one-line `look` on each cast sheet is an art suggestion for Robert to
   lines and a wind-flush. Freckles are a badge, "a map of the summer".
 - **Hair:** copper, auburn, ginger, chestnut, sandy, black, to tight coils; thick and
   unruly; braids and kerchiefs; bushy beards tied with leather.
-- **Build and carriage:** six to seven feet tall and very powerful: broad, thick-limbed,
-  deep-chested, with a rolling, unhurried stride. They duck under doorframes, and
-  chairs are a negotiation. Gentle with small things, which is why it is a surprise
-  when they are not.
+- **Build and carriage:** six to seven feet tall and well endowed. The men are muscular
+  even at that height: broad, thick-limbed and deep-chested. The women are generously
+  proportioned without extra chunkiness: full-figured, strong and in proportion to
+  their height. Both move with a rolling, unhurried stride. They duck under
+  doorframes, and chairs are a negotiation. Gentle with small things, which is why it
+  is a surprise when they are not.
 - **Hands and marks:** huge cracked hands like shovels; scarred knuckles; fiddle-
   callused fingertips; the names of the people they love inked on forearm or chest;
   wake-ribbons at the wrist.
 - **Aging:** bigger, grizzled, white-gold beards; the hands knot but the strength holds.
 - **Variation:** the "gentle ones" are softer-faced and warmer-eyed, the no-nonsense ones
   hard-jawed and level-gazed; heights run from tall-for-anywhere at six feet to a head
-  above every doorway at seven.
+  above every doorway at seven. Kinship is not a look: Beloufi are the least united of
+  the seven peoples, so family likeness shows in expression, not in a shared type.
 
 ## Edinius — English-Lithuanian
 *Pale, tall and plain.*
 - **Face:** the Lithuanian face shape: broad across the forehead and cheekbones, wide-set
   eyes, a short straight nose, a firm jaw, thin lips. At rest it reads as "get to the
   point", with little smiling and a great deal of straight looking.
-- **Eyes and brows:** pale and clear, wide-set, with the Lithuanian eye shape; grey, blue
-  and green are common, and light green is the national colour. Fair straight brows and
-  light lashes.
+- **Eyes and brows:** light green and clear, wide-set, with the Lithuanian eye shape;
+  pale grey and blue turn up but light green is the signature (and a national colour).
+  Fair straight brows and light lashes.
 - **Skin:** pale white and fine, reddening first at the cheeks and nose in cold; freckles
   are rare and plain.
 - **Hair:** ash-blond to flax to light brown, sometimes darker; straight and neat. Women's
@@ -194,7 +198,8 @@ else). The one-line `look` on each cast sheet is an art suggestion for Robert to
 - **Build and carriage:** tall, long-limbed but sturdy, standing straight and very still,
   with economical gesture and an unhurried, level stride.
 - **Hands and marks:** large-knuckled, calm hands, wool-roughened; plain rings only; a
-  small pale-green ribbon or pin; wind-reddened cheeks and ear tips.
+  light-green ribbon, lining or pin somewhere on every outfit; wind-reddened cheeks and
+  ear tips.
 - **Aging:** stern dignity: hair goes white-silver, with lines at the mouth; the humour
   shows only at the corner of the mouth.
 - **Variation:** forest folk are leaner and darker-haired; river-town families broader;
