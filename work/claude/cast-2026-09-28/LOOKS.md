@@ -1,11 +1,11 @@
 # Physical features, by nation
 
-**Status: Tier B proposal (zero canon).** Elaborates the "Looks" lines in
-`NATIONS.md`. Same rules: ideal melds regardless of reality, a third thing rather
-than one people in the other's clothes, and no heritage beyond the inspirations
-Robert named (Ayusti is Japanese plus Brazilian and nothing else). The world bible
-overrides all of it, and the one-line `look` on each cast sheet is an art
-suggestion for Robert to veto.
+**Status: Tier B proposal (zero canon), following Robert's locked rulings.**
+Elaborates the "Looks" lines in `NATIONS.md`. Where this conflicts with
+`canon/world-bible-v3.md` §4.6, the bible wins. Same rules: ideal melds regardless of
+reality, a third thing rather than one people in the other's clothes, and no heritage
+beyond the inspirations Robert named (Ayusti is Japanese plus Brazilian and nothing
+else). The one-line `look` on each cast sheet is an art suggestion for Robert to veto.
 
 ## How to use this
 
@@ -22,172 +22,180 @@ suggestion for Robert to veto.
 
 ## Art cheat-sheet
 
-| Nation | Five keywords | Palette | Silhouette |
-|---|---|---|---|
-| Marium | strong profile, olive, dark waves, level brow, compact | ochre, terracotta, olive, bronze | square shoulders, short cloak |
-| Themelios | long line, dark curls, athletic, bright eyes, olive | whitewash, sea-blue, olive, saffron | draped, vertical, light on the feet |
-| Reyjar | dark brows, light eyes, bronze skin, braids, tall | iron grey, saffron, crimson, silver | long cape, straight spine |
-| Li Trice | porcelain, ink hair, lidded eyes, composure, slender | celadon, ink, vermilion, lacquer | narrow, long panels, one clean line |
-| Ayusti | sun-warm, quick smile, loose hair, supple, bright | indigo, sun-yellow, coral, jade | wraps, sashes, a wide hat |
-| Beloufi | freckles, copper, weathered, big hands, easy grin | denim blue, rust, moss, quilt patches | loose, layered, hat brim |
-| Edinius | rosy, amber hair, pale clear eyes, broad cheekbones, sturdy | amber, moss, oatmeal, deep green | broad, deep-chested, belted |
+| Nation | Height and build | Five keywords | Palette | Silhouette |
+|---|---|---|---|---|
+| Marium | medium, brawny | bronze, broad, thick-necked, strong profile, vigorous | ochre, terracotta, sea-bronze, olive | square shoulders, short work-cloak |
+| Themelios | varies widely | diverse, quick eyes, ringed hands, warm smile, appraising | trade colours, whitewash, sea-blue, saffron | layered and draped, every style |
+| Reyjar | relatively tall, slender | porcelain, cold, white-to-black hair, high cheekbones, hollow eyes | iron grey, black lace, crimson, silver | long and narrow, long cape |
+| Li Trice | petite to average | beauty marks, almond-to-black hair, red-brown eyes, contour, drama | vermilion, emerald, indigo, black lacquer, gold | close to the body, defined waist and hip |
+| Ayusti | petite to average | light tan, energetic, cute, round Japanese-leaning face, bright | indigo, sun-yellow, coral, jade | wraps, sashes, a wide hat |
+| Beloufi | 6 to 7 feet, powerful | giant, freckled, copper, huge hands, big grin | denim blue, rust, moss, quilt patches | big, layered, hat brim |
+| Edinius | tall | pale white, light green, wide-set eyes, straight face, dry | pale white, light green, muted greys, oatmeal | tall, plain, buttoned-up |
 
 ---
 
-## Marium — Roman, ideal
-*Statues that breathe.*
-- **Face:** balanced and strong. A broad forehead, a straight or gently high-bridged
-  nose, a firm chin, a full but firm mouth, neat ears. The profile reads as clearly
-  as the front, like a face made for a coin.
+## Marium — Roman, brawnier and bronzed
+*Statues that row.*
+- **Face:** balanced and strong, weathered by salt and sun. A broad forehead, a
+  straight or gently high-bridged nose, a firm chin, a full but firm mouth, a thick
+  neck below. The profile reads as clearly as the front, like a face made for a coin.
 - **Eyes and brows:** dark brown to near-black, some hazel or amber; deep-set under
   strong, level brows that sometimes nearly meet. Steady, heavy-lidded gaze.
-- **Skin:** warm olive undertone, from light olive to deep sun-tan; tans readily,
-  with a healthy glow in the cheeks; squint lines from the sun.
-- **Hair:** dark brown to black, wavy to curly and thick, with chestnut in the sun.
-  Men cropped short and combed forward; women braided and pinned in structured
-  styles. Beards trimmed close or none. Grey comes first at the temples.
-- **Build and carriage:** compact, sturdy, broad-shouldered, medium height. An
-  unhurried, upright stride with a straight back.
-- **Hands and marks:** broad capable hands with short nails; the pale line of a
-  signet ring; a proudly shown scar; sandal-strap tan lines.
-- **Aging:** gains authority: silver temples, deep brow lines, a heavier chest.
-- **Variation:** from stocky farm-country frames to lean city advocates; a few
-  freckled or light-brown-haired families.
+- **Skin:** deep sun-and-sea bronze, from golden to dark copper-brown, with pale only
+  where cloth sits; squint lines from a life on the water.
+- **Hair:** dark brown to black, wavy to curly and thick, sun-lightened at the tips and
+  stiff with salt. Men cropped short; women braided and pinned in structured styles.
+  Beards trimmed close or none. Grey comes first at the temples.
+- **Build and carriage:** brawny: broad-backed, thick-necked, deep-chested, heavy in
+  the forearm and calf, medium height. Compact power; even the clerks look as though
+  they could pull an oar. An unhurried, upright stride. Brutus is this type at its
+  limit: exceptionally vigorous even among his peers (bible §4.6).
+- **Hands and marks:** broad scarred hands hardened by rope and stone, short nails,
+  the pale line of a signet ring, a proudly shown scar, shoulders bronzed to the
+  cloth line.
+- **Aging:** gains authority and bulk: silver temples, deep brow lines, a heavier chest,
+  and the strength lasts.
+- **Variation:** harbour hands, quarrymen and vineyard families run broadest and darkest;
+  city magistrates are slightly paler and softer but still broad; a few freckled or
+  light-brown-haired families.
 
-## Themelios — Grecian, ideal
-*Light and line.*
-- **Face:** oval to long, with one unbroken line from brow to nose tip; a high,
-  smooth forehead, a defined jaw, small ears, and a mobile, expressive mouth that is
-  forever mid-argument or mid-laugh. Cheeks are lean, and the face is lit by the
-  eyes more than by any one feature.
-- **Eyes and brows:** large and dark, sometimes green-brown or grey, with a bright,
-  quick, curious gaze; brows well-arched and defined, thick on men.
-- **Skin:** olive to bronze with a faint sheen from oil and sun; deepens to a rich tan
-  in summer, and rarely burns.
-- **Hair:** dark brown to black, curly to wavy, naturally sculptural. Men keep it
-  short with the curls defined; women wear knots, ribbons and curls framing the
-  face. Older men's beards are curled and well kept.
-- **Build and carriage:** lean, athletic, long-limbed, with broad shoulders and a
-  narrow waist; medium to tall. A light, springy gait and hands that talk.
-- **Hands and marks:** long expressive fingers; the faint pale band of an athlete's
-  strap; gymnasium scars; sun lines.
-- **Aging:** stays lean; curls turn silver; laugh lines. A statue left in the sun.
-- **Variation:** mountain shepherds are wirier and weathered; island sailors
-  salt-browned with sun-bleached hair ends; city philosophers softer-handed and paler.
+## Themelios — Grecian, merchant crossroads
+*A crowd with no single face.*
+- **Face:** the old local look is the Mediterranean line, an unbroken profile from brow
+  to nose tip with a mobile mouth, but the crowd holds every face on the island.
+  What they share is expression: a pleasant, open look, always a little appraising.
+- **Eyes and brows:** every colour; the common gaze is bright, quick and pricing you,
+  with a warm crinkle at the corners that is not always in the eyes themselves.
+- **Skin:** every complexion from pale to deep brown; olive-bronze is the old local
+  tone, now one among many.
+- **Hair:** any colour and texture. The local fashion is sculpted curls with ribbons,
+  but merchants wear their home styles, and braids, plaits and pins from many
+  traditions share a street.
+- **Build and carriage:** every build; the local base is lean and athletic, the
+  traders' children sturdy or slight. Relaxed, confident, open-handed movement.
+- **Hands and marks:** ring-heavy, with merchants' rings of every origin; ink on the
+  fingertips; counting-bead calluses; hands that gesture to hold your attention; a
+  house seal pinned or inked at the wrist.
+- **Aging:** wealth ages well here: good teeth, good tailoring, and a smile that never
+  retires.
+- **Variation:** this is the point. A single family can look like a map; the crowd
+  at a dinner can look like a congress.
 
 ## Reyjar — Norse-Spanish
-*Dark brows, light eyes, bronze skin.*
-- **Face:** long and strong-boned, with high cheekbones and a firm jaw (a slight
-  cleft chin is common), a straight nose with a strong bridge, and a full mouth
-  with a defined bow. Sun-squint lines arrive early.
-- **Eyes and brows:** the signature: strong dark brows over light eyes (grey, green,
-  amber, pale hazel; some dark brown). Deep-set, with long dark lashes and a direct
-  gaze.
-- **Skin:** bronze-gold that flushes red across the cheekbones and nose in wind or
-  cold; tans fast; freckles across the nose and shoulders on some; salt-weathered.
-- **Hair:** dark chestnut through black with copper in the sun, sometimes auburn or
-  dark gold; thick and wavy. Braided with red or saffron ribbon. Warriors oil and
-  plait their beards in two; women wear braided crowns. Grey comes silver and early.
-- **Build and carriage:** the tallest of the seven nations. Rangy, long-armed,
-  broad-shouldered, flat-waisted; a dancer's straight spine with the chin level and a
-  slight deck-roll in the walk.
-- **Hands and marks:** large hands, rope calluses, scarred knuckles, silver rings;
-  knotwork bands inked on forearms and throats for oaths; silver earrings; battle
-  scars displayed with ceremony.
-- **Aging:** craggy and weathered; silver beards; the same carriage, more dignity.
-- **Variation:** coastal families darker and saltier; highland families fairer and
-  ruddier; the occasional green-eyed redhead; stocky shield-bearers.
+*Porcelain, iron and black lace.*
+- **Face:** long and fine-boned, with high cheekbones, a narrow straight nose, a clear
+  jaw and thin-to-medium lips held in composure. The slight hollowing beneath the brow
+  and eyes gives every face a watchful, candle-lit look.
+- **Eyes and brows:** slightly sunken, deep-set, with a faint natural shadow beneath;
+  pale grey, ice-blue and pale green are common, some dark. Brows pale or strikingly
+  black to match the hair; long lashes.
+- **Skin:** porcelain-pale and cool, with a cool undertone and blue veins visible at the
+  temples and wrists. It flushes pink only in hard cold or strong feeling, burns rather
+  than tans, and is rarely freckled.
+- **Hair:** white-blonde, platinum, ash-grey and silver through to jet black, and the
+  contrast is the signature (black against porcelain is as striking as white against
+  it). Fine and straight; worn long or braided close to the scalp, with black ribbon or
+  lace. Beards, where worn, are fine and kept short and sharp.
+- **Build and carriage:** slender and relatively tall, long-limbed, narrow through the
+  shoulder and waist. Controlled, economical movement with a straight spine.
+- **Hands and marks:** long, pale, cool fingers; silver rings; knuckles that redden in
+  cold; fine scars that show white; black-ink knotwork bands for oaths.
+- **Aging:** white hair whitens further; black hair keeps its colour a long time and
+  then streaks silver; the hollows deepen, so age looks distinguished and a little
+  ghostly.
+- **Variation:** some are darker-eyed, a few tower, a few are slightly flushed on the
+  coast; all stay slender.
 
 ## Li Trice — French-Chinese
-*Porcelain, ink and composure.*
-- **Face:** oval to heart-shaped, with fine bones, high but soft cheekbones, a
-  delicate straight nose with a softly defined bridge, a gentle jaw, and a small
-  refined mouth with a soft bow. The face rests calm; composure is the ideal beauty.
-- **Eyes and brows:** lidded and luminous. Shapes run from softly rounded to long
-  almond, lids single or double, lashes long and dark; dark brown to amber, sometimes
-  grey-brown. Brows fine with a soft arch. Makeup is a single ink line.
-- **Skin:** from porcelain (pale ivory with a warm undertone) through warm gold to
-  light honey-brown; smooth and luminous, flushing pink; seldom freckled. A small
-  beauty mark near the mouth is admired, and painted ones are fashionable.
-- **Hair:** black to deep brown with a chestnut gleam, glossy, straight or in a soft
-  wave. It often silvers early into a steel-bright "frost streak", which is prized.
-  Pinned in a knot with one lacquered pin; men short or tied low, with thin, shaped
-  moustaches or none.
-- **Build and carriage:** slender, narrow-shouldered, long-necked, medium height.
-  Quiet, exact movement; small steps; hands that move with precision.
-- **Hands and marks:** long slender fingers, ink-stained fingertips from house
-  ledgers, lacquer and jade rings, careful nails.
-- **Aging:** smooth for a long time, then silver arrives like frost. Refinement
-  deepens, not fades.
+*Beauty marks, contour and colour.*
+- **Face:** soft and expressive, oval to heart-shaped, with fine bones, high but soft
+  cheekbones, and a delicate straight nose. Composure is the ideal beauty, and the face
+  is usually framed by hair and colour more than by anything else.
+- **Eyes and brows:** red-brown to brown to black, lidded and luminous; the red-brown
+  irises glow garnet in lamplight. Shapes run from softly rounded to long almond, lids
+  single or double, with long dark lashes and one precise ink line.
+- **Skin:** from porcelain through warm gold to honey-brown, smooth and luminous. The
+  signature is the **beauty marks**: scattered over the face, arms and legs, from one
+  mole to a constellation; they count as luck and ornament, and painted ones are added.
+- **Hair:** almond-brown (the warm light brown of the nut) through chestnut to black,
+  glossy, straight or in a soft wave, styled in sculptural knots and curls; a silver
+  "frost streak" is prized.
+- **Build and carriage:** petite to average height. Women are full through the hip
+  and thigh with a narrow waist and light shoulders; men are stockier, thick through
+  chest and thigh, yet agile and quick on their feet, with a dancer-fighter's balance.
+- **Hands and marks:** small, quick hands with ink-stained fingertips from house ledgers,
+  lacquer and jade rings, careful nails, and a mark of perfume at the wrist.
+- **Aging:** the fullness of the figure stays; the beauty marks stay; style never
+  retires. Silver arrives like frost.
 - **Variation:** dockside hands are broader and sun-browned; scholar-clerks pale and
-  stooped from the desk; the old merchant houses the fairest. Draw individuals, never
-  a half-and-half.
+  stooped from the desk; every house cultivates its own look. Draw individuals, never a
+  half-and-half.
 
 ## Ayusti — Japanese-Brazilian
-*Sun on silk.*
-- **Face:** round to oval with soft cheeks and defined cheekbones, a small-to-medium
-  nose with a soft bridge, and a full, mobile mouth that smiles easily. Open and
-  expressive; dimples are common.
-- **Eyes and brows:** bright, warm dark brown; shapes from round to long, lids single
-  or double, lashes full. Brows straight, dark and natural. Smile lines at the corners.
-- **Skin:** sun-warmed, from light honey to golden-brown, with a warm undertone that
-  glows with exertion; takes the sun well; a few sun-freckles across the nose; tan
-  lines at the wrist and ankle from straps.
-- **Hair:** straight black to wavy dark brown, thick; worn loose, in high knots, or
-  tied in bright cloth, with sun-lightened brown at the tips. Men cropped or tied
-  back, beards soft or none. Humid weather brings unruly curls.
-- **Build and carriage:** slight to sturdy, supple and athletic, medium height, with
-  strong legs and flexible joints. A quick, rhythmic walk with a bounce in it.
-- **Hands and marks:** quick, neat hands; calloused craft fingers; indigo-stained
-  fingertips and forearms from the dye vats; coloured thread bracelets; small shell
+*Bright, quick and cute.*
+- **Face:** round to oval and soft, with full cheeks, a small nose, a gentle jaw and a
+  mouth that smiles easily. The face leans Japanese in its shapes: smooth, rounded and
+  sweet. Open and very expressive; dimples are common.
+- **Eyes and brows:** large, bright and warm dark brown; lids single or double, with the
+  more Japanese-leaning shapes common; full lashes; straight dark brows; smile lines at
+  the corners.
+- **Skin:** light tan, even and warm, glowing with exertion, taking the sun lightly;
+  a rosy flush on the cheeks when excited; a few sun-freckles across the nose.
+- **Hair:** straight black to dark brown, soft; worn in bobs and high ties, with
+  bangs, held in bright cloth; occasionally a soft wave; sun-lightened brown at the
+  tips. Men cropped or tied back, beards soft or none.
+- **Build and carriage:** petite to average, lithe and springy, small hands and feet,
+  quick, rhythmic and never quite still.
+- **Hands and marks:** small, quick, neat hands; calloused craft fingertips; indigo-
+  stained fingers from the dye vats; coloured thread bracelets and small charms; shell
   or bead ear studs.
-- **Aging:** warm lines at the eyes and mouth from smiling; hair greys to pewter and
+- **Aging:** a youthful look that lasts; warm laugh lines; hair greys to pewter and
   stays thick.
-- **Variation:** fisher-folk darker and sinewy; craft-town families paler and
-  ink-stained; each family a different blend, so siblings can differ widely.
+- **Variation:** fisher-folk darker and sinewy; craft-town families paler and ink-stained;
+  each family a different blend, so siblings can differ, though the Japanese-leaning face
+  is the common thread.
 
 ## Beloufi — Americana-Irish
-*Freckles, copper and weather.*
-- **Face:** expressive and mobile, with strong cheekbones, a strong brow and jaw, and
-  a big easy grin. Noses vary. Laugh lines come early: a lived-in face.
+*Giants who love hard.*
+- **Face:** broad and expressive, with a strong brow, strong cheekbones and jaw, a
+  big easy grin, and laugh lines that come early. Everything is large: head, jaw and
+  grin. A lived-in face that flushes when merry and when furious.
 - **Eyes and brows:** any colour: blue, green, grey, hazel, brown; wide-set and
-  bright, creasing when they laugh. Brows expressive, often a shade lighter than the
+  bright, creasing when they laugh; brows expressive and often a shade lighter than the
   hair.
-- **Skin:** from freckled fair through warm brown to deep brown. Every complexion
-  carries sun lines and a wind-flush. Freckles are a badge, "a map of the summer".
+- **Skin:** from freckled fair through warm brown to deep brown, weathered, with sun
+  lines and a wind-flush. Freckles are a badge, "a map of the summer".
 - **Hair:** copper, auburn, ginger, chestnut, sandy, black, to tight coils; thick and
-  unruly; braids and kerchiefs; bushy beards. Tied with leather or ribbon, with a
-  sprig in it. Ginger greys to white-gold.
-- **Build and carriage:** lean, wiry and strong, medium to tall, with big hands and
-  forearms. Loose-limbed "porch posture", leaning on door-frames, with a long easy
-  stride.
-- **Hands and marks:** big, cracked, strong hands; fiddle-callused fingertips;
-  scarred knuckles from barn work; a quilter's pinpricks; faded knotwork inked on the
-  forearm; wake-ribbons tied at the wrist.
-- **Aging:** lines like a map; white-gold or silver hair; hands more knotted, frame
-  tougher.
-- **Variation:** freckled redheads, dark-skinned coil-haired farmers, sandy-blond
-  fiddlers, all Beloufi. Family likeness shows in expression, not in colouring.
+  unruly; braids and kerchiefs; bushy beards tied with leather.
+- **Build and carriage:** six to seven feet tall and very powerful: broad, thick-limbed,
+  deep-chested, with a rolling, unhurried stride. They duck under doorframes, and
+  chairs are a negotiation. Gentle with small things, which is why it is a surprise
+  when they are not.
+- **Hands and marks:** huge cracked hands like shovels; scarred knuckles; fiddle-
+  callused fingertips; the names of the people they love inked on forearm or chest;
+  wake-ribbons at the wrist.
+- **Aging:** bigger, grizzled, white-gold beards; the hands knot but the strength holds.
+- **Variation:** the "gentle ones" are softer-faced and warmer-eyed, the no-nonsense ones
+  hard-jawed and level-gazed; heights run from tall-for-anywhere at six feet to a head
+  above every doorway at seven.
 
 ## Edinius — English-Lithuanian
-*Amber light.*
-- **Face:** broad and open, with high wide cheekbones, a strong jaw, a straight nose
-  (slightly upturned on some), wide-set eyes, and a long upper lip. Cold pinks the
-  nose and cheeks.
-- **Eyes and brows:** pale and clear: grey, blue, green, hazel; wide-set; light
-  gold-tipped lashes; fair straight brows. An unusually dark-eyed child is called
-  "night-eyed" and considered lucky.
-- **Skin:** fair to rosy and windburned; freckles in spring; a flush by the fire; cold
-  reddens the cheeks first.
-- **Hair:** ash-blond through honey and amber to copper-brown, sometimes dark brown
-  with red tints; thick, straight to wavy. Women wear long braids strung with amber
-  beads, men full beards a shade redder than the hair. Grey goes silver-gold.
-- **Build and carriage:** sturdy, deep-chested and broad-shouldered, medium-tall, with
-  strong thighs. A steady, rolling, unhurried gait; carries water pails and children
-  easily; stands very still.
-- **Hands and marks:** broad square hands, wool-roughened; an amber ring or bead; pale
-  freckled shoulders; a carved sun-wheel amulet.
-- **Aging:** ruddier and more weathered, then a thick white beard and a stout
-  dignity.
-- **Variation:** forest folk darker-haired and leaner; hearth-hall families rosier and
-  broader.
+*Pale, tall and plain.*
+- **Face:** the Lithuanian face shape: broad across the forehead and cheekbones, wide-set
+  eyes, a short straight nose, a firm jaw, thin lips. At rest it reads as "get to the
+  point", with little smiling and a great deal of straight looking.
+- **Eyes and brows:** pale and clear, wide-set, with the Lithuanian eye shape; grey, blue
+  and green are common, and light green is the national colour. Fair straight brows and
+  light lashes.
+- **Skin:** pale white and fine, reddening first at the cheeks and nose in cold; freckles
+  are rare and plain.
+- **Hair:** ash-blond to flax to light brown, sometimes darker; straight and neat. Women's
+  braids are tidy and unadorned; men cropped, with beards trimmed close or none.
+- **Build and carriage:** tall, long-limbed but sturdy, standing straight and very still,
+  with economical gesture and an unhurried, level stride.
+- **Hands and marks:** large-knuckled, calm hands, wool-roughened; plain rings only; a
+  small pale-green ribbon or pin; wind-reddened cheeks and ear tips.
+- **Aging:** stern dignity: hair goes white-silver, with lines at the mouth; the humour
+  shows only at the corner of the mouth.
+- **Variation:** forest folk are leaner and darker-haired; river-town families broader;
+  the rare dark-eyed child is called "night-eyed" and considered lucky.
