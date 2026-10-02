@@ -49,7 +49,7 @@ numbers unchanged):
 
 ```
 avg NAMED alive after visit: 5.9 4.9 4.3 3.7 3.2 2.8 2.5 2.2 1.9 1.8
-Ember 0%  Dagny 0%  Ivo 0%     (all three are reckless)
+Ember 0%  Bramble 0%  Ivo 0%   (all three are reckless)
 Wren 45%  Remy 46%  Nikandros 41%
 Aline 12%  Ines 12%  Mabel 10%  Hask 14%
 ```
@@ -186,24 +186,24 @@ list (1,122 names; regenerate with `node build-names-doc.js`). Highlights:
 | Beloufi | Americana-Irish | the porch and the hearth: six-to-seven-foot giants who love hard and never forget; clan names as first names |
 | Edinius | English-Lithuanian | the amber north: tall, pale, direct, dry; English stems in Lithuanian dress |
 
-Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'mud', 'pim'):
+Cast now (code ids unchanged: 'pell', 'morrow', 'tibby', 'odile', 'dagny', 'mud', 'pim'):
 
 | Character | Home | Note |
 |---|---|---|
 | Ember, Wren | Edinius | build cast, names kept |
-| Dagny Halvardez, Hask | Reyjar | Dagny was Holm; Hask has dropped his family name |
+| Hask | Reyjar | has dropped his family name |
+| Bramble Calloway | Beloufi | was Dagny Holm, then Dagny Halvardez; moved to Beloufi to match the canon |
 | Sister Aline Laque | Li Trice | was Odile Varr, then Odile Lin |
 | Remy Jonque | Li Trice | was Pell Marrow, Piers Daw, Perrin Dao |
 | Ines Kawario, Ivo Kawario | Ayusti | were Castellane, then Sakai |
 | Nikandros | Themelios | was Morrow, then Osmund |
 | Mabel Quill | Beloufi | |
 
-The cast sheets are zero-canon placeholders and now conflict with the locked rulings in places
-(Dagny reads as Beloufi, Mabel should be six to seven feet, Remy should be stocky; see
-`NATIONS.md` "Open for Robert"). Home regions are my placeholders. Each authored character (not Ember or Wren, whose
+Cast looks follow the locked rulings on the seven peoples (`check-names.js` enforces it).
+Home regions are my placeholders. Each authored character (not Ember or Wren, whose
 art the build defines) has a one-line `look` in `cast.js`: an ART SUGGESTION for
 Robert to veto. Guilds: Muddy Boots -> The Merry Rabble, Saint Pim's Rescue Brigade
--> The Brethren of Saint Piran. `node check-names.js` (26 checks) lints names, checks
+-> The Brethren of Saint Piran. `node check-names.js` (29 checks) lints names, checks
 every newcomer matches their home region, keeps pools free of canon and cast names, and
 fails if `names.js`, `NATIONS.md` or `NAMES.md` drift apart. Pool size has no effect on
 the sim: a 300-season soak is byte-identical before and after.
