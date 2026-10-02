@@ -22,7 +22,8 @@
  * Names (Robert, 2026-09-28: no anachronistic names; epithets are the
  * "celebrity" layer and stay): see names.js for the rules. ids are stable
  * code keys and do NOT track display names (id 'pell' is now Remy Jonque, id 'odile' is Aline Laque, id
- * 'morrow' is Nikandros, id 'tibby' is Mabel Quill). Ember and Wren are the
+ * 'morrow' is Nikandros, id 'tibby' is Mabel Quill, id 'dagny' is Bramble Calloway).
+ * Looks follow the locked rulings on the seven peoples (world bible 4.6). Ember and Wren are the
  * build's existing ally cast and keep their names.
  */
 (function (root) {
@@ -78,9 +79,9 @@
       bio: 'Placeholder sheet: Wren keeps her existing personality and voice from the build. Market stats only. The harder sell of the pair, and the one who decides whether they both stay.'
     },
     {
-      id: 'dagny', name: 'Dagny Halvardez', epithet: '"The Ox"',
-      region: 'Reyjar',
-      look: 'Tall and broad, thick braids the color of old oak, weathered olive-tan skin and deep laugh lines; a ladle hung at the belt like a sidearm.',
+      id: 'dagny', name: 'Bramble Calloway', epithet: '"The Ox"',
+      region: 'Beloufi',
+      look: 'Six and a half feet and generously built, copper braids and a freckled, sun-reddened face always mid-laugh; a ladle hung at the belt like a sidearm.',
       class: 'Warrior', archetype: 'frontline', tier: 3, tone: 'comic',
       combat: { hpScale: 1.4, energyScale: 0.8 },
       traits: ['kind', 'reckless'],
@@ -96,7 +97,7 @@
     {
       id: 'odile', name: 'Sister Aline Laque', epithet: 'The Unforgiving Hand',
       region: 'Li Trice',
-      look: 'Narrow and upright, black hair streaked grey under a plain white coif; a scarred hand that never shakes; a habit with no ornament at all.',
+      look: 'Petite and upright, full-hipped under a habit tailored close anyway; black hair streaked grey under a white coif; beauty marks at jaw and wrist; a scarred hand that never shakes.',
       class: 'Priest', archetype: 'support', tier: 4, tone: 'grim',
       combat: { hpScale: 0.9, energyScale: 1.3 },
       traits: ['proud', 'vengeful'],
@@ -112,7 +113,7 @@
     {
       id: 'pell', name: 'Remy Jonque', epithet: 'The Early Leaver',
       region: 'Li Trice',
-      look: 'Wiry and quick, always half-turned toward the exit; sharp features, restless eyes; a pack that is never fully unpacked and a worn lucky coin on a cord.',
+      look: 'Stocky but quick on his feet, always half-turned toward the exit; red-brown eyes with a beauty mark under one; loud colours; a pack never unpacked and a worn lucky coin on a cord.',
       class: 'Archer', archetype: 'ranged-back', tier: 2, tone: 'comic',
       combat: { hpScale: 0.7, energyScale: 1.1 },
       traits: ['greedy', 'cautious'],
@@ -128,7 +129,7 @@
     {
       id: 'ines', name: 'Ines Kawario', epithet: 'Elder Twin',
       region: 'Ayusti',
-      look: 'Slight and composed, black hair cut blunt at the jaw, ink-stained fingers; a narrow ledger of her brother\'s enemies in her coat pocket.',
+      look: 'Petite, light-tan and unusually still for an Ayusti; black hair cut blunt at the jaw, ink-stained fingers; a narrow ledger of her brother\'s enemies in her coat pocket.',
       class: 'Mage', archetype: 'ranged-back', tier: 3, tone: 'grim',
       combat: { hpScale: 0.8, energyScale: 1.2 },
       traits: ['pragmatic', 'vengeful'],
@@ -144,7 +145,7 @@
     {
       id: 'ivo', name: 'Ivo Kawario', epithet: 'Younger Twin',
       region: 'Ayusti',
-      look: 'His sister\'s face with a full head of unruly hair and a wide grin; a sword slightly too big for him, the scabbard held together with string.',
+      look: 'Petite and light-tan, his sister\'s face under a mop of unruly hair, a wide grin and never still; a sword slightly too big for him, the scabbard tied with string.',
       class: 'Warrior', archetype: 'charger', tier: 2, tone: 'comic',
       combat: { hpScale: 1.1, energyScale: 1.0 },
       traits: ['reckless', 'kind'],
@@ -176,7 +177,7 @@
     {
       id: 'tibby', name: 'Mabel Quill', epithet: 'Chaplain and Keeper of the Book',
       region: 'Beloufi',
-      look: 'Round-faced, ruddy and freckled, red curls escaping a plain cap; a thick ledger in a satchel over her vestments; always mid-laugh.',
+      look: 'Well over six feet, round-faced and generously built, ruddy and freckled, red curls escaping a plain cap; a thick ledger in a satchel over her vestments; always mid-laugh.',
       class: 'Priest', archetype: 'support', tier: 2, tone: 'comic',
       combat: { hpScale: 0.85, energyScale: 1.2 },
       traits: ['greedy', 'kind'],
@@ -192,7 +193,7 @@
     {
       id: 'hask', name: 'Hask', epithet: 'The Survivor Nobody Wanted',
       region: 'Reyjar',
-      look: 'Gaunt and tall, frost-white at the temples, hollows under his eyes; robes frayed at the hem from the lower floors; an iron door-key on a cord he never removes.',
+      look: 'Gaunt, tall and porcelain-pale, frost-white at the temples, eyes sunk deep; robes frayed at the hem from the lower floors; an iron door-key on a cord he never removes.',
       class: 'Mage', archetype: 'ranged-back', tier: 4, tone: 'grim',
       combat: { hpScale: 0.7, energyScale: 1.4 },
       traits: ['vengeful', 'pragmatic'],

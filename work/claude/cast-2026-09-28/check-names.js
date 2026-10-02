@@ -7,7 +7,7 @@ ok(regions.length === 7 && regions.every(function (r) { return NM.POOLS[r] && NM
 ok(['Li Trice', 'Ayusti', 'Reyjar', 'Beloufi', 'Edinius'].every(function (r) {
   return Object.keys(NM.DATA[r]).every(function (k) { return /^meld/.test(k); });
 }), 'every group in a mixed nation is a meld group: no pure-source lists (Robert: ideal meld of the inspirations)');
-var RESERVED = ['Ember', 'Wren', 'Dagny', 'Aline', 'Remy', 'Ines', 'Ivo', 'Nikandros', 'Mabel', 'Hask', 'Odile', 'Brutus', 'Cassius', 'Abel', 'Freja', 'Varvara'];
+var RESERVED = ['Ember', 'Wren', 'Dagny', 'Bramble', 'Aline', 'Remy', 'Ines', 'Ivo', 'Nikandros', 'Mabel', 'Hask', 'Odile', 'Brutus', 'Cassius', 'Abel', 'Freja', 'Varvara'];
 ok(RESERVED.every(function (r) { return NM.POOL.indexOf(r) === -1; }), 'no pool name is a canon character or a named-cast name');
 ok(regions.every(function (r) { var all = []; Object.keys(NM.DATA[r]).forEach(function (g) { all = all.concat(NM.DATA[r][g]); }); return all.length === new Set(all).size; }), 'no repeats inside a region');
 var namesDoc = fs.readFileSync(__dirname + '/NAMES.md', 'utf8');
@@ -30,6 +30,12 @@ var poolClash = C.CAST.filter(function (a) { return NM.POOL.indexOf(a.name.split
 ok(poolClash.length === 0, 'no newcomer pool name collides with a named character (' + poolClash.map(function (a) { return a.name; }).join(',') + ')');
 ok(C.CAST.filter(function (a) { return a.id !== 'ember' && a.id !== 'wren'; }).every(function (a) { return a.look && a.look.length > 40 && a.look.length < 220; }), 'every authored character has a one-line look');
 ok(C.CAST.every(function (a) { return !NM.BLOCK.test(a.name) && !NM.BLOCK.test(a.epithet); }), 'cast names and epithets pass the lint');
+// cast looks may not contradict the locked rulings on the seven peoples (world bible 4.6)
+var CANON_LOOK = { 'Beloufi': /feet/i, 'Reyjar': /pale|porcelain/i, 'Li Trice': /beauty mark/i, 'Ayusti': /light-tan/i };
+var lookClash = C.CAST.filter(function (a) { var re = CANON_LOOK[a.region]; return a.look && re && !re.test(a.look); });
+ok(lookClash.length === 0, 'every cast look honours its nation\'s locked features (' + lookClash.map(function (a) { return a.id; }).join(',') + ')');
+ok(C.CAST.filter(function (a) { return a.region === 'Ayusti' || a.region === 'Li Trice'; }).every(function (a) { return /petite|stocky/i.test(a.look); }), 'Ayusti and Li Trice cast are petite (or stocky, for Li Trice men)');
+ok(!C.CAST.some(function (a) { return a.region === 'Reyjar' && /broad|olive|tan/i.test(a.look || ''); }), 'no Reyjar cast member is broad or tanned');
 ok(Object.keys(MK.GUILDS).every(function (k) { return !NM.BLOCK.test(MK.GUILDS[k].name); }), 'guild names pass the lint');
 // naming must not touch the sim's random stream
 var s = MK.newMarket(9), calls = 0, real = s.rand; s.rand = function () { calls++; return real(); };
