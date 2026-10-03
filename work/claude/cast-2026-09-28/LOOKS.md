@@ -193,7 +193,7 @@ else). The one-line `look` on each cast sheet is an art suggestion for Robert to
   Fair straight brows and light lashes.
 - **Skin:** pale white and fine, reddening first at the cheeks and nose in cold; freckles
   are rare and plain.
-- **Hair:** ash-blond to flax to light brown, sometimes darker; straight and neat. Women's
+- **Hair:** ash-blond through flax to light brown (locked, bible §4.7); straight and neat. Women's
   braids are tidy and unadorned; men cropped, with beards trimmed close or none.
 - **Build and carriage:** tall, long-limbed but sturdy, standing straight and very still,
   with economical gesture and an unhurried, level stride.
@@ -202,5 +202,6 @@ else). The one-line `look` on each cast sheet is an art suggestion for Robert to
   ear tips.
 - **Aging:** stern dignity: hair goes white-silver, with lines at the mouth; the humour
   shows only at the corner of the mouth.
-- **Variation:** forest folk are leaner and darker-haired; river-town families broader;
+- **Variation:** forest folk are leaner, their hair toward light brown; river-town
+  families broader and fairer;
   the rare dark-eyed child is called "night-eyed" and considered lucky.

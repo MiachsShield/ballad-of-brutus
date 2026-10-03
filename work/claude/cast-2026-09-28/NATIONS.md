@@ -4,8 +4,9 @@
 rulings.** Written 2026-10-01 from Robert's phenotype-basis table (Marium Roman ·
 Themelios Grecian · Reyjar Norse-Spanish · Li Trice French-Chinese · Ayusti
 Japanese-Brazilian · Beloufi Americana-Irish · Edinius English-Lithuanian).
-**Where this document conflicts with `canon/world-bible-v3.md` §4.6 (Robert's locked
-rulings on the seven peoples), the world bible wins.** This revision follows those
+**Where this document conflicts with `canon/world-bible-v3.md` §4.6 and §4.7 (Robert's
+locked rulings on the seven peoples, their temperaments, relations and politics), the
+world bible wins.** This revision follows those
 rulings.
 
 ## How to read this
@@ -53,7 +54,10 @@ rulings.
 - **Dress and places:** wool tunic and cloak with a coloured border for rank, cut
   for work; marble forums, aqueduct bridges, mosaic floors, bathhouses, and a harbour
   at the end of every street.
-- **Bearing:** formal, law-minded, proud of civic duty and of physical strength.
+- **Bearing:** relaxed and hardworking; slow to anger, then explosive. They distrust
+  Themelios and Reyjar (locked, bible §4.7).
+- **Rule:** a Chief (the island's title). The move to democracy died in Abel's coup;
+  Abel now rules as King, a title Reyjar granted him for fighting them off (§4.7).
 - **Fits:** Lantern Company.
 
 ## Themelios — Grecian, merchant crossroads
@@ -62,13 +66,17 @@ rulings.
   every complexion, build and style turns up in the agora. Expect the widest range
   of any nation (locked, bible §4.6).
 - **Names:** compound names that mean something (Nikandros "victory of men",
-  Eudora "good gift"); patronymic in -ides. *Families:* Kleonides, Demetrides,
+  Eudora "good gift"); patronymic in -ides. Because merchants run it, names from every
+  other nation are common too (locked, bible §4.7). *Families:* Kleonides, Demetrides,
   Theodorides, Philippides, Aristides, Alexides.
 - **Dress and places:** layered, pinned and draped cloth in bright trade colours
   from every direction; whitewashed counting-houses, theatres cut into hillsides,
   olive groves.
 - **Bearing:** warm, pleasant and quick with an invitation, and just as quick with
-  a damaging rumour. Do not let the manners fool you (locked, bible §4.6).
+  a damaging rumour. Do not let the manners fool you (locked, bible §4.6). They gossip
+  about anyone with nothing to offer and fear the low return of being seen with
+  someone of low value (§4.7).
+- **Rule:** a council of merchant houses; counted among the democracies (§4.7).
 - **Fits:** The Hollow Crown (a court of fallen aristocrats), Nikandros.
 
 ## Reyjar — Norse-Spanish
@@ -87,7 +95,12 @@ rulings.
   sashes; women in braided crowns under black lace.
 - **Places:** long halls of pale stone around cool courtyards with fountains,
   dragon-prow beams, slate roofs.
-- **Bearing:** ceremony, restraint and a long memory for slights.
+- **Bearing:** heavy formal praise for those who accomplish great feats; weaklings
+  are left behind (locked, bible §4.7). They look down on Themelios most and are
+  really cautious about the Beloufi.
+- **Rule:** an absolute crown, with a growing anti-royalty party. Freja is both royal
+  and their champion. Reyjar expands the roundabout way, because even with every other
+  region behind them they would still lose to the Beloufi (§4.7).
 - **Fits:** The Iron Oath, Hask (who has dropped his family name).
 
 ## Li Trice — French-Chinese
@@ -109,8 +122,10 @@ rulings.
   neither one source nor the other. The island copies it a season late.
 - **Places:** carved lattice screens and wrought-iron balconies, canals of
   lanterns, arcaded tea-salons, dressmakers' windows.
-- **Bearing:** elaborate courtesy, deals sealed with tea and wine, a reputation
-  is a house name, and everyone is dressed to be seen.
+- **Bearing:** haughty, refined and shrewd, with playful teasing (locked, bible
+  §4.7); deals sealed with tea and wine; everyone dressed to be seen. They look down on
+  everyone, with a soft spot for Reyjar, and are Reyjar's quiet partners.
+- **Rule:** an old royal line; a king and a princess sit on the throne now.
 - **Fits:** Gilt Hand, Aline Laque, Remy Jonque.
 
 ## Ayusti — Japanese-Brazilian
@@ -130,7 +145,11 @@ rulings.
   small charms at festivals.
 - **Places:** wooden houses with paper screens and deep shaded verandas hung with
   hammocks and lanterns; terraced hills; busy fish markets.
-- **Bearing:** loud, warm, quick to befriend; everything is a festival.
+- **Bearing:** loud, warm, quick to befriend; everything is a festival. Their flaw is
+  all three at once: naive, flighty and nosy (locked, bible §4.7). They like themselves
+  most, with a soft spot for Marium, and their hostility to Reyjar is growing.
+- **Rule:** a council of generals, because Reyjar expansion is imminent; counted among
+  the democracies (§4.7).
 - **Fits:** The Brethren of Saint Piran, Ines and Ivo Kawario.
 
 ## Beloufi — Americana-Irish
@@ -156,12 +175,15 @@ rulings.
   embarrasses, humiliates or betrays them. Loyalty is personal, not national: Beloufi
   have no common love for one another, and vitriol toward liars and betrayers makes
   them the least united of the seven regions. They are not savages (locked, bible §4.6).
+  They get along best with the Ayusti, the Li Trice and Brutus (§4.7).
+- **Rule:** feuding clan chiefs; counted among the democracies (§4.7).
 - **Fits:** The Merry Rabble, Bramble Calloway ("The Ox"), Mabel Quill.
 
 ## Edinius — English-Lithuanian
 - **The meld:** the amber north. Tall, pale, direct and dry: people who say a thing
   once and mean it.
-- **Looks:** pale white skin, tall, Lithuanian face shape, and light green eyes.
+- **Looks:** pale white skin, tall, Lithuanian face shape, light green eyes, and hair
+  from ash-blond to light brown (§4.7).
   Light green is also a national colour, alongside pale white (locked, bible §4.6).
 - **Names:** English heroic stems in Lithuanian dress (Godrikas, Atelstanas),
   Lithuanian stems with English iron (Gedwin, Algric, Laimhild), diminutives both
@@ -174,7 +196,10 @@ rulings.
   lining, ribbon, trim or pin); wool kirtles and long coats; one amber bead is plenty.
 - **Places:** timber halls with steep thatched roofs and carved sun-wheels; sacred
   groves with a hearth-fire at the centre; plain, orderly amber markets.
-- **Bearing:** direct, curt, dry-humoured, dignified.
+- **Bearing:** direct, curt, dry-humoured, dignified; judgmental and joyless (locked,
+  bible §4.7). They respect dignified peers and look down on fools.
+- **Rule:** royalty, though not strongly for democracy, and they would benefit from
+  Reyjar's royalism without being fooled by it. The crown's nature is still open (§4.7).
 - **Fits:** The Black Candle, Ember, Wren.
 
 ---
