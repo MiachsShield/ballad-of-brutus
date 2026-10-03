@@ -19,7 +19,7 @@ Aurelian, Valerian, Hadrian, Trajan, Antoninus, Claudian, Maximian, Constans, Ju
 
 Aurelia, Livia, Valeria, Sabina, Flavia, Cornelia, Octavia, Julia, Claudia, Lucilla, Marcella, Faustina, Drusilla, Tullia, Fulvia, Antonia, Cassia, Domitia, Lepida, Plautia, Quinta, Sulpicia, Servilia, Terentia, Vibia, Atia, Calpurnia, Camilla, Fabiola, Helvia, Juventia, Laelia, Lavinia, Livilla, Lucretia, Maxima, Minervina, Nonia, Paulina, Petronia, Pomponia, Postumia, Prisca, Rufina, Secunda, Tertia, Ulpia, Vitalia, Veturia, Aemilia, Albina, Aquilina, Balbina, Caecilia, Candida, Clementia, Crispina, Decima, Florentia, Fortunata, Gaia, Hortensia, Justina, Larentia, Lucia, Marciana, Martina, Octavilla, Pia, Priscilla, Regina, Rufilla, Sergia, Sextia, Severa, Silvana, Urbana, Valentina, Venusta, Verecunda, Victoria, Viviana
 
-## Themelios — Grecian (180 names)
+## Themelios — Grecian (210 names)
 
 **men** (63)
 
@@ -32,6 +32,10 @@ Agathon, Aischylos, Alkibiades, Amyntas, Anaxagoras, Antiochos, Archelaos, Arist
 **women** (72)
 
 Eudora, Callista, Demetra, Zoe, Ioanna, Melina, Dorothea, Xenia, Thaleia, Theodora, Kassandra, Penelope, Ariadne, Andromache, Antigone, Aspasia, Chloe, Daphne, Eirene, Eleni, Elpida, Euphemia, Eurydike, Hypatia, Iris, Kalliope, Kleio, Korinna, Kyra, Leda, Lysandra, Melpomene, Nike, Olympias, Ourania, Pelagia, Persephone, Phaedra, Philomena, Phoebe, Polyxena, Rhea, Sappho, Selene, Sophia, Theano, Thekla, Tyche, Xanthe, Zenobia, Agathe, Aglaia, Alkmene, Anthousa, Artemisia, Athenais, Berenike, Charis, Chrysanthe, Danae, Dionysia, Elektra, Euphrosyne, Hermione, Kallisto, Kyriaki, Maira, Myrto, Nausikaa, Panagiota, Paraskevi, Roxane
+
+**settled from other nations (names travel with the merchants)** (30)
+
+Lucan, Livia, Valeria, Quintus, Sabina, Halvardo, Sigruna, Rodrigo, Elvira, Ximena, Lanette, Yann, Mirlan, Wenaud, Luce, Mariko, Takari, Nina, Rui, Soraia, Brennan, Rowan, Hannah, Keegan, Hazel, Gedwin, Edmundas, Laimhild, Godrikas, Algric
 
 **women (more)** (16)
 
@@ -125,4 +129,4 @@ Edmundas, Henrikas, Alfredas, Albertas, Arnoldas, Edgaras, Edvardas, Hermanas, H
 
 ---
 
-1122 names across 7 nations.
+1152 names across 7 nations.
