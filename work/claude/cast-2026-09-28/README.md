@@ -169,12 +169,12 @@ all seven nations as ideal melds, with no real-world justification required.
 hair, build, hands and marks, aging, variation, plus an art cheat-sheet);
 `node check-looks.js` keeps it complete, keeps Ayusti to Japanese plus Brazilian only, and
 checks that Robert's locked rulings on the seven peoples appear in it. **Those rulings now
-live in the world bible, `canon/world-bible-v3.md` §4.6** (verbatim, plus a clearly marked
+live in the world bible, `canon/world-bible-v3.md` §4.6 and §4.7** (verbatim, plus a clearly marked
 zero-canon continuation); these docs follow it and the bible wins any conflict.
 `names.js` holds the matching data: the basis table, house names for the named cast,
 and a pool of **150+ given names per nation** for newcomers (`names-data.js`, grouped
 by source with a `meld` group in the five mixed nations). **`NAMES.md`** is the browsable
-list (1,122 names; regenerate with `node build-names-doc.js`). Highlights:
+list (1,152 entries: 1,122 native names plus 30 that Themelios borrows from other nations; regenerate with `node build-names-doc.js`). Highlights:
 
 | Nation | Basis | The ideal meld |
 |---|---|---|
