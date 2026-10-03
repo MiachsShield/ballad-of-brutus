@@ -22,6 +22,10 @@ Ledger) and the fully-proposed batches (17–20, 22–28, 32).
 readings, all recorded exactly as he wrote them, plus a clearly separated zero-canon
 continuation. Nothing else in v3 changed.
 
+**Addendum, 2026-10-03:** §4.7 adds Robert's quick-question answers on temperament,
+relations, government, Reyjar's expansion, Marium, Brutus and Abel, and King and Queen
+candidates, recorded exactly as given; §4.new and §3 carry pointers to it.
+
 ---
 
 ## 1. Tone & Core Theme (Tier A) — unchanged from v2, see that section for full text.
@@ -46,6 +50,11 @@ attached** — these are not gaps I'm waiting to fill; they're his to write:
 - Why this world's weaker Brutus beat Freja when Abel's remembered stronger
   version couldn't — the central unsolved mystery of Abel's arc.
 
+*Pointer, 2026-10-03:* Robert's answers in §4.7 bear on Brutus (son of Marium's
+Chief, a King Candidate, "a frat boy lout ... both, at that time") and on the Freja
+fight ("Draw first, beat her later"). They are recorded there verbatim; whether they
+settle the reserved trait question above is left for Robert to say.
+
 ## 4. Regions, Provinces & Factions
 
 ### 4.1–4.3 — unchanged from v2 (seven canon nations, conflict web, opening sequence).
@@ -57,6 +66,9 @@ detail (size, neighboring landmasses, sea routes beyond what's already stated) i
 to be developed until Robert revisits this. Treat as settled but minimal; do not
 extrapolate continent-scale logistics, additional landmasses, or archipelago
 structure from this ruling.
+
+**Amended 2026-10-03 (Robert revisited, see §4.7):** Marium is "an island off the
+coast of Themelios, between Themelios and Reyjar." Nothing further is extrapolated.
 
 ### 4.5 — Faction/political-layer status: PARTIALLY RESOLVED
 
@@ -188,6 +200,103 @@ forward, in the same register, and to be reviewed per entry):**
   humour is dry. A thing is said once, plainly, and silence is not rudeness. Proposed
   guild fit: The Black Candle.
 
+### 4.7 — Temperament, relations and politics: LOCKED (quick-question session, 2026-10-03)
+
+**RULING (locked, Robert directly, answered from his phone):** each line gives the
+question as the compiler asked it and Robert's answer exactly as given. Where he
+tapped an option, the option's label is quoted; where he typed, the text is verbatim,
+typos included. Tier A going forward. Where §4.6's zero-canon continuation differs
+from these answers (for example the proposed Reyjar temperament), these answers win.
+
+**Temperament, flaws and features**
+- Reyjar temperament? → "heavy formal praise to those that accomplish  great feats. weaklings are left behind"
+- Marium temperament? → "relaxed, hardworking"
+- Marium's national flaw? → "Slow to anger, then explosive"
+- Li Trice temperament? → "1 and 3 with playful teasing" (1 = "Haughty and refined", 3 = "Shrewd and mercantile")
+- Ayusti's national flaw? → "all of above" ("Naive", "Flighty, can't commit", "Nosy, no boundaries")
+- Edinius's national flaw? → "1 and 2" ("Judgmental", "Joyless")
+- Edinius hair colour? → "Ash-blond to light brown"
+- Themelios is diverse; should names be too? → "Mix in other nations'"
+
+**How the peoples see each other**
+- Who do the Reyjar look down on most? → "Themelios.   they are really cautious about Beloufi"
+- Who do the Beloufi get along with best? → "Ayusti,  li trice,  and brutus"
+- Who do the Li Trice look down on? → "everyone.  lol.  soft spot for Reyjar"
+- Who do the Themelios gossip about most? → "anyone with nothing to offer"
+- Who do the Ayusti like most? → "themselves.   soft spot for Marium"
+- Who do the Edinius respect? → "dignified peers"
+- Who do the Marium distrust most? → "1 and Reyjar" (1 = "Themelios")
+- Who do the Edinius look down on most? → "Fools."
+- Who do the Themelios fear? → "Low roi on affiliation with someone of low value"
+
+**How the peoples see Brutus**
+- How do the Reyjar see Brutus? → "An opportunity for reyjar's anti royalty political party"
+- How big is that party? → "Growing"
+- Why is Brutus useful to them? → "beat freyja's elite and fought her to a draw.  a frat boy lout."
+- Do anti-royalists like him because he humiliated a royal (Freja)? → "Yes, exactly"
+- "Frat boy lout" is how Reyjar see him, or what he is? → "both, at that time."
+- What could unite the Beloufi? → "brutus." Why? → "1 and how much of a humiliation Reyjar's strongest suffered at his hands." (1 = "He lives their values")
+- How do the Edinius see Brutus? → "1 to 2, and for some major characters a much more significant development" (1 = "A fool", 2 = "Grudging respect")
+- How do the Themelios see Brutus? → "at first sympathetic to the fall of marium.  and then a bit pensive as he has no significant backing; to a gleam in their eyes when it comes to capturing him or profiling"
+- How do the Li Trice see Brutus? → "2, 1, 3." ("Beneath them", then "A fascinating brute", then "Their soft spot (like Reyjar)")
+- How do the Ayusti see Brutus? → "ask me later" (open)
+
+**Government**
+- Do the other nations have crowns? → "Mixed". Which? → "Marium, Li Trice" and "Edinius" (Reyjar's crown is stated below)
+- Reyjar's crown is? → "Absolute"
+- Marium's crown is? → "transition to democracy". Who drives it? → "brutus and his older brother didn't want to bother."
+- "Chief" means? → "the ruler us referred to as a Chief, since Marium is an island."
+- Who holds Li Trice's crown? → "Old royal line". Who sits on the throne now? → "king and princess"
+- Edinius's crown is? → "ask me later." (open)
+- Who leads Themelios? → "Council of merchant houses"
+- Who runs Ayusti without a crown? → "military". Why? → "1.  imminent reyjar expansion" (1 = "Constant outside threat"). Led by? → "council of generals"
+- Who runs Beloufi? → "Feuding clan chiefs"
+- Which regions count as having adopted democracy? → "Themelios, Ayusti, Beloufi"
+- Is there a royalist bloc? → "reyjar, li trice,  marium post coup.  Edinius has royalty but has been not feeling particularly strong for democracy"
+
+**Reyjar's expansion**
+- Expansion aims at? → "roundabout way.  even with every other region, they still see themselves losing to beloufi."
+- Roundabout method? → "Themelios as base, organize with li trice, gather the powerful  fighters and exceptionally"; corrected by Robert: "Exceptional gear."
+- Reyjar meant to take Marium as a stepping stone to Themelios, and Abel stopped it? → "Yes, exactly"
+- Does Themelios know Reyjar is using it as a base? → "no.  abel pushed back reyjar invasion at Marium"
+- Li Trice and Reyjar are? → "Quiet partners"
+- Ayusti vs Reyjar right now? → "growing hostility from ayusti.  reyjar does not care."
+- Edinius's stance on the expansion? → "Edinius would benefit from reyjar expansion but they're not stupid." How? → "reyjar is for keeping the royal blood on the throne.  other regions have adopted democracy"
+
+**Marium, Brutus and Abel**
+- Brutus's relation to Marium's crown? → "Son of chief.  Chosen by the unknown being to be a King Candidate."
+- What is the older brother doing now? → "On Marium's new council"; then: "The older brother is killed by the youngest."
+- "The youngest" is? → "Brutus's younger brother". When? → "beginning of game". Why? → "refer to the abel doc."
+- The youngest is Abel, and the oldest dies in Abel's coup? → "Yes"
+- "The fall of Marium" is? → "Abel's coup". Marium's people see Abel as? → "99% support his coup"
+- After the coup, Marium is ruled by? → "Abel as King." Does that end the move to democracy? → "Yes, it's dead"
+- Why "King" instead of "Chief"? → "reyjar gift as respect for being fought off by an island army."
+- Abel and Reyjar now? → "Uneasy truce"
+- Freja's role in Reyjar? → "1 and 2." ("Reyjar's champion or general", "Reyjar royalty")
+- Brutus vs Freja, for the bible? → "Draw first, beat her later"
+- Who put the price on Brutus's head? → "1 and 2" ("Abel", "Reyjar royals")
+- Where does Brutus land after the coup? → "Themelios". Then? → "after another escape from people seeking reward,  ends up in tutorial dungeon"
+- Who does he meet there? → "Saved by an adventurer from one of the guilds.  Random." Drawn from? → "key character from the appropriate guild" ("the guild the adv is tied to"). Afterward? → "varies."
+
+**King and Queen candidates**
+- Brutus is a King Candidate, chosen by the unknown being (above).
+- How many King Candidates? → "Ask me later" (open)
+- Is Li Trice's princess a Queen candidate for Brutus? → "Yes"
+- Queen candidates come from? → "chosen by unknown being.  no correlation to lineage, strength, magic, connections, etc"
+- Do candidates know they've been chosen? → "yes". Does the world know of the unknown being? → "no"
+- Do candidates know about each other? → "3.  on close proximity" (3 = "They can sense each other")
+- What does being chosen give a candidate? → "varies.  essentially abilities."
+- When a King and Queen candidate unite, they gain? → "Ask me later" (open)
+
+**Compiler's notes (NOT canon):**
+- "freyja" is quoted as typed; the canon spelling is Freja.
+- The crowned nations are Marium (Abel, King after the coup), Li Trice, Edinius and
+  Reyjar; Themelios, Ayusti and Beloufi are the self-governing ones Robert calls
+  democracies, despite their very different forms (merchant council, generals,
+  feuding chiefs).
+- Reyjar's base in Themelios was the plan, not the fact: Abel's repulse at Marium
+  stopped the stepping stone, and Themelios does not know.
+
 ## 5. Relationship System — STATUS UPDATE, still pending
 
 **Not yet fully resolved.** Robert's steer: the current system is likely to be
@@ -237,6 +346,10 @@ Carried from v2, with resolutions applied:
 10. **New: the seven peoples** — physical features and temperament **LOCKED** (see
     §4.6), with Robert's four confirmations recorded there; the continuation beneath
     them is zero canon. Nothing in this item remains open.
+11. **New: temperament, relations and politics** — **LOCKED** (see §4.7). Still
+    open there, by Robert's choice ("ask me later"): Edinius's crown; how many King
+    Candidates; what a King and Queen candidate gain when they unite; how the Ayusti
+    see Brutus.
 
 ## 8. Sourcing
 
