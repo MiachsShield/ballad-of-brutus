@@ -1,17 +1,14 @@
 /* Newcomer given names, 150+ per nation, grouped by where they come from.
  * Robert, 2026-10-01: "Make a large number of names to pull from. Like 150 per
- * region." and "I want an ideal meld of the inspiration(s) regardless of
- * reality." So: Marium and Themelios (one inspiration each) keep their own
- * names; in the five MIXED nations every group is a `meld:` group. There are
- * no pure-source lists there, and check-names.js enforces it.
+ * region." Groups follow NATIONS.md: single-source nations split by kind of
+ * name; mixed nations have a `meld` group of names that belong to the blended
+ * people (convergence names, creole forms, doubled forms), not just two lists.
  *
- * The mixed-nation names are hand-fused from sound recipes (see NATIONS.md):
- * stems of one tongue in the music of the other, and names that sit natively in
- * both. Cross-multiplying stems and endings by machine produced mostly ugly
- * results, so every name here was chosen by ear.
+ * Themelios also carries names from every other nation (Robert, 2026-10-03:
+ * "Mix in other nations'"), so those are the one deliberate overlap.
  *
  * Rules the checks enforce: ASCII, one capitalised word, no name in two
- * regions, nothing that collides with the named cast or canon characters,
+ * regions (except Themelios's settled names), nothing that collides with the named cast or canon characters,
  * nothing from the BLOCK lint. Names are given names only; house names live in
  * names.js HOUSES and are used for named characters.
  */
@@ -29,6 +26,7 @@
       'men': L(`Alexios Theron Leandros Kosmas Stavros Argyros Aristarchos Diomedes Demetrios Dionysios Evander Euripides Philon Lysander Pericles Themistokles Sophokles Xenophon Theodoros Timotheos Zosimos Andreas Anastasios Apollonios Archidamos Basileios Chrysanthos Damianos Dorotheos Eleftherios Epaminondas Eumenes Eustathios Georgios Hektor Iason Ioannis Kallias Konstantinos Kyriakos Leon Lykourgos Menelaos Nestor Nikephoros Odysseus Orestes Pavlos Perseus Philippos Polydoros Prokopios Pyrrhos Spyridon Stephanos Thaddeos Theodotos Thanasis Thales Thrasyvoulos Tryphon Xenophanes Zenon`),
       'men (older and learned names)': L(`Agathon Aischylos Alkibiades Amyntas Anaxagoras Antiochos Archelaos Aristoteles Cleomenes Demokritos Empedokles Eudoxos Glaukos Hippolytos Isidoros Kimon Kritias Lykos Melanthios Milon Neoptolemos Nikias Pausanias Phokion Pindaros Plutarchos Protagoras Telemachos Teucer`),
       'women': L(`Eudora Callista Demetra Zoe Ioanna Melina Dorothea Xenia Thaleia Theodora Kassandra Penelope Ariadne Andromache Antigone Aspasia Chloe Daphne Eirene Eleni Elpida Euphemia Eurydike Hypatia Iris Kalliope Kleio Korinna Kyra Leda Lysandra Melpomene Nike Olympias Ourania Pelagia Persephone Phaedra Philomena Phoebe Polyxena Rhea Sappho Selene Sophia Theano Thekla Tyche Xanthe Zenobia Agathe Aglaia Alkmene Anthousa Artemisia Athenais Berenike Charis Chrysanthe Danae Dionysia Elektra Euphrosyne Hermione Kallisto Kyriaki Maira Myrto Nausikaa Panagiota Paraskevi Roxane`),
+      'settled from other nations (names travel with the merchants)': L(`Lucan Livia Valeria Quintus Sabina Halvardo Sigruna Rodrigo Elvira Ximena Lanette Yann Mirlan Wenaud Luce Mariko Takari Nina Rui Soraia Brennan Rowan Hannah Keegan Hazel Gedwin Edmundas Laimhild Godrikas Algric`),
       'women (more)': L(`Aikaterine Ambrosia Briseis Charikleia Chryseis Eleftheria Eugenia Galene Glykeria Kalypso Kleopatra Lais Leto Myrine Nephele Olympia`)
     },
     'Reyjar': {

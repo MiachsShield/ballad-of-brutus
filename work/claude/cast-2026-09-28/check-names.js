@@ -22,7 +22,9 @@ ok(C.CAST.every(function (a) {
   var t = a.name.replace(/^Sister /, '').split(' ');
   return t.length === 1 || NM.HOUSES[a.region].indexOf(t[t.length - 1]) !== -1;
 }), 'every cast surname comes from the home region\'s house names');
-ok(NM.POOL.length === new Set(NM.POOL).size, 'no name sits in two regions (a name says where you are from)');
+var NATIVE = []; regions.forEach(function (r) { Object.keys(NM.DATA[r]).forEach(function (g) { if (!/^settled/.test(g)) NATIVE = NATIVE.concat(NM.DATA[r][g]); }); });
+var SETTLED = []; Object.keys(NM.DATA.Themelios).forEach(function (g) { if (/^settled/.test(g)) SETTLED = SETTLED.concat(NM.DATA.Themelios[g]); });
+ok(NATIVE.length === new Set(NATIVE).size && SETTLED.length >= 20 && SETTLED.every(function (x) { return NATIVE.indexOf(x) !== -1 && NM.POOLS.Themelios.indexOf(x) !== -1; }), 'no native name sits in two regions; Themelios carries 20+ names settled from other nations (Robert: mix in other nations\' names)');
 ok(NM.POOL.every(function (x) { return !NM.BLOCK.test(x) && /^[A-Z][a-z]+$/.test(x); }), 'pool: plain ASCII period names, no digits or modern words');
 ok(JSON.stringify(regions.sort()) === JSON.stringify(C.REGIONS.slice().sort()), 'names.js and cast.js agree on the seven regions');
 ok(C.CAST.every(function (a) { return NM.BASIS[a.region]; }), 'every cast member has a home region with a basis');
