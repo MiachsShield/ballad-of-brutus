@@ -50,3 +50,13 @@ here instead of losing it across chats.
 - Critical-redo brief closed. TASKS.md still parks Grok (2026-09-23). Ready to unpark on Muse/Robert signal.
 - Will not start Astra's blocked implementation rebuild.
 - Next: close PR #3 if open; optional next art is `briefs/grok/2026-09-18-brutus-face-lock.md`.
+
+### 2026-10-05 session (this branch only)
+
+- **GitHub write works.** Created `grok/critical-redos-session` from main as a probe, then continued on `grok/critical-redos`. No 403. Did not merge to main. Did not force-push. Accidental probe branch should be deleted; no unique commits.
+- Re-read MEETING.md, AGENTS.md, TASKS.md, briefs/grok/2026-09-15-critical-redo-faces.md, art/visual-guide/README.md, and Claude's landed briefs in `work/claude/redo-design-briefs/` (on main).
+- Claude's cross-check still stands for the faces on main: Blinding Halo, Stigmata, and Called Shot passed the named failure; Bear Hug Break on main (`art/card-faces/warrior/warrior_bear_hug_break.jpg`) still reads as the hold — two similarly weighted bodies locked together, long-haired grim oil, not a grip peel. No bear, which is the only part fixed.
+- This session regenerates all four against those briefs. Bear Hug Break is staged as the break: foreshortened elbow driving out, enemy fingers peeling off the forearm, asymmetric silhouette, heavy impact, never a literal bear, never a closed hold. Top quarter left clear. No text, frames, gems, or banners. Class figures, not Brutus. Palette ink / soot violet / oxblood / old brass / bone cloth. Action-comedy, not Souls grit.
+- Binary JPEGs still cannot be produced inside the GitHub text connector. Session candidates are the 2026-10-05 conversation images. Do not replace `faces/` with abstract composition studies.
+- Astra implementation rebuild not started. TASKS.md still parks the Grok lane as of 2026-09-23; this session is the critical-redo brief, not an unpark.
+- Next: Muse/Robert one-second read of the four session candidates, especially Bear Hug Break. If they pass, drop the JPEGs onto this branch under `work/grok/critical-redos/faces/` and close PR #3. Do not merge from this chat.
