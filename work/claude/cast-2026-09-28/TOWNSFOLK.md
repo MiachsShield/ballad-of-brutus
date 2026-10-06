@@ -17,7 +17,8 @@ Robert said staple types come from "personality types and how they affect the pe
   Those with no looks, no talent and no power (strength, money, connections or magic) are
   not needed, so they tend to be unemployed. They gather in the **slums**, which the town
   treats with **disdain**. They still have desires and keep striving, and they bond through
-  shared exclusion. Some certainly try to catch a break.
+  shared exclusion. Some certainly try to catch a break. (How they get by, and why leaving
+  the slums is nigh impossible, is in "How the jobless get by" below.)
 - When an adventurer dies, **the town only cares if they were beautiful and young**,
   not for some sod nobody knows. Rumours between capitals travel **fast and garbled**.
 - **Beauty is personal** (Robert: "different people different preferences"). There is no
@@ -217,6 +218,27 @@ nothing built):
 The town's own offices follow the same logic: the **watch** is led by a Doom Crank and
 staffed by Daredevil Fools, the **clerks** are Skinflints, and the **magistrate** is a Braggart.
 
+## How the jobless get by (Robert, 2026-10-03)
+
+A guild is not the only break (Robert: "No, it's other things too"). Asked what the other
+ways are, he said: "these unwanted people are a
+source of cheap, talentless labor with essentially no value lost if anything were to happen
+to them, or if they got caught doing something unscrupulous". So their break is **being
+useful because they are expendable**.
+
+**The work they get (proposal, nothing built):** porters and torch-bearers on a delve,
+lookouts and decoys, errand-runners for shady deals, and the patsy who signs the forged
+chit. Guilds and merchants hire them because nothing is lost if they are hurt or caught.
+
+**The way out.** Robert: leaving the slums is "nigh impossible alone; they would need people
+in high places who care about them". It takes a **patron**. That is a tie, not a stat: a
+friend, a kin, a lover or a guildmate who has risen and who actually cares. This matches the
+circles above and the game's habit of investing favours in people.
+
+**Keep the joke on the right target.** The town's use of them is the butt, never the
+jobless themselves (principle 7). They are the sympathetic underdogs who keep striving, and
+the town that treats them as disposable is the pretentious fool in the scene.
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -273,11 +295,9 @@ the world bible, section 4.7). The type stays the same.
 - Can a cooled squabble return as a grudge? (Robert: "a squabble isn't worth a blood feud".)
 - What is a regular's verbal tic? (Robert: ask later.)
 - Does a rumour ever turn out accidentally true?
-- Getting into a guild is not the only way the jobless catch a break (Robert: "No, it's
-  other things too"). Which other ways? (Guild slots are scarce: two members per guild in
-  the playtest slice.)
+- Can the player, or an adventurer, be the patron in high places, and what does it cost
+  them? (Robert: the jobless need "people in high places who care about them".)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
-- Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?

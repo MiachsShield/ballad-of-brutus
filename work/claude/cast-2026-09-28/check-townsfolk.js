@@ -28,7 +28,7 @@ ok(/Borrow:/.test(ref) && /Leave:/.test(ref) && (ref.match(/\*Borrow:\*/g) || []
 ok(['mob flips', 'Flawed institutions', 'reaction chorus', 'verbal tic', 'Reset, but with memory'].every(function (k) { return new RegExp(k, 'i').test(ref); }), 'the five shared engines are named');
 ok(/nobody stays dead/.test(ref) && /Deaths stay real/.test(ref), 'the reset-versus-permanent-death caution is stated');
 // chosen engines and the telephone rule
-var tel = doc.slice(doc.indexOf('## Chosen engines'), doc.indexOf('## Every townsperson has'));
+var tel = doc.slice(doc.indexOf('## Chosen engines'), doc.indexOf('## How the jobless get by'));
 ok(/regular \+ reactionary crowd-like game of telephone/.test(tel), 'Robert\'s pick is quoted exactly');
 ok(TRAITS.every(function (t) { return new RegExp('^\\| ' + t + ' \\|', 'm').test(tel); }), 'the telephone table bends a rumour for every trait');
 ok(/true line and the town's version/.test(tel) && /nothing built/.test(tel), 'the player sees both versions, and the rule is marked unbuilt');
@@ -42,7 +42,7 @@ ok((comm.match(/^- \*/gm) || []).length >= 6 && /Bramble/.test(comm), 'the worke
 ok(/Proposal, nothing built/.test(comm) && /stake/.test(comm) && /ripple/.test(comm), 'the fork is marked unbuilt, with the stake-then-trait rule and the ripple graph');
 ok(/must not preoccupy a lot of cognition/.test(comm) && /tbd/.test(comm), 'the low-cognitive-load constraint and the open player question are recorded');
 // flawed institutions and the rumour lifespan
-var inst = doc.slice(doc.indexOf('**Flawed institutions'), doc.indexOf('## Every townsperson has'));
+var inst = doc.slice(doc.indexOf('**Flawed institutions'), doc.indexOf('## How the jobless get by'));
 ok(/Yes, guilds\s+and guards too/.test(doc), 'Robert\'s ruling on flawed institutions is quoted exactly');
 ok(MK.GUILDS.every(function (g) { return new RegExp('^\\| ' + g.name + ' \\|', 'm').test(inst); }), 'every guild has a row in the institutions table');
 ok(MK.GUILDS.every(function (g) {
@@ -60,5 +60,11 @@ ok(/No, it's\s+other things too/.test(doc), 'a guild is not the only way to catc
 ok(/ask later/.test(doc) && /verbal tic/.test(doc), 'the verbal tic is parked as ask-later');
 ok(/townsfolk aren't\s+different from adv\. nature wise/.test(doc), 'townsfolk share the adventurers\' nature (Robert\'s words)');
 ok(/different people different preferences/.test(doc) && /no\s+island-wide standard/.test(doc), 'beauty is personal, with no island-wide standard');
+// how the jobless get by
+var jb = doc.slice(doc.indexOf('## How the jobless get by'), doc.indexOf('## Every townsperson has'));
+ok(/cheap, talentless labor with essentially no value lost if anything were to happen\s+to them/.test(jb) && /caught doing something unscrupulous/.test(jb), 'the jobless are expendable cheap labour (Robert\'s words)');
+ok(/nigh impossible alone; they would need people\s+in high places who care about them/.test(jb), 'escape needs a patron (Robert\'s words)');
+ok(/porters/.test(jb) && /patsy/.test(jb) && /nothing built/.test(jb), 'the kinds of disposable work are listed, marked unbuilt');
+ok(/principle 7/.test(jb) && /butt/.test(jb), 'the joke stays on the town, not the jobless');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);
