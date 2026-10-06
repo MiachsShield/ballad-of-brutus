@@ -150,6 +150,35 @@ on curtly and change the least; Beloufi turn any lie they catch into a feud.
 By the fifth retelling the crowd has flipped from hero to cheat, and nothing in it was
 true after the first line.
 
+**Across communities (Robert, 2026-10-03: "one action can become distorted across
+communities").** The telephone does not run down a single line. One action forks at each
+community boundary, and each community bends it twice: first by its **stake** (what it
+wants the story to mean), then by the **trait** of whoever retells it. After a few
+crossings the same deed exists in several versions at once, which can contradict each other.
+*(Proposal, nothing built.)*
+
+| Community | The lens it reads an event through |
+|---|---|
+| Marium | relaxed: shrugs it off until it touches their own, then explodes |
+| Themelios | what is it worth, and is there a reward in it? |
+| Reyjar | what does it say about the crown and the champion? (the anti-royalists cheer, the royalists soften it) |
+| Li Trice | is it stylish, who looks ridiculous, and a soft spot for Reyjar |
+| Ayusti | believe the juiciest version at once, pass it on, forget the details |
+| Beloufi | who lied, and who was humiliated? |
+| Edinius | was it competent or foolish? |
+
+**Worked example: one action, six versions.** The action: Brutus beat Reyjar's elite and
+fought Freja to a draw (Robert's wording, bible section 4.7).
+- *Reyjar, anti-royalists:* "A common lout humbled a royal. About time."
+- *Reyjar, royalists:* "Freja was holding back out of courtesy."
+- *Beloufi:* "Reyjar's strongest, humiliated, by a man who drinks like one of us."
+- *Li Trice:* "A magnificent brute, and poor Freja, bullied by him."
+- *Themelios:* "Eleven people swear they saw it. Is there a reward on him?"
+- *Edinius:* "A fool, though a lucky one."
+
+Ayusti and Marium are left out because Robert has not said how they see Brutus; the
+lens table above gives only their temperament.
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -201,6 +230,9 @@ the world bible, section 4.7). The type stays the same.
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
 - Are flawed institutions and reset-with-memory wanted, or left out? (Not picked so far.)
 - How many retellings before a rumour dies, and does one ever turn out accidentally true?
+- What counts as a community: each region's capital, the districts inside a town (the
+  slums, the guild halls, the market), or both?
+- Can the player compare versions between capitals, or only hear the local one?
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
