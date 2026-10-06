@@ -22,10 +22,16 @@ ok((why.match(/\*Test:\*/g) || []).length === 9, 'every principle carries a one-
 ok(['Small cause, huge reaction', 'Sincere jerks', 'One flaw, always the same verb', 'Lovable underneath', 'A closed town with a long memory', 'Hypocrisy drives the gossip', 'behaviour and pretension, never who someone is', "obeys the world's own logic", 'A grounded eye'].every(function (k) { return why.indexOf(k) !== -1; }), 'all nine principles are named');
 ok(/never a gag object/.test(why) && /never the\s+narrator's verdict/.test(why) && /no toilet or\s+perverted/.test(why), 'the why section keeps the locked rules (no gag want, no verdict, no crude humour)');
 // the reference analysis
-var ref = doc.slice(doc.indexOf('## Reference analysis'), doc.indexOf('## Every townsperson has'));
+var ref = doc.slice(doc.indexOf('## Reference analysis'), doc.indexOf('## Chosen engines'));
 ok(/South Park/.test(ref) && /Bikini Bottom/.test(ref) && /Springfield/.test(ref), 'the reference analysis covers all three crowds');
 ok(/Borrow:/.test(ref) && /Leave:/.test(ref) && (ref.match(/\*Borrow:\*/g) || []).length === 3 && (ref.match(/\*Leave:\*/g) || []).length === 3, 'each crowd lists what to borrow and what to leave');
 ok(['mob flips', 'Flawed institutions', 'reaction chorus', 'verbal tic', 'Reset, but with memory'].every(function (k) { return new RegExp(k, 'i').test(ref); }), 'the five shared engines are named');
 ok(/nobody stays dead/.test(ref) && /Deaths stay real/.test(ref), 'the reset-versus-permanent-death caution is stated');
+// chosen engines and the telephone rule
+var tel = doc.slice(doc.indexOf('## Chosen engines'), doc.indexOf('## Every townsperson has'));
+ok(/regular \+ reactionary crowd-like game of telephone/.test(tel), 'Robert\'s pick is quoted exactly');
+ok(TRAITS.every(function (t) { return new RegExp('^\\| ' + t + ' \\|', 'm').test(tel); }), 'the telephone table bends a rumour for every trait');
+ok(/true line and the town's version/.test(tel) && /nothing built/.test(tel), 'the player sees both versions, and the rule is marked unbuilt');
+ok((tel.match(/^\d\. \*/gm) || []).length === 5, 'the worked example has five hops');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

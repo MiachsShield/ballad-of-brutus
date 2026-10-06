@@ -113,6 +113,43 @@ adventurers die for good. So the reset belongs to the **townsfolk's** squabbles,
 reputations. Deaths stay real, and the town's reaction to them (grief only for the
 beautiful and young) is where the joke lands.
 
+## Chosen engines and the telephone rule (Robert, 2026-10-03)
+
+Robert's pick, in his words: "regular + reactionary crowd-like game of telephone". Read as
+three of the five engines: **regulars** (recurring faces with a trait, a trade and a verbal
+tic), a **reactionary crowd** (the one-beat mob flip and the reaction chorus) and **rumour as
+a game of telephone**. Flawed institutions and reset-with-memory were not picked, so both
+stay open.
+
+**The telephone rule (proposal, nothing built).** A true event enters the bulletin once.
+Each time a townsperson passes it on, their trait bends it in one fixed way. The crowd
+reacts to the latest version, so opinion can flip with every retelling. The player sees
+the true line and the town's version side by side.
+
+| Teller's trait | How the retelling bends it |
+|---|---|
+| proud | makes the teller, or the teller's side, the hero |
+| greedy | adds a price, a fee or a cut |
+| vengeful | drags in an old slight |
+| cautious | adds a plot or a danger |
+| kind | adds pity ("poor thing") |
+| reckless | adds a dare or a stunt |
+| pragmatic | strips it down to the cynical angle |
+
+**Nation tint on the telephone:** Themelios retell fastest and add the most; Edinius pass it
+on curtly and change the least; Beloufi turn any lie they catch into a feud.
+
+**Worked example.**
+1. *True:* Remy Jonque came up from the third floor alone, with the loot, before the
+   fight was over.
+2. *Braggart:* "Remy scouted ahead, won the fight single-handed, and brought the haul home."
+3. *Doom Crank:* "Single-handed? Someone paid those beasts to let him walk."
+4. *Skinflint:* "Paid? Eleven gold, I heard, and he never split it."
+5. *Grudge-Keeper:* "Never splits. Same as his father and the ladle."
+
+By the fifth retelling the crowd has flipped from hero to cheat, and nothing in it was
+true after the first line.
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -155,13 +192,15 @@ the world bible, section 4.7). The type stays the same.
 1. Give every unnamed newcomer the three goals and a core want, drawn by trait.
 2. After a newcomer survives some number of visits, mark them a **regular**: keep their
    name, goals, grudges and crush, and let them recur in the bulletin.
-3. Weight the bulletin's grief for a death by **beauty and youth** (Fame and Marketability),
+3. Run the telephone rule on each notable bulletin event, with a cap on retellings.
+4. Weight the bulletin's grief for a death by **beauty and youth** (Fame and Marketability),
    so a sod's death is a line and a beautiful young one is a lament.
 
 ## Open questions
 
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
-- Which of the five engines belong in the game (mob flips, flawed institutions, reaction chorus, regulars with a verbal tic, reset with memory)?
+- Are flawed institutions and reset-with-memory wanted, or left out? (Not picked so far.)
+- How many retellings before a rumour dies, and does one ever turn out accidentally true?
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
