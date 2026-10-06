@@ -68,5 +68,7 @@ ok(/porters/.test(jb) && /patsy/.test(jb) && /nothing built/.test(jb), 'the kind
 ok(/principle 7/.test(jb) && /butt/.test(jb), 'the joke stays on the town, not the jobless');
 ok(/Yes, a player-facing favor/.test(jb) && /1 and 2\. you are vouching for them/.test(jb), 'the player can be a patron, and it costs reputation and money or favours (Robert\'s words)');
 ok(/ripple/.test(jb) && /single\s+favour choice/.test(jb), 'vouching rides the ripple ties and stays a single choice');
+ok(/patron as\s+in sponsor \(gift of gold\/gear etc or vouching \(increase of their reputation with yours\s+taking an exponential increase or decrease on the achievements of said adv\.\)\)/.test(jb), 'Robert\'s definition of a patron is quoted exactly');
+ok(/\*\*A gift:\*\*/.test(jb) && /\*\*Vouching:\*\*/.test(jb) && /exponentially/.test(jb), 'both forms of sponsorship are set out, with the exponential swing');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

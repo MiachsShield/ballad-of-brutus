@@ -237,11 +237,17 @@ circles above and the game's habit of investing favours in people.
 
 **Patronage (Robert, 2026-10-03).** The player can be a patron: asked whether Brutus can
 be a jobless person's patron, Robert answered "Yes, a player-facing favor". Asked what it
-costs, he said "1 and 2. you are vouching for them", meaning it costs **reputation** and
-**money or favours**. Vouching puts your name on theirs, so a protege's wins and scandals
-reach you through your ties (the ripple system already spreads blame and credit by
-relationship weight): a protege caught doing something unscrupulous lands on the patron.
-*(Proposal, nothing built.)* In keeping with the cognition constraint, it stays a single
+costs, he said "1 and 2. you are vouching for them". He then defined the word: "patron as
+in sponsor (gift of gold/gear etc or vouching (increase of their reputation with yours
+taking an exponential increase or decrease on the achievements of said adv.))". So a
+patron is a **sponsor**, in two forms:
+- **A gift:** gold, gear and the like. This is the money-or-favours cost.
+- **Vouching:** you lend the adventurer your reputation, which raises theirs, and your own
+  reputation then swings **exponentially**, up or down, with what they go on to achieve.
+  This is the reputation cost: the bigger the sponsored adventurer's wins and failures,
+  the bigger the swing in the patron's name.
+*(Proposal, nothing built.)* The ripple system already spreads blame and credit along ties,
+and a vouch could steepen it. In keeping with the cognition constraint, it stays a single
 favour choice, never a management task.
 
 **Keep the joke on the right target.** The town's use of them is the butt, never the
@@ -304,8 +310,9 @@ the world bible, section 4.7). The type stays the same.
 - Can a cooled squabble return as a grudge? (Robert: "a squabble isn't worth a blood feud".)
 - What is a regular's verbal tic? (Robert: ask later.)
 - Does a rumour ever turn out accidentally true?
-- How large are the costs of vouching, and how long does a vouch last? (Robert: reputation
-  and money or favours; "you are vouching for them".)
+- How steep is the exponential on a vouch, is there a cap on the reputation a patron can
+  stake, and how long does a vouch last? (Robert: reputation rises or falls exponentially
+  with the sponsored adventurer's achievements.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
