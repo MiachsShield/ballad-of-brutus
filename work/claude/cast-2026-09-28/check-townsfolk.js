@@ -15,5 +15,11 @@ ok(/generics who survive/.test(doc), 'recurring faces are the surviving generics
 ok(/never the narrator's verdict/.test(doc), 'the town\'s shallowness is framed as the joke, not a verdict');
 ok(/zero canon/i.test(doc) && /nothing is built/i.test(doc), 'marked zero canon and unbuilt');
 ok(!/burger|toilet joke|fart|poop/i.test(doc.replace(/burger\)/, '').replace(/cannot be a burger/, '')), 'no gag fixations or crude humour in the doc');
+// the "why" section: nine principles, each with a test
+var why = doc.slice(doc.indexOf('## Why the humour works'), doc.indexOf('## Every townsperson has'));
+ok(why.length > 2000 && (why.match(/^\d\. \*\*/gm) || []).length === 9, 'the why section lists nine numbered principles');
+ok((why.match(/\*Test:\*/g) || []).length === 9, 'every principle carries a one-line test');
+ok(['Small cause, huge reaction', 'Sincere jerks', 'One flaw, always the same verb', 'Lovable underneath', 'A closed town with a long memory', 'Hypocrisy drives the gossip', 'behaviour and pretension, never who someone is', "obeys the world's own logic", 'A grounded eye'].every(function (k) { return why.indexOf(k) !== -1; }), 'all nine principles are named');
+ok(/never a gag object/.test(why) && /never the\s+narrator's verdict/.test(why) && /no toilet or\s+perverted/.test(why), 'the why section keeps the locked rules (no gag want, no verdict, no crude humour)');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

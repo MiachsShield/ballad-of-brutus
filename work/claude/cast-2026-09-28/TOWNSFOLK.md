@@ -25,6 +25,49 @@ Robert said staple types come from "personality types and how they affect the pe
 - Every region has a labor-market town, and it is that region's capital. Roaming between
   them is limited by fame or money. (The playtest slice stays a single town.)
 
+## Why the humour works (the craft; Tier B, for Robert to confirm)
+
+Nine principles drawn from what the three reference crowds actually do, each fitted to
+Robert's rules, each with a one-line test for anyone writing a townsperson or a gag.
+
+1. **Small cause, huge reaction.** A trivial trigger and an absurd response, with
+   consequences that stay bounded. *Here:* a thirty-year feud over a borrowed ladle.
+   *Test:* is the cause small enough to be embarrassing and the reaction big enough to be
+   absurd, with nobody permanently ruined?
+2. **Sincere jerks.** Nobody knows they are funny; each is certain they are right and
+   reasonable, and no one ever winks. The joke is the gap between self-image and behaviour.
+   *Test:* would the character say this line with a straight face and mean it?
+3. **One flaw, always the same verb.** A person does one thing in every scene, so the
+   audience can see the collision coming (a Braggart meets a Skinflint). This is why the
+   trait table works. *Test:* can you name the one thing this person does every time?
+4. **Lovable underneath.** The pettiness reads as coping because the want is human, the
+   world is hard, they rally (grudgingly) when it counts, and the cruelty runs both ways so
+   no one is a victim for long. *Here:* the core want is respect, belonging, security, love,
+   revenge or escape, never a gag object. *Test:* can you state what they want in one
+   sentence with no joke in it?
+5. **A closed town with a long memory.** The same faces, the same grudges and crushes,
+   and callbacks that pay off. Extras who survive become the faces. *Here:* the generics who
+   survive, with their goals, grievances, squabbles and crushes. *Test:* does this scene plant
+   or pay off something that returns?
+6. **Hypocrisy drives the gossip.** The town condemns what it does and is outraged
+   selectively, as when it grieves only the beautiful and young. The audience sees through
+   it, and the story never agrees with it. *Here:* the shallowness is the joke, never the
+   narrator's verdict. *Test:* is the audience seeing through the town's judgement, not sharing it?
+7. **The target is behaviour and pretension, never who someone is.** The cruelty goes at
+   vanity, status-seeking and pettiness. The unemployed in the slums are the sympathetic
+   underdogs who keep striving, and the joke is on the town that discards them. A nation
+   only tints how a trait comes out. *Test:* is the butt of the joke what someone does, not
+   what they are or what befell them?
+8. **The absurd obeys the world's own logic, played straight, and stops after one beat.**
+   Nothing immersion-breaking: no winks, no anachronisms, no meme references, no toilet or
+   perverted gags. Gags live inside the fiction (the fame economy, the guild bulletin,
+   period-feeling names) and are understated, never explained, never repeated twice.
+   *Test:* could this happen in this world with no one noticing it is a joke?
+9. **A grounded eye in every scene.** Each reference crowd is seen through someone the
+   audience trusts. *Here (proposal):* Brutus, an exuberant lout the town mocks and needs,
+   the player, or a named straight man. *Test:* is there someone in the scene whose
+   reaction tells us how to read the absurdity?
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -72,6 +115,7 @@ the world bible, section 4.7). The type stays the same.
 
 ## Open questions
 
+- Which of the nine "why" principles should Robert amend or strike before they are locked?
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
