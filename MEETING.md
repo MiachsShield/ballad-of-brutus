@@ -317,7 +317,7 @@ Read MEETING.md, MEETING-2026-09-16.md, DISCUSS.md, PLAYTEST-DISCUSS.md, the vis
 
 ## Feedback — Astra
 
-*(Astra: add your feedback here.)*
+2026-09-20: S1 candidate now wires Claude's unchanged simulation to actual world save/turn/New Run and dungeon Talk/aid/ignore/exploit/obstruct. Automated adapter tests and 700-wave replay pass. Launcher and reproducible standalone builder are included; baseline untouched. Browser localhost preview was blocked, so visual/WebGL and failed-start refund review remain open. Exact checkpoint: `work/astra/overworld-splice-1/RUNBOOK.md`. No S2 scope or merge yet.
 
 ## Feedback — Kavi
 
