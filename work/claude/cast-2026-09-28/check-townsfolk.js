@@ -1,5 +1,5 @@
 // node check-townsfolk.js — the draft covers every sim trait and nation, and keeps Robert's rules.
-var fs = require('fs'), NM = require('./names.js'), C = require('./cast.js');
+var fs = require('fs'), NM = require('./names.js'), C = require('./cast.js'), MK = require('./market.js');
 var doc = fs.readFileSync(__dirname + '/TOWNSFOLK.md', 'utf8'), fails = 0, n = 0;
 function ok(c, m) { n++; if (!c) { fails++; console.log('FAIL', m); } }
 var TRAITS = ['cautious', 'greedy', 'kind', 'pragmatic', 'proud', 'reckless', 'vengeful'];
@@ -41,5 +41,18 @@ ok(['Kin', 'Lovers and crushes', 'Friends', 'Guildmates and the clique', 'Rivals
 ok((comm.match(/^- \*/gm) || []).length >= 6 && /Bramble/.test(comm), 'the worked example gives at least six circles\' versions of one action');
 ok(/Proposal, nothing built/.test(comm) && /stake/.test(comm) && /ripple/.test(comm), 'the fork is marked unbuilt, with the stake-then-trait rule and the ripple graph');
 ok(/must not preoccupy a lot of cognition/.test(comm) && /tbd/.test(comm), 'the low-cognitive-load constraint and the open player question are recorded');
+// flawed institutions and the rumour lifespan
+var inst = doc.slice(doc.indexOf('**Flawed institutions'), doc.indexOf('## Every townsperson has'));
+ok(/Yes, guilds\s+and guards too/.test(doc), 'Robert\'s ruling on flawed institutions is quoted exactly');
+ok(MK.GUILDS.every(function (g) { return new RegExp('^\\| ' + g.name + ' \\|', 'm').test(inst); }), 'every guild has a row in the institutions table');
+ok(MK.GUILDS.every(function (g) {
+  var row = (inst.match(new RegExp('^\\| ' + g.name + ' \\| ([^|]*)\\|', 'm')) || [])[1] || '';
+  return (g.holds || []).every(function (t) { return row.indexOf(t) !== -1; });
+}), 'each guild row lists the traits that guild actually holds in the sim');
+ok(/watch/.test(inst) && /clerks/.test(inst) && /magistrate/.test(inst), 'the guard and the town offices are covered');
+ok(/people move on fast/.test(doc) && /Rumours die fast/.test(doc), 'rumours die fast (Robert\'s words)');
+ok(/With regulars, people die\.\s+Or they join a guild\. I guess that is when they are regulars\./.test(doc), 'Robert\'s words on regulars are quoted exactly');
+ok(/not a formal mechanic/.test(doc) && /the guild is the filter/.test(doc) && /join a guild/.test(doc), 'regulars are not a formal mechanic: they are the ones who join a guild');
+ok(!/1a2 a xv/.test(doc), 'the superseded unreadable fragment is gone');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

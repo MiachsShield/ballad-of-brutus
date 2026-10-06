@@ -21,7 +21,8 @@ Robert said staple types come from "personality types and how they affect the pe
 - When an adventurer dies, **the town only cares if they were beautiful and young**,
   not for some sod nobody knows. Rumours between capitals travel **fast and garbled**.
 - **The recurring faces are the generics who survive.** They have goals, grievances,
-  squabbles and crushes: people trying to eke out a living.
+  squabbles and crushes: people trying to eke out a living. Survival ends in one of two
+  ways: they die, or they join a guild (and that is when they count as regulars).
 - Every region has a labor-market town, and it is that region's capital. Roaming between
   them is limited by fame or money. (The playtest slice stays a single town.)
 
@@ -118,8 +119,8 @@ beautiful and young) is where the joke lands.
 Robert's pick, in his words: "regular + reactionary crowd-like game of telephone". Read as
 three of the five engines: **regulars** (recurring faces with a trait, a trade and a verbal
 tic), a **reactionary crowd** (the one-beat mob flip and the reaction chorus) and **rumour as
-a game of telephone**. Flawed institutions and reset-with-memory were not picked, so both
-stay open.
+a game of telephone**. Robert then added a fourth: **flawed institutions** ("Yes, guilds
+and guards too"). Reset-with-memory was not picked and stays open.
 
 **The telephone rule (proposal, nothing built).** A true event enters the bulletin once.
 Each time a townsperson passes it on, their trait bends it in one fixed way. The crowd
@@ -185,6 +186,28 @@ carried a rival guild's whole party out of the third floor, and billed no one.
 is **tbd**. Until he decides, the rule is ambient flavour: at most one garbled line beside
 the true line, never something to track, never a puzzle.
 
+**Rumours die fast (Robert: "people move on fast").** A rumour has a short life: the town
+drops it as soon as something newer turns up. No fixed retelling count is set, and
+nothing needs tracking.
+
+**Flawed institutions (Robert: "Yes, guilds and guards too").** Guilds, guards and
+officials are run by one-trait fools, so the institution itself is a recurring character.
+For the guilds, the types follow the traits each guild already prefers in the sim (proposal,
+nothing built):
+
+| Guild | Prefers (sim) | Run by |
+|---|---|---|
+| The Iron Oath | proud, pragmatic | Braggart officers who price every honour |
+| Lantern Company | kind, cautious | Busybody den-mothers who see a plot in every delay |
+| The Merry Rabble | reckless, kind | a Daredevil Fool in charge, a Busybody keeping him alive |
+| The Brethren of Saint Piran | kind, reckless | a Busybody rescuing people from the Daredevil beside her |
+| Gilt Hand | greedy | a Skinflint, naturally |
+| The Black Candle | vengeful, cautious | a Grudge-Keeper with a Doom Crank for a deputy |
+| The Hollow Crown | proud | a Braggart court of fallen nobles |
+
+The town's own offices follow the same logic: the **watch** is led by a Doom Crank and
+staffed by Daredevil Fools, the **clerks** are Skinflints, and the **magistrate** is a Braggart.
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -225,8 +248,12 @@ the world bible, section 4.7). The type stays the same.
 ## Hooks if Robert approves (proposals only, nothing is built)
 
 1. Give every unnamed newcomer the three goals and a core want, drawn by trait.
-2. After a newcomer survives some number of visits, mark them a **regular**: keep their
-   name, goals, grudges and crush, and let them recur in the bulletin.
+2. Regulars are **not a formal mechanic** (Robert). His words: "With regulars, people die.
+   Or they join a guild. I guess that is when they are regulars." So a newcomer becomes a
+   regular **when they join a guild**; the others die or drift away. The sim already works
+   this way: an unnamed newcomer with no guild vanishes after a set number of visits, and
+   guild members persist. A regular simply keeps their name, goals, grudges and crush, and
+   the bulletin may mention them. No promotion rule is needed: the guild is the filter.
 3. Run the telephone rule on each notable bulletin event, with a cap on retellings.
 4. Weight the bulletin's grief for a death by **beauty and youth** (Fame and Marketability),
    so a sod's death is a line and a beautiful young one is a lament.
@@ -234,11 +261,12 @@ the world bible, section 4.7). The type stays the same.
 ## Open questions
 
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
-- Are flawed institutions and reset-with-memory wanted, or left out? (Not picked so far.)
-- How many retellings before a rumour dies, and does one ever turn out accidentally true?
+- Is reset-with-memory wanted? (Flawed institutions are now in.)
+- Does a rumour ever turn out accidentally true?
+- Guild slots are scarce (two members per guild in the playtest slice), so the jobless
+  striving to "catch a break" may mean getting into a guild. Is that the break?
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
-- How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?
