@@ -235,6 +235,15 @@ in high places who care about them". It takes a **patron**. That is a tie, not a
 friend, a kin, a lover or a guildmate who has risen and who actually cares. This matches the
 circles above and the game's habit of investing favours in people.
 
+**Patronage (Robert, 2026-10-03).** The player can be a patron: asked whether Brutus can
+be a jobless person's patron, Robert answered "Yes, a player-facing favor". Asked what it
+costs, he said "1 and 2. you are vouching for them", meaning it costs **reputation** and
+**money or favours**. Vouching puts your name on theirs, so a protege's wins and scandals
+reach you through your ties (the ripple system already spreads blame and credit by
+relationship weight): a protege caught doing something unscrupulous lands on the patron.
+*(Proposal, nothing built.)* In keeping with the cognition constraint, it stays a single
+favour choice, never a management task.
+
 **Keep the joke on the right target.** The town's use of them is the butt, never the
 jobless themselves (principle 7). They are the sympathetic underdogs who keep striving, and
 the town that treats them as disposable is the pretentious fool in the scene.
@@ -295,8 +304,8 @@ the world bible, section 4.7). The type stays the same.
 - Can a cooled squabble return as a grudge? (Robert: "a squabble isn't worth a blood feud".)
 - What is a regular's verbal tic? (Robert: ask later.)
 - Does a rumour ever turn out accidentally true?
-- Can the player, or an adventurer, be the patron in high places, and what does it cost
-  them? (Robert: the jobless need "people in high places who care about them".)
+- How large are the costs of vouching, and how long does a vouch last? (Robert: reputation
+  and money or favours; "you are vouching for them".)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
