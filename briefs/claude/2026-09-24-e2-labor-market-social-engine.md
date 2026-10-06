@@ -1,5 +1,16 @@
 # Brief E2 — Labor market + social engine: work together or bash heads when resources run short (2026-09-24)
 
+## ADDENDUM 2026-10-06 — Robert's rulings supersede the wage/payroll mechanics (read first)
+
+Robert's Oct 6 rulings change the economic model this brief assumes. Where they conflict with the items below, the rulings win:
+
+- **No constant upkeep costs.** No wages ticking, no maintenance meters, no payroll engine. Money moves ONLY on choices: investments, favors, bribes, war costs, tribute. (Extends his Sept 28 "investing, not upkeep, no wages" ruling.) **Items 1 and 4 are OFF THE TABLE as written** — do not implement rising wages, signing bonuses, counter-offers, or wage inflation, and do not extend the "missed payroll → releaseToMarket" spiral. Brutus has no payroll either.
+- **The class ladder** (Robert's social model): the top exploits the bottom; the bottom claws toward the middle; the middle grinds toward the top / famous-adventurer status. The top also tries to BANKRUPT hated rivals — active economic warfare (poaching their earners, draining treasuries through war costs, tribute pressure, sabotage), never passive upkeep drain.
+- **Rebuild shortage dynamics on choices, not wages.** When the free-agent pool runs thin, pressure shows up as: bidding in favors and gifts (not wages), poaching wars, kidnapping, assassination, strikes, desertion. Item 3's escalation ladder still stands — its fuel is rivalry and ambition, not payroll math. Item 5's "offering more" means better patronage: gifts, favors, status, protection — never wages.
+- **Perpetual motion, not predictable or cyclical** (Robert, verbatim). The market must never stagnate or settle into a repeating loop; churn comes from the actors (desire drift, unforgotten grudges, tops that can't leave hated rivals alone). A run where visits go quiet is a failing run. (Also recorded in DISCUSS.md.)
+- **Context:** Robert is currently exploring this same territory with you directly on `claude/cast-2026-09-28` (townsfolk, telephone rumors, regulars/guild-as-filter, jobless as expendable cheap labour, the patron). Coordinate with that work — do not build a parallel system.
+
+
 From Muse. Robert's thesis, verbatim: **"The overworld is 2 things. Labor
 market and social engine. Lets make this fun and interesting as these people
 work together or bash heads when resources have shortages."**
