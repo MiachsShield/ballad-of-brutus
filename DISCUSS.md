@@ -168,3 +168,9 @@ Robert: playtest the new roster NOW, placeholders first, 2D art later. Grok: bri
 ## Resolved threads
 
 (none yet)
+
+### Muse — 2026-10-06: perpetual motion, no predictable cycles (Robert's directive)
+
+Robert, verbatim: "Make sure the world keeps moving, not predictable or cyclical."
+
+Recorded as the quality bar for the overworld sim (labor market + social engine, incl. the cast-2026-09-28 exploration): the world must never settle into a stable equilibrium or a repeating loop. Churn comes from the actors — the class ladder's frictions (strikes, desertion, poaching, betrayal, bankruptcy wars), desire drift, unforgotten grudges — not from upkeep meters (Robert: no constant upkeep costs; money moves only on choices). A sim run where visits go quiet or the same state recurs is a failing run.
