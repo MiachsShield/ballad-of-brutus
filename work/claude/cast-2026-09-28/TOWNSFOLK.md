@@ -151,33 +151,39 @@ By the fifth retelling the crowd has flipped from hero to cheat, and nothing in 
 true after the first line.
 
 **Across communities (Robert, 2026-10-03: "one action can become distorted across
-communities").** The telephone does not run down a single line. One action forks at each
-community boundary, and each community bends it twice: first by its **stake** (what it
-wants the story to mean), then by the **trait** of whoever retells it. After a few
-crossings the same deed exists in several versions at once, which can contradict each other.
-*(Proposal, nothing built.)*
+communities").** A community is not a place. Robert's definition: "the people the adv.
+fratnerizes with", meaning an adventurer's own social circle. The telephone therefore does
+not run down a single line, and it does not follow the map. One action forks along the
+adventurer's ties, and each circle bends it twice: first by its **stake** (what that circle
+wants the story to mean), then by the **trait** of whoever retells it. After a few crossings
+the same deed exists in several versions at once, which can contradict each other.
+*(Proposal, nothing built.)* The sim already knows these ties and their weights (kin,
+lovers, friends, guildmates, with clique weighting, in the ripple system), so the
+telephone could ride the same graph.
 
-| Community | The lens it reads an event through |
+| Circle | The lens it reads the action through |
 |---|---|
-| Marium | relaxed: shrugs it off until it touches their own, then explodes |
-| Themelios | what is it worth, and is there a reward in it? |
-| Reyjar | what does it say about the crown and the champion? (the anti-royalists cheer, the royalists soften it) |
-| Li Trice | is it stylish, who looks ridiculous, and a soft spot for Reyjar |
-| Ayusti | believe the juiciest version at once, pass it on, forget the details |
-| Beloufi | who lied, and who was humiliated? |
-| Edinius | was it competent or foolish? |
+| Kin | defend them, or "always was like that" |
+| Lovers and crushes | make it about me, and jealousy |
+| Friends | hero-worship, or "I knew them when" |
+| Guildmates and the clique | what does it do for our standing? |
+| Rivals | sabotage it, gloat, or find the plot |
+| The slums crowd | "one of ours made it" or "one of ours fell" |
 
-**Worked example: one action, six versions.** The action: Brutus beat Reyjar's elite and
-fought Freja to a draw (Robert's wording, bible section 4.7).
-- *Reyjar, anti-royalists:* "A common lout humbled a royal. About time."
-- *Reyjar, royalists:* "Freja was holding back out of courtesy."
-- *Beloufi:* "Reyjar's strongest, humiliated, by a man who drinks like one of us."
-- *Li Trice:* "A magnificent brute, and poor Freja, bullied by him."
-- *Themelios:* "Eleven people swear they saw it. Is there a reward on him?"
-- *Edinius:* "A fool, though a lucky one."
+A circle that is mostly one nation also takes that nation's lens from the tint table below.
 
-Ayusti and Marium are left out because Robert has not said how they see Brutus; the
-lens table above gives only their temperament.
+**Worked example: one action, six circles.** The action (from her sheet): Bramble Calloway
+carried a rival guild's whole party out of the third floor, and billed no one.
+- *Her friends:* "Bramble carried twelve people on her back, and sang."
+- *Her guildmates:* "Our Bramble saved them. We should have sent a bill."
+- *The rival guild:* "She was planted there to learn our routes."
+- *Her crush:* "She did it for me. She said so."
+- *The slums crowd:* "She shared her bread with Hettie the day before."
+- *Her kin:* "Always was the strongest of the litter."
+
+**Constraint (Robert): this must not preoccupy a lot of cognition.** What the player hears
+is **tbd**. Until he decides, the rule is ambient flavour: at most one garbled line beside
+the true line, never something to track, never a puzzle.
 
 ## Every townsperson has three goals and one core want
 
@@ -230,9 +236,8 @@ the world bible, section 4.7). The type stays the same.
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
 - Are flawed institutions and reset-with-memory wanted, or left out? (Not picked so far.)
 - How many retellings before a rumour dies, and does one ever turn out accidentally true?
-- What counts as a community: each region's capital, the districts inside a town (the
-  slums, the guild halls, the market), or both?
-- Can the player compare versions between capitals, or only hear the local one?
+- What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
+  cognition.
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring

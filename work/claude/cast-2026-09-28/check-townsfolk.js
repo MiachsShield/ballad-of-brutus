@@ -33,11 +33,13 @@ ok(/regular \+ reactionary crowd-like game of telephone/.test(tel), 'Robert\'s p
 ok(TRAITS.every(function (t) { return new RegExp('^\\| ' + t + ' \\|', 'm').test(tel); }), 'the telephone table bends a rumour for every trait');
 ok(/true line and the town's version/.test(tel) && /nothing built/.test(tel), 'the player sees both versions, and the rule is marked unbuilt');
 ok((tel.match(/^\d\. \*/gm) || []).length === 5, 'the worked example has five hops');
-// across communities
+// across communities: a community is the adventurer's own circle
 var comm = tel.slice(tel.indexOf('**Across communities'));
 ok(/one action can become distorted across\s+communities/.test(comm), 'Robert\'s words on communities are quoted exactly');
-ok(Object.keys(NM.BASIS).every(function (r) { return new RegExp('^\\| ' + r + ' \\|', 'm').test(comm); }), 'every nation has a lens');
-ok((comm.match(/^- \*/gm) || []).length >= 6 && /Freja/.test(comm), 'the worked example gives at least six versions of one action');
-ok(/Proposal, nothing built/.test(comm) && /stake/.test(comm), 'the fork is marked unbuilt, with the stake-then-trait rule');
+ok(/the people the adv\.\s+fratnerizes with/.test(comm), 'Robert\'s definition of a community is quoted exactly');
+ok(['Kin', 'Lovers and crushes', 'Friends', 'Guildmates and the clique', 'Rivals', 'The slums crowd'].every(function (r) { return new RegExp('^\\| ' + r + ' \\|', 'm').test(comm); }), 'every circle type has a lens');
+ok((comm.match(/^- \*/gm) || []).length >= 6 && /Bramble/.test(comm), 'the worked example gives at least six circles\' versions of one action');
+ok(/Proposal, nothing built/.test(comm) && /stake/.test(comm) && /ripple/.test(comm), 'the fork is marked unbuilt, with the stake-then-trait rule and the ripple graph');
+ok(/must not preoccupy a lot of cognition/.test(comm) && /tbd/.test(comm), 'the low-cognitive-load constraint and the open player question are recorded');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);
