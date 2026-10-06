@@ -16,10 +16,16 @@ ok(/never the narrator's verdict/.test(doc), 'the town\'s shallowness is framed 
 ok(/zero canon/i.test(doc) && /nothing is built/i.test(doc), 'marked zero canon and unbuilt');
 ok(!/burger|toilet joke|fart|poop/i.test(doc.replace(/burger\)/, '').replace(/cannot be a burger/, '')), 'no gag fixations or crude humour in the doc');
 // the "why" section: nine principles, each with a test
-var why = doc.slice(doc.indexOf('## Why the humour works'), doc.indexOf('## Every townsperson has'));
+var why = doc.slice(doc.indexOf('## Why the humour works'), doc.indexOf('## Reference analysis'));
 ok(why.length > 2000 && (why.match(/^\d\. \*\*/gm) || []).length === 9, 'the why section lists nine numbered principles');
 ok((why.match(/\*Test:\*/g) || []).length === 9, 'every principle carries a one-line test');
 ok(['Small cause, huge reaction', 'Sincere jerks', 'One flaw, always the same verb', 'Lovable underneath', 'A closed town with a long memory', 'Hypocrisy drives the gossip', 'behaviour and pretension, never who someone is', "obeys the world's own logic", 'A grounded eye'].every(function (k) { return why.indexOf(k) !== -1; }), 'all nine principles are named');
 ok(/never a gag object/.test(why) && /never the\s+narrator's verdict/.test(why) && /no toilet or\s+perverted/.test(why), 'the why section keeps the locked rules (no gag want, no verdict, no crude humour)');
+// the reference analysis
+var ref = doc.slice(doc.indexOf('## Reference analysis'), doc.indexOf('## Every townsperson has'));
+ok(/South Park/.test(ref) && /Bikini Bottom/.test(ref) && /Springfield/.test(ref), 'the reference analysis covers all three crowds');
+ok(/Borrow:/.test(ref) && /Leave:/.test(ref) && (ref.match(/\*Borrow:\*/g) || []).length === 3 && (ref.match(/\*Leave:\*/g) || []).length === 3, 'each crowd lists what to borrow and what to leave');
+ok(['mob flips', 'Flawed institutions', 'reaction chorus', 'verbal tic', 'Reset, but with memory'].every(function (k) { return new RegExp(k, 'i').test(ref); }), 'the five shared engines are named');
+ok(/nobody stays dead/.test(ref) && /Deaths stay real/.test(ref), 'the reset-versus-permanent-death caution is stated');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

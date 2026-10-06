@@ -68,6 +68,51 @@ Robert's rules, each with a one-line test for anyone writing a townsperson or a 
    the player, or a named straight man. *Test:* is there someone in the scene whose
    reaction tells us how to read the absurdity?
 
+## Reference analysis: what each crowd does, and what we borrow
+
+The three reference crowds are funny for different reasons. Naming the engine each one
+runs on tells us which to use and which to leave.
+
+**South Park: the town as a mob.** The adults are the dumbest people in the room and the
+children are the sane ones, so authority is useless by design (the counsellor, the
+mayor and the police are all out of their depth). The engine is **hysteria**: a trivial
+or misunderstood cause, a town meeting, and the whole crowd flips to the loudest
+position in one beat, then forgets by the next episode. Warmth is thin and comes from
+the kids. *Borrow:* the one-beat mob flip, useless authorities, consequences that reset.
+*Leave:* shock value, toilet humour, topical or meme references (all ruled out).
+
+**Bikini Bottom: a sincere innocent among petty cynics.** SpongeBob's warmth makes the
+whole crowd lovable by contrast. The recurring cast are fixation characters (Mr. Krabs
+the skinflint, Squidward the put-upon cynic, Plankton the schemer, Patrick the
+cheerful fool), and the extras act as a **reaction chorus**: a gasp, a mass faint or a
+deadpan one-liner of casual cruelty. Consequences are cartoon-bounded. *Borrow:* the
+chorus, the fixation characters, the deadpan. *Leave:* surreal physics that would break
+the world's own logic.
+
+**Springfield: a town of institutions staffed by flawed people.** Hundreds of recurring
+townsfolk, each with one sharp trait and one trade: the bitter barkeep, the overworked
+shopkeeper, the incompetent cop, the corrupt mayor, the neighbour who is so relentlessly
+nice that he is resented, the pedant who corrects everyone. Every institution is run by
+someone self-serving. It adds the occasional sincere beat that makes a joke of a person
+feel like a person, and a dense continuity of callbacks. *Borrow:* the recurring cast
+model, flawed institutions, the humanising beat, the callbacks. *Leave:* meta jokes and
+celebrity cameos.
+
+**Five engines the three share, and where each fits here:**
+
+| Engine | Source | Fit in this game |
+|---|---|---|
+| The mob flips in one beat | South Park, Springfield | the garbled rumour mill: "by morning the hero is a traitor" |
+| Flawed institutions | Springfield | guilds, guards and councils run by self-serving, one-trait people |
+| A reaction chorus | Bikini Bottom | one-line crowd reactions in the bulletin |
+| Fixation characters with one verbal tic | all three | the regulars, each with a trait, a trade and a tic |
+| Reset, but with memory | all three | squabbles cool down and return as grudges, never as amnesia |
+
+**One caution.** Those shows reset: nobody stays dead. This game does not, because named
+adventurers die for good. So the reset belongs to the **townsfolk's** squabbles, feuds and
+reputations. Deaths stay real, and the town's reaction to them (grief only for the
+beautiful and young) is where the joke lands.
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -116,6 +161,7 @@ the world bible, section 4.7). The type stays the same.
 ## Open questions
 
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
+- Which of the five engines belong in the game (mob flips, flawed institutions, reaction chorus, regulars with a verbal tic, reset with memory)?
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
 - How many visits make a newcomer a regular?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
