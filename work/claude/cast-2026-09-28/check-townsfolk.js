@@ -54,5 +54,11 @@ ok(/people move on fast/.test(doc) && /Rumours die fast/.test(doc), 'rumours die
 ok(/With regulars, people die\.\s+Or they join a guild\. I guess that is when they are regulars\./.test(doc), 'Robert\'s words on regulars are quoted exactly');
 ok(/not a formal mechanic/.test(doc) && /the guild is the filter/.test(doc) && /join a guild/.test(doc), 'regulars are not a formal mechanic: they are the ones who join a guild');
 ok(!/1a2 a xv/.test(doc), 'the superseded unreadable fragment is gone');
+// 2026-10-03 batch: breaks, resets, tics, nature, beauty
+ok(/a squabble isn't worth a blood feud/.test(doc) && /never escalate into blood feuds/.test(doc), 'squabbles never become blood feuds (Robert\'s words)');
+ok(/No, it's\s+other things too/.test(doc), 'a guild is not the only way to catch a break');
+ok(/ask later/.test(doc) && /verbal tic/.test(doc), 'the verbal tic is parked as ask-later');
+ok(/townsfolk aren't\s+different from adv\. nature wise/.test(doc), 'townsfolk share the adventurers\' nature (Robert\'s words)');
+ok(/different people different preferences/.test(doc) && /no\s+island-wide standard/.test(doc), 'beauty is personal, with no island-wide standard');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

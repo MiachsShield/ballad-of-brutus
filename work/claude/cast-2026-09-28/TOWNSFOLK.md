@@ -20,6 +20,12 @@ Robert said staple types come from "personality types and how they affect the pe
   shared exclusion. Some certainly try to catch a break.
 - When an adventurer dies, **the town only cares if they were beautiful and young**,
   not for some sod nobody knows. Rumours between capitals travel **fast and garbled**.
+- **Beauty is personal** (Robert: "different people different preferences"). There is no
+  island-wide standard, so each person grieves whom they find beautiful and young, and the
+  town's mood is the sum of those tastes.
+- **Townsfolk are no different from adventurers in nature** (Robert: "townsfolk aren't
+  different from adv. nature wise"). Their crushes, jealousies and heartbreaks work the way
+  the adventurers' do in the sim.
 - **The recurring faces are the generics who survive.** They have goals, grievances,
   squabbles and crushes: people trying to eke out a living. Survival ends in one of two
   ways: they die, or they join a guild (and that is when they count as regulars).
@@ -120,7 +126,10 @@ Robert's pick, in his words: "regular + reactionary crowd-like game of telephone
 three of the five engines: **regulars** (recurring faces with a trait, a trade and a verbal
 tic), a **reactionary crowd** (the one-beat mob flip and the reaction chorus) and **rumour as
 a game of telephone**. Robert then added a fourth: **flawed institutions** ("Yes, guilds
-and guards too"). Reset-with-memory was not picked and stays open.
+and guards too"). On reset-with-memory Robert said "a squabble isn't worth a blood feud": squabbles stay petty
+and cool down, and never escalate into blood feuds. (The Beloufi's severe retribution is for
+betrayal and humiliation, not for squabbles.) Whether a cooled squabble can return as a
+grudge is left open.
 
 **The telephone rule (proposal, nothing built).** A true event enters the bulletin once.
 Each time a townsperson passes it on, their trait bends it in one fixed way. The crowd
@@ -261,10 +270,12 @@ the world bible, section 4.7). The type stays the same.
 ## Open questions
 
 - Which of the nine "why" principles should Robert amend or strike before they are locked?
-- Is reset-with-memory wanted? (Flawed institutions are now in.)
+- Can a cooled squabble return as a grudge? (Robert: "a squabble isn't worth a blood feud".)
+- What is a regular's verbal tic? (Robert: ask later.)
 - Does a rumour ever turn out accidentally true?
-- Guild slots are scarce (two members per guild in the playtest slice), so the jobless
-  striving to "catch a break" may mean getting into a guild. Is that the break?
+- Getting into a guild is not the only way the jobless catch a break (Robert: "No, it's
+  other things too"). Which other ways? (Guild slots are scarce: two members per guild in
+  the playtest slice.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
 - Does a jobless regular ever escape the slums? (Robert: "some certainly try".)
