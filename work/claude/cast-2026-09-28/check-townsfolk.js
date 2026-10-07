@@ -77,5 +77,11 @@ ok(/Does it overload attention\?/.test(pt) && /tendencies to continue playing/.t
 ok(/confusion and boredom/.test(pt), 'confusion and boredom are the likely reasons to quit');
 ok(/1 and title/.test(pt) && /the epithet shifts \(celebrity layer\)/.test(pt) && /no meter/i.test(pt), 'the reputation swing shows through the bulletin and the epithet, not a meter');
 ok(/the best ones are exclusive contracts/.test(pt) && /do not\s+stack/.test(pt), 'the best sponsorships are exclusive contracts (Robert\'s words)');
+// exclusive contracts
+ok(/akin to exclusivity like irl\. something\s+good, but you can't use anything else\. a spin on cursed items- a social contract/.test(pt), 'the exclusivity payoff is quoted exactly (a social contract, a spin on cursed items)');
+ok(/Both/.test(pt) && /patron and adventurer/.test(pt), 'exclusivity binds both patron and adventurer');
+ok(/all of above/.test(pt) && /you can have exclusive sponsorship while\s+in another guild/.test(pt), 'it bars other sponsors, gear and guilds, yet coexists with the current guild (Robert\'s words)');
+ok(/pending on sponsor and how much they want to\s+latch on the adv\./.test(pt) && /after x turns/.test(pt), 'how a contract ends depends on the sponsor\'s grip (Robert\'s words)');
+ok(/both bulletin and status window/.test(pt), 'the contract is public in the bulletin and the status window');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

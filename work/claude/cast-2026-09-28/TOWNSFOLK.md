@@ -272,6 +272,22 @@ playtest itself:
   sponsorships bind patron and adventurer exclusively, so they do not stack.
   *(Proposal, nothing built.)*
 
+**Exclusive contracts (Robert, 2026-10-03).** Asked who is exclusive, he said "Both":
+patron and adventurer. The payoff, in his words: "akin to exclusivity like irl. something
+good, but you can't use anything else. a spin on cursed items- a social contract". So an
+exclusive sponsorship is a strong deal with a binding catch, like a cursed item that is
+a social contract instead of a curse on a sword.
+- **What it bars.** "You can't use anything else" covers "all of above": other sponsors,
+  other gear and joining other guilds, "however, you can have exclusive sponsorship while
+  in another guild". *Reading:* the contract sits alongside the guild the adventurer is
+  already in, and bars taking up a second sponsor, other gear, or a further guild.
+- **How it ends.** "1, 2, after x turns. pending on sponsor and how much they want to
+  latch on the adv." That is: either side can break it at a cost (1), or only death or
+  betrayal ends it (2), or it lapses after some number of turns. Which of these applies
+  depends on the sponsor and how tightly they want to hold on to the adventurer.
+- **Who sees it.** The contract is public in "both bulletin and status window".
+*(Proposal, nothing built.)*
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -333,7 +349,7 @@ the world bible, section 4.7). The type stays the same.
   with the sponsored adventurer's achievements.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
-- "The best ones are exclusive contracts": exclusive for the patron (one protege at a time),
-  for the adventurer (one patron), or both? And what is the payoff for exclusivity?
+- How is a sponsor's grip decided (a personality trait?), and what does breaking a
+  contract cost? (Robert: it depends on the sponsor and how much they want to latch on.)
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?
