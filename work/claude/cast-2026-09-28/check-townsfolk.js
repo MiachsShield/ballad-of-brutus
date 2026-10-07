@@ -86,5 +86,7 @@ ok(/both bulletin and status window/.test(pt), 'the contract is public in the bu
 ok(/the bigger the benefit-more they own you/.test(pt), 'the grip scales with the benefit (Robert\'s words)');
 ok(/both,and can be a lot more severe than just asset loss/.test(pt), 'breaking a contract costs both and can be far worse than asset loss (Robert\'s words)');
 ok(/blacklist/.test(pt) && /bounty/.test(pt) && /patronage/.test(pt) && /expulsion/.test(pt), 'the severe outcomes point at events the sim already has');
+ok(/All of it, scaled\s+to the benefit/.test(pt) && /town turned against you/.test(pt), 'the severe outcomes are all of them, scaled to the benefit (Robert\'s words)');
+ok(/yes\. this is not a consequence-free decision, however/.test(pt), 'an adventurer can refuse a sponsor, at a cost (Robert\'s words)');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

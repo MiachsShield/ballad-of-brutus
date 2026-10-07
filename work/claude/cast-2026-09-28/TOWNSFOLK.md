@@ -293,6 +293,12 @@ a social contract instead of a curse on a sword.
   already has the vocabulary for the worse outcomes: a **blacklist**, a **bounty**,
   **expulsion** (where the exile sells secrets), and a guild **patronage** event that funds a
   promising free agent for first refusal, which is a milder cousin of an exclusive contract.
+- **How severe "severe" is.** Asked what the worse outcome is, Robert said "All of it, scaled
+  to the benefit": a **blacklist** (no guild or sponsor will touch you), a **bounty** (the
+  sponsor sends hunters), and the **town turned against you**, each as large as the benefit
+  that was taken.
+- **Refusing a sponsor.** Robert: "yes. this is not a consequence-free decision, however".
+  An adventurer can turn a sponsor down, and it costs them something.
 - **Who sees it.** The contract is public in "both bulletin and status window".
 *(Proposal, nothing built.)*
 
@@ -357,7 +363,7 @@ the world bible, section 4.7). The type stays the same.
   with the sponsored adventurer's achievements.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
-- What exactly is the outcome that is "a lot more severe than just asset loss" when a
-  contract is broken: a blacklist, a bounty, being hunted, something else?
+- What does refusing a sponsor cost (Robert: "not a consequence-free decision"), and does it
+  depend on the sponsor, the offer, or the adventurer's traits?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?
