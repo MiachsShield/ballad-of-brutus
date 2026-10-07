@@ -70,5 +70,12 @@ ok(/Yes, a player-facing favor/.test(jb) && /1 and 2\. you are vouching for them
 ok(/ripple/.test(jb) && /single\s+favour choice/.test(jb), 'vouching rides the ripple ties and stays a single choice');
 ok(/patron as\s+in sponsor \(gift of gold\/gear etc or vouching \(increase of their reputation with yours\s+taking an exponential increase or decrease on the achievements of said adv\.\)\)/.test(jb), 'Robert\'s definition of a patron is quoted exactly');
 ok(/\*\*A gift:\*\*/.test(jb) && /\*\*Vouching:\*\*/.test(jb) && /exponentially/.test(jb), 'both forms of sponsorship are set out, with the exponential swing');
+// playtest plan
+var pt = doc.slice(doc.indexOf('## Playtest plan'), doc.indexOf('## Every townsperson has'));
+ok(/pending playtest/.test(pt) && /not written into this draft yet/.test(pt), 'the flow is pending playtest and deliberately not written in');
+ok(/Does it overload attention\?/.test(pt) && /tendencies to continue playing/.test(pt), 'the playtest checks attention first and is judged by continued play (Robert\'s words)');
+ok(/confusion and boredom/.test(pt), 'confusion and boredom are the likely reasons to quit');
+ok(/1 and title/.test(pt) && /the epithet shifts \(celebrity layer\)/.test(pt) && /no meter/i.test(pt), 'the reputation swing shows through the bulletin and the epithet, not a meter');
+ok(/the best ones are exclusive contracts/.test(pt) && /do not\s+stack/.test(pt), 'the best sponsorships are exclusive contracts (Robert\'s words)');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

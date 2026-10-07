@@ -254,6 +254,24 @@ favour choice, never a management task.
 jobless themselves (principle 7). They are the sympathetic underdogs who keep striving, and
 the town that treats them as disposable is the pretentious fool in the scene.
 
+## Playtest plan for sponsorship (Robert, 2026-10-03)
+
+The sponsorship flow (jobless, sponsor, free agent, guild or death) is **pending playtest**
+(Robert's words), so it is not written into this draft yet. What he settled about the
+playtest itself:
+
+- **First thing to check:** "Does it overload attention?"
+- **How it is judged:** "tendencies to continue playing", meaning whether testers keep
+  playing, not a survey.
+- **What most likely makes a tester quit:** confusion and boredom.
+- **How the player sees the reputation swing:** through the bulletin, and through their
+  **title**. Robert: "1 and title" (1 = "Only through the bulletin"), and the title changes
+  as "the epithet shifts (celebrity layer)". There is no meter. The bulletin carries the
+  news and the player's epithet moves with their standing.
+- **Exclusivity:** Robert: "the best ones are exclusive contracts". The richest
+  sponsorships bind patron and adventurer exclusively, so they do not stack.
+  *(Proposal, nothing built.)*
+
 ## Every townsperson has three goals and one core want
 
 - **Short goal** (this week), **mid goal** (this season), **long goal** (a life ambition).
@@ -315,5 +333,7 @@ the world bible, section 4.7). The type stays the same.
   with the sponsored adventurer's achievements.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
+- "The best ones are exclusive contracts": exclusive for the patron (one protege at a time),
+  for the adventurer (one patron), or both? And what is the payoff for exclusivity?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?
