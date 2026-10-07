@@ -83,5 +83,8 @@ ok(/Both/.test(pt) && /patron and adventurer/.test(pt), 'exclusivity binds both 
 ok(/all of above/.test(pt) && /you can have exclusive sponsorship while\s+in another guild/.test(pt), 'it bars other sponsors, gear and guilds, yet coexists with the current guild (Robert\'s words)');
 ok(/pending on sponsor and how much they want to\s+latch on the adv\./.test(pt) && /after x turns/.test(pt), 'how a contract ends depends on the sponsor\'s grip (Robert\'s words)');
 ok(/both bulletin and status window/.test(pt), 'the contract is public in the bulletin and the status window');
+ok(/the bigger the benefit-more they own you/.test(pt), 'the grip scales with the benefit (Robert\'s words)');
+ok(/both,and can be a lot more severe than just asset loss/.test(pt), 'breaking a contract costs both and can be far worse than asset loss (Robert\'s words)');
+ok(/blacklist/.test(pt) && /bounty/.test(pt) && /patronage/.test(pt) && /expulsion/.test(pt), 'the severe outcomes point at events the sim already has');
 console.log(n - fails + '/' + n + ' townsfolk checks pass');
 process.exit(fails ? 1 : 0);

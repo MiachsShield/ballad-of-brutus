@@ -285,6 +285,14 @@ a social contract instead of a curse on a sword.
   latch on the adv." That is: either side can break it at a cost (1), or only death or
   betrayal ends it (2), or it lapses after some number of turns. Which of these applies
   depends on the sponsor and how tightly they want to hold on to the adventurer.
+- **How tight the grip is.** Asked whether it follows the sponsor's personality, Robert
+  said "the bigger the benefit-more they own you". The grip scales with the size of the
+  benefit: the richer the gift or the vouch, the more the sponsor owns the adventurer.
+- **What breaking it costs.** "both,and can be a lot more severe than just asset loss":
+  reputation and gold or gear, and worse than losing assets. *Reading (proposal):* the sim
+  already has the vocabulary for the worse outcomes: a **blacklist**, a **bounty**,
+  **expulsion** (where the exile sells secrets), and a guild **patronage** event that funds a
+  promising free agent for first refusal, which is a milder cousin of an exclusive contract.
 - **Who sees it.** The contract is public in "both bulletin and status window".
 *(Proposal, nothing built.)*
 
@@ -349,7 +357,7 @@ the world bible, section 4.7). The type stays the same.
   with the sponsored adventurer's achievements.)
 - What the player hears of the telephone is tbd (Robert); it must not preoccupy a lot of
   cognition.
-- How is a sponsor's grip decided (a personality trait?), and what does breaking a
-  contract cost? (Robert: it depends on the sponsor and how much they want to latch on.)
+- What exactly is the outcome that is "a lot more severe than just asset loss" when a
+  contract is broken: a blacklist, a bounty, being hunted, something else?
 - Should the Skinflint's lending ring and the Doom Crank's conspiracies be recurring
   bulletin material?
