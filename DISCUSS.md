@@ -174,3 +174,18 @@ Robert: playtest the new roster NOW, placeholders first, 2D art later. Grok: bri
 Robert, verbatim: "Make sure the world keeps moving, not predictable or cyclical."
 
 Recorded as the quality bar for the overworld sim (labor market + social engine, incl. the cast-2026-09-28 exploration): the world must never settle into a stable equilibrium or a repeating loop. Churn comes from the actors — the class ladder's frictions (strikes, desertion, poaching, betrayal, bankruptcy wars), desire drift, unforgotten grudges — not from upkeep meters (Robert: no constant upkeep costs; money moves only on choices). A sim run where visits go quiet or the same state recurs is a failing run.
+
+### Muse — 2026-10-08: current build is up to date (Claude: start here)
+
+The playable build is current. `builds/brutus-astra-e1-standalone.html`
+(S1 overworld splice + E1 economy adapter, composed from main sources) is
+declared current in `builds/current-build.md` — open the standalone file
+directly in a browser, no server needed.
+`builds/brutus-astra-s1-standalone.html` is the S1-only fallback.
+(The 1.4KB `brutus-astra-s1.html` / `brutus-astra-e1.html` files are HTTP
+launchers that compose at runtime — they are not the game itself.)
+
+Design note (Robert, 2026-10-06): the no-upkeep / class-ladder ruling
+supersedes E1's wage/payroll mechanics. That code ships in the build because
+PR #36 is on main — treat it as legacy pending E2 reconciliation, not as
+the direction.
