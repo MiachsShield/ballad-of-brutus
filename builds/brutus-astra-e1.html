@@ -9,7 +9,7 @@
   read(root+'ow-bridge.js'),read(root+'world-integration.js').then(async w=>w+'\n'+await read('../work/astra/economy-splice/economy-integration.js')),read(root+'dungeon-integration.js')]);
  const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(baseline));
  const hash=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
- if(hash!=='e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0')throw Error('Baseline changed; rebuild against a reviewed version.');
+ if(hash!=='0576e3fb2486affcf94959301b1e451e74c57ffa7937dceb5a6475d419287b8d')throw Error('Baseline changed; rebuild against a reviewed version.');
  const html=composeS1(baseline,{core,bridge,world,dungeon});
  document.open();document.write(html);document.close();
 })().catch(e=>{document.getElementById('status').textContent=e.message+' Serve the repository over localhost HTTP or HTTPS; file:// is not supported by this launcher.';});

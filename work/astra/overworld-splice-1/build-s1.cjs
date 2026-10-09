@@ -5,7 +5,7 @@ const output=process.argv[3]||path.resolve(dir,'../../../builds/brutus-astra-s1-
 const core=process.env.BOB_OW_MODULE||path.resolve(dir,'../../claude/overworld-2026-09-18/adventurers.js');
 const baseline=fs.readFileSync(input,'utf8');
 const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
-if(hash(baseline)!=='e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0')throw Error('Baseline hash mismatch');
+if(hash(baseline)!=='0576e3fb2486affcf94959301b1e451e74c57ffa7937dceb5a6475d419287b8d')throw Error('Baseline hash mismatch');
 const read=p=>fs.readFileSync(p,'utf8');
 const result=require('./compose-s1.js')(baseline,{core:read(core),bridge:read(path.join(dir,'ow-bridge.js')),world:read(path.join(dir,'world-integration.js')),dungeon:read(path.join(dir,'dungeon-integration.js'))});
 fs.writeFileSync(output,result);console.log(JSON.stringify({output,bytes:Buffer.byteLength(result),sha256:hash(result)}));

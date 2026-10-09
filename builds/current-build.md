@@ -1,17 +1,21 @@
-# Current build (2026-10-08)
+# Current build (2026-10-09)
 
 - File: `builds/brutus-astra-e1-standalone.html`
-- Size: 10,354,445 bytes
-- SHA-256: `f31382b6073d2d66432f10e8ba65190b76376eba630ea4f33351b138f56f51ca`
+- Size: 10,355,431 bytes
+- SHA-256: `4afb89a251bbf54c0701b3751099e3467819381d3a969a4b54e7df71c2c46028`
 - What: S1 playable overworld splice (PR #34) + E1 economy adapter (PR #36),
   composed from main sources via `work/astra/economy-splice/build-e1.cjs`.
   Pinned baseline `brutus-1_0_a0mk-kavi-balanced2.html`
-  (SHA-256 `e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0`)
+  (SHA-256 `0576e3fb2486affcf94959301b1e451e74c57ffa7937dceb5a6475d419287b8d`)
   verified before composing.
-- Also built: `builds/brutus-astra-s1-standalone.html` (10,342,511 bytes;
-  SHA-256 `5003c97fd7cb1f4d2db812132b1491d53240987dbb57f3fcae889a7b67af2519`)
-  — S1 without the E1 adapter. Hash matches the 2026-09-23 runbook exactly:
-  the composition is reproducible from committed sources.
+- Also built: `builds/brutus-astra-s1-standalone.html` (10,343,497 bytes;
+  SHA-256 `130c2538644164a74f83676e70b7b9fe6b4abfc23c8349c0f3e2faca4d65c962`)
+  — S1 without the E1 adapter.
+- Change 2026-10-09 (Muse, at Robert's direction): dungeon hand cards are now
+  vertical/portrait (172x252, art on top, name/tier/details stacked below)
+  like normal playing cards, instead of the old wide landscape tiles.
+  CSS override injected into the DUNGEON_HTML frame head of the baseline;
+  baseline hash pins updated in both builders and both launchers.
 - Tests (2026-10-08): S1 integration suite PASS (world tick/gates, four verbs,
   save/load, New Run, dungeon Talk/pause); ow-bridge sim PASS; E1 economy
   suite PASS.
