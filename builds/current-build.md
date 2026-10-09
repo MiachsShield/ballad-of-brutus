@@ -1,3 +1,34 @@
+# Current build (2026-10-08)
+
+- File: `builds/brutus-astra-e1-standalone.html`
+- Size: 10,354,445 bytes
+- SHA-256: `f31382b6073d2d66432f10e8ba65190b76376eba630ea4f33351b138f56f51ca`
+- What: S1 playable overworld splice (PR #34) + E1 economy adapter (PR #36),
+  composed from main sources via `work/astra/economy-splice/build-e1.cjs`.
+  Pinned baseline `brutus-1_0_a0mk-kavi-balanced2.html`
+  (SHA-256 `e9ff9c1052b7af3544985d7b38ef681f639f3e82921d43b9386506aa5d0df1f0`)
+  verified before composing.
+- Also built: `builds/brutus-astra-s1-standalone.html` (10,342,511 bytes;
+  SHA-256 `5003c97fd7cb1f4d2db812132b1491d53240987dbb57f3fcae889a7b67af2519`)
+  — S1 without the E1 adapter. Hash matches the 2026-09-23 runbook exactly:
+  the composition is reproducible from committed sources.
+- Tests (2026-10-08): S1 integration suite PASS (world tick/gates, four verbs,
+  save/load, New Run, dungeon Talk/pause); ow-bridge sim PASS; E1 economy
+  suite PASS.
+- Browser smoke test (2026-10-08, exact file, local Chrome/SwiftShader over
+  HTTP): overworld renders fully (treasury, companions, seven towns, live
+  world event — a fresh event each load), zero page errors across 4 loads.
+- How to run: open the standalone file directly in a browser, or serve the
+  repo (`python -m http.server`) and open the `brutus-astra-s1.html` /
+  `brutus-astra-e1.html` launchers (those need HTTP, not file://).
+- Design caveat (Robert, 2026-10-06): the no-upkeep / class-ladder ruling
+  supersedes E1's wage/payroll mechanics. The payroll code ships in this build
+  because PR #36 is on main — treat it as legacy pending E2 reconciliation,
+  not as the direction. See the E2 brief addendum in
+  `briefs/claude/2026-09-24-e2-labor-market-social-engine.md`.
+- Supersedes: `brutus-1_0_a0mk-kavi-balanced2.html` as the playable current
+  (kept as the pinned composition baseline).
+
 # Current build
 
 - File: `builds/brutus-1_0_a0mk-kavi-balanced2.html`
