@@ -22,6 +22,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 
 ## Status
 - Claude: twelve-rulings design update merged (PR #1); redo-design-briefs still blocked on writing the four briefs against `art/audit/` (PR #2). Overworld adventurer slice 1 (headless sim, `work/claude/overworld-2026-09-18/`) landed 2026-09-18 via Muse (branch push failed on Claude's side; merged d49af87, verified).
+- Claude: Training room built 2026-10-08 on `claude/training-room` as `builds/brutus-1_0_a0mk-kavi-balanced2-training.html` (balanced2 + a header button; practice arena with spawn/clear/reset, recovery and enemy-attack toggles, last-hit frame-data readout; no action cost, nothing returned to the world). Exact-file headless playtest passed: training open/leave, real expedition after training, zero page errors. Not merged; `current-build.md` unchanged. Brutus-death path in training not exercised live.
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: S1 playable overworld splice candidate implemented on `astra/overworld-splice-1` (2026-09-20). World lifecycle and four-verb dungeon encounters wired; deterministic and integration checks pass. Browser/visual acceptance pending. Resume from `work/astra/overworld-splice-1/RUNBOOK.md`.
 
