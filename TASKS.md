@@ -32,8 +32,10 @@ briefed in order after the active batch lands. Grok's art queue is parked
 | [ ] open | Astra redistribution: hold-fire intent ruling (C4, one line) | `PLAYTEST-DISCUSS.md` Thread P4 |
 | [ ] open | Astra redistribution: design review of Kavi's build fixes (C5) | (when Kavi delivers) |
 | [ ] open | Write redo design briefs for the 4 critical-fail card faces | `briefs/claude/2026-09-15-card-redo-design-briefs.md` |
-| [ ] open | **ACTIVE:** E1 economy splice into the established overworld (5 items: port source-grounded economy, dungeons keep working, chronicle dedup, auction integrity, fix Ember booking label) | `briefs/claude/2026-09-23-lane-consolidation.md` |
-| [ ] queued | After E1: splice S2 (stance + salient reads), S3 (flashpoint prompts), lane-live Batches 1–3 | (briefed in order after E1 lands) |
+| [x] done | E1 economy splice into the established overworld | `briefs/claude/2026-09-23-lane-consolidation.md` — merged as PR #36 (Robert, 2026-10-06) |
+| [ ] open | **ACTIVE (Robert 2026-10-11):** dungeon designs — variety, structure, progression (design only) | `briefs/claude/2026-10-11-dungeon-designs.md` |
+| [ ] queued | After dungeon designs: six enemy 40-card decks (issue #13) | `briefs/claude/2026-09-17-enemy-decks.md` |
+| [ ] queued | After enemy decks: splice S2 (stance + salient reads), S3 (flashpoint prompts), lane-live Batches 1–3 | (briefed in order) |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Claude" |
 
 ## Grok — card design & art — PARKED 2026-09-23 (blocked on GitHub; cap spent)
