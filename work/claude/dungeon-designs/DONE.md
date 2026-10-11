@@ -2,7 +2,7 @@
 
 Brief: `briefs/claude/2026-10-11-dungeon-designs.md`. Design only; no build, builder or
 `current-build.md` changes, so no playtest gate. Output: `DESIGN.md` (the six answers, a data
-sketch, a suggested slicing, a test plan, and nine questions).
+sketch, a suggested slicing, a test plan, and eleven questions).
 
 ## What was decided (proposals, not canon)
 
@@ -11,8 +11,8 @@ sketch, a suggested slicing, a test plan, and nine questions).
 - Types are rows of data over the existing generator: floor count (2 or 3), a nine-character
   room plan, loops, pits, trap and chest rates, secret and rest floors, room size, and
   encounter templates named by enemy. Every proposal is tagged [data], [small] or [new];
-  nearly all are [data] or [small]. The one [new] item is an optional three-attacker
-  concurrency guardrail, to be tested in the training room first.
+  nearly all are [data] or [small]. No cap on simultaneous attackers: being surrounded is meant
+  to be dangerous.
 - Escalation by floor: tier gate, threat budget in points (16-22 per delve, against about 20
   today), no rest on the last floor, hazards.
 - Room variety: existing rooms keep their jobs; rest becomes single-use; two placements are
@@ -35,6 +35,10 @@ sketch, a suggested slicing, a test plan, and nine questions).
   first living unmet party in roster order, so early rooms use up the roster. Placement belongs
   in the generator.
 - Pits kill enemies outright and count as kills; they also kill a knocked-in companion for good.
+- **Bug:** `secretsFound` rises on every re-entry into a secret room, so it can be farmed for
+  score, XP and loot level, and it trivially satisfies relic contracts. Fix is to count each
+  secret sector once. Found by code reading; not reproduced in play; not fixed (design-only batch).
+- A failed public boast costs each returning companion Fame −5 and Reputation −3.
 - Measured: 60 generated dungeons, always 27 chambers, 9-23 enemies (median 15, mean 14.7).
 
 ## Deferred
@@ -59,6 +63,9 @@ sketch, a suggested slicing, a test plan, and nine questions).
 7. Withdraw with no extra penalty: agree?
 8. Keep dungeons at 2-3 floors?
 9. Approve the reward changes (`wardenSlain`, caches, element tilt)?
+10. Floor 1 starts softer than today in five of six types. Raise it, or keep the ramp?
+11. Waypoint fast travel and Exit-to-map-anywhere: keep both? (Your earlier dungeon QoL list
+    mentioned fast travel and a recall; I could not tell if it was accepted or declined.)
 
 ## Verification
 
@@ -82,3 +89,21 @@ outside `work/claude/dungeon-designs/` and one line in `AGENT_HANDOFF.md`.
 
 Enemy 40-card decks (issue #13), per `TASKS.md`. They can use DESIGN 3.4's templates as the
 composition context; the roster and tiers there are what the decks should confirm or override.
+
+## Quality check (2026-10-11, after the first push)
+
+Re-read the whole document against the source and against Robert's stated direction. Changed:
+
+- **Removed** the three-attacker concurrency guardrail. It contradicted Robert (2026-10-08):
+  being surrounded is meant to be dangerous.
+- **Removed** the "objective met" banner (the HUD already shows progress) and the warden-room
+  warning (hand-holding; the room is already announced on entry).
+- **Corrected build facts:** the contract also tints the lighting; a failed boast has a fame and
+  reputation cost; nothing locks the warden room, so it is not a point of no return.
+- **Added** the secret-counter bug to the build facts.
+- **Fixed inconsistencies:** Gatehouse has a Brute in most rooms, not every room; the progression
+  table no longer claims fewer floor-1 traps with no parameter behind it; Sinkhole and Warren
+  twists match their mixes; loot tilt is one or two elements per type; the code sketch numbers
+  floors from 1 like the tables.
+- **Flagged** that difficulty is back-loaded (floor 1 softer than today in five of six types), and
+  that ranged allies may shoot over Court's screen; both go to playtest and questions 10-11.

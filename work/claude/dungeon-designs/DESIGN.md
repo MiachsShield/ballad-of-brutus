@@ -22,7 +22,8 @@ existing function, **[new]** logic that does not exist yet. Almost everything is
   hazard knobs, and encounter templates named by enemy. No new dungeon system.
 - Escalation is by floor: tier gate, threat budget, rest scarcity, hazard density.
 - Rewards differ by type (loot tilt, cache rooms) and the warden finally pays like a boss.
-- Nine questions for Robert are at the end, and in `DONE.md`.
+- Eleven questions for Robert are at the end, and in `DONE.md`.
+- Quality check (2026-10-11) corrections are listed in `DONE.md`.
 
 ## 1. What the dungeon is today (verified)
 
@@ -34,14 +35,15 @@ Facts the design has to respect. Sources are in parentheses so Muse can re-check
 | Connectivity | Random spanning tree over grid neighbours, plus 2 loop edges; leftover edges become pits (one trap pit, then one descend pit if not the last floor). 40% of connectors get a trap (spike 14 dmg, dart 9, scaled by difficulty). (`buildFloor`, `buildLevel`) |
 | Population | Ordinary rooms (not entrance, rest, waypoint, secret, boss) are 70% occupied, 1 enemy, +1 with chance 35% + 15% per floor. Kind is uniform over Skulker / Brute / Stalker / Grazer (the first room of floor 1 leans Skulker). **Floor is not an input**: a Brute can be in the first room. The Overseer is placed in the boss room on floor 3 only. (`buildFloor`) |
 | Measured size | 60 generated dungeons (CURRENT build, Regenerate): always 27 chambers; enemies including the boss min 9, median 15, mean 14.7, p90 19, max 23. Matches what the constants predict. |
-| Themes are cosmetic | `DUNGEON_THEMES` carries name, region, objective text, reward, colour. The dungeon receives the contract only to show a HUD line. Seven contracts, one generator. |
+| Themes are cosmetic | `DUNGEON_THEMES` carries name, region, objective text, reward, colour. The dungeon uses the contract only for a HUD progress line and to tint the lighting with its colour. Seven contracts, one generator. |
 | Objectives | hunt: 5 kills. relic: enter a secret chamber at least once. depth: reach floor index 2. armor: break one stance (`brutesBroken`, counted for any braced enemy). Win also requires Brutus not downed. Gold is paid on exit only if won; public boast pays 1.5x. (`applyDungeonResult`) |
 | Armor contract is not guaranteed | Nothing forces a Brute into the dungeon. The boss braces too, so it usually resolves, but not by design. |
 | Rest is unlimited | `restPressed` has no use limit: full HP, full energy, hand refreshed, no revive. One rest room per floor can be reused forever. |
 | Chests only heal | One per floor at 45%, +15% max HP. `treasureFound` is counted but never read. Loot comes only from an exit roll: 15% + 2% per score point, cap 70%, item level 12 + 16 per floor + 7 per Brute broken + 4 per secret. Score = 9 x deepest floor + 3 x kills + 6 x stances broken + 5 x secrets. |
 | The warden pays like a skulker | A boss kill increments `kills` by 1 (3 score, 22 XP), same as any enemy. |
 | Pits are lethal to enemies | An enemy knocked into a pit goes to 0 HP ("launched into the pit and vanishes") and counts as a kill. Brutus takes 25% max HP and is returned (spike pit) or drops a floor (descend pit). A companion knocked in dies: companion 0 HP is permadeath. (`fallIntoPit`, `PIT_TRAP_DMG_PCT`) |
-| Exit and loss | Exit to map works anywhere. XP and the loot roll are kept; contract gold is forfeited; the contract stays open until it expires (4-5 turns). Every delve regenerates the level, so an abandoned run loses its explored map and cleared rooms. Brutus at 0 HP ends the whole run (campaign build). Failed init refunds the action. (`applyDungeonResult`, campaign wrapper, `start`) |
+| Secret counter can be farmed (**bug**) | `secretsFound` goes up every time Brutus *enters* a secret room, because the check compares the last room *kind*, not the room. Walking out and back in counts again: +5 score, +25 XP, +4 loot level and a higher loot chance each time, and it trivially satisfies relic contracts. Fix: count each secret sector once. Found by code reading, not reproduced in play. (frame loop, `lastPlace`) |
+| Exit and loss | Exit to map works anywhere. XP and the loot roll are kept; contract gold is forfeited; a failed public boast also costs each returning companion Fame −5 and Reputation −3; the contract stays open until it expires (4-5 turns). Every delve regenerates the level, so an abandoned run loses its explored map and cleared rooms. Brutus at 0 HP ends the whole run (campaign build). Failed init refunds the action. (`applyDungeonResult`, campaign wrapper, `start`) |
 | S1 encounters are unplaced | The "Talk to adventurers" prompt appears in any safe non-connector room, and the world hands out the first living unmet party in roster order until none are left. Nothing in the generator decides where meetings happen. (`dungeon-integration.js` `owSafe`, `world-integration.js` `request`) |
 | Guild ambushes | The campaign layer spawns hostile guild waves after 12 s of quiet, capped at 6 faction enemies alive. Independent of this design; section 3.3 leaves room for it. |
 
@@ -57,8 +59,9 @@ Facts the design has to respect. Sources are in parentheses so Muse can re-check
    (section 3.4).
 5. **The dungeon is real-time and first-person.** Crowds should be readable and clearable by a
    confident player; being flanked or surrounded should be dangerous; narrow sightlines are a
-   feature, and every enemy needs a diegetic tell (bestiary spec). These are design lenses I am
-   applying from the playtests and the training-room work, not canon.
+   feature, and every enemy needs a diegetic tell (bestiary spec). Robert said on 2026-10-08 that
+   being surrounded or caught off guard is meant to be dangerous, and that for mobs "nothing easy
+   is fun". Those are his words in conversation, not yet in `canon/`.
 6. **Constraints kept:** the five message names (`enterDungeon`, `freshDungeon`, `resumeDungeon`,
    `pauseDungeon`, `exitDungeon`) are untouched; failed init charges nothing; companion 0 HP is
    permadeath with no revive path (**CANON** 2026-09-15 #4); no new currency; canon overrides this
@@ -75,10 +78,10 @@ Cultist, Dire Hound. The warden is the existing Overseer, which is not one of th
 | Type | The question it asks | Floors | Plan | Signature twist | Signature enemies |
 |---|---|---|---|---|---|
 | **Barrow** | Can you clear a crowd without being caught in recovery? | 3 | Ring | Rabble rooms: groups of 3, all low tier. Knockback into the next body is the skill. | Skulker, Zombie |
-| **Gatehouse** | Can you break a brace? | 2 | Lean, no loops | A Brute guarded every room. Short and dense; the armor objective lives here. | Brute, Skulker |
-| **Warren** | Can you fight with nowhere to stand still? | 3 | Open | Wide aggro and a single rest room. Hunters track from far and arrive in pairs. | Dire Hound, Stalker |
+| **Gatehouse** | Can you break a brace? | 2 | Lean, no loops | A Brute in most rooms (five over two floors). Short and dense; the armor objective lives here. | Brute, Skulker |
+| **Warren** | Can you fight with nowhere to stand still? | 3 | Open | A single rest room. Stalkers notice you from far and never lose you; from floor 2, hounds come in pairs. | Dire Hound, Stalker |
 | **Court** | Can you reach the thing behind the screen? | 3 | Ring, long rooms | Rank placement: Zombies hold the front, Cultists the far end, so you push or pull through the screen. | Zombie, Cultist |
-| **Sinkhole** | Can you use the floor? | 3 | Pit-heavy | Two spike pits and two descend pits per floor. Knockback kills enemies; a descend pit is a shortcut that skips a stair room. | Stalker, Brute |
+| **Sinkhole** | Can you use the floor? | 3 | Pit-heavy | Two spike pits per floor, and two descend pits on every floor but the last. Knockback into a pit kills enemies; a descend pit is a shortcut that skips a stair room. | Stalker, Brute |
 | **Vault** | Can you stay quiet and find it? | 3 | Standard (secrets) | Dense traps, few awake guards, and a cache in the hidden chamber. | Brute, Cultist |
 
 **Plans.** A plan is nine characters, cells 0-8 left to right, top to bottom. R room, W waypoint,
@@ -127,14 +130,16 @@ Existing rooms keep their jobs. What each does to the run:
 | Waypoint | BUILD | Fast travel to visited waypoints and the entrance. Saves backtracking, not health. Rule kept: a waypoint always precedes the warden. |
 | Platform | BUILD | Raised vantage. Useful in Sinkhole (overlooks pits). |
 | Secret | BUILD | Relic objective. Proposal: holds the **cache** (below). |
-| Warden room | BUILD | Last floor only. Warded chamber, the point of no return. |
+| Warden room | BUILD | Last floor only, labelled a warded chamber on entry. Nothing locks; Brutus can still leave. |
 | Pits and traps | BUILD | Spike 14 / dart 9; pits as in section 1. |
 | Chest | BUILD, **change** | Today +15% HP. Proposal: Vault chests and secret caches also grant a guaranteed item roll at floor level +4. [small] |
 | **Ambush room** | proposal [small] | An ordinary combat room whose enemies start aware and enter from two doors, so flanking is the test. At most one per floor, never floor 1. Used in Warren and Barrow. |
 | **Encounter room** | proposal [small] | A quiet room that may hold an adventurer party for the S1 "Talk" prompt. 0-2 per dungeon, never a connector or rest room. S1's `owSafe` gate becomes "this room is an encounter room". Stops the first rooms using up the roster. |
 
 No new event system. The S1 adventurer encounter (Talk / aid / ignore / exploit / obstruct) *is*
-the dungeon's event; it only needs placing. A shrine-style choice room is deferred.
+the dungeon's event; it only needs placing. A shrine-style choice room is deferred. A better fit
+for "aid" would be a party found mid-fight in a combat room, where their survival depends on
+Brutus; S1 only offers meetings when no enemy is near, so that is a later [new] item.
 
 ### 3.3 Progression within a delve
 
@@ -145,7 +150,7 @@ the dungeon's event; it only needs placing. A shrine-style choice room is deferr
 | Tier gate | Mostly Tier 1; at most one Tier 2 unit per room | Up to two Tier 2 units per room | No cap |
 | Threat budget | Low (2-8 points) | Mid (6-10) | High (6-10 across fewer rooms), plus the warden |
 | Rest | One in every type except Warren | One in every type except Gatehouse (whose floor 2 is last) | None in any type; only the waypoint before the warden |
-| Hazards | Fewer connector traps | Base | Base; Sinkhole keeps both pit kinds |
+| Hazards | The type's rates (3.1) | The type's rates | The type's rates; no descend pits |
 | Special rooms | No ambush rooms | One ambush room allowed | One ambush room allowed |
 
 Per-type budgets are in 3.4. Today's expectation is about 20 threat points per delve (13.7
@@ -153,18 +158,23 @@ non-boss enemies measured, 1.5 points each by the generator's kind weights), and
 between 16 and 22 so difficulty is reshaped, not inflated. Barrow has about 46% more bodies at
 low tier; Sinkhole and Vault have fewer, because hazards carry the pressure.
 
-**Concurrency guardrail to test, not to assume:** at most three enemies in an attacking posture
-against Brutus at once; a fourth waits. It protects "scary but not fatal" in the crowd types. It
-is an enemy AI change [new]. Test it in the training room first (it spawns up to eight).
+**No cap on simultaneous attackers.** Being surrounded is meant to be dangerous (Robert,
+2026-10-08), so crowd danger is shaped by composition and tier, not by an AI limit. The only
+ceiling is the bestiary's per-hit lethality clamp, and section 6 tests whether crowds overrun it.
+
+**Difficulty is back-loaded, and that may be wrong.** Today's floors run about 7 / 8 / 5 points
+plus the warden (from the generator's constants). The types start softer on floor 1 in five of
+six (2-6 points; Gatehouse has 8) and end harder. Given "nothing easy is fun", floor 1 may need to
+rise toward today's 7 (question 10). Playtest before deciding.
 
 **How a run ends early, and what each costs:**
 
 | End | Today (BUILD) | Proposal |
 |---|---|---|
-| Objective met, exit | Gold, fame +10, rep +3, XP, loot roll | Unchanged. Add an "objective met" banner so the player knows the rest is optional risk. [small] |
-| Withdraw (Exit to map) | XP and loot kept, no gold, contract stays open until it expires, **map and cleared rooms are lost because the next delve regenerates** | Keep free of any extra penalty. The lost map, the spent action and the forfeited gold already make retreat cost real, and a tax on withdrawing punishes careful play. |
+| Objective met, exit | Gold, fame +10, rep +3, XP, loot roll | Unchanged. The contract HUD already shows progress (for example "5/5 defeated"), so no extra banner. |
+| Withdraw (Exit to map) | XP and loot kept, no gold, a failed boast costs companions Fame −5 and Reputation −3, contract stays open until it expires, **map and cleared rooms are lost because the next delve regenerates** | Keep free of any extra penalty. The lost map, the spent action and the forfeited gold already make retreat cost real, and a tax on withdrawing punishes careful play. |
 | Companion down | Permadeath, others continue | Unchanged (CANON). |
-| Brutus down | Run over, no rescue | Unchanged (CANON: 0 HP is dead). Because this is final, the point of no return needs a clear signal: a warning on crossing into the warden room. [small] |
+| Brutus down | Run over, no rescue | Unchanged (CANON: 0 HP is dead). No extra warning before the warden: the game does not hold the player's hand, and the room is already announced as a warded chamber. |
 | Failed init | Action refunded | Unchanged, hard constraint. |
 
 Single-use rest turns the descent into a resource decision: spend the rest now, or keep it for
@@ -214,6 +224,11 @@ the last-floor Pack has three (no cap). Every enemy of the six appears in at lea
 (Hound only in Warren, Zombie in Barrow and Court, Cultist in Court and Vault). Rattle is the
 common filler. Grazer is not one of the six and is left out; see question 4.
 
+**Risk for Court.** Ember and Wren stay behind Brutus and shoot. They can reach a Cultist over the
+Zombie screen without anyone breaking it, so Court's question may answer itself. Test Screen and
+Choir in the training room with allies acting (section 6). Court is also a natural bad matchup for
+a counter-based Priest, since counters do not work against ranged attacks; that is intended.
+
 **Warden.** The existing Overseer on the last floor of every type, at the end of the last floor's
 plan. Type-specific wardens are future enemy design (question 6). Each type's escort is simply
 its last-floor templates.
@@ -260,7 +275,7 @@ differ by type and by depth.
 |---|---|
 | Gold | Unchanged; authored per contract (26k-45k), public boast 1.5x. Types do not alter it, to keep scope small. |
 | Warden kill | New result field `wardenSlain`: +12 score, +60 XP, and one guaranteed loot roll at the last floor's level. Today the boss pays like a skulker. Additive field; the world must read it. [small] |
-| Loot tilt by type | Bias item **element** toward two per type (60% from the pair, otherwise uniform). Barrow Shadow and Holy. Gatehouse Fire. Warren Poison and Lightning. Court Shadow and Frost. Sinkhole Lightning and Frost. Vault no bias, but rarity one step higher from the cache. Needs `generateItem` to accept hints. [small] |
+| Loot tilt by type | Bias item **element** toward one or two per type (60% from the tilt, otherwise uniform). Barrow Shadow and Holy. Gatehouse Fire. Warren Poison and Lightning. Court Shadow and Frost. Sinkhole Lightning and Frost. Vault no bias, but rarity one step higher from the cache. Needs `generateItem` to accept hints. [small] |
 | Caches | A cache in each secret chamber (Vault, Warren relic) and Vault chests: a guaranteed item roll at depth level +4. Other types keep supplies. [small] |
 | Chests in score | Add 4 score per chest (the counter exists, unread). [small] |
 | Depth | Unchanged weights; loot level already rises 16 per floor. The tier gate and rest scarcity are the real depth scaling. |
@@ -273,10 +288,12 @@ shape, not code to paste:
 
 ```
 barrow: { floors: 3, plan: "RRREZXRWR", loops: 2, pits: { trap: 1, descend: 1 },
-          connectorTraps: 0.30, chest: 0.45, secrets: 0, room: [9, 12], restFloors: [0, 1],
-          encounters: { 0: ["rattle","shamble","rattle"], 1: ["rabble","shamble","rattle"],
-                        2: ["procession","rabble"] },
+          connectorTraps: 0.30, chest: 0.45, secretFloors: [], room: [9, 12], restFloors: [1, 2],
+          encounters: { 1: ["rattle","shamble","rattle"], 2: ["rabble","shamble","rattle"],
+                        3: ["procession","rabble"] },
           lootTilt: { elements: ["Shadow","Holy"] } }
+
+// floors are numbered from 1 here, as in the tables; the generator's floor index is one less.
 ```
 
 - The contract carries `type`; `enterDungeon`'s existing `contract` field already reaches
@@ -300,10 +317,12 @@ barrow: { floors: 3, plan: "RRREZXRWR", loops: 2, pits: { trap: 1, descend: 1 },
 The training room (`CURRENT` build) spawns up to eight enemies, can switch recovery off, and
 shows frame data for the last hit each way. Use it before building:
 
-1. Spawn Rabble, Procession and Pack and check the concurrency guardrail: is a fourth attacker
-   needed to make a crowd frightening, or is three already too many?
-2. Spawn Screen and Choir: can a player break a Zombie front to reach a Cultist, and does the
-   Cultist's ranged pressure make standing still a mistake?
+1. Spawn Rabble, Procession and Pack: are they frightening but beatable by a confident player,
+   with no cap on attackers?
+2. Spawn Screen and Choir, with Ember and Wren acting: do the allies shoot the Cultist over the
+   screen and make the push pointless? Then hold the allies back by position and check whether a
+   player can break the Zombie front alone, and whether Cultist ranged pressure punishes standing
+   still.
 3. Spawn Squad and Gatekeeper: is a Brute's brace a fair lesson alone, and a fair threat with
    two Skulkers?
 4. The bestiary lethality clamp (Tier 1 hits at most 35% of Brutus's max HP, Tier 2 at most 50%)
@@ -334,3 +353,9 @@ shows frame data for the last hit each way. Use it before building:
 8. **Floor count.** Keep dungeons at 2 or 3 floors for now (more touches world scoring)?
 9. **Reward changes.** Approve the warden bonus (`wardenSlain`, additive result field), caches
    in secret chambers and Vault chests, and element tilt by type?
+10. **Floor 1 difficulty.** The types start softer than today in five of six. Raise floor 1
+    toward today's level, or keep the ramp?
+11. **Waypoints and leaving.** You listed waypoint fast travel and a recall-to-town among
+    dungeon QoL options earlier; I could not tell whether that list was accepted or declined.
+    The build has both (waypoints, and Exit to map from anywhere), and this design keeps them.
+    Keep, or remove?
