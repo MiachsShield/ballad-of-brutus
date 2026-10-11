@@ -1,4 +1,56 @@
-# Current build (2026-10-09)
+# Current build (2026-10-11)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one. When the current build changes, the prefix moves to the new file
+and comes off the old one, so `ls builds/` always answers the question.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,364,264 bytes
+- SHA-256: `8851105d2a9516531f8fab87b9ebfa7013855b3318b8b2afaba6809a7846d954`
+- What: everything the previous current build had (S1 playable overworld
+  splice, E1 economy adapter, vertical hand cards) **plus the training room**
+  (PR #37's feature, now composed in): a header "Training room" button opens a
+  one-room practice arena with enemy spawn/clear/reset, recovery on/off,
+  enemies attack / hold still, and a last-hit frame-data readout. It costs no
+  action and sends nothing back to the world.
+- Renamed from `builds/brutus-astra-e1-standalone.html` (old SHA-256
+  `4afb89a2…c46028`, removed). Rebuilt with
+  `node work/astra/economy-splice/build-e1.cjs`, whose default output is now the
+  `CURRENT-` name.
+- Pinned baseline: `builds/brutus-1_0_a0mk-kavi-balanced2.html`, **edited in
+  place again** to include the training room. New SHA-256
+  `eeeeeae0fd4cf32428e40c6d045f851311674c1affef800e5f09abe4bb283cdb`
+  (10,284,796 bytes; previous `0576e3fb…287b8d`). Pins updated in `build-e1.cjs`,
+  `build-s1.cjs`, `brutus-astra-e1.html` and `brutus-astra-s1.html`.
+- Also rebuilt against the new baseline: `builds/brutus-astra-s1-standalone.html`
+  (10,352,330 bytes; SHA-256 `326d50e6…4147d1`) — S1 without the E1 adapter, not
+  current.
+- Tests (2026-10-11, exact file): S1 integration suite PASS on the CURRENT
+  file; ow-bridge sim PASS; E1 economy suite PASS. Headless Chrome/SwiftShader
+  over file://: overworld renders, Training room opens, spawn + card hit records
+  frame data (Skullcracker, wind-up 350ms / recovery 550ms, dealt 14, knockback
+  1.7), Leave returns to the world; a real expedition started from the
+  overworld's own Take contract -> Descend generates three floors, Exit to map
+  returns, Training room button reappears; zero page errors.
+- Not exercised: Brutus dying inside the training room; the launcher pages
+  `brutus-astra-e1.html` / `brutus-astra-s1.html` (pins updated, but they need
+  HTTP and were not loaded).
+- Known limitation: Ember and Wren act on their own AI in the training room and
+  often kill held-still enemies before Brutus's hit lands. An allies on/off
+  toggle would fix it; not added, because it was not approved.
+- What the other files in `builds/` are:
+  - `brutus-1_0_a0mk-kavi-balanced2.html` — the pinned composition baseline the
+    standalones are built from. Not for playing.
+  - `brutus-1_0_a0mk-kavi-balanced2-training.html` — superseded. It was
+    balanced2 + training room from before the vertical-card change; the training
+    room is now in the baseline and the CURRENT build. Kept, not deleted.
+  - `brutus-astra-s1-standalone.html` — S1 without E1. Reference.
+  - `brutus-astra-e1.html`, `brutus-astra-s1.html` — launcher pages (HTTP only).
+  - `balanced`, `fixed`, `merged` — older builds, reference only.
+
+---
+
+# Previous current build (2026-10-09, superseded by the entry above)
 
 - File: `builds/brutus-astra-e1-standalone.html`
 - Size: 10,355,431 bytes

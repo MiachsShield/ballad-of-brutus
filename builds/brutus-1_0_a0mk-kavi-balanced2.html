@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Ballad of Brutus</title><style>*{box-sizing:border-box}body{margin:0;background:#101b22;color:#f4eddb;font:14px system-ui}header{height:42px;display:flex;align-items:center;padding:0 20px;gap:16px;border-bottom:1px solid #9d815640}b{letter-spacing:.13em;font:600 14px Georgia}span{color:#aab9ba}button{margin-left:auto;background:#273c43;border:1px solid #a28b63;color:#f4eddb;padding:5px 14px;cursor:pointer}iframe{width:100%;height:calc(100dvh - 42px);border:0;display:block}iframe[hidden]{display:none}</style></head><body><header><b>THE BALLAD OF BRUTUS</b><span id="where">The living world</span><button id="back" hidden>Return to world</button></header><iframe title="The living world" id="world"></iframe><iframe title="Dungeon expedition" id="dungeon" hidden></iframe><script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Ballad of Brutus</title><style>*{box-sizing:border-box}body{margin:0;background:#101b22;color:#f4eddb;font:14px system-ui}header{height:42px;display:flex;align-items:center;padding:0 20px;gap:16px;border-bottom:1px solid #9d815640}b{letter-spacing:.13em;font:600 14px Georgia}span{color:#aab9ba}button{margin-left:auto;background:#273c43;border:1px solid #a28b63;color:#f4eddb;padding:5px 14px;cursor:pointer}iframe{width:100%;height:calc(100dvh - 42px);border:0;display:block}iframe[hidden]{display:none}</style></head><body><header><b>THE BALLAD OF BRUTUS</b><span id="where">The living world</span><button id="train" title="Practice combat against any enemy. Costs no action and nothing carries over to the world.">Training room</button><button id="back" hidden>Return to world</button></header><iframe title="The living world" id="world"></iframe><iframe title="Dungeon expedition" id="dungeon" hidden></iframe><script>
 const WORLD_HTML=`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5729,6 +5729,7 @@ const DUNGEON_HTML=`<!DOCTYPE html>
   // Who the overworld says is coming down. Null = standalone play, in which case we fall back
   // to Ember and Wren so this file still works opened directly.
   let partySpec = null;
+  let trainingMode = false;   // practice arena: set by a freshDungeon message with training:true
   // Overworld classes -> dungeon ally archetypes. Every class gets a real ranged identity so
   // swapping a Rogue in for a Mage actually changes how the backline behaves, rather than
   // just changing the name over the same Firebolt.
@@ -5972,6 +5973,8 @@ const DUNGEON_HTML=`<!DOCTYPE html>
 
   function buildLevel(){
     sectors=[]; traps=[]; enemies=[]; chests=[]; let nextId=0; const floors=[];
+    // Training room: one open arena, no enemies, traps or chests. Enemies are spawned on demand.
+    if(trainingMode){ sectors.push(makeSector(0,"room",0,-9,-9,9,9,0)); return; }
     for(let f=0;f<FLOOR_COUNT;f++){ const r=buildFloor(f,f*FLOOR_X_GAP,f*FLOOR_Y_STEP,nextId); nextId=r.nextId; floors.push(r); }
     for(let f=0;f<FLOOR_COUNT-1;f++){ const top=floors[f], bot=floors[f+1];
       // straight east-running stairway between floors — both ends are middle-row rooms
@@ -7242,7 +7245,7 @@ const DUNGEON_HTML=`<!DOCTYPE html>
   }
   $("exitBtn").addEventListener("click",exitToMap);
   window.addEventListener("message",ev=>{ const m=ev.data||{}; if(m.type==="resumeDungeon"){ if(dungeonPaused){ dungeonPaused=false; logMsg("Back down. The waypoint holds.","good"); } }
-    if(m.type==="pauseDungeon"){ dungeonPaused=!!m.paused; sfx?.setPaused(dungeonPaused); } if(m.type==="freshDungeon"){ if(!receiveCampaign(m))return;dungeonPaused=false; contract=m.contract||null; applyEquipmentLoadout(m.loadout); if(m.party) partySpec=m.party; runStats={kills:0,brutesBroken:0,deepestFloor:0,secretsFound:0,treasureFound:0}; start(); } });
+    if(m.type==="pauseDungeon"){ dungeonPaused=!!m.paused; sfx?.setPaused(dungeonPaused); } if(m.type==="freshDungeon"){ trainingMode=!!m.training; if(trainingMode)return; if(!receiveCampaign(m))return;dungeonPaused=false; contract=m.contract||null; applyEquipmentLoadout(m.loadout); if(m.party) partySpec=m.party; runStats={kills:0,brutesBroken:0,deepestFloor:0,secretsFound:0,treasureFound:0}; start(); } });
   $("regenBtn").addEventListener("click",()=>{ runStats={kills:0,brutesBroken:0,deepestFloor:0,secretsFound:0,treasureFound:0}; start(); });
   $("lightBtn").addEventListener("click",()=>{ fullyLit=!fullyLit; $("lightBtn").textContent=fullyLit?"Lights: full":"Lights: torch"; applyLighting(); });
   $("diffBtn").addEventListener("click",()=>{ difficulty=DIFFICULTY_ORDER[(DIFFICULTY_ORDER.indexOf(difficulty)+1)%DIFFICULTY_ORDER.length]; $("diffBtn").textContent="Difficulty: "+DIFFICULTY[difficulty].label; logMsg(\`Difficulty: \${DIFFICULTY[difficulty].label}. Enemy HP applies next level; damage taken applies now.\`); });
@@ -7710,13 +7713,127 @@ document.addEventListener('pointerdown',ev=>{
  const p=new THREE.Vector3(),plane=new THREE.Plane(new THREE.Vector3(0,1,0),-groundY(brutus));if(ray.ray.intersectPlane(plane,p)&&placeSanctuary(p.x,p.z)){ev.preventDefault();ev.stopImmediatePropagation();}else flashAlert('Choose open floor in a visited room on this level.','warn');
 },true);
 
+
+// ============================================================
+//  TRAINING ROOM — practice arena opened from the world screen's header. Self-contained:
+//  no campaign, no rewards, no action cost, nothing is sent back to the world. Every hook
+//  below is inert unless trainingMode is true.
+// ============================================================
+const TRAIN={noRecovery:false,hold:false,out:null,inc:null,panel:null,exitText:null};
+function trainFrameData(hit){
+  const nm=hit.name;
+  const card=Object.values(CARDS).find(c=>c&&c.name===nm);
+  if(card) return 'wind-up '+card.startup+'ms · recovery '+card.recovery+'ms';
+  const ea=Object.values(ENEMY_ATTACKS).find(a=>a.name===nm);
+  if(ea) return 'wind-up '+ea.windup+'ms · active '+ea.active+'ms · recovery '+ea.recovery+'ms';
+  for(const a of Object.values(ALLY_ARCHETYPES)) if(a.ranged&&a.ranged.name===nm) return 'wind-up '+a.ranged.windup+'ms · recovery '+a.ranged.recovery+'ms';
+  return '';
+}
+function trainRecord(attacker,target,hit,r){
+  if(attacker!==brutus&&target!==brutus) return;
+  const flags=[];
+  if(r.countered)flags.push('PERFECT COUNTER'); if(r.interrupted)flags.push('interrupt');
+  if(r.broke)flags.push('armor broken'); else if(r.armored)flags.push('braced');
+  if(r.guarded)flags.push('guarded'); if(r.back)flags.push('back attack'); else if(r.unaware)flags.push('unaware');
+  const rec={ line:attacker.name+' → '+target.name+': '+hit.name+' ('+(hit.tier||'?')+')',
+    detail:trainFrameData(hit),
+    result:'dealt '+r.dealt+' · knockback '+(Math.round((r.kb||0)*10)/10)+(flags.length?' · '+flags.join(', '):'') };
+  if(attacker===brutus) TRAIN.out=rec; else TRAIN.inc=rec;
+  trainRender();
+}
+function trainRender(){
+  const p=TRAIN.panel; if(!p) return;
+  const fill=(id,label,r)=>{ const el=p.querySelector(id); el.textContent='';
+    const h=document.createElement('b'); h.textContent=label; el.appendChild(h);
+    const lines=r?[r.line,r.detail,r.result]:['—'];
+    for(const t of lines){ if(!t) continue; const d=document.createElement('div'); d.textContent=t; el.appendChild(d); } };
+  fill('#trOut','Last hit you landed',TRAIN.out);
+  fill('#trInc','Last hit you took',TRAIN.inc);
+  p.querySelector('[data-a="rec"]').textContent='Recovery: '+(TRAIN.noRecovery?'off':'on');
+  p.querySelector('[data-a="hold"]').textContent='Enemies: '+(TRAIN.hold?'hold still':'attack');
+}
+function trainSpawn(kindId){
+  if(!trainingMode||!brutus||brutus.downed) return;
+  if(enemies.filter(e=>!e.downed).length>=8){ logMsg('Eight live enemies is the cap. Clear the room first.','warn'); return; }
+  const f=brutus.facing, r=sectors[0].rect;
+  let x=brutus.x+Math.sin(f)*4, z=brutus.z-Math.cos(f)*4;
+  x=Math.max(r.x0+1.5,Math.min(r.x1-1.5,x)); z=Math.max(r.z0+1.5,Math.min(r.z1-1.5,z));
+  const e=makeEnemy(kindId,x,z,sectors[0].id);
+  e.aware=true; e.target=brutus; e.facing=Math.atan2(brutus.x-x,-(brutus.z-z)); e.attackCd=900;
+  enemies.push(e);
+  if(three){ const fig=buildFigure(kindId); three.scene.add(fig); three.enemyFigs.push(fig); }
+  beginEncounter();
+}
+function trainClear(){
+  if(three){ for(const fg of three.enemyFigs) three.scene.remove(fg); three.enemyFigs.length=0; }
+  enemies.length=0; for(const el of fbarEls.values()) el.remove(); fbarEls.clear();
+}
+function trainAfterStart(){
+  trainBuild(); TRAIN.panel.hidden=false;
+  const ex=$('exitBtn'); if(ex){ if(TRAIN.exitText===null) TRAIN.exitText=ex.textContent; ex.textContent='Leave training room'; }
+  logEl.innerHTML=''; logMsg('Training room. Spawn an enemy from the panel; frame data for the last hit appears below it.','warn');
+  trainRender();
+}
+function trainReset(){ campaignDead=false; dungeonPaused=false; TRAIN.out=null; TRAIN.inc=null; start(); trainAfterStart(); }
+function trainBuild(){
+  if(TRAIN.panel) return;
+  const p=document.createElement('div'); p.id='trainPanel';
+  const st=document.createElement('style');
+  st.textContent='#trainPanel{position:fixed;right:8px;top:136px;z-index:60;width:250px;background:rgba(14,20,26,.9);border:1px solid #a28b63;color:#f4eddb;font:12px system-ui;padding:8px;border-radius:6px}#trainPanel[hidden]{display:none}#trainPanel h3{margin:0 0 6px;font:600 12px Georgia;letter-spacing:.1em}#trainPanel .tr-row{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}#trainPanel button{margin:0;background:#273c43;border:1px solid #a28b63;color:#f4eddb;padding:3px 7px;cursor:pointer;font:12px system-ui}#trainPanel button:hover{background:#34535d}#trainPanel .tr-rec{margin-top:6px;border-top:1px solid #a28b6366;padding-top:4px;line-height:1.35}#trainPanel .tr-rec b{color:#c9a24b}';
+  p.appendChild(st);
+  const h=document.createElement('h3'); h.textContent='TRAINING ROOM'; p.appendChild(h);
+  const mkRow=()=>{ const d=document.createElement('div'); d.className='tr-row'; p.appendChild(d); return d; };
+  const mkBtn=(row,label,act,kind)=>{ const b=document.createElement('button'); b.type='button'; b.tabIndex=-1; b.textContent=label; b.dataset.a=act; if(kind) b.dataset.k=kind; row.appendChild(b); return b; };
+  const spawnRow=mkRow(); for(const k of Object.keys(ENEMY_KINDS)) mkBtn(spawnRow,'+ '+ENEMY_KINDS[k].name,'spawn',k);
+  const r2=mkRow(); mkBtn(r2,'Clear enemies','clear'); mkBtn(r2,'Reset room','reset');
+  const r3=mkRow(); mkBtn(r3,'Recovery: on','rec'); mkBtn(r3,'Enemies: attack','hold');
+  const out=document.createElement('div'); out.id='trOut'; out.className='tr-rec'; p.appendChild(out);
+  const inc=document.createElement('div'); inc.id='trInc'; inc.className='tr-rec'; p.appendChild(inc);
+  p.addEventListener('click',ev=>{
+    const b=ev.target.closest('button'); if(!b) return; const a=b.dataset.a;
+    if(a==='spawn') trainSpawn(b.dataset.k); else if(a==='clear') trainClear(); else if(a==='reset') trainReset();
+    else if(a==='rec') TRAIN.noRecovery=!TRAIN.noRecovery; else if(a==='hold') TRAIN.hold=!TRAIN.hold;
+    trainRender(); b.blur();
+  });
+  document.body.appendChild(p); TRAIN.panel=p;
+}
+// record every exchange involving Brutus
+const trainLandHit=landHit;
+landHit=function(attacker,target,hit){ const r=trainLandHit(attacker,target,hit); if(trainingMode&&r) trainRecord(attacker,target,hit,r); return r; };
+// recovery windows off: skip them for everyone, except real stuns
+const trainUpdateBrutus=updateBrutus;
+updateBrutus=function(dt){ if(trainingMode&&TRAIN.noRecovery&&!brutus.stunned&&brutus.recoveringUntil>now()){ brutus.recoveringUntil=0; brutus.exposure=1; } return trainUpdateBrutus(dt); };
+const trainUpdateEnemy=updateEnemy;
+updateEnemy=function(e,dt){
+  if(trainingMode){
+    if(TRAIN.noRecovery&&e.phase==='recovery'&&!e.stunned) e.phaseUntil=now();
+    // hold still: enemies finish what they are doing, then stand idle and do not start anything new
+    if(TRAIN.hold&&!e.stunned&&(e.phase==='idle'||!e.phase)&&!e.attack) return;
+  }
+  return trainUpdateEnemy(e,dt);
+};
+// Brutus going down resets nothing by itself in the practice room and never ends the session
+const trainOnDowned=onDowned;
+onDowned=function(c,silent){
+  if(trainingMode&&c===brutus){ campaignDown(c,silent); logMsg('Brutus is down. Use Reset room to try again.','bad'); return; }
+  return trainOnDowned(c,silent);
+};
+window.addEventListener('message',ev=>{
+  const m=ev.data; if(ev.source!==window.parent||!m||m.type!=='freshDungeon') return;
+  if(!m.training){ if(TRAIN.panel) TRAIN.panel.hidden=true; const ex=$('exitBtn'); if(ex&&TRAIN.exitText!==null) ex.textContent=TRAIN.exitText; return; }
+  campaignDead=false; dungeonCampaign=null; contract=null; partySpec=null; dungeonPaused=false;
+  runStats={kills:0,brutesBroken:0,deepestFloor:0,secretsFound:0,treasureFound:0};
+  TRAIN.out=null; TRAIN.inc=null; applyEquipmentLoadout(null);
+  start(); trainAfterStart();
+});
+
 if(window.parent===window)start(); requestAnimationFrame(frame);
 })();
 <\/script>
 </body>
 </html>
 `;
-const world=document.getElementById('world'),back=document.getElementById('back');let dungeon=document.getElementById('dungeon'),loaded=false,live=false,last=null;
+const world=document.getElementById('world'),back=document.getElementById('back'),train=document.getElementById('train');let training=false;let dungeon=document.getElementById('dungeon'),loaded=false,live=false,last=null;
 let observedRun=null,runObserver=null,loadTimer=null,ready=false,loadStarted=0;
 const clock=()=>typeof performance!=='undefined'?performance.now():Date.now();
 window.BrutusLoadMetrics={attempts:[]};
@@ -7724,7 +7841,7 @@ function clearLoadTimer(){if(loadTimer!==null){clearTimeout(loadTimer);loadTimer
 function resetExpedition(){
  clearLoadTimer();if(loaded)dungeon.contentWindow.postMessage({type:'pauseDungeon',paused:true},'*');
  const replacement=dungeon.cloneNode(false);replacement.removeAttribute('srcdoc');replacement.hidden=true;
- dungeon.replaceWith(replacement);dungeon=replacement;loaded=false;live=false;ready=false;last=null;showDungeon(false);
+ dungeon.replaceWith(replacement);dungeon=replacement;loaded=false;live=false;ready=false;last=null;training=false;showDungeon(false);
 }
 world.onload=()=>{
  runObserver?.disconnect();const doc=world.contentDocument;
@@ -7732,20 +7849,25 @@ world.onload=()=>{
  observe();runObserver=new MutationObserver(observe);runObserver.observe(doc.body,{subtree:true,childList:true,attributes:true,attributeFilter:['data-run-id']});
 };
 world.srcdoc=WORLD_HTML;
-function showDungeon(yes){world.hidden=yes;dungeon.hidden=!yes;back.hidden=!live;back.textContent=!ready&&live?'Cancel opening':yes?'View world · paused':'Resume expedition';document.getElementById('where').textContent=yes?ready?'Expedition in progress':'Opening expedition…':'The living world';if(loaded)dungeon.contentWindow.postMessage({type:'pauseDungeon',paused:!yes},'*');}
-function abortOpening(reason){if(!live||ready)return;window.BrutusLoadMetrics.attempts.push({status:reason,elapsedMs:clock()-loadStarted});resetExpedition();world.contentWindow.postMessage({type:'dungeonResult',result:{initializationFailed:true}},'*');}
+function showDungeon(yes){world.hidden=yes;dungeon.hidden=!yes;back.hidden=!live||training;train.hidden=live;back.textContent=!ready&&live?'Cancel opening':yes?'View world · paused':'Resume expedition';document.getElementById('where').textContent=yes?ready?(training?'Training room':'Expedition in progress'):(training?'Opening training room…':'Opening expedition…'):'The living world';if(loaded)dungeon.contentWindow.postMessage({type:'pauseDungeon',paused:!yes},'*');}
+function abortOpening(reason){if(!live||ready)return;window.BrutusLoadMetrics.attempts.push({status:reason,elapsedMs:clock()-loadStarted});const wasTraining=training;resetExpedition();if(!wasTraining)world.contentWindow.postMessage({type:'dungeonResult',result:{initializationFailed:true}},'*');}
+function openDungeon(m){
+ last=m;live=true;ready=false;loadStarted=clock();
+ clearLoadTimer();loadTimer=setTimeout(()=>abortOpening('timeout'),30000);
+ if(!loaded){const frame=dungeon;loaded=true;frame.onload=()=>{if(frame===dungeon&&live)frame.contentWindow.postMessage({...last,type:'freshDungeon'},'*');};frame.srcdoc=DUNGEON_HTML;}
+ else dungeon.contentWindow.postMessage({...m,type:'freshDungeon'},'*');
+ showDungeon(true);
+}
+// Training room: same dungeon frame, flagged. Never touches the world, spends no action.
+train.onclick=()=>{if(live)return;training=true;openDungeon({type:'enterDungeon',training:true});};
 window.addEventListener('message',e=>{
  const m=e.data||{};
  if(e.source===world.contentWindow&&m.type==='enterDungeon'){
-  if(live)return;last=m;live=true;ready=false;loadStarted=clock();
-  clearLoadTimer();loadTimer=setTimeout(()=>abortOpening('timeout'),30000);
-  if(!loaded){const frame=dungeon;loaded=true;frame.onload=()=>{if(frame===dungeon&&live)frame.contentWindow.postMessage({...last,type:'freshDungeon'},'*');};frame.srcdoc=DUNGEON_HTML;}
-  else dungeon.contentWindow.postMessage({...m,type:'freshDungeon'},'*');
-  showDungeon(true);
+  if(live)return;training=false;openDungeon(m);
  }
  if(e.source===dungeon.contentWindow&&m.type==='dungeonReady'&&live){clearLoadTimer();ready=true;window.BrutusLoadMetrics.attempts.push({status:'ready',elapsedMs:clock()-loadStarted,startupMs:m.startupMs});showDungeon(!dungeon.hidden);}
- if(e.source===dungeon.contentWindow&&m.type==='campaignProgress'&&live)world.contentWindow.postMessage({type:'campaignProgress',campaign:m.campaign},'*');
- if(e.source===dungeon.contentWindow&&m.type==='exitDungeon'&&live){clearLoadTimer();live=false;showDungeon(false);world.contentWindow.postMessage({type:'dungeonResult',result:m.result},'*');}
+ if(e.source===dungeon.contentWindow&&m.type==='campaignProgress'&&live&&!training)world.contentWindow.postMessage({type:'campaignProgress',campaign:m.campaign},'*');
+ if(e.source===dungeon.contentWindow&&m.type==='exitDungeon'&&live){clearLoadTimer();const wasTraining=training;live=false;training=false;showDungeon(false);if(!wasTraining)world.contentWindow.postMessage({type:'dungeonResult',result:m.result},'*');}
  if(e.source===world.contentWindow&&m.type==='resetDungeon')resetExpedition();
 });
 back.onclick=()=>{if(!ready&&live)abortOpening('cancelled');else showDungeon(dungeon.hidden);};
