@@ -1,4 +1,33 @@
-# Current build (2026-10-11, guild contracts)
+# Current build (2026-10-11, conquest + upkeep paused)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,379,119 bytes
+- SHA-256: `0eee9e7ffbb3d55a40442b7bcd2e5eae0f0716b78c39a14d2eed714a20ca1f38`
+- New in this build (Robert, 2026-10-11, playtest):
+  - **Upkeep paused.** Brutus's per-turn roster upkeep is not charged
+    (`UPKEEP_PAUSED` in `work/claude/conquest/conquest-world.js`; flip it to resume).
+  - **Conquered dungeons.** The warden room now has a boss chest that opens only
+    after the warden falls. Return with the warden slain and the chest looted and
+    the dungeon stays on the board but is inert for 3 turns (`CQ_INERT_TURNS`,
+    placeholder for Robert's "x turns, tbd"): no contract, access or guests. It
+    then reopens with a fresh four-turn window and the same rights holder. Inert
+    dungeons still count toward the four-dungeon board. Boss chest contents are
+    today's chest supplies, pending a decision.
+- Source: `work/claude/conquest/`, composed by `build-e1.cjs` after the guild
+  contracts. Baseline unchanged.
+- Tests (exact file): S1, E1, guild-contracts and new conquest sandbox tests PASS.
+  Headless Chrome: three turns with treasury flat and no upkeep rows; a conquered
+  return (warden and chest flags sent through the real exit message) shows in the
+  report, the card is inert turns 4-7 and reopens on turn 8; zero page errors.
+- Not played live: killing the warden and opening the boss chest (the scripted
+  player cannot reach floor 3); covered by the sandbox test.
+
+---
+
+# Previous current build (2026-10-11, guild contracts)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
