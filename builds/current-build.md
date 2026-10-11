@@ -1,4 +1,39 @@
-# Current build (2026-10-11)
+# Current build (2026-10-11, guild contracts)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,374,028 bytes
+- SHA-256: `4aec323904997cb65e75f0bae73c1ad0f008d2f2e0a7d912b57bed2a2f1e8e22`
+- New in this build: **guild contracts** (Robert, 2026-10-11, playtest defaults).
+  Every guild except Brutus's holds the rights to the dungeons in its home region,
+  so a dungeon card now names its rights holder and is locked unless Brutus holds
+  it (absorbed guild) or no guild lives in that region. **Access** buys one
+  expedition (25% of the contract reward). **Ally Access** adds up to two of that
+  guild's own members as guests, beyond the two-companion limit (40%). **Ally**
+  hires guests from the friendliest guild for a dungeon Brutus already holds (20%).
+  Guilds deal only on good terms and never during a war. Guests who die are dead,
+  and their guild is told; survivors remember it. Rights and guests last one
+  expedition; a dungeon that fails to open keeps them.
+- Source: `work/claude/guild-contracts/contracts-world.js` and
+  `contracts-dungeon.js`, composed by `build-e1.cjs` (and the e1 launcher). The
+  pinned baseline is **unchanged** (`eeeeeae0…283cdb`).
+- Tests (2026-10-11, exact file): S1 integration suite PASS; E1 economy suite PASS;
+  `work/claude/guild-contracts/contracts.test.cjs` PASS (region and affiliation
+  rules, refusals, purchase, guest death and survival, refunds). Headless
+  Chrome click-through: locked cards on both Dungeons and World tabs; Ally Access
+  booked two guild members; they fought in the dungeon as guests beside Ember and
+  Wren; a guest death reached the Chronicle and People ("Deceased"); the dungeon
+  relocked; training room unchanged; zero page errors.
+- Not exercised in play: a guild refusing (covered by the unit test only); the
+  e1 launcher page (needs HTTP).
+- Everything below about the training room and the other files in `builds/`
+  still applies.
+
+---
+
+# Previous current build (2026-10-11, training room)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one. When the current build changes, the prefix moves to the new file
