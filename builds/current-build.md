@@ -4,8 +4,8 @@
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,374,028 bytes
-- SHA-256: `4aec323904997cb65e75f0bae73c1ad0f008d2f2e0a7d912b57bed2a2f1e8e22`
+- Size: 10,375,035 bytes
+- SHA-256: `9332866043981086652a10f35856afdf82cf1eb36eff552e02041358b08f86cf`
 - New in this build: **guild contracts** (Robert, 2026-10-11, playtest defaults).
   Every guild except Brutus's holds the rights to the dungeons in its home region,
   so a dungeon card now names its rights holder and is locked unless Brutus holds
@@ -26,6 +26,10 @@ exactly one.
   booked two guild members; they fought in the dungeon as guests beside Ember and
   Wren; a guest death reached the Chronicle and People ("Deceased"); the dungeon
   relocked; training room unchanged; zero page errors.
+- Playtest fixes (2026-10-11): the fourth companion slot trailed past the regroup
+  distance in corridors, so a second guest spammed "falls back to you"; guests now
+  trail at 5 and 6. The expedition report now counts the contract fee in the
+  treasury change, names the guild paid, and lists guests and whether they returned.
 - Not exercised in play: a guild refusing (covered by the unit test only); the
   e1 launcher page (needs HTTP).
 - Everything below about the training room and the other files in `builds/`

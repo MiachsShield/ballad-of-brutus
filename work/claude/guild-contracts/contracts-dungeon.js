@@ -27,3 +27,11 @@ buildPartyCards=function(){
  gcPartyCards();
  for(const a of allies){if(!a.guest)continue;const nm=$('m_'+a.id)?.querySelector('.nm');if(nm&&!nm.dataset.gc){nm.dataset.gc='1';nm.textContent+=' · guest';}}
 };
+// Guests trail behind the two companions in corridors. The default trail gap grows with slot
+// (2 per slot), which put a fourth companion past the regroup distance (7.2) and made them flip
+// between follow and regroup, announcing "falls back to you" each time.
+const gcFormation=formationTarget;
+formationTarget=function(a){
+ if(a&&a.guest){const cs=sectorById(brutus.sectorId);if(cs&&cs.kind==="connector")return trailPointBehind(FOLLOW_GAP*2+(a.slot-1));}
+ return gcFormation(a);
+};

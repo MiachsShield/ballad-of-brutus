@@ -56,7 +56,7 @@ function gcBuy(d,kind){
  const cost=gcPrice(d,kind);
  if(S.gold<cost){S.lastNotice=`${g.name} wants ${fmtGold(cost)} for that.`;return;}
  changeGold(-cost,`${g.name}: ${kind==='both'?'ally access':kind} for ${d.name}`);
- g.treasury=(g.treasury||0)+cost;
+ g.treasury=(g.treasury||0)+cost;d.gcPaid=(d.gcPaid||0)+cost;d.gcSigned=g.name;
  if(kind!=='ally')d.gcAccess=true;
  if(guests.length){d.gcGuests=guests.map(a=>a.id);d.gcGuestGuildId=g.id;}
  const what=kind==='access'?'one expedition':kind==='ally'?`${guests.length} guest${guests.length>1?'s':''}`:`one expedition and ${guests.length} guest${guests.length>1?'s':''}`;
@@ -118,7 +118,8 @@ applyDungeonResult=function(r){
  const c=S.pendingDelve?S.activeContract:null,d=c&&(S.dungeons||[]).find(x=>x.id===c.id),guests=(c&&c.guests)||[];
  gcBaseResult(r);
  if(!c||!r||r.initializationFailed||campaignEnded())return;   // a refunded expedition keeps its contract
- if(d){d.gcAccess=false;d.gcGuests=null;d.gcGuestGuildId=null;}
+ if(d){d.gcAccess=false;d.gcGuests=null;d.gcGuestGuildId=null;d.gcPaid=0;d.gcSigned=null;}
+ const report=S.expeditionReport;
  const downed=new Set((r.partyDowned||[]).map(x=>String(x&&typeof x==='object'?x.id:x)));
  for(const s of guests){
   const a=person(s.id);if(!a||!a.alive)continue;
@@ -129,6 +130,9 @@ applyDungeonResult=function(r){
    remember(a,'Brutus',8,'came back from a contracted expedition with Brutus');
    a.affection=Math.min(100,(a.affection||0)+5);
   }
+  if(report&&Array.isArray(report.people))report.people.push({id:a.id,name:a.name+' · guest',cls:a.cls,epithet:a.epithet,portrait:a.portrait,
+   alive:a.alive,lvl:a.lvl,levelBefore:s.lvl,fame:a.fame||0,fameBefore:a.fame||0,reputation:a.reputation||0,repBefore:a.reputation||0});
  }
+ if(report&&c.gcPaid){report.gold-=c.gcPaid;report.body+=` Contract: ${fmtGold(c.gcPaid)} paid to ${c.gcSigned}.`;}
  render();saveLiving();
 };

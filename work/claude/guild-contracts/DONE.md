@@ -45,3 +45,11 @@ relock, and the training room.
 Prices, the ten-level reach, two guests, roster-weighted holders, "good terms" as the dealing
 rule, and no action cost for signing. The old abstract "guest went down with Brutus" roll
 (`resolveGuestExpedition`) still runs separately; it may feel redundant now that guests are real.
+
+## Playtest round (2026-10-11, same day)
+
+Played six and then nine world turns and three delves (two with guests) in the exact build.
+Fixed in this feature: guest corridor trailing (log spam) and the expedition report (fee and
+guests). Found outside this feature and left for Robert: every dungeon from the opening expires
+on turn 6 so turn 7 has none; roster upkeep is still charged each turn despite the no-upkeep
+ruling; four allies dogpile every enemy, so Brutus lands few kills.

@@ -18,7 +18,7 @@ let seq=0;function spawnDungeon(initial){const t=THEMES[seq++%THEMES.length];S.d
 function dungeonCard(d){return '<article><div class="objective">'+d.objective+'</div><footer><b>'+d.reward+'</b><button data-action="dungeon" data-id="'+d.id+'">Take contract</button><button data-action="boast" data-id="'+d.id+'">Public boast</button></footer></article>';}
 function handleLiving(e){lastBase=e;}
 function confirmDelve(){lastBase={confirmed:S.activeContract};S.pendingDelve=true;}
-function applyDungeonResult(r){S.pendingDelve=false;S.activeContract=null;}
+function applyDungeonResult(r){S.pendingDelve=false;S.activeContract=null;S.expeditionReport={turn:1,gold:0,body:'Back.',people:[]};}
 const THEMES=[{name:'Sepulchre',region:'Li Trice',objective:'o',reward:38000},{name:'Crown',region:'Marium',objective:'o',reward:26000},{name:'Empty',region:'Nowhere',objective:'o',reward:30000}];
 `,ctx);
 vm.runInContext(fs.readFileSync(__dirname+'/contracts-world.js','utf8'),ctx);
@@ -79,6 +79,10 @@ assert.equal(run(`person(${g0}).alive`),false);assert.deepEqual(JSON.parse(run('
 assert.equal(run(`person(${g1}).alive`),true);assert.equal(run(`person(${g1}).mem`),8);
 assert.equal(run('S.dungeons[0].gcAccess'),false);assert.equal(run('S.dungeons[0].gcGuests'),null);
 assert.equal(run('gcRights(S.dungeons[0]).state'),'locked');
+// report: fee counted in the treasury change, signer named, guests listed with their fate
+assert.equal(run('S.expeditionReport.gold'),-15200);assert(/15200g paid to Silk Hand/.test(run('S.expeditionReport.body')));
+assert.deepEqual(JSON.parse(run('JSON.stringify(S.expeditionReport.people.map(p=>[p.name.endsWith(" · guest"),p.alive]))')),[[true,false],[true,true]]);
+assert.equal(run('S.dungeons[0].gcPaid'),0);
 // 9. Locked contract cannot be confirmed even if it was picked before rights changed.
 fresh();run("spawnDungeon(true);S.dungeons[0].gcOwnerId='a';S.activeContract={...S.dungeons[0]};lastBase={};confirmDelve()");
 assert.deepEqual(JSON.parse(run('JSON.stringify(lastBase)')),{});assert.equal(run('S.activeContract'),null);
@@ -91,4 +95,4 @@ assert.notEqual(run('S.dungeons[0].gcGuestGuildId'),'a');assert.equal(run('S.dun
 // 11. Name ending in a period is not doubled.
 fresh();run("S.guilds.a.name='Harbor Co.';S.agents.forEach(a=>{if(a.affiliation==='Silk Hand')a.affiliation='Harbor Co.'});spawnDungeon(true);S.dungeons[0].gcOwnerId='a'");
 assert(/Rights held by Harbor Co\.(?!\.)/.test(run('dungeonCard(S.dungeons[0])')));
-console.log('PASS: region holder by home region (weighted, reassigned, absorbed, unclaimed), affiliation-only guests within reach, no deals when hostile or at war, locked card and handler, Ally Access purchase, guest specs sent, refund keeps contract, guest death and survival, rights consumed, locked confirm blocked, held dungeon Ally, name punctuation.');
+console.log('PASS: region holder by home region (weighted, reassigned, absorbed, unclaimed), affiliation-only guests within reach, no deals when hostile or at war, locked card and handler, Ally Access purchase, guest specs sent, refund keeps contract, guest death and survival, report fee and guests, rights consumed, locked confirm blocked, held dungeon Ally, name punctuation.');
