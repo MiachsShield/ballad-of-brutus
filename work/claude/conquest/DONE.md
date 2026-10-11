@@ -28,3 +28,15 @@ Tbd. Pause upkeep cost at this time."
 - Tests: `boss-loot.test.cjs` loads the real loot code from the baseline.
 - Open for Robert: X; drop counts; whether signatures should be rarer, tradeable or class-bound;
   whether guests should get a share of boss loot.
+
+## Round 2 (2026-10-11, Robert)
+
+- Lockout X: a random 2-5 turns.
+- Boss drops: a random 1-5 per clear, plus the first-clear extra.
+- No elements in boss loot; boss gear is named by its dungeon's set (Gilded, Crowned, Thorn,
+  Ashen, Drowned, Faultlit, Quiet) in Monster Hunter style. Set bonuses are not built yet.
+- Angry dungeons ("unique/rare monsters, dungeon angry at being looted x times"): the third
+  looting (placeholder for x) breaks the lockout and spawns a rare monster on floor 2; killing
+  it calms the dungeon and resets the count. The rare monster has no special reward yet.
+- Open for Robert: x for anger; rare monster rewards; MH-style set bonuses and crafting
+  (proposed, not approved); Signature items as unique gear granting a Signature card.

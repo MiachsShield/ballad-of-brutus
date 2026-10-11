@@ -1,34 +1,36 @@
-# Current build (2026-10-11, boss loot)
+# Current build (2026-10-11, boss loot, angry dungeons, no elements)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,384,547 bytes
-- SHA-256: `8cfe0ea5e2b4670d7c36957a845709e6b142b9030f092ccb1f5d5ccb1e0a385f`
-- New in this build: **boss loot on MMO conventions** (Robert, 2026-10-11: "boss
-  loot is always a cut above generic loot in that level").
-  - Looting the boss chest (warden dead) grants boss drops on return, at the same
-    level context as the generic exit drop. Each drop rolls a rarity tier higher
-    than generic at that level, never below that level's usual generic rarity;
-    every stat beats the same slot/level/rarity; always elemental.
-  - **Tier sets:** each dungeon's warden drops one element (Sepulchre Holy, Crown
-    and Quiet House Shadow, Cathedral Poison, Ashen Stair Fire, Tribunal Frost,
-    Violet Fault Lightning).
-  - **Signature drop:** one named item per dungeon, 15% per clear, +10% per miss,
-    once only.
-  - **First clear:** one extra boss drop the first time each dungeon is conquered.
-  - **Lockout:** the conquered state now reads as a raid lockout ("Locked out ·
-    resets turn N"); still 3 turns, placeholder.
-- Source: `work/claude/conquest/boss-loot-world.js`, composed by `build-e1.cjs`.
-  Baseline unchanged.
-- Tests (exact file): S1, E1, guild contracts, conquest and new boss-loot suites
-  PASS. The boss-loot test runs against the real loot code from the baseline and
-  checks "a cut above" at every level 1-99. Headless Chrome: two conquered
-  returns, boss loot in the report, the Chronicle and the inventory, lockout
-  cards; zero page errors.
-- Not played live: the warden kill and chest opening (scripted player cannot
-  reach floor 3); the return is sent through the real exit message.
+- Size: 10,389,539 bytes
+- SHA-256: `5c19cde9b567e01fe27d21999450fc2f32e893c912d728168ac346f7343b97b7`
+- New in this build (Robert, 2026-10-11, playtest):
+  - **Boss loot, always a cut above generic at that level:** rolls one rarity tier
+    above a generic drop at the same level, never below that level's usual
+    rarity, and beats the same slot/level/rarity on every stat. A random **1-5**
+    drops per clear, plus one on a dungeon's first clear. Named by the dungeon's
+    boss set (e.g. "Thorn Banded Mail"); set bonuses for these come later.
+    Signature item per dungeon: 15% per clear, +10% per miss, once.
+  - **Lockout:** a conquered dungeon (warden slain, boss chest looted) is locked
+    out for a random **2-5** turns.
+  - **Angry dungeons:** the third looting of a dungeon (placeholder) breaks the
+    lockout at once and a rare monster moves onto the second floor (Gravemaw,
+    The Pale Hunter or Old Ratchet: x3-4 HP, x1.35-1.5 damage). While angry,
+    conquests don't lock it out. Killing the rare monster calms it.
+  - **No elements:** items carry plain names and plainly described effects;
+    element set bonuses are off; granted cards unchanged.
+  - Upkeep still paused; guild contracts unchanged.
+- Source: `work/claude/no-elements/`, `work/claude/conquest/` (conquest,
+  boss loot), composed by `build-e1.cjs`. Baseline unchanged.
+- Tests (exact file): S1, E1, guild contracts, conquest, boss loot and no-elements
+  suites PASS; boss loot and no-elements run against the real loot code. Headless
+  Chrome: one dungeon looted three times (lockouts of 5 and 3 turns, then angry),
+  rare monster announced on descent, calmed after it died, no element words on
+  the equipment screen; zero page errors.
+- Not played live: fighting the warden or the rare monster (scripted player
+  cannot reach them); returns go through the real exit message.
 
 ---
 

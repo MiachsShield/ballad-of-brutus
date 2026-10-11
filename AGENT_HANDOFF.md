@@ -28,6 +28,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 - Claude (2026-10-11): guild contracts (Access / Ally / Ally Access) composed into CURRENT via `work/claude/guild-contracts/`; baseline untouched. Branch `claude/guild-contracts`.
 - Claude (2026-10-11): conquered dungeons inert for X turns (placeholder 3) and upkeep paused, `work/claude/conquest/`, composed into CURRENT. Branch `claude/conquest-upkeep`, stacked on `claude/guild-contracts`.
 - Claude (2026-10-11): boss loot (MMO conventions, always a cut above generic at that level), `work/claude/conquest/boss-loot-world.js`, composed into CURRENT. Branch `claude/boss-loot`.
+- Claude (2026-10-11): lockout 2-5, boss drops 1-5, angry dungeons with a rare monster, no elements (`work/claude/no-elements/`), on `claude/boss-loot` (PR #43).
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: S1 playable overworld splice candidate implemented on `astra/overworld-splice-1` (2026-09-20). World lifecycle and four-verb dungeon encounters wired; deterministic and integration checks pass. Browser/visual acceptance pending. Resume from `work/astra/overworld-splice-1/RUNBOOK.md`.
 

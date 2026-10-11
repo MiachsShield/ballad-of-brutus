@@ -25,3 +25,29 @@ onDowned=function(c,silent){
  const was=!!c.downed;cqOnDowned(c,silent);
  if(!was&&c.downed&&c.side==='enemy'&&c.kind==='boss'){runStats.wardenSlain=true;logMsg("The warden is down. Its hoard is unguarded.","good");}
 };
+// Angry dungeon: a rare ("irregular") monster prowls the second floor. It is a named, much
+// tougher variant of an existing enemy; killing it reports irregularSlain, which calms the dungeon.
+const CQ_IRREGULARS=[
+ {kind:'brute',name:'Gravemaw',hp:3.0,dmg:1.4},
+ {kind:'stalker',name:'The Pale Hunter',hp:3.0,dmg:1.35},
+ {kind:'skulker',name:'Old Ratchet',hp:4.0,dmg:1.5},
+];
+const cqBuildLevelAngry=buildLevel;
+buildLevel=function(){
+ cqBuildLevelAngry();
+ if(trainingMode||!contract||!contract.angry)return;
+ const spec=CQ_IRREGULARS[(contract.irregular>=0&&contract.irregular<CQ_IRREGULARS.length)?contract.irregular:0];
+ const rooms=sectors.filter(s=>s.floor===1&&s.kind==='room');
+ const room=rooms.length?rooms[Math.floor(Math.random()*rooms.length)]:sectors.find(s=>s.kind==='room');if(!room)return;
+ const p=jitterInSector(room),e=makeEnemy(spec.kind,p.x,p.z,room.id);
+ e.name=spec.name+' (rare)';e.irregular=true;e.dmgScale=spec.dmg;e.hp=e.maxHp=Math.round(e.maxHp*spec.hp);
+ enemies.push(e);
+ logMsg(`Something rare prowls the second floor: ${spec.name}.`,'warn');
+};
+const cqPickAttack=pickEnemyAttack;
+pickEnemyAttack=function(e){const a=cqPickAttack(e);return e&&e.irregular?{...a,dmg:Math.round(a.dmg*(e.dmgScale||1))}:a;};
+const cqOnDownedRare=onDowned;
+onDowned=function(c,silent){
+ const was=!!c.downed;cqOnDownedRare(c,silent);
+ if(!was&&c.downed&&c.irregular){runStats.irregularSlain=true;logMsg(`${c.name.replace(' (rare)','')} is dead. The dungeon's temper breaks.`,'good');}
+};
