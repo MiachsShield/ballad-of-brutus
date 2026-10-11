@@ -22,8 +22,8 @@ assert.equal(run('S.dungeons[0].closed'),true);assert.equal(run('cqInert(S.dunge
 // warden + chest: conquered, stays on board, inert through turn 7, expiry moved past it
 run('S.dungeons[0].closed=false;S.pendingDelve=true;S.activeContract={id:1};applyDungeonResult({won:true,wardenSlain:true,bossChestLooted:true})');
 assert.equal(run('S.dungeons[0].closed'),false);assert.equal(run('S.dungeons[0].inertUntil'),7);assert.equal(run('S.dungeons[0].expires'),11);
-assert.equal(run('cqInert(S.dungeons[0])'),true);assert(/inert through turn 7/.test(run('S.expeditionReport.body')));
-assert(/Conquered/.test(run('dungeonCard(S.dungeons[0])'))&&!/Take contract/.test(run('dungeonCard(S.dungeons[0])')));
+assert.equal(run('cqInert(S.dungeons[0])'),true);assert(/locked out until turn 8/.test(run('S.expeditionReport.body')));
+assert(/Locked out/.test(run('dungeonCard(S.dungeons[0])'))&&!/Take contract/.test(run('dungeonCard(S.dungeons[0])')));
 for(const act of ['dungeon','boast','gc-access','gc-both']){run(`lastBase=null;handleLiving({target:{closest:()=>({dataset:{action:'${act}',id:'1'},disabled:false})}})`);assert.equal(run('lastBase'),null,act);}
 run('lastBase=null;S.activeContract={id:1};confirmDelve()');assert.equal(run('lastBase'),null);assert.equal(run('S.activeContract'),null);
 // refused while inert; reopens after

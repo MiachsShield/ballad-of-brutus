@@ -1,4 +1,38 @@
-# Current build (2026-10-11, conquest + upkeep paused)
+# Current build (2026-10-11, boss loot)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,384,547 bytes
+- SHA-256: `8cfe0ea5e2b4670d7c36957a845709e6b142b9030f092ccb1f5d5ccb1e0a385f`
+- New in this build: **boss loot on MMO conventions** (Robert, 2026-10-11: "boss
+  loot is always a cut above generic loot in that level").
+  - Looting the boss chest (warden dead) grants boss drops on return, at the same
+    level context as the generic exit drop. Each drop rolls a rarity tier higher
+    than generic at that level, never below that level's usual generic rarity;
+    every stat beats the same slot/level/rarity; always elemental.
+  - **Tier sets:** each dungeon's warden drops one element (Sepulchre Holy, Crown
+    and Quiet House Shadow, Cathedral Poison, Ashen Stair Fire, Tribunal Frost,
+    Violet Fault Lightning).
+  - **Signature drop:** one named item per dungeon, 15% per clear, +10% per miss,
+    once only.
+  - **First clear:** one extra boss drop the first time each dungeon is conquered.
+  - **Lockout:** the conquered state now reads as a raid lockout ("Locked out ·
+    resets turn N"); still 3 turns, placeholder.
+- Source: `work/claude/conquest/boss-loot-world.js`, composed by `build-e1.cjs`.
+  Baseline unchanged.
+- Tests (exact file): S1, E1, guild contracts, conquest and new boss-loot suites
+  PASS. The boss-loot test runs against the real loot code from the baseline and
+  checks "a cut above" at every level 1-99. Headless Chrome: two conquered
+  returns, boss loot in the report, the Chronicle and the inventory, lockout
+  cards; zero page errors.
+- Not played live: the warden kill and chest opening (scripted player cannot
+  reach floor 3); the return is sent through the real exit message.
+
+---
+
+# Previous current build (2026-10-11, conquest + upkeep paused)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.

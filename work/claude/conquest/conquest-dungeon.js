@@ -1,6 +1,6 @@
 // Conquest — dungeon side. The warden room gets a boss chest that opens only once the warden
 // is down. The expedition result reports wardenSlain and bossChestLooted (additive fields).
-// Chest contents are today's chest supplies; what a boss chest should hold is still open.
+// The chest heals like any chest; the boss loot itself is granted world-side on return (boss-loot-world.js).
 const cqBuildLevel=buildLevel;
 buildLevel=function(){
  cqBuildLevel();
@@ -18,7 +18,7 @@ const cqChestPressed=chestPressed;
 chestPressed=function(){
  const bc=chests.find(c=>c.boss),was=!!(bc&&bc.opened);
  cqChestPressed();
- if(bc&&!was&&bc.opened){runStats.bossChestLooted=true;logMsg("The warden's hoard is yours. This place will be quiet for a while.","good");}
+ if(bc&&!was&&bc.opened){runStats.bossChestLooted=true;logMsg("The warden's hoard is yours. Boss loot is counted when you return.","good");}
 };
 const cqOnDowned=onDowned;
 onDowned=function(c,silent){
