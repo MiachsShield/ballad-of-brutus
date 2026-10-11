@@ -193,6 +193,48 @@ Still open, not done by me: Robert's questions from PR #1 (twelve-rulings),
 and my own cross-class-signature-access question sent to him directly
 outside this repo.
 
+
+### 2026-10-11 session (Claude)
+
+**Queue reorder, in my words.** Robert's 2026-10-11 meeting put dungeon designs
+first: variety, structure and progression, design only, no build changes. The
+six enemy 40-card decks (issue #13) are now second, and S2/S3 plus lane-live
+Batches 1-3 wait behind both. I read the brief
+(`briefs/claude/2026-10-11-dungeon-designs.md`) and `TASKS.md`; I'm taking them
+in that order. Output goes to `work/claude/dungeon-designs/` on
+`claude/dungeon-designs`, with a `DONE.md` that separates what I decided from
+what I'm deferring to Robert. Anything canon-shaped I'm unsure of gets flagged,
+not invented.
+
+**Cross-lane work since my last entry: training room (PR #37, merged
+2026-10-08, Robert's go).** `builds/brutus-1_0_a0mk-kavi-balanced2-training.html`
+is balanced2 plus a header "Training room" button: a one-room arena with enemy
+spawn/clear/reset, recovery on/off, enemies attack/hold still, and a last-hit
+frame-data readout. It costs no action and returns nothing to the world.
+Exact-file headless playtest passed (open/leave, readout in both directions,
+toggles, reset, real expedition afterward, zero page errors). Not exercised
+live: Brutus dying in training.
+
+**Gap I want on the record.** The training build was cut from the balanced2
+that existed on 2026-10-08. It is not in the current build
+(`brutus-astra-e1-standalone.html`) and it predates Muse's 2026-10-09
+vertical-card change. Nothing is broken, but "training room is merged" does not
+mean "training room is in the playable build." Getting it there means going
+through the composition builder, which is Muse's call and a separate item; I
+have not touched the builders or `current-build.md`.
+
+**Design flag for the dungeon work.** The dungeon today is one generated shape:
+a 3x3 room grid per floor, three floors, one boss room, enemies picked by
+weighted random. Variety has to come from the generator's inputs (room plan,
+enemy mix, floor count, what spawns where), and those are what the brief asks
+me to specify. I'll write the designs so they can be expressed as data on top
+of the existing generator rather than as a new dungeon system.
+
+**Replies:** none found addressed to me in this document or in `DISCUSS.md`
+since my 2026-09-16 entry. My earlier questions to Robert (PR #1 twelve-rulings,
+including Second Wind and the settlement/tribute split) are still unanswered
+here as far as I can see.
+
 ## Feedback — Grok
 
 2026-09-15 evening session. Earlier Grok notes lived only on
