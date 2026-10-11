@@ -197,38 +197,59 @@ outside this repo.
 ### 2026-10-11 session (Claude)
 
 **Queue reorder, in my words.** Robert's 2026-10-11 meeting put dungeon designs
-first: variety, structure and progression, design only, no build changes. The
-six enemy 40-card decks (issue #13) are now second, and S2/S3 plus lane-live
-Batches 1-3 wait behind both. I read the brief
-(`briefs/claude/2026-10-11-dungeon-designs.md`) and `TASKS.md`; I'm taking them
-in that order. Output goes to `work/claude/dungeon-designs/` on
-`claude/dungeon-designs`, with a `DONE.md` that separates what I decided from
-what I'm deferring to Robert. Anything canon-shaped I'm unsure of gets flagged,
-not invented.
+first (design only), then the six enemy 40-card decks (issue #13), then S2/S3
+and lane-live Batches 1-3. Dungeon designs are now done (below); enemy decks
+are next.
 
-**Cross-lane work since my last entry: training room (PR #37, merged
-2026-10-08, Robert's go).** `builds/brutus-1_0_a0mk-kavi-balanced2-training.html`
-is balanced2 plus a header "Training room" button: a one-room arena with enemy
-spawn/clear/reset, recovery on/off, enemies attack/hold still, and a last-hit
-frame-data readout. It costs no action and returns nothing to the world.
-Exact-file headless playtest passed (open/leave, readout in both directions,
-toggles, reset, real expedition afterward, zero page errors). Not exercised
-live: Brutus dying in training.
+**Robert's standing note today:** this phase is a playtest. The goal is to be
+able to try the game; nothing needs to be final, and open questions should not
+block getting things playable. Defaults are placeholders to react to in play.
 
-**Gap I want on the record.** The training build was cut from the balanced2
-that existed on 2026-10-08. It is not in the current build
-(`brutus-astra-e1-standalone.html`) and it predates Muse's 2026-10-09
-vertical-card change. Nothing is broken, but "training room is merged" does not
-mean "training room is in the playable build." Getting it there means going
-through the composition builder, which is Muse's call and a separate item; I
-have not touched the builders or `current-build.md`.
+**Merged today (Robert's go on each, one at a time, verified on main):**
+- **#39: one playable build, marked `CURRENT-`.** Rule (Robert): the playable
+  build's filename starts with `CURRENT-`, exactly one at a time:
+  `builds/CURRENT-brutus-astra-e1-standalone.html`. The training room is now in
+  it (it was only in a side build before). `build-e1.cjs` writes that name.
+  The pinned baseline `balanced2` was edited in place once to add the training
+  room (new pin `eeeeeae0…`, updated in both builders and both launchers).
+- **#40: dungeon designs** (`work/claude/dungeon-designs/`). Six types over the
+  existing generator, floor escalation, room catalogue, enemy mixes in threat
+  points, rewards, eleven questions. A quality check against source and
+  Robert's direction removed proposals that contradicted him (attacker cap,
+  hand-holding banners) and recorded a build bug: the secret-room counter
+  can be farmed by re-entering. Design only; nothing from it is built yet.
+- **#41: guild contracts** (`work/claude/guild-contracts/`). Every guild except
+  Brutus's holds the rights to the dungeons in its home region. Locked
+  dungeons offer Access (one expedition) or Ally Access (plus up to two of that
+  guild's members as guests, beyond the two-companion limit); Ally hires guests
+  for dungeons Brutus holds. Guilds deal only on good terms and never at war.
+  Guest death is permanent and the guild is told.
+- **#42: conquered dungeons and paused upkeep** (`work/claude/conquest/`). A
+  boss chest in the warden room opens after the warden falls; warden slain plus
+  chest looted makes the dungeon inert for X turns (placeholder 3), then it
+  reopens. Brutus's roster upkeep is paused behind one flag.
 
-**Design flag for the dungeon work.** The dungeon today is one generated shape:
-a 3x3 room grid per floor, three floors, one boss room, enemies picked by
-weighted random. Variety has to come from the generator's inputs (room plan,
-enemy mix, floor count, what spawns where), and those are what the brief asks
-me to specify. I'll write the designs so they can be expressed as data on top
-of the existing generator rather than as a new dungeon system.
+**For Muse:** #41 and #42 are composed by `build-e1.cjs` (and the e1 launcher)
+from `work/claude/guild-contracts/` and `work/claude/conquest/`, after the S1
+and E1 parts. The baseline is not edited for them. All four suites (S1, E1,
+guild contracts, conquest) pass on the CURRENT file.
+
+**Playtest round (exact CURRENT file, 15 world turns, four delves).** Fixed in
+my own work: a second guest spammed "falls back to you" (corridor trailing past
+the regroup distance), and the expedition report hid the contract fee and the
+guests. Found elsewhere, left for Robert, by player impact:
+1. All opening dungeons expire on turn 6, so turn 7 has none, and the board
+   refills slowly (one, one, two by turn 10).
+2. With guests along, four allies swarm every enemy and Brutus lands few kills.
+3. Roster upkeep was still charged despite the no-upkeep ruling (now paused).
+4. The secret-room farming bug is still live.
+Not played live: killing the floor-3 warden and opening the boss chest (my
+scripted player cannot reach it); covered by sandbox tests.
+
+**Open for Robert:** X for conquered dungeons; boss chest contents; whether
+inert dungeons should take a board slot; contract prices and guest limits;
+the eleven dungeon-design questions (most important: single-use rest rooms,
+which enemy names ship, floor-1 difficulty).
 
 **Replies:** none found addressed to me in this document or in `DISCUSS.md`
 since my 2026-09-16 entry. My earlier questions to Robert (PR #1 twelve-rulings,
