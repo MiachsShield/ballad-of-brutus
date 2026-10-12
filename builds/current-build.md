@@ -1,3 +1,27 @@
+# Current build (2026-10-12, 2D fist sprite)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,393,674 bytes
+- SHA-256: `b39fe11cea823f137e10e6ab3645c1c20c5f91564059477d489452487a2083f0`
+- New in this build (Robert, 2026-10-12: keep 2D sprites, extremely readable,
+  no visual noise): the first-person weapon is now a flat 2D sprite, Brutus's
+  wrapped fist and forearm (the binding guide makes him a fistfighter), drawn in
+  code as a placeholder: one silhouette, thick outline, flat values. It moves in
+  2D only (pull back on windup, drive toward centre on the hit, scaled by weight;
+  guard; stun; walk bob), so it never turns edge-on. `WEAPON2D_STYLE='sword'` in
+  `work/claude/sprite-weapon/weapon2d-dungeon.js` restores a sword drawn the same way.
+- Everything from the previous entry (boss loot, lockout 2-5, angry dungeons, no
+  elements, guild contracts, upkeep paused) is unchanged.
+- Tests: all six suites PASS on this file. Headless Chrome screenshots of idle,
+  a five-frame punch sequence and guard in the training room; zero page errors.
+- Related: `art/visual-guide/proposals/2026-10-12-sprite-readability.md`
+  (proposal, not binding until Robert approves).
+
+---
+
 # Current build (2026-10-11, boss loot, angry dungeons, no elements)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
