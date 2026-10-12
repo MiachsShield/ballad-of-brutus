@@ -1,4 +1,40 @@
-# Current build (2026-10-11, conquest + upkeep paused)
+# Current build (2026-10-11, boss loot, angry dungeons, no elements)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,389,539 bytes
+- SHA-256: `5c19cde9b567e01fe27d21999450fc2f32e893c912d728168ac346f7343b97b7`
+- New in this build (Robert, 2026-10-11, playtest):
+  - **Boss loot, always a cut above generic at that level:** rolls one rarity tier
+    above a generic drop at the same level, never below that level's usual
+    rarity, and beats the same slot/level/rarity on every stat. A random **1-5**
+    drops per clear, plus one on a dungeon's first clear. Named by the dungeon's
+    boss set (e.g. "Thorn Banded Mail"); set bonuses for these come later.
+    Signature item per dungeon: 15% per clear, +10% per miss, once.
+  - **Lockout:** a conquered dungeon (warden slain, boss chest looted) is locked
+    out for a random **2-5** turns.
+  - **Angry dungeons:** the third looting of a dungeon (placeholder) breaks the
+    lockout at once and a rare monster moves onto the second floor (Gravemaw,
+    The Pale Hunter or Old Ratchet: x3-4 HP, x1.35-1.5 damage). While angry,
+    conquests don't lock it out. Killing the rare monster calms it.
+  - **No elements:** items carry plain names and plainly described effects;
+    element set bonuses are off; granted cards unchanged.
+  - Upkeep still paused; guild contracts unchanged.
+- Source: `work/claude/no-elements/`, `work/claude/conquest/` (conquest,
+  boss loot), composed by `build-e1.cjs`. Baseline unchanged.
+- Tests (exact file): S1, E1, guild contracts, conquest, boss loot and no-elements
+  suites PASS; boss loot and no-elements run against the real loot code. Headless
+  Chrome: one dungeon looted three times (lockouts of 5 and 3 turns, then angry),
+  rare monster announced on descent, calmed after it died, no element words on
+  the equipment screen; zero page errors.
+- Not played live: fighting the warden or the rare monster (scripted player
+  cannot reach them); returns go through the real exit message.
+
+---
+
+# Previous current build (2026-10-11, conquest + upkeep paused)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
