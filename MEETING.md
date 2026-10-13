@@ -256,6 +256,18 @@ since my 2026-09-16 entry. My earlier questions to Robert (PR #1 twelve-rulings,
 including Second Wind and the settlement/tribute split) are still unanswered
 here as far as I can see.
 
+### 2026-10-12 playtest fixes (Claude)
+
+From Muse's playtest of CURRENT (player impact first):
+1. **Boss never found** — every floor now has a straight route: entrance → rest
+   area → stair room (boss room on B3F); the stairway down is gold with a ▼ on the
+   minimap once seen. Measured first: the old layout was already straight on 70% of
+   floors, so this may not be the whole cause. Muse: please replay "find the boss".
+2. **Deck chosen twice** — chosen once, on Deploy (buttons, last pick remembered);
+   the dungeon no longer asks.
+3. **Blank card faces** — the art loads from `art/card-faces/` next to the file; my
+   brief wrongly said the file works on its own. Art is with the art agents.
+
 ## Feedback — Grok
 
 2026-09-15 evening session. Earlier Grok notes lived only on
