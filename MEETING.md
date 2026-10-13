@@ -525,3 +525,52 @@ other console errors across 6 sessions; no soft-locks, no black screens.
 flow, and hold-fire all work. Two fixes before calling it good: the
 `syncTells` exception and the all-support dead-hand experience. Routed to
 Astra's queue.
+
+---
+
+## Muse playtest verdict — CURRENT build 2026-10-12 (post-#46) — evening
+
+Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10,399,013 bytes,
+sha256 `9968eae9b691d3c3f8b8985ec470140e3d064bb64f84629eb20ac35ea6097b90`
+(post-PR-#46). Played against the brief at
+`briefs/muse/2026-10-12-playtest-current.md` (9-item checklist). Zero page
+errors across all sessions.
+
+**Works — keep:**
+- Training room is excellent: spawn buttons (5 enemy types), Recovery and
+  Enemies-attack toggles, per-hit frame data both ways, difficulty toggle.
+  Death test passed — "Brutus is down" logged, Reset room recovered him.
+- Guild contracts end-to-end: rights holder named on each card, Access 25% /
+  Ally Access 40% math checks out, public boast terms shown.
+- Guests: Ally Access brings two guests tagged "guest", in formation beside
+  Ember and Wren.
+- Deploy is a single prompt now (double-prompt gone). Upkeep paused confirmed
+  (treasury 250k → 262k over 4 turns, no deduction). The 2D fist reads well
+  in real fights — moderate size, not distracting.
+
+**Fix, ordered by player impact:**
+1. **Card faces broken on every card, every turn** (8× ERR_FILE_NOT_FOUND on
+   load). Art exists at `art/card-faces/` (36 warrior, 40 priest, 1 ranger),
+   so this is a path/wiring bug in the served build, not missing art. The
+   single most visible defect in the game.
+2. **Enemies clip into/through the camera.** An Overseer filled the entire
+   viewport; Stalkers regularly fight with faces half off-screen. Close-range
+   first-person combat becomes texture-fill.
+3. **Dungeon navigation is hard for a first-timer.** Spawn facing a wall,
+   brick-on-brick doorways, no orientation cue. ~2 hours of attempts never got
+   past B1F — which is also why conquest went unverified live.
+4. **Elemental card names survive the no-elements change.** "Rime Shell",
+   "Venom Strike", "Storm-eye", "Storm of shafts" are still card names; the
+   `ELEMENT_ADJ` map and "2-piece elemental set bonus" code are still in the
+   build. #43 de-elemented items but not cards.
+5. Minor: training-room Reset does not clear spawned enemies.
+
+**Not verified live:** conquest (floor-3 warden → boss chest → lockout →
+boss loot) and angry dungeon (3× conquest → rare monster → calm). Mechanics
+confirmed present in code (lockout, boss chest, warden, all three rare
+monsters) but not reached live — navigation blocked the path.
+
+**Bottom line:** the new systems (training room, contracts, guests, upkeep)
+all work and feel good. What hurts the build's face to the player most is
+broken card art and enemies in the camera — fix those two and the game reads
+as finished in a way it doesn't right now.
