@@ -1,3 +1,28 @@
+# Current build (2026-10-12, one deck choice, straight route down)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,399,013 bytes
+- SHA-256: `9968eae9b691d3c3f8b8985ec470140e3d064bb64f84629eb20ac35ea6097b90`
+- New in this build (fixes from Muse's 2026-10-12 playtest):
+  - The deck is chosen once, on the Deploy screen (Warrior / Priest buttons, last
+    pick remembered). The dungeon no longer asks again.
+  - Every floor has a straight route: entrance → rest area → stair room (on B3F,
+    the boss room). The stairway down shows gold with a ▼ on the minimap once seen.
+    The rest of each floor is still random.
+- Everything from the previous entry (2D fist, boss loot, lockout 2-5, angry
+  dungeons, no elements, guild contracts, upkeep paused) is unchanged.
+- Card faces load from `art/card-faces/` next to the file, so open the build from
+  a full checkout of the repo; a lone copy of the file shows blank card faces.
+- Tests: all suites PASS on this file (S1, ow-bridge, E1, contracts, conquest,
+  boss loot, no elements, playtest fixes). Headless Chrome: deploy → dungeon with
+  the picked deck and no prompt; minimap stair marker; zero page errors.
+- Details: `work/claude/playtest-fixes/DONE.md`.
+
+---
+
 # Current build (2026-10-12, 2D fist sprite)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
