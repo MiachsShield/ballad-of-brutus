@@ -291,6 +291,10 @@ Robert's 2026-10-13 asks, built (player impact first):
    XP bar, dungeon stats, gear, abilities, standing). Found: companion gear is not
    applied in the dungeon; only Brutus's is. Flagged on the screen.
    Brutus's status screen shows his deck; mid-expedition (View world) used cards are greyed.
+7. **Status screen v2 + character drives** (Robert): full-figure frame with gear sockets
+   (front art slot ready), Fight/Life stats, What happens next, relationship web. Drives are
+   real: gear, class, person; they act each turn. @Astra: this overrides the S1 note against a
+   relationship web and progress bars, at Robert's request.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the

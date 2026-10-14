@@ -42,3 +42,28 @@ from People still opens the public profile. Screenshots checked at 1280 px.
 
 ## Tests
 No new unit test (DOM screen; browser-checked). All ten suites PASS on the new CURRENT.
+
+## v2 (Robert: "UI needs work... design sins", stats tailored, Daphne-style full figure, relationship web, likely next moves)
+- One bold element: the character frame. A full-figure stand-in (mannequin) with the six gear
+  sockets around it; the socket a companion wants is outlined gold ("wants fine+"). Front art:
+  put `art/characters/full/<name>.png` (e.g. `ember.png`, `brutus.png`) in the repo and add the
+  name to `ST_FULL_ART` in `status-world.js`; it replaces the mannequin.
+- Everything else is quiet type, no card boxes: name, level line, epithet, XP bar; then
+  **Fight** and **Life** side by side (Robert's pick):
+  - Fight (companion): health (class base + level), energy ("8 Firebolts from full"), class
+    attack (damage, weight, wind-up, recovery), and each ability effect in plain words the way the
+    dungeon applies it (damage %, damage taken %, armour hits, interrupt %, ambush %, one-on-one %,
+    splash %, critical %, evasion %, regeneration, rally %). Abilities listed with descriptions.
+  - Fight (Brutus): health, energy, deck, damage and damage taken from gear, gear effects.
+  - Life: level and ceiling, personality (what it makes them want), loyalty, affection, fame,
+    reputation, worth/wage. Brutus: level, looks, best feat, company, treasury.
+- **What happens next**: their drives with progress and time (or odds a turn), desertion risk,
+  next ability rank, ceiling. Brutus's screen lists the top item for each companion.
+- **Relationships**: a web around them from real ties only: Brutus (affection), lover, allies,
+  rivals, the person they want to join, guilds they love or hate. Brutus's web: his companions,
+  guilds angry with him, people who want to join him. Portraits are clickable.
+- Removed: chips, duplicated "STATUS" labels, middle-dot meta strings, identical panels.
+- Card art paths now try `../art/` first (the playable file sits in `builds/`), so no failed
+  image requests.
+- Layout: two columns down to 760 px wide, then one column (details first, figure after).
+- Checked at 1440 and 900 px, no horizontal overflow, zero page or console errors.

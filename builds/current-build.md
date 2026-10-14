@@ -1,11 +1,11 @@
-# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance, status screen)
+# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance, status screen, character drives)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,443,025 bytes
-- SHA-256: `62c2803590cc18c5474c0b09efdab325ffc56b9e5291fd290a986056dad07928`
+- Size: 10,468,248 bytes
+- SHA-256: `779269bdced7bc9157ecd8a8e07f1bd69ae817a2f7ed7a5cc6779a457fd659f5`
 - New in this build (Robert, 2026-10-13):
   - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
     how many monsters and which kinds, monster and warden toughness, chests and pay.
@@ -23,6 +23,10 @@ exactly one.
   - Status screen: click Brutus or a companion for level, XP bar, dungeon stats, gear,
     abilities and standing. Others still open their public profile. Brutus's screen shows
     his whole deck with card art; during an expedition (View world) used cards are greyed.
+  - Status screen v2: full-figure frame with gear sockets (front art slot), Fight and Life
+    stats, What happens next, relationship web.
+  - Character drives: everyone can want gear, a new class, or to work beside someone; they act
+    on it each turn (sign elsewhere, retrain, find gear). Companions wait on you for gear.
   - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
 - Everything from the previous entry (one deck choice, straight route down, 2D fist,
   boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.
