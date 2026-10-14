@@ -83,8 +83,19 @@ One full clear in a single expedition (modelled with measured monster counts; `x
 | Lv30 old → new | +0.82 → +0.27 | +1.16 → +0.59 | +1.76 → +0.91 | +2.01 → +1.04 | +2.90 → +1.50 |
 | Lv40 old → new | +0.40 → +0.07 | +0.57 → +0.19 | +0.88 → +0.44 | +1.01 → +0.51 | +1.48 → +0.76 |
 
-The expedition report and log show "Brutus +N XP" and why it was reduced. Untouched: companion
-kill XP (12 per kill, now under the one-level cap), guest levelling, the world's own levelling.
+The expedition report and log show "Brutus +N XP" and why it was reduced.
+
+Companions (Robert, 2026-10-13: "Companions should have proper xp bars and not set, flat amounts"):
+- They earn by the same rule as Brutus, with the level gap measured against their own level,
+  instead of a flat 12 per kill. A Lv16 companion gets x1.5 where a Lv50 one gets x0.5.
+- One level per expedition, like Brutus. They stop at their growth ceiling (the world's existing
+  cap): no XP past it, and the bar reads "not getting any stronger".
+- XP bar ("XP 201 / 635") on their guild card, under their name in the sidebar, and on their profile.
+- The report lists everyone: "Brutus +168 XP · Ember +168 XP · Wren +168 XP."
+- The old flat-XP code still runs inside the baseline; its result and its level-up lines are undone.
+
+Whole numbers: every grant is rounded, carry-over is rounded, and old saves are rounded on load.
+Untouched: guest levelling, the world's own levelling.
 Live check: one kill at rank 2 paid +33 XP (22 x1.5); the warden run paid +168 (warden 22 + one
 new floor 90, x1.5) with no level-up.
 
