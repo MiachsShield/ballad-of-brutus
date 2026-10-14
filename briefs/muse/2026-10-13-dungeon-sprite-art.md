@@ -83,7 +83,7 @@ previous single-fist framing):
   same painterly finish).
 
 Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
-- JAB (right, light) 16f: startup 5 · active 3 · recovery 8. Hitstop 2f, no flash. ~13 cels. (2026-10-14 — Robert: Brutus is no boxer, he fights with his whole body; 5f windup — strong in-universe, but his strength shows in damage, not untouchable speed, so low-level fights stay honest.) Keys: rest → contact
+- JAB (right, light) 19f: startup 8 · active 3 · recovery 8. Hitstop 2f, no flash. ~15 cels. (2026-10-14 — Robert: Brutus starts as a DIAMOND IN THE ROUGH — just OUTSIDE pro range (11f/183ms to contact vs the slowest measured pro jab at 175ms). Opening balance anchor: Brutus vs Freja is a DRAW. These are STARTING values — better cards earn better frame data.) Keys: rest → contact
   (scale ~1.35) → rest. ~10 cels.
 - CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 4f, contact tick only. ~14 cels.
 - HAYMAKER (right, heavy) 33f: startup 12 (big windup, camera lunges) · active 4 · recovery 17.
