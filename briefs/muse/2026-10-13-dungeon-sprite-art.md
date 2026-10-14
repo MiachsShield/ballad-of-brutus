@@ -83,7 +83,7 @@ previous single-fist framing):
   same painterly finish).
 
 Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
-- JAB (right, light) 13f: startup 3 · active 3 · recovery 7. Hitstop 2f, no flash. Keys: rest → contact
+- JAB (right, light) 14f: startup 3 · active 3 · recovery 8. Hitstop 2f, no flash. ~11 cels. (2026-10-14 — Robert: Brutus is no boxer, he fights with his whole body — the jab is a committed body punch, never a machine-gun flick.) Keys: rest → contact
   (scale ~1.35) → rest. ~10 cels.
 - CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 4f, contact tick only. ~14 cels.
 - HAYMAKER (right, heavy) 33f: startup 12 (big windup, camera lunges) · active 4 · recovery 17.
@@ -103,10 +103,10 @@ Impact rules (every attack; revised 2026-10-14 — Robert):
 - The big white impact flash is reserved for CRITS only — never on ordinary hits. Crit = the
   flash (white 6f) + max 12f hitstop + camera zoom punch-in ~1.15× + gold reward flash;
   damage ×1.5.
-- Light/medium attacks are smooth and build momentum: NO white flash. Light: hitstop 1–2f
+- Light/medium attacks are smooth: NO white flash. Light: hitstop 1–2f
   (barely a catch), tiny shake. Medium: small 1–2f contact tick only, hitstop 3–4f, small
-  shake. Recoveries tuned short so lights/mediums chain into each other — the rhythm builds
-  toward the heavy/crit payoff.
+  shake. Attacks are standalone and sensible — no chain-speedup mechanic (momentum parked
+  2026-10-14: at 10f the chained jab felt like a machine gun).
 - Heavy: moderate flash 3–4f at reduced intensity (a step below the crit flash), hitstop
   8–10f, shake 8–12f. Enemy hurt flash red (not white) 3–6f on heavy/crit only.
 - Freeze attacker and enemy on hitstop, never the input buffer.
