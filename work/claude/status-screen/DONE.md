@@ -18,6 +18,17 @@ screen." ("There" answers where Brutus's XP bar goes.)
     wage, market value, looks) with Bench/Activate and Public profile.
 - Topbar reads "STATUS · The man himself." / "One of yours."; Your guild stays highlighted.
 
+## Deck (`deck-state-dungeon.js` + Brutus's screen)
+Robert: "I should see the deck, and used up cards greyed out."
+- Brutus's status screen has a Deck panel: one tile per card copy (name, weight, energy).
+- Between expeditions: the chosen deck (40 cards) plus any gear cards.
+- During an expedition (press "View world", click Brutus): the live deck. Cards in hand are
+  outlined gold ("In hand"); used cards (the discard pile) are greyed ("Used"). The line above
+  gives draw pile / hand / used counts. Used cards come back when the draw pile runs out and the
+  discard is reshuffled, or at a rest area, exactly as in the dungeon.
+- The world reads the dungeon's deck directly through the shell (same page); no new messages.
+- Checked live: 9 cards moved to discard → 9 greyed tiles, 4 in hand, 27 in the draw pile.
+
 ## Found while building it (for Robert)
 Companion gear is not applied in the dungeon: only Brutus's loadout is sent. The screen says
 so under the companion's equipment rather than showing numbers that would not hold.

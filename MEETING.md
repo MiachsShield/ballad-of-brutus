@@ -290,6 +290,7 @@ Robert's 2026-10-13 asks, built (player impact first):
 6. **Status screen**: clicking Brutus or a companion opens a status screen (level,
    XP bar, dungeon stats, gear, abilities, standing). Found: companion gear is not
    applied in the dungeon; only Brutus's is. Flagged on the screen.
+   Brutus's status screen shows his deck; mid-expedition (View world) used cards are greyed.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the

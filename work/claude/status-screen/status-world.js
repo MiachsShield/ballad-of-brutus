@@ -36,6 +36,29 @@ function stAbilities(a){const list=a.abilities&&a.abilities.length?a.abilities:[
 function stHead(portrait,name,sub,lvl,bar,chips){
  return `<section class="panel st-head"><div class="st-portrait">${portrait}</div><div class="st-id"><small class="eyebrow">STATUS</small><h2>${esc(name)}</h2><p class="st-sub">${sub}</p>`
   +`<div class="st-level"><span>LV</span><b>${lvl}</b></div>${bar}<div class="st-chips">${chips}</div></div></section>`;}
+
+// Deck on Brutus's status screen. Between expeditions: the full deck for the chosen discipline
+// plus gear cards. During a paused expedition: the live deck, with used cards (discard pile) greyed.
+function stLiveDeck(){if(!S.pendingDelve)return null;try{const f=window.parent&&window.parent.document.getElementById('dungeon');
+ const fn=f&&f.contentWindow&&f.contentWindow.brutusDeckState;return typeof fn==='function'?fn():null;}catch(e){return null;}}
+function stCost(c){return c==null?'':Math.ceil(c*BALANCED_CARD_COST_SCALE);}
+function stTile(name,tier,cost,state,from){const tag=state==='used'?'Used':state==='hand'?'In hand':'';
+ return `<div class="st-cardtile ${state}" title="${esc(name)}${tag?' · '+tag:''}"><b>${esc(name)}</b><span>${esc(String(tier||'').toLowerCase())}${cost!==''?` · ${cost}⚡`:''}</span>${from?`<span class="st-from">${esc(from)}</span>`:''}${tag?`<em>${tag}</em>`:''}</div>`;}
+function stDeckPanel(deckName,L){
+ const live=stLiveDeck();let tiles=[],head='';
+ if(live&&live.cards&&live.cards.length){
+  const sorted=live.cards.slice().sort((a,b)=>a.name.localeCompare(b.name));
+  for(const c of sorted){for(let i=0;i<c.hand;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'hand',c.fromItem));
+   for(let i=0;i<c.draw;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'draw',c.fromItem));
+   for(let i=0;i<c.used;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'used',c.fromItem));}
+  head=`<p class="muted">Expedition in progress · ${esc(live.discipline)} · ${live.draw} in the draw pile · ${live.hand} in hand · <b>${live.used} used</b> (greyed). Used cards return when the draw pile runs out and the discard is shuffled back in, or at a rest area.</p>`;
+ }else{
+  const rows=BALANCED_DECK_PREVIEW.filter(c=>c.class===deckName&&c.deck_copies>0).sort((a,b)=>a.name.localeCompare(b.name));
+  for(const c of rows)for(let i=0;i<c.deck_copies;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'draw'));
+  for(const c of (L.cards||[]))for(let i=0;i<(c.tier==='support'?2:3);i++)tiles.push(stTile(c.name,c.tier,'', 'draw','from '+c.fromItem));
+  head=`<p class="muted">${esc(deckName)} deck · ${tiles.length} cards${(L.cards||[]).length?' including gear cards':''}. Change it on the Deploy screen. During an expedition, open this screen from "View world" to see which cards are used.</p>`;
+ }
+ return `<section class="panel"><h3>Deck</h3>${head}<div class="st-deck">${tiles.join('')}</div></section>`;}
 function stBrutus(){const b=S.brutus,L=derivedLoadout('brutus'),g=L.stats||{};const deck=(typeof dkDeck==='function'?dkDeck():'Warrior');
  const cards=(L.cards||[]).map(c=>`<span class="st-card">${esc(c.name)} <small>(${esc(c.tier)}, from ${esc(c.fromItem)})</small></span>`).join('');
  const procs=(L.procs||[]).map(p=>`<span class="st-proc">${esc(p.itemName)}: ${esc(p.desc)}</span>`).join('');
@@ -48,7 +71,7 @@ function stBrutus(){const b=S.brutus,L=derivedLoadout('brutus'),g=L.stats||{};co
   +`<div><small>Attack</small><b>${g.atk?`${g.atk>0?'+':''}${g.atk}%`:'—'}</b><small>from gear</small></div>`
   +`<div><small>Defense</small><b>${g.def?`${g.def>0?'+':''}${g.def}%`:'—'}</b><small>from gear</small></div></div>`
   +`${cards?`<h3>Cards from gear</h3><div class="st-list">${cards}</div>`:''}${procs?`<h3>Gear effects</h3><div class="st-list">${procs}</div>`:''}</section>`
-  +`<section class="panel"><h3>Equipment</h3>${stGear('brutus')}<div class="actions">${btn('Open equipment','equipment')}</div></section></div>`;}
+  +`<section class="panel"><h3>Equipment</h3>${stGear('brutus')}<div class="actions">${btn('Open equipment','equipment')}</div></section></div>`+stDeckPanel(deck,L);}
 function stCompanion(a){const arch=ST_ARCH[a.cls]||ST_ARCH.Ranger,scale=1+Math.max(0,(a.lvl||10)-10)*0.012,P=abilityProfile(a);
  const top=xpCeiling(a);const prof=stFmtProfile(P);
  return stHead(face(a,'large'),a.name,`${esc(a.epithet||jobTitle(a))} · ${esc(a.cls)} · ${esc(a.region||'')}${a.age?` · ${a.age}`:''}`,a.lvl,stBar(a.lvl,a.exp,top),
@@ -71,6 +94,12 @@ const ST_CSS=`.st-head{display:flex;gap:28px;align-items:center}.st-portrait{wid
 .st-gear{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.st-slot{border:1px solid #879d9630;padding:10px;display:flex;flex-direction:column;gap:3px;min-width:0}.st-slot small{color:var(--dim);font-size:11px}.st-slot span{font-size:12px;color:#c6d2ce}.st-slot.empty span{color:var(--dim)}
 .st-proc{color:var(--warn)!important}.st-card{color:#c08cf5!important}.st-list{display:flex;flex-direction:column;gap:5px;font-size:13px}.st-ability{margin-bottom:12px}.st-ability p{margin:4px 0 0;font-size:13px;color:#c6d2ce}
 .st-head~.profile-grid .actions{margin-top:16px}.panel h3{margin:0 0 12px}.panel h3:not(:first-child){margin-top:18px}.value-grid b{font-size:20px}
+.st-deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:10px}
+.st-cardtile{position:relative;border:1px solid #879d9660;background:#1d3540;padding:8px 8px 7px;display:flex;flex-direction:column;gap:2px;min-height:58px}
+.st-cardtile b{font-size:12px;line-height:1.25}.st-cardtile span{font-size:11px;color:var(--dim)}.st-cardtile .st-from{color:#c08cf5}
+.st-cardtile em{font-style:normal;font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-top:auto;padding-top:3px}
+.st-cardtile.hand{border-color:var(--gold)}.st-cardtile.hand em{color:var(--gold)}
+.st-cardtile.used{opacity:.38;filter:grayscale(1);background:#121d23}.st-cardtile.used em{color:var(--text)}
 @media(max-width:760px){.st-head{flex-direction:column;align-items:flex-start}.st-portrait{width:140px;flex-basis:auto}.st-gear{grid-template-columns:1fr}}`;
 (function(){if(document.getElementById('st-css'))return;const s=document.createElement('style');s.id='st-css';s.textContent=ST_CSS;document.head.appendChild(s);})();
 function stPatch(){const root=document.getElementById('living');if(!root)return;
