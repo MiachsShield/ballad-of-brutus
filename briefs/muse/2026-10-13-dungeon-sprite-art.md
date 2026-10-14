@@ -85,15 +85,15 @@ previous single-fist framing):
 Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
 - JAB (right, light) 19f: startup 8 · active 3 · recovery 8. Hitstop 2f, no flash. ~15 cels. (2026-10-14 — Robert: Brutus starts as a DIAMOND IN THE ROUGH — just OUTSIDE pro range (11f/183ms to contact vs the slowest measured pro jab at 175ms). STARTING values — better cards earn better frame data.) Keys: rest → contact
   (scale ~1.35) → rest. ~10 cels.
-- CROSS (left, medium) 24f: startup 9 · active 3 · recovery 12. Hitstop 4f, contact tick only. ~18 cels.
-- HAYMAKER (right, heavy) 39f: startup 15 (big windup, camera lunges) · active 4 · recovery 20.
+- CROSS (left, medium) 24f: startup 8 · active 3 · recovery 13. Hitstop 4f, contact tick only. ~18 cels.
+- HAYMAKER (right, heavy) 38f: startup 14 (big windup, camera lunges) · active 4 · recovery 20.
   Hitstop 10f, moderate flash. ~28 cels.
-- HEADBUTT 35f: startup 13 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
-  frame edges) · active 4 (impact at max zoom, crunchy) · recovery 18 (camera pulls back).
+- HEADBUTT 35f: startup 12 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
+  frame edges) · active 4 (impact at max zoom, crunchy) · recovery 19 (camera pulls back).
   Hitstop 10f, moderate flash. ~26 cels.
-- FRONT KICK (medium) 31f: startup 11 (boot chambers from bottom edge, knee up) · active 4
+- FRONT KICK (medium) 30f: startup 10 (boot chambers from bottom edge, knee up) · active 4
   (boot snaps to centre, sole to camera) · recovery 16. Hitstop 4f, contact tick only. ~24 cels.
-- ROUNDHOUSE KICK (heavy) 39f: startup 15 (boot sweeps in from the right) · active 4 ·
+- ROUNDHOUSE KICK (heavy) 39f: startup 14 (boot sweeps in from the right) · active 5 ·
   recovery 20. Hitstop 10f, moderate flash. ~28 cels.
 - HURT (Brutus takes damage): light 11f / medium 16f / heavy 20f — red edge flash, fists
   flinch inward (guard pose flashes on medium+), camera knock; heavy knockdown 60–75f.
