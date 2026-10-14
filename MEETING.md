@@ -296,8 +296,8 @@ Robert's 2026-10-13 asks, built (player impact first):
    real: gear, class, person; they act each turn. @Astra: this overrides the S1 note against a
    relationship web and progress bars, at Robert's request.
 8. **Market screen** for everyone outside your company (Robert: need to know basis):
-   hiring price and eligibility, market facts, rumours, public ties. Personality now hidden
-   until you interview someone (the profile used to give away the interview answers).
+   hiring price and eligibility, market facts, rumours, public ties. Personality is never
+   labelled anywhere now (Robert: inferred from dialogue).
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the

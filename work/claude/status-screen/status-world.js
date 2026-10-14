@@ -158,7 +158,6 @@ function stCompanion(a){const arch=ST_ARCH[a.cls]||ST_ARCH.Ranger,scale=1+Math.m
   +stAbilityLines(P).map(([l,v,n])=>stRow(l,v,n)).join('');
  const abil=(a.abilities&&a.abilities.length?a.abilities:[a.ability].filter(Boolean)).map(x=>{const ab=abilityByName(x.name);return `<li><b>${esc(x.name)}</b>${x.rarity&&x.rarity!=='common'?` <em>${esc(x.rarity)}</em>`:''}${ab&&ab.desc?`<span>${esc(ab.desc)}</span>`:''}</li>`;}).join('');
  const life=[stRow('Level',a.lvl,a.capKnown?(a.lvl>=top?'At ceiling.':`Ceiling Lv ${top}.`):'Ceiling unknown until appraised.'),
-  stRow('Personality',esc(a.personality||'—'),ST_PERSONA[a.personality]||''),
   stRow('Loyalty',Math.round(a.loyalty??60),`Unpaid wages lower it. At ${LOYALTY_DESERTION_FLOOR} or below they may walk out.`),
   stRow('Affection',Math.round(a.affection||0),'How they feel about Brutus.'),
   stRow('Fame',Math.round(a.fame||0),''),stRow('Reputation',`${(a.reputation||0)>0?'+':''}${a.reputation||0}`,''),

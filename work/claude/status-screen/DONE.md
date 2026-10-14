@@ -86,5 +86,6 @@ are kept (Interview, Appraise, Back publicly, Expose a boast). Topbar: "On the m
 - Relationships: public ties only (Brutus as a feeling, their guild, allies, rivals, confirmed
   lovers, the person they're rumoured to want); no private grudges.
 - Recent events. The dead show only who they were, their ties and their history.
-- Personality is now hidden until you interview someone (it used to be a pill on every profile,
-  which gave away the interview's right answers). Flagged as a change in difficulty.
+- Personality is never labelled (Robert, 2026-10-13: "Personality should be inferred from
+  dialogue"): removed from the market screen, the companion status screen and the legacy guild
+  market list. The interview's replies and each person's agenda line are the tells.

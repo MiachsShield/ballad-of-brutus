@@ -7,14 +7,12 @@
                standing (celebrity), signature abilities, public ties (allies, rivals, confirmed
                lovers), market value, the price you should expect, what the market is paying for,
                whether you can hire them and why not, recent events
-     earned    growth ceiling (Appraise), personality (after you've interviewed them), moves
-               against them (only those your intel has revealed)
+     earned    growth ceiling (Appraise), moves against them (only those your intel has revealed)
+     never     personality: Robert, 2026-10-13: "Personality should be inferred from dialogue."
+               No screen labels it; the interview's replies and their agenda line are the tells.
      rumour    what they're after (drives) as word on the street, with timing in words, no
                numbers; unhappiness at their guild only when it shows (loyalty 30 or less)
      hidden    exact loyalty and affection (shown as a word), fight numbers, gear, drive progress */
-function mkKnowsPersonality(a){return !!(S.metPersonality&&S.metPersonality[a.id]);}
-const mkInterviewBase=startInterview;
-startInterview=function(id){const r=mkInterviewBase.apply(this,arguments);if(S.interview&&S.interview.targetId===id){S.metPersonality=S.metPersonality||{};S.metPersonality[id]=true;}return r;};
 function mkTiming(p){return p<34?'early talk':p<67?'getting serious':'any turn now';}
 function mkHire(a){const why=[];const mine=(S.roster||[]).filter(x=>x.alive).length;
  const g=a.affiliation&&Object.values(S.guilds||{}).find(x=>x.name===a.affiliation);
@@ -56,7 +54,6 @@ function mkScreen(a){const h=mkHire(a),[lo,hi]=mkAsk(a),pn=prestigeNote(a),tier=
   stRow('Fame',Math.round(a.fame||0),tier?`${tier.grade}-class ${tier.name}.`:''),
   stRow('Reputation',`${(a.reputation||0)>0?'+':''}${a.reputation||0}`,''),
   stRow('Looks',`${a.attractiveness}/10`,'The market’s prejudice. It moves the price.'),
-  stRow('Personality',mkKnowsPersonality(a)?esc(a.personality):'Unknown',mkKnowsPersonality(a)?(ST_PERSONA[a.personality]||''):'You read people in an interview.'),
   stRow('Feeling toward you',stWarmth(a.affection),'')].join('');
  const abil=(a.abilities&&a.abilities.length?a.abilities:[a.ability].filter(Boolean)).map(x=>`<li><b>${esc(x.name)}</b>${x.rarity&&x.rarity!=='common'?` <em>${esc(x.rarity)}</em>`:''}</li>`).join('');
  const events=(a.history||[]).slice(0,5).map(e=>`<li><small>Turn ${e.turn}</small><b>${esc(e.title)}</b><p>${esc(e.body)}</p></li>`).join('');
@@ -80,4 +77,6 @@ const MK_CSS=`.mk{--rule:#879d9638;--bone:#eee9dc;--mist:#aab6b6;--gold:#dcb975;
 (function(){const old=document.getElementById('mk-css');if(old)old.remove();const s=document.createElement('style');s.id='mk-css';s.textContent=MK_CSS;document.head.appendChild(s);})();
 profile=function(a){if(!a)return '';return mkScreen(a);};
 const mkPatchBase=render;
-render=function(){const r=mkPatchBase.apply(this,arguments);try{if(screen==='profile'){const root=document.getElementById('living');const eb=root&&root.querySelector('.topbar .eyebrow'),h1=root&&root.querySelector('.topbar h1');if(eb)eb.textContent='On the market';if(h1)h1.textContent='What you know about them.';}}catch(e){}return r;};
+const MK_PERSONAS=['Ambitious','Loyal','Mercenary','Cautious','Proud'];
+function mkStripPersonality(){document.querySelectorAll('.advMeta').forEach(el=>{for(const n of el.childNodes)if(n.nodeType===3){let t=n.textContent;for(const p of MK_PERSONAS)t=t.replace(` · ${p} · `,' · ');n.textContent=t;}});}
+render=function(){const r=mkPatchBase.apply(this,arguments);try{mkStripPersonality();if(screen==='profile'){const root=document.getElementById('living');const eb=root&&root.querySelector('.topbar .eyebrow'),h1=root&&root.querySelector('.topbar h1');if(eb)eb.textContent='On the market';if(h1)h1.textContent='What you know about them.';}}catch(e){}return r;};
