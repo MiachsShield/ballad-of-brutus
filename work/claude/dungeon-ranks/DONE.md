@@ -61,6 +61,33 @@ behind the party and carried them back to town." The existing lockout (2-5 turns
   because no hidden chamber was reached. It did have the farming bug (each walk-in counted).
   Now each chamber counts once, across entries too: entering, leaving and re-entering stays 1/1.
 
+## 5. XP rebalance (`xp-world.js`)
+Robert, 2026-10-13: "Xp to be adjusted on already established systems to avoid over-grinding.
+Let's keep lv gain reasonable." The old rule paid Brutus kills 22, floor 45, stance 30, chamber 25,
+and tripled it whenever a "foe level" (8 + 14 per floor + 6 per stance) beat his level. That
+foe level reached 48-160 on a full clear, so the x3 applied almost always.
+
+New rule (kills, stances, chambers keep their base values):
+1. Monster level comes from the dungeon: 10 + 8 x rank + 4 x deepest floor.
+2. Above Brutus's level: x1.5 (was x3). 10+ levels below him: x0.5. 20+ below: x0.2.
+3. Floor XP only for floors new in that dungeon (resuming deep does not pay depth again).
+4. A dungeon already conquered pays less each time: x1, x0.75, then x0.5.
+5. At most one level per expedition, for Brutus and companions; extra XP carries over up to half
+   the next level.
+
+One full clear in a single expedition (modelled with measured monster counts; `xp.test.cjs`):
+
+| Brutus | Rank 1 | Rank 2 | Rank 3 | Rank 4 | Rank 5 |
+|---|---|---|---|---|---|
+| Lv22 old → new | +1.43 → +0.73 | +2.02 → +1.04 | +3.01 → +1.50 | +3.39 → +1.50 | +4.81 → +1.50 |
+| Lv30 old → new | +0.82 → +0.27 | +1.16 → +0.59 | +1.76 → +0.91 | +2.01 → +1.04 | +2.90 → +1.50 |
+| Lv40 old → new | +0.40 → +0.07 | +0.57 → +0.19 | +0.88 → +0.44 | +1.01 → +0.51 | +1.48 → +0.76 |
+
+The expedition report and log show "Brutus +N XP" and why it was reduced. Untouched: companion
+kill XP (12 per kill, now under the one-level cap), guest levelling, the world's own levelling.
+Live check: one kill at rank 2 paid +33 XP (22 x1.5); the warden run paid +168 (warden 22 + one
+new floor 90, x1.5) with no level-up.
+
 ## Playtest (exact file, headless Chrome, zero page errors)
 - Cards show rank 1-5; rank 5 opened with 37 monsters on 5 floors, rank 1 with 12 on 3.
 - Rank 2 hunt dungeon: reached the B1F rest area, killed one monster, exited. Report and card
@@ -73,7 +100,7 @@ behind the party and carried them back to town." The existing lockout (2-5 turns
   lives in the saved world, so it should survive).
 
 ## Tests
-`node work/claude/dungeon-ranks/ranks.test.cjs` PASS, plus S1, ow-bridge, E1, contracts, conquest,
+`node work/claude/dungeon-ranks/ranks.test.cjs` and `xp.test.cjs` PASS, plus S1, ow-bridge, E1, contracts, conquest,
 boss loot, no elements, playtest fixes, all PASS on the new CURRENT.
 Also fixed a flaky assertion in my `contracts.test.cjs` (the dungeon holder is drawn weighted; the
 test now pins it), about 1 run in 10 failed before.
@@ -81,4 +108,3 @@ test now pins it), about 1 run in 10 failed before.
 ## Open (for Robert)
 - Rank odds are even. Should ranks lean on Brutus's level, or stay random?
 - Rank 5 is large (37 monsters, 5 floors). Muse found the old 3-floor dungeon hard to navigate.
-- Depth XP is paid per entry, and you can now resume deep. Small XP farm; left as is for playtest.

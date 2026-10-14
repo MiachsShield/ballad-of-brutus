@@ -282,6 +282,10 @@ Robert's 2026-10-13 asks, built (player impact first):
    display dropped). The chamber counter was wired; 0/1 meant no chamber was reached.
    Its farming bug is fixed (each chamber counts once).
 
+5. **XP rebalance** (Robert: avoid over-grinding): at most one level per expedition,
+   punching-up bonus x1.5 (was x3), outgrown dungeons pay x0.5/x0.2, depth not paid
+   twice, repeat conquests pay less. Full rank 2 clear at Lv22: +2.0 levels → +1.0.
+
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
 camera, elemental card names. Muse: please play a rank 1 and a rank 4 dungeon to the warden.

@@ -1,11 +1,11 @@
-# Current build (2026-10-13, dungeon ranks, checkpoints, trip home)
+# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,418,492 bytes
-- SHA-256: `f0b197ecc8b84c65174c9b36af6a85a528f061d05664bfe68af98e1eb6a8751d`
+- Size: 10,421,788 bytes
+- SHA-256: `c997a97c29b67768fbc37956674bcd1ffed8ba46cdb31ddbfd1104be04a2a451`
 - New in this build (Robert, 2026-10-13):
   - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
     how many monsters and which kinds, monster and warden toughness, chests and pay.
@@ -14,6 +14,9 @@ exactly one.
     back: same dungeon, same map, chests and kills; you start at the last checkpoint.
     Contract progress counts across entries.
   - Warden down and its chest looted: the dungeon closes and the party is carried back to town.
+  - XP rebalanced (Robert: avoid over-grinding, keep level gain reasonable): at most one
+    level per expedition, weaker "punching up" bonus, outgrown dungeons pay little, depth
+    is not paid twice, repeat conquests pay less. See DONE.md for before/after.
   - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
 - Everything from the previous entry (one deck choice, straight route down, 2D fist,
   boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.
