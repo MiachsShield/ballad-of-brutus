@@ -83,30 +83,35 @@ previous single-fist framing):
   same painterly finish).
 
 Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
-- JAB (right, light) 13f: startup 3 · active 3 · recovery 7. Hitstop 3f. Keys: rest → contact
+- JAB (right, light) 13f: startup 3 · active 3 · recovery 7. Hitstop 2f, no flash. Keys: rest → contact
   (scale ~1.35) → rest. ~10 cels.
-- CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 5f. ~14 cels.
+- CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 4f, contact tick only. ~14 cels.
 - HAYMAKER (right, heavy) 33f: startup 12 (big windup, camera lunges) · active 4 · recovery 17.
-  Hitstop 10f. ~24 cels.
+  Hitstop 10f, moderate flash. ~24 cels.
 - HEADBUTT 29f: startup 10 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
   frame edges) · active 4 (impact at max zoom, crunchy) · recovery 15 (camera pulls back).
-  Hitstop 10f. ~22 cels.
+  Hitstop 10f, moderate flash. ~22 cels.
 - FRONT KICK (medium) 26f: startup 8 (boot chambers from bottom edge, knee up) · active 4
-  (boot snaps to centre, sole to camera) · recovery 14. Hitstop 5f. ~20 cels.
+  (boot snaps to centre, sole to camera) · recovery 14. Hitstop 4f, contact tick only. ~20 cels.
 - ROUNDHOUSE KICK (heavy) 33f: startup 12 (boot sweeps in from the right) · active 4 ·
-  recovery 17. Hitstop 10f. ~24 cels.
+  recovery 17. Hitstop 10f, moderate flash. ~24 cels.
 - HURT (Brutus takes damage): light 11f / medium 16f / heavy 20f — red edge flash, fists
   flinch inward (guard pose flashes on medium+), camera knock; heavy knockdown 60–75f.
 - GUARD (block): instant guard pose + white flash + 4f shake.
 
-Impact rules (every attack):
-- Hitstop: light 2–3f · medium 4–6f · heavy 8–12f. Freeze attacker and enemy, never the input.
-- Enemy flash white/red 3–6f; camera shake 6–12f decaying (~0.4% screen height light,
-  ~1.5% heavy).
+Impact rules (every attack; revised 2026-10-14 — Robert):
+- The big white impact flash is reserved for CRITS only — never on ordinary hits. Crit = the
+  flash (white 6f) + max 12f hitstop + camera zoom punch-in ~1.15× + gold reward flash;
+  damage ×1.5.
+- Light/medium attacks are smooth and build momentum: NO white flash. Light: hitstop 1–2f
+  (barely a catch), tiny shake. Medium: small 1–2f contact tick only, hitstop 3–4f, small
+  shake. Recoveries tuned short so lights/mediums chain into each other — the rhythm builds
+  toward the heavy/crit payoff.
+- Heavy: moderate flash 3–4f at reduced intensity (a step below the crit flash), hitstop
+  8–10f, shake 8–12f. Enemy hurt flash red (not white) 3–6f on heavy/crit only.
+- Freeze attacker and enemy on hitstop, never the input buffer.
 - Drop the last 1–2 eased in-between frames before contact (the strike snaps).
 - Damage numbers appear AFTER the freeze, never during it.
-- Crits: camera zoom punch-in ~1.15× + max 12f hitstop + bigger shake + gold reward flash;
-  damage ×1.5.
 - In-between easing: strikes ease-out (fast), windups ease-in (slow anticipation),
   recoveries ease-in-out.
 
