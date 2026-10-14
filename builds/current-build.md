@@ -4,8 +4,8 @@
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,468,248 bytes
-- SHA-256: `779269bdced7bc9157ecd8a8e07f1bd69ae817a2f7ed7a5cc6779a457fd659f5`
+- Size: 10,478,124 bytes
+- SHA-256: `c7ddc0d1b4e19e8df981baa17293eacc53f038e53dcf9b4931813b7daa9c5dbe`
 - New in this build (Robert, 2026-10-13):
   - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
     how many monsters and which kinds, monster and warden toughness, chests and pay.
@@ -25,6 +25,9 @@ exactly one.
     his whole deck with card art; during an expedition (View world) used cards are greyed.
   - Status screen v2: full-figure frame with gear sockets (front art slot), Fight and Life
     stats, What happens next, relationship web.
+  - Market screen for everyone outside your company: hiring (price, can you, why not),
+    market facts, rumours, public ties, events. Need to know: personality only after an
+    interview, ceiling after appraisal, moves only once intel reveals them.
   - Character drives: everyone can want gear, a new class, or to work beside someone; they act
     on it each turn (sign elsewhere, retrain, find gear). Companions wait on you for gear.
   - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.

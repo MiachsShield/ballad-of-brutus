@@ -80,20 +80,22 @@ function stNextHtml(items,empty){if(!items.length)return `<p class="cs-empty">${
  return `<ol class="cs-next">${items.map(i=>`<li class="${i.tone}"><div class="cs-next-top"><b>${esc(i.title)}</b><span>${esc(i.eta||'')}</span></div>`
   +`${i.pct!=null?`<div class="cs-meter" role="img" aria-label="${Math.round(i.pct)}% along"><i style="width:${Math.max(2,Math.min(100,i.pct)).toFixed(0)}%"></i></div>`:''}<p>${esc(i.why)}</p></li>`).join('')}</ol>`;}
 // ---- relationship web: real ties only (Brutus, lover, allies, rivals, drive targets, guild, strong opinions)
-function stWeb(a,isBrutus){const nodes=[],seen=new Set();
+function stWarmth(v){v=Math.round(v||0);return v>=75?'Warm toward you':v>=55?'Friendly':v>=40?'Neutral':v>=25?'Cool':'Cold';}
+function stWeb(a,isBrutus,pub){const nodes=[],seen=new Set();
  const addP=(p,kind,label,strength)=>{if(!p||seen.has('p'+p.id))return;seen.add('p'+p.id);nodes.push({type:'p',p,kind,label,strength});};
  const addG=(name,kind,label)=>{if(!name||seen.has('g'+name))return;seen.add('g'+name);nodes.push({type:'g',name,kind,label});};
  if(isBrutus){for(const m of (S.roster||[]).filter(x=>x.alive))addP(m,'mine',`Affection ${Math.round(m.affection||0)}`);
   const hos=Object.values(S.guilds||{}).filter(g=>g.hostility>0).sort((x,y)=>y.hostility-x.hostility).slice(0,4);for(const g of hos)addG(g.name,'grudge',`Angry (${g.hostility.toFixed(1)})`);
   const fans=(S.agents||[]).filter(p=>p.alive&&!p.joined&&(p.drives||[]).some(d=>d.kind==='person'&&person(d.target)&&drvCompanyOf(person(d.target))==='Brutus')).slice(0,3);for(const p of fans)addP(p,'want','Wants to join you');}
- else{nodes.push({type:'b',kind:'mine',label:`Affection ${Math.round(a.affection||0)}`});seen.add('b');
+ else{nodes.push({type:'b',kind:'mine',label:pub?stWarmth(a.affection):`Affection ${Math.round(a.affection||0)}`});seen.add('b');
+  if(pub&&a.affiliation&&a.affiliation!=='Brutus')addG(a.affiliation,'member','Signed with');
   if(a.lover)addP(person(a.lover),'lover','Lover');
-  for(const d of a.drives||[])if(d.kind==='person')addP(person(d.target),'want',drvCompanyOf(person(d.target)||{})==='Brutus'?'Wants to work beside':'Pulled toward');
+  for(const d of a.drives||[])if(d.kind==='person')addP(person(d.target),'want',pub?'Word is: wants to join':drvCompanyOf(person(d.target)||{})==='Brutus'?'Wants to work beside':'Pulled toward');
   for(const l of a.links||[])addP(person(l.id),l.kind==='rival'?'rival':'ally',l.label||(l.kind==='rival'?'Rival':'Ally'));
-  const mem=Object.entries(a.memory||{}).filter(([g,v])=>g!=='Brutus'&&Math.abs(v)>=15).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,3);
+  const mem=pub?[]:Object.entries(a.memory||{}).filter(([g,v])=>g!=='Brutus'&&Math.abs(v)>=15).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1])).slice(0,3);
   for(const [g,v] of mem)addG(g,v>0?'fond':'grudge',v>0?`Likes them (+${v})`:`Grudge (${v})`);}
  const list=nodes.slice(0,10),n=list.length;if(!n)return `<p class="cs-empty">No ties yet.</p>`;
- const W=640,H=n<=2?190:340,cx=W/2,cy=H/2,rx=250,ry=n<=2?60:125;
+ const W=640,H=n<=2?190:360,cx=W/2,cy=H/2,rx=250,ry=n<=2?60:122;
  const pos=list.map((nd,i)=>{const t=(n<=2?Math.PI:-Math.PI/2)+i*2*Math.PI/n+(n===3?Math.PI/6:0);return{x:cx+rx*Math.cos(t),y:cy+ry*Math.sin(t)};});
  const edges=list.map((nd,i)=>{const p=pos[i];const mx=(cx+p.x)/2,my=(cy+p.y)/2;
   return `<line class="e ${nd.kind}" x1="${cx}" y1="${cy}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}"/><text class="el" x="${mx.toFixed(1)}" y="${(my-4).toFixed(1)}">${esc(nd.label)}</text>`;}).join('');
@@ -209,7 +211,7 @@ const ST_CSS=`
 .cs-next p{margin:4px 0 0;font-size:13px;color:var(--mist);line-height:1.45;max-width:62ch}
 .cs-meter{height:4px;background:#0b1419;margin-top:6px;max-width:420px}.cs-meter i{display:block;height:100%;background:var(--gold)}.cs-next li.risk .cs-meter i{background:var(--emb)}
 .cs-empty{color:var(--mist);font-size:14px;margin:0}
-.cs-web{position:relative;aspect-ratio:640/340;margin-top:4px}
+.cs-web{position:relative;aspect-ratio:640/340;margin:4px 0 0;max-width:760px}
 .cs-web svg{position:absolute;inset:0;width:100%;height:100%}
 .cs-web .e{stroke-width:1.5;vector-effect:non-scaling-stroke;stroke:#879d9670}
 .cs-web .e.ally{stroke:var(--verd)}.cs-web .e.rival,.cs-web .e.grudge{stroke:var(--emb);stroke-dasharray:5 4}.cs-web .e.lover{stroke:var(--rose);stroke-width:2.5}
@@ -220,7 +222,7 @@ const ST_CSS=`
 .cs-node .portrait{width:42px;height:42px;border-radius:50%;border:2px solid #879d9680}
 .cs-node.self{cursor:default}.cs-node.self .portrait{width:62px;height:62px;border-color:var(--gold)}
 .cs-node.ally .portrait{border-color:var(--verd)}.cs-node.rival .portrait{border-color:var(--emb)}.cs-node.lover .portrait{border-color:var(--rose)}.cs-node.want .portrait,.cs-node.mine .portrait{border-color:var(--gold)}
-.cs-node.g{cursor:default}.cs-node.g .cs-nm{border:1px solid #879d9660;padding:4px 8px;font-size:12px}.cs-node.g.grudge .cs-nm{border-color:var(--emb)}.cs-node.g.fond .cs-nm{border-color:var(--verd)}
+.cs-node.g{cursor:default}.cs-node.g .cs-nm{border:1px solid #879d9660;padding:4px 8px;font-size:12px}.cs-node.g.grudge .cs-nm{border-color:var(--emb)}.cs-node.g.member .cs-nm{border-color:var(--gold)}.cs-web .e.member{stroke:#dcb97599}.cs-node.g.fond .cs-nm{border-color:var(--verd)}
 .cs-node:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .cs-key{font-size:11px;color:var(--mist);display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0}.cs-key span{white-space:nowrap}.cs-key i{display:inline-block;width:16px;height:0;border-top:2px solid;vertical-align:middle;margin-right:5px}
 .cs-key .ally{border-color:var(--verd)}.cs-key .rival,.cs-key .grudge{border-color:var(--emb);border-top-style:dashed}.cs-key .lover{border-color:var(--rose)}.cs-key .want{border-color:var(--gold);border-top-style:dotted}.cs-key .mine{border-color:var(--gold)}

@@ -67,3 +67,24 @@ No new unit test (DOM screen; browser-checked). All ten suites PASS on the new C
   image requests.
 - Layout: two columns down to 760 px wide, then one column (details first, figure after).
 - Checked at 1440 and 900 px, no horizontal overflow, zero page or console errors.
+
+## Market screen for everyone outside your company (`market-world.js`)
+Robert: "Characters outside of dungeon get a screen focusing on aspects of sim and labor market.
+Need to know basis for the player." It replaces the old "Face to face" profile body; its actions
+are kept (Interview, Appraise, Back publicly, Expose a boast). Topbar: "On the market".
+- Hiring block (the one bold element): signed with whom or free agent; the ask you should expect
+  a turn (the interview's own fair-wage formula, as a range); whether you can interview now, or
+  each reason you can't (level above Brutus, company full, their guild too angry, no actions,
+  mid-conversation); the guild's prestige premium warning.
+- On the market: value (and when the market event is paying for their class), level and ceiling
+  (Appraise), fame and public standing, reputation, looks, personality (only after you have
+  interviewed them, since the interview is about reading them), feeling toward you as a word.
+  Known for: their abilities.
+- Word around: their drives as rumour, timing in words ("early talk", "getting serious", "any turn
+  now"), no numbers; unhappy at their guild when loyalty is 30 or less; moves against them only
+  once your intel has revealed them (the old profile listed unrevealed ones).
+- Relationships: public ties only (Brutus as a feeling, their guild, allies, rivals, confirmed
+  lovers, the person they're rumoured to want); no private grudges.
+- Recent events. The dead show only who they were, their ties and their history.
+- Personality is now hidden until you interview someone (it used to be a pill on every profile,
+  which gave away the interview's right answers). Flagged as a change in difficulty.
