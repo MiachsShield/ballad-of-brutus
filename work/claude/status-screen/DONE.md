@@ -20,7 +20,9 @@ screen." ("There" answers where Brutus's XP bar goes.)
 
 ## Deck (`deck-state-dungeon.js` + Brutus's screen)
 Robert: "I should see the deck, and used up cards greyed out."
-- Brutus's status screen has a Deck panel: one tile per card copy (name, weight, energy).
+- Brutus's status screen has a Deck panel: one tile per card copy with its illustration
+  (`art/card-faces/<class>/<id>.jpg`, same art as the hand; Robert: "With illustrations"),
+  name, weight and energy. A card without art shows its text only. Used tiles grey the art too.
 - Between expeditions: the chosen deck (40 cards) plus any gear cards.
 - During an expedition (press "View world", click Brutus): the live deck. Cards in hand are
   outlined gold ("In hand"); used cards (the discard pile) are greyed ("Used"). The line above

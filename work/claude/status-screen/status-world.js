@@ -42,15 +42,19 @@ function stHead(portrait,name,sub,lvl,bar,chips){
 function stLiveDeck(){if(!S.pendingDelve)return null;try{const f=window.parent&&window.parent.document.getElementById('dungeon');
  const fn=f&&f.contentWindow&&f.contentWindow.brutusDeckState;return typeof fn==='function'?fn():null;}catch(e){return null;}}
 function stCost(c){return c==null?'':Math.ceil(c*BALANCED_CARD_COST_SCALE);}
-function stTile(name,tier,cost,state,from){const tag=state==='used'?'Used':state==='hand'?'In hand':'';
- return `<div class="st-cardtile ${state}" title="${esc(name)}${tag?' · '+tag:''}"><b>${esc(name)}</b><span>${esc(String(tier||'').toLowerCase())}${cost!==''?` · ${cost}⚡`:''}</span>${from?`<span class="st-from">${esc(from)}</span>`:''}${tag?`<em>${tag}</em>`:''}</div>`;}
+function stArt(cls,id){if(!cls||!id)return '';const u=`art/card-faces/${String(cls).toLowerCase()}/${id}.jpg`;
+ // the world page sits in builds/, the art in the repo's art/ — try both, hide if neither exists
+ return `<img class="st-face" src="${u}" alt="" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='../'+this.getAttribute('src');}else{this.remove();}">`;}
+function stArtFor(name){const r=BALANCED_DECK_PREVIEW.find(c=>c.name===name);return r?[r.class,r.id]:[null,null];}
+function stTile(name,tier,cost,state,from,art){const tag=state==='used'?'Used':state==='hand'?'In hand':'';const [cls,id]=art||stArtFor(name);
+ return `<div class="st-cardtile ${state}" title="${esc(name)}${tag?' · '+tag:''}">${stArt(cls,id)}<b>${esc(name)}</b><span>${esc(String(tier||'').toLowerCase())}${cost!==''?` · ${cost}⚡`:''}</span>${from?`<span class="st-from">${esc(from)}</span>`:''}${tag?`<em>${tag}</em>`:''}</div>`;}
 function stDeckPanel(deckName,L){
  const live=stLiveDeck();let tiles=[],head='';
  if(live&&live.cards&&live.cards.length){
   const sorted=live.cards.slice().sort((a,b)=>a.name.localeCompare(b.name));
-  for(const c of sorted){for(let i=0;i<c.hand;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'hand',c.fromItem));
-   for(let i=0;i<c.draw;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'draw',c.fromItem));
-   for(let i=0;i<c.used;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'used',c.fromItem));}
+  for(const c of sorted){for(let i=0;i<c.hand;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'hand',c.fromItem,c.art?[c.cls,c.art]:null));
+   for(let i=0;i<c.draw;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'draw',c.fromItem,c.art?[c.cls,c.art]:null));
+   for(let i=0;i<c.used;i++)tiles.push(stTile(c.name,c.tier,stCost(c.cost),'used',c.fromItem,c.art?[c.cls,c.art]:null));}
   head=`<p class="muted">Expedition in progress · ${esc(live.discipline)} · ${live.draw} in the draw pile · ${live.hand} in hand · <b>${live.used} used</b> (greyed). Used cards return when the draw pile runs out and the discard is shuffled back in, or at a rest area.</p>`;
  }else{
   const rows=BALANCED_DECK_PREVIEW.filter(c=>c.class===deckName&&c.deck_copies>0).sort((a,b)=>a.name.localeCompare(b.name));
@@ -94,7 +98,7 @@ const ST_CSS=`.st-head{display:flex;gap:28px;align-items:center}.st-portrait{wid
 .st-gear{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.st-slot{border:1px solid #879d9630;padding:10px;display:flex;flex-direction:column;gap:3px;min-width:0}.st-slot small{color:var(--dim);font-size:11px}.st-slot span{font-size:12px;color:#c6d2ce}.st-slot.empty span{color:var(--dim)}
 .st-proc{color:var(--warn)!important}.st-card{color:#c08cf5!important}.st-list{display:flex;flex-direction:column;gap:5px;font-size:13px}.st-ability{margin-bottom:12px}.st-ability p{margin:4px 0 0;font-size:13px;color:#c6d2ce}
 .st-head~.profile-grid .actions{margin-top:16px}.panel h3{margin:0 0 12px}.panel h3:not(:first-child){margin-top:18px}.value-grid b{font-size:20px}
-.st-deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:10px}
+.st-deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:10px;margin-top:10px}.st-face{display:block;width:calc(100% + 16px);margin:-8px -8px 6px;aspect-ratio:4/3;object-fit:cover;object-position:top center;background:#0e171c}
 .st-cardtile{position:relative;border:1px solid #879d9660;background:#1d3540;padding:8px 8px 7px;display:flex;flex-direction:column;gap:2px;min-height:58px}
 .st-cardtile b{font-size:12px;line-height:1.25}.st-cardtile span{font-size:11px;color:var(--dim)}.st-cardtile .st-from{color:#c08cf5}
 .st-cardtile em{font-style:normal;font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-top:auto;padding-top:3px}

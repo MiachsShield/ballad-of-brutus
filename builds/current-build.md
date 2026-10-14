@@ -4,8 +4,8 @@
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,442,145 bytes
-- SHA-256: `635e794954b66670743728a35c9ed954897cc7ad6585588cfe171871aab01247`
+- Size: 10,443,025 bytes
+- SHA-256: `62c2803590cc18c5474c0b09efdab325ffc56b9e5291fd290a986056dad07928`
 - New in this build (Robert, 2026-10-13):
   - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
     how many monsters and which kinds, monster and warden toughness, chests and pay.
@@ -22,7 +22,7 @@ exactly one.
     in the sidebar and on their profile. XP is always a whole number.
   - Status screen: click Brutus or a companion for level, XP bar, dungeon stats, gear,
     abilities and standing. Others still open their public profile. Brutus's screen shows
-    his whole deck; during an expedition (View world) used cards are greyed.
+    his whole deck with card art; during an expedition (View world) used cards are greyed.
   - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
 - Everything from the previous entry (one deck choice, straight route down, 2D fist,
   boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.
