@@ -67,19 +67,27 @@ From Muse's 2026-10-12 playtest of the CURRENT build. Robert: roll these
 into the dungeon work rather than a standalone fix brief. Take them with
 your next dungeon implementation batch.
 
-### 1. Card-face CSS one-line fix (certain, verified)
+### 1. Card-face CSS fix (certain, browser-verified 2026-10-13)
 
-**Fix:** in the portrait-cards CSS rule `#handRow .card .face`, drop
-`!important` from `display` only. Keep the sizing `!important`s
-(width/height/object-fit/object-position/margin/float).
+**Fix (two parts):** in the portrait-cards CSS rule `#handRow .card .face`,
+change `display:block !important` to `display:block` (keep the sizing
+`!important`s), AND append `#handRow .card .face[hidden]{display:none}`.
 
-**Root cause:** the build hides missing card faces via inline
-`style.display="none"` (`setCardFace`, and the `onerror` fallback path),
-per the K8 contract that missing faces hide cleanly. The stylesheet's
-`display:block !important` overrides the inline hide, so every missing face
-renders as a broken-image icon instead of disappearing. The art path
+**Root cause (corrected 2026-10-13 — supersedes the earlier one-liner):**
+the build hides missing faces via the `hidden` attribute (faces unhide on
+load via `onload="this.hidden=false"`), per the K8 contract that missing
+faces hide cleanly. The browser's built-in `[hidden]{display:none}` rule
+loses to ANY author `display` declaration — dropping `!important` alone was
+tested in Chromium and changes nothing; the face still computes to
+`display:block`. The appended `[hidden]` rule (higher specificity, same
+stylesheet) is what actually restores the hide. The art path
 (`art/card-faces/<lowercase-class>/<card-id>.jpg`) is correct; the art
-exists in the repo. One-line change, no design judgment.
+exists in the repo. No design judgment.
+
+**Note:** this portrait-cards CSS currently lives only in the built
+`CURRENT-*.html` artifact, not in `work/` sources — carry the whole
+override (with this fix) into the build sources, or the next rebuild from
+sources drops it entirely.
 
 ### 2. Hidden-chamber counter (unconfirmed — please check)
 
