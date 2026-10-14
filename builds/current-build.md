@@ -1,3 +1,30 @@
+# Current build (2026-10-13, dungeon ranks, checkpoints, trip home)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,418,492 bytes
+- SHA-256: `f0b197ecc8b84c65174c9b36af6a85a528f061d05664bfe68af98e1eb6a8751d`
+- New in this build (Robert, 2026-10-13):
+  - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
+    how many monsters and which kinds, monster and warden toughness, chests and pay.
+    Rank 2 is the old dungeon.
+  - Checkpoints: spawn, each floor's arrival room, rest areas, waypoints. Leave and come
+    back: same dungeon, same map, chests and kills; you start at the last checkpoint.
+    Contract progress counts across entries.
+  - Warden down and its chest looted: the dungeon closes and the party is carried back to town.
+  - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
+- Everything from the previous entry (one deck choice, straight route down, 2D fist,
+  boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.
+- Card faces load from `art/card-faces/` next to the file, so open the build from a full
+  checkout of the repo.
+- Tests: all suites PASS on this file. Headless Chrome: rank cards, checkpoint save and
+  resume, auto-return after the boss chest, training room; zero page errors.
+- Details: `work/claude/dungeon-ranks/DONE.md`.
+
+---
+
 # Current build (2026-10-12, one deck choice, straight route down)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
