@@ -611,6 +611,26 @@ Same spec as the Skulker (8 × 3 of 256 × 256, 2048 × 768, `#FF00FF` key).
 Ready for Claude to wire in and screenshot. Berserk variant (`overseer-berserk.png`)
 not started — the brief leaves it optional if a tint isn't enough.
 
+### 2026-10-14 Brutus's fist frames (Muse)
+
+Third delivery under `briefs/muse/2026-10-13-dungeon-sprite-art.md`: **all 7 frames**
+under `art/sprites/fist/` (`idle.png`, `windup-light.png`, `windup-medium.png`,
+`windup-heavy.png`, `strike.png`, `guard.png`, `stunned.png`). 1024 × 1024
+transparent PNGs, per spec.
+
+- Design: brawny forearm entering from the bottom-right on a diagonal, knuckles
+  toward the centre — matches the current placeholder's framing. Fist wrapped in
+  bone hand wraps, dark island-leather bracer with buckles at the wrist, warm
+  tan skin. Painterly dimensional rendering (no heavy cartoon outline), per
+  Robert's sprite ruling.
+- Consistency: idle generated first; all six others redrawn from it, so the arm,
+  wraps and bracer stay identical across frames. Poses read as a progression:
+  idle → light/medium/heavy wind-up (increasing pullback) → strike (full
+  extension) → guard (forearm across) → stunned (dropped, loose).
+- Backgrounds keyed to alpha via edge flood-fill; resized to 1024 × 1024.
+
+Ready for Claude to wire in and screenshot in-fight.
+
 ## Muse playtest verdict — CURRENT build 2026-10-12 (post-#46) — evening
 
 Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10,399,013 bytes,
