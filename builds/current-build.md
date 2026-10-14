@@ -1,3 +1,46 @@
+# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance, status screen, character drives)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,478,022 bytes
+- SHA-256: `08bb452902e7e9638804fe32a1a0802ff07eb7da0c2b2a287b0e5200f76c9036`
+- New in this build (Robert, 2026-10-13):
+  - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
+    how many monsters and which kinds, monster and warden toughness, chests and pay.
+    Rank 2 is the old dungeon.
+  - Checkpoints: spawn, each floor's arrival room, rest areas, waypoints. Leave and come
+    back: same dungeon, same map, chests and kills; you start at the last checkpoint.
+    Contract progress counts across entries.
+  - Warden down and its chest looted: the dungeon closes and the party is carried back to town.
+  - XP rebalanced (Robert: avoid over-grinding, keep level gain reasonable): at most one
+    level per expedition, weaker "punching up" bonus, outgrown dungeons pay little, depth
+    is not paid twice, repeat conquests pay less. See DONE.md for before/after.
+  - Companions earn XP by the same rule as Brutus against their own level (no flat
+    12 per kill), stop at their growth ceiling, and show XP bars on their guild card,
+    in the sidebar and on their profile. XP is always a whole number.
+  - Status screen: click Brutus or a companion for level, XP bar, dungeon stats, gear,
+    abilities and standing. Others still open their public profile. Brutus's screen shows
+    his whole deck with card art; during an expedition (View world) used cards are greyed.
+  - Status screen v2: full-figure frame with gear sockets (front art slot), Fight and Life
+    stats, What happens next, relationship web.
+  - Market screen for everyone outside your company: hiring (price, can you, why not),
+    market facts, rumours, public ties, events. Need to know: ceiling after appraisal, moves
+    only once intel reveals them. Personality is never labelled; read it from dialogue.
+  - Character drives: everyone can want gear, a new class, or to work beside someone; they act
+    on it each turn (sign elsewhere, retrain, find gear). Companions wait on you for gear.
+  - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
+- Everything from the previous entry (one deck choice, straight route down, 2D fist,
+  boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.
+- Card faces load from `art/card-faces/` next to the file, so open the build from a full
+  checkout of the repo.
+- Tests: all suites PASS on this file. Headless Chrome: rank cards, checkpoint save and
+  resume, auto-return after the boss chest, training room; zero page errors.
+- Details: `work/claude/dungeon-ranks/DONE.md`.
+
+---
+
 # Current build (2026-10-12, one deck choice, straight route down)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is

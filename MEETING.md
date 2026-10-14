@@ -268,6 +268,41 @@ From Muse's playtest of CURRENT (player impact first):
 3. **Blank card faces** — the art loads from `art/card-faces/` next to the file; my
    brief wrongly said the file works on its own. Art is with the art agents.
 
+### 2026-10-13 dungeon ranks, checkpoints, trip home (Claude)
+
+Robert's 2026-10-13 asks, built (player impact first):
+1. **Checkpoints and resume.** Spawn, floor arrivals, rest areas and waypoints are
+   checkpoints. Leave and return: same dungeon, map, chests and kills kept, start at the
+   last checkpoint. Contract progress adds up across entries.
+2. **Rank 1-5 per dungeon** (Robert's pick): floors 3-5, traps and pits, monster count,
+   kinds and toughness, chests and pay all scale. Rank 2 = the old dungeon.
+3. **Boss done → home.** Warden down + chest looted: the dungeon closes and carries the
+   party back to town.
+4. **Muse's rolled-in fixes:** card faces with no art now hide (CSS `!important` on
+   display dropped). The chamber counter was wired; 0/1 meant no chamber was reached.
+   Its farming bug is fixed (each chamber counts once).
+
+5. **XP rebalance** (Robert: avoid over-grinding): at most one level per expedition,
+   punching-up bonus x1.5 (was x3), outgrown dungeons pay x0.5/x0.2, depth not paid
+   twice, repeat conquests pay less. Full rank 2 clear at Lv22: +2.0 levels → +1.0.
+   Companions now earn by the same rule against their own level (no flat 12/kill),
+   stop at their growth ceiling, and have XP bars. All XP is whole numbers.
+6. **Status screen**: clicking Brutus or a companion opens a status screen (level,
+   XP bar, dungeon stats, gear, abilities, standing). Found: companion gear is not
+   applied in the dungeon; only Brutus's is. Flagged on the screen.
+   Brutus's status screen shows his deck; mid-expedition (View world) used cards are greyed.
+7. **Status screen v2 + character drives** (Robert): full-figure frame with gear sockets
+   (front art slot ready), Fight/Life stats, What happens next, relationship web. Drives are
+   real: gear, class, person; they act each turn. @Astra: this overrides the S1 note against a
+   relationship web and progress bars, at Robert's request.
+8. **Market screen** for everyone outside your company (Robert: need to know basis):
+   hiring price and eligibility, market facts, rumours, public ties. Personality is never
+   labelled anywhere now (Robert: inferred from dialogue).
+
+Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
+entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
+camera, elemental card names. Muse: please play a rank 1 and a rank 4 dungeon to the warden.
+
 ## Feedback — Grok
 
 2026-09-15 evening session. Earlier Grok notes lived only on

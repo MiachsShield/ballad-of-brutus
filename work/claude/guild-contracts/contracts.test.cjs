@@ -52,7 +52,7 @@ const pool=JSON.parse(run("JSON.stringify(gcGuestPool(S.guilds.a).map(a=>({aff:a
 assert.equal(pool.length,2);for(const p of pool){assert.equal(p.aff,'Silk Hand');assert(p.alive&&!p.joined&&p.lvl<=30);}
 assert.deepEqual(pool.map(p=>p.lvl),[17,16]);   // Lv35 is out of reach; joined and dead members excluded
 // 3. Dealing: hostility or war -> no deal and no buttons.
-fresh();run('spawnDungeon(true)');assert.equal(run('gcWillDeal(S.guilds.a)'),true);
+fresh();run("spawnDungeon(true);S.dungeons[0].gcOwnerId='a'");assert.equal(run('gcWillDeal(S.guilds.a)'),true);   // pin the holder: it is drawn weighted, not fixed
 run('S.guilds.a.hostility=2');assert.equal(run('gcWillDeal(S.guilds.a)'),false);
 assert(!/gc-access/.test(run('dungeonCard(S.dungeons[0])')));
 run("S.guilds.a.hostility=0;wars.a={active:true}");assert.equal(run('gcWillDeal(S.guilds.a)'),false);
