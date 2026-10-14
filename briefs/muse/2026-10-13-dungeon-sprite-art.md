@@ -83,21 +83,25 @@ previous single-fist framing):
   same painterly finish).
 
 Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
-- JAB (right, light) 19f: startup 8 · active 3 · recovery 8. Hitstop 2f, no flash. ~15 cels. (2026-10-14 — Robert: Brutus starts as a DIAMOND IN THE ROUGH — just OUTSIDE pro range (11f/183ms to contact vs the slowest measured pro jab at 175ms). Opening balance anchor: Brutus vs Freja is a DRAW. These are STARTING values — better cards earn better frame data.) Keys: rest → contact
+- JAB (right, light) 19f: startup 8 · active 3 · recovery 8. Hitstop 2f, no flash. ~15 cels. (2026-10-14 — Robert: Brutus starts as a DIAMOND IN THE ROUGH — just OUTSIDE pro range (11f/183ms to contact vs the slowest measured pro jab at 175ms). STARTING values — better cards earn better frame data.) Keys: rest → contact
   (scale ~1.35) → rest. ~10 cels.
-- CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 4f, contact tick only. ~14 cels.
-- HAYMAKER (right, heavy) 33f: startup 12 (big windup, camera lunges) · active 4 · recovery 17.
-  Hitstop 10f, moderate flash. ~24 cels.
-- HEADBUTT 29f: startup 10 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
-  frame edges) · active 4 (impact at max zoom, crunchy) · recovery 15 (camera pulls back).
-  Hitstop 10f, moderate flash. ~22 cels.
-- FRONT KICK (medium) 26f: startup 8 (boot chambers from bottom edge, knee up) · active 4
-  (boot snaps to centre, sole to camera) · recovery 14. Hitstop 4f, contact tick only. ~20 cels.
-- ROUNDHOUSE KICK (heavy) 33f: startup 12 (boot sweeps in from the right) · active 4 ·
-  recovery 17. Hitstop 10f, moderate flash. ~24 cels.
+- CROSS (left, medium) 24f: startup 9 · active 3 · recovery 12. Hitstop 4f, contact tick only. ~18 cels.
+- HAYMAKER (right, heavy) 39f: startup 15 (big windup, camera lunges) · active 4 · recovery 20.
+  Hitstop 10f, moderate flash. ~28 cels.
+- HEADBUTT 35f: startup 13 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
+  frame edges) · active 4 (impact at max zoom, crunchy) · recovery 18 (camera pulls back).
+  Hitstop 10f, moderate flash. ~26 cels.
+- FRONT KICK (medium) 31f: startup 11 (boot chambers from bottom edge, knee up) · active 4
+  (boot snaps to centre, sole to camera) · recovery 16. Hitstop 4f, contact tick only. ~24 cels.
+- ROUNDHOUSE KICK (heavy) 39f: startup 15 (boot sweeps in from the right) · active 4 ·
+  recovery 20. Hitstop 10f, moderate flash. ~28 cels.
 - HURT (Brutus takes damage): light 11f / medium 16f / heavy 20f — red edge flash, fists
   flinch inward (guard pose flashes on medium+), camera knock; heavy knockdown 60–75f.
 - GUARD (block): instant guard pose + white flash + 4f shake.
+
+Inexperience theme (2026-10-14 — Robert, gameplay only): Brutus is strong but green against
+the strongest warriors — startups run 3–4f past the pro reference, recoveries 2–3f longer.
+He overcommits and pays for whiffs; power shows in damage and hitstop, never free speed.
 
 Impact rules (every attack; revised 2026-10-14 — Robert):
 - The big white impact flash is reserved for CRITS only — never on ordinary hits. Crit = the
