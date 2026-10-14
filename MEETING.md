@@ -637,3 +637,69 @@ monsters) but not reached live — navigation blocked the path.
 all work and feel good. What hurts the build's face to the player most is
 broken card art and enemies in the camera — fix those two and the game reads
 as finished in a way it doesn't right now.
+
+---
+
+## Muse playtest verdict — CURRENT build 2026-10-13 (post-#48)
+
+Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10482255 bytes,
+SHA-256 `99855846f9348aafc40dd4abfa018abf77a00002becd1faf1d1f793f19552ec5`.
+Played from a full repo checkout (card art loads from `art/card-faces/` next to
+`builds/`), fresh run each session. 40 screenshots in the round-3 set.
+
+**Headline: card faces ALL render.** With the full checkout every card shows its
+painted face — zero broken-image icons in the training room, dungeon hand, and
+status deck list. The CSS `!important` bug is moot when art loads successfully;
+it only bites on 404s.
+
+**Verified (11 of 13):** one deck choice (Warrior/Priest side by side on Deploy,
+no modal in dungeon); straight route (doorways on the critical path render with
+a bright gold frame — the single best navigation aid added); dungeon ranks
+(cards show rank, floors, traps); status screen (full-figure frame, gear slots,
+Fight/Life stats, "What happens next", relationship web, full 40-card deck
+list); deck mid-expedition (35 left / 4 in hand / 1 used); market screen
+(price, hireability, guild friction, rumours, public ties; personality read
+only in the prose); character drives; **no elemental names** (Bleeding Strike,
+Bracing Shell spotted in hand; no Rime/Venom/Storm-eye anywhere); **monsters
+keep their distance** (Skulker 1.7 m HUNTING, Brute 3.2 m BRACED — nothing in
+the camera); **training Reset** (2 enemies spawned, Reset cleared them, no black
+screen).
+
+**Hire via market + interview: the standout new system.** Full 6-question
+interview (Yue Vautrin, "The Velvet Veto", Mage 18). Personality is readable
+from the market blurb and the dialogue alone — ambitious, status-driven, "I
+don't take orders well". Mood shifted guarded→open on good answers with inline
+reactions. Answered boldly; **she declined** ("Yue Vautrin isn't convinced. Not
+this time.") — real stakes, a real system. Hiring feels like a social encounter
+now, not a shop.
+
+**Drives create genuine guilt.** Ember's wish ignored 8 turns: status "Overdue",
+"starting to feel **overlooked**", relationship web Angry (2.7)/(1.0),
+affection 70→49. Very noticeable. Grant path untested — no fine+ item in
+inventory.
+
+**Partial:** checkpoints — a "Resume expedition" button appears after exiting at
+a waypoint sector, but resuming put me at B1F room 0, not the waypoint
+(fidelity unclear; may need touching a specific tile or re-taking the
+contract). Rank 4 — "trap spotted" warning with triangle marker, Brute BRACED
+2 / "armor: 2 hits to break"; feels appropriately nastier.
+
+**Not verified live:** warden → conquest → trip home → boss loot, and XP (no
+report on mid-run exit; likely gated on expedition completion). Automated
+keyboard navigation could not get past B1F in ~200 moves across 4 sessions —
+the third session running where the warden path goes unverified.
+
+**Feel issues by impact:**
+1. **Dungeon navigation is still the wall.** Gold doorways help on the critical
+   path, but traversal itself (wall collisions, imprecise turning) blocks the
+   conquest loop from ever being playtested. A human with a mouse may fare
+   better, but this is the build's biggest unverified risk.
+2. **Checkpoint resume fidelity unclear** — Resume didn't return to the
+   waypoint. If "touch the tile" is required, the game should say so.
+3. Minor: grant-a-wish untestable when no fine+ item exists; the ignore path
+   is fully verified but the payoff isn't.
+
+**Bottom line:** the build reads as a real game now — faces render, monsters
+hold distance, names are clean, the interview and drives systems have teeth.
+Everything new in #47/#48 works except the two things gated behind actually
+finishing a dungeon. The warden run is the next thing that must be seen live.
