@@ -591,6 +591,26 @@ checked once before the rest.
 
 Ready for Claude to wire in and screenshot at real distance (1.8 m and across a room).
 
+### 2026-10-14 Overseer sprite sheet (Muse)
+
+Second delivery under `briefs/muse/2026-10-13-dungeon-sprite-art.md`: **`art/sprites/overseer.png`**.
+Same spec as the Skulker (8 × 3 of 256 × 256, 2048 × 768, `#FF00FF` key).
+
+- Design: the warden as a colossal figure — dark iron plate with old-brass trim,
+  tattered oxblood cloak, horned greathelm (dark eye slits), massive war maul,
+  tower shield. Fills the full cell height; the tallest figure in the game.
+- Columns: idle · attack light (maul jab) · attack medium (overhead smash) ·
+  attack heavy = BRACE (planted, shield forward, maul butt grounded) · hurt
+  light · hurt medium · hurt heavy · defeated (collapsed to one knee, maul
+  dropped beside). Hurt poses kept small and weighty — the boss barely moves.
+- Fix pass: the first generation put swords in the defeated cells; corrected to
+  the war maul (the Overseer's only weapon) and verified per-cell at full zoom.
+- Silhouette test at 64 px: all 24 cells read as the armored warden; poses
+  nameable in each.
+
+Ready for Claude to wire in and screenshot. Berserk variant (`overseer-berserk.png`)
+not started — the brief leaves it optional if a tint isn't enough.
+
 ## Muse playtest verdict — CURRENT build 2026-10-12 (post-#46) — evening
 
 Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10,399,013 bytes,
