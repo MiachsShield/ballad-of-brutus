@@ -58,3 +58,33 @@ being one repeated shape. This batch is **design only, no implementation.**
 Check `MEETING.md` at the start of your session, add feedback under your
 section, re-check for replies before you finish. Note this reordering in
 your own words there.
+
+---
+
+## Rolled-in playtest fixes (Robert, 2026-10-13)
+
+From Muse's 2026-10-12 playtest of the CURRENT build. Robert: roll these
+into the dungeon work rather than a standalone fix brief. Take them with
+your next dungeon implementation batch.
+
+### 1. Card-face CSS one-line fix (certain, verified)
+
+**Fix:** in the portrait-cards CSS rule `#handRow .card .face`, drop
+`!important` from `display` only. Keep the sizing `!important`s
+(width/height/object-fit/object-position/margin/float).
+
+**Root cause:** the build hides missing card faces via inline
+`style.display="none"` (`setCardFace`, and the `onerror` fallback path),
+per the K8 contract that missing faces hide cleanly. The stylesheet's
+`display:block !important` overrides the inline hide, so every missing face
+renders as a broken-image icon instead of disappearing. The art path
+(`art/card-faces/<lowercase-class>/<card-id>.jpg`) is correct; the art
+exists in the repo. One-line change, no design judgment.
+
+### 2. Hidden-chamber counter (unconfirmed — please check)
+
+Playtest: the dungeon header's chamber counter stayed `0/1` across four
+dungeon entries; the hidden chamber was never found. The build source
+comments that secret rooms "are not wired to anything yet" (code-comment
+match only; wiring not proven). Please confirm whether the counter tracks
+that unwired system, and wire or remove it accordingly.
