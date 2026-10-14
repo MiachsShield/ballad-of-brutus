@@ -25,7 +25,7 @@ the build.
 | # | Figure | Where it appears | Now | Needs |
 |---|---|---|---|---|
 | 1 | **Overseer** (warden) | Boss room on every dungeon's last floor; 2.6 tall, the biggest thing on screen | **3D placeholder** (boxes and cylinders: maul, shield) | Full sprite sheet. Highest priority: the boss is the payoff of every run |
-| 2 | **Brutus's fist** | First-person, bottom-right of the view, every fight | **2D placeholder drawn in code** (flat wrapped fist and forearm) | First-person frame set (spec below). Muse: reads well in fights, but cartoonish next to the painted monsters |
+| 2 | **Brutus's first-person combat** | First-person, bottom corners (both fists), every fight | **2D placeholder drawn in code** (flat wrapped fist and forearm) | Full animation frame set (spec below). Muse: reads well in fights, but cartoonish next to the painted monsters |
 | 3 | **Other companions and guests**: Warrior, Knight, Rogue, Ranger, Mage, Priest | Anyone in your party who isn't Ember or Wren, and every guest from a contract | **3D placeholder**: two stand-ins (robed staff figure, archer figure) | One sheet per class (6). Readable class at corridor distance; a neutral face, since they stand in for many people |
 | 4 | **Guild ambush raiders** | Campaign raids on expeditions | **3D placeholder**: the same stand-ins, tinted | Covered by #3 plus a hostile tint, or one raider sheet per class if Muse thinks it's needed |
 | 5 | **Skulker, Brute, Stalker, Grazer** | Ordinary dungeon monsters | **One painted still each** (512 px, Grok). No animation, no turning; the game only tints them and bobs them | Full sprite sheets. The existing paintings are the design starting point; they are also busier than Robert's "not visually noisy" |
@@ -67,12 +67,48 @@ a monster *is*. Re-drawing the current designs cleaner is within this brief.
   `grazer.png`, `class-warrior.png` … `class-priest.png`, `rare-gravemaw.png`,
   `rare-pale-hunter.png`, `rare-old-ratchet.png`.
 
-**Brutus's fist** (first person):
-- Transparent PNGs, 1024 × 1024, the forearm entering from the **bottom-right edge** on a diagonal,
-  knuckles toward the centre (matches the current placeholder's framing).
-- Frames: idle · wind-up light · wind-up medium · wind-up heavy · strike (fully extended) · guard
-  (forearm raised across) · stunned (dropped, loose). Wrapped hands, island leather, per the guide.
-- Files: `art/sprites/fist/<frame>.png` (`idle.png`, `windup-light.png`, …).
+**Brutus's first-person combat** (revised 2026-10-14 — Robert's direction; supersedes the
+previous single-fist framing):
+- Staging (from action-game research): BOTH fists rest SMALL at the **bottom corners**
+  (left fist bottom-left, right fist bottom-right, mirrored), centre screen fully open for the
+  enemy. The old large centred single-fist framing is retired; the 7 delivered frames
+  (`art/sprites/fist/`) are the right arm's base — re-pose them smaller at the corners.
+- Every attack: the active fist darts from its corner toward screen centre (toward the enemy)
+  and snaps back; it never lingers extended. Heavy attacks move the CAMERA toward the enemy
+  instead of drawing a longer arm.
+- Transparent PNGs, 1024 × 1024. Wrapped hands, island leather, bone wraps, per the guide;
+  light from upper-left, consistent with the monster sheets.
+- Files: `art/sprites/fist/<frame>.png` for both arms (left = mirrored right), and
+  `art/sprites/kicks/<frame>.png` for the boot (dark island-leather boot, bone-wrapped ankle,
+  same painterly finish).
+
+Full animation sequences (all at 60fps; f = frames; unique-cel counts are the smoothness target):
+- JAB (right, light) 13f: startup 3 · active 3 · recovery 7. Hitstop 3f. Keys: rest → contact
+  (scale ~1.35) → rest. ~10 cels.
+- CROSS (left, medium) 18f: startup 5 · active 3 · recovery 10. Hitstop 5f. ~14 cels.
+- HAYMAKER (right, heavy) 33f: startup 12 (big windup, camera lunges) · active 4 · recovery 17.
+  Hitstop 10f. ~24 cels.
+- HEADBUTT 29f: startup 10 (camera pushes IN to ~2.2× zoom on the enemy's face, fists drop to
+  frame edges) · active 4 (impact at max zoom, crunchy) · recovery 15 (camera pulls back).
+  Hitstop 10f. ~22 cels.
+- FRONT KICK (medium) 26f: startup 8 (boot chambers from bottom edge, knee up) · active 4
+  (boot snaps to centre, sole to camera) · recovery 14. Hitstop 5f. ~20 cels.
+- ROUNDHOUSE KICK (heavy) 33f: startup 12 (boot sweeps in from the right) · active 4 ·
+  recovery 17. Hitstop 10f. ~24 cels.
+- HURT (Brutus takes damage): light 11f / medium 16f / heavy 20f — red edge flash, fists
+  flinch inward (guard pose flashes on medium+), camera knock; heavy knockdown 60–75f.
+- GUARD (block): instant guard pose + white flash + 4f shake.
+
+Impact rules (every attack):
+- Hitstop: light 2–3f · medium 4–6f · heavy 8–12f. Freeze attacker and enemy, never the input.
+- Enemy flash white/red 3–6f; camera shake 6–12f decaying (~0.4% screen height light,
+  ~1.5% heavy).
+- Drop the last 1–2 eased in-between frames before contact (the strike snaps).
+- Damage numbers appear AFTER the freeze, never during it.
+- Crits: camera zoom punch-in ~1.15× + max 12f hitstop + bigger shake + gold reward flash;
+  damage ×1.5.
+- In-between easing: strikes ease-out (fast), windups ease-in (slow anticipation),
+  recoveries ease-in-out.
 
 ## Readability acceptance (check before handing over)
 
