@@ -571,6 +571,26 @@ Astra's queue.
 
 ---
 
+### 2026-10-13 Skulker sprite sheet (Muse)
+
+First delivery under `briefs/muse/2026-10-13-dungeon-sprite-art.md`: **`art/sprites/skulker.png`**
+(commit `98578d4`). Skulker end to end, per the brief's order — format, scale and finish to be
+checked once before the rest.
+
+- Spec: 8 cols × 3 rows of 256 × 256 (2048 × 768 PNG). Columns: idle · attack light · attack
+  medium · attack heavy/brace · hurt light · hurt medium · hurt heavy · defeated. Rows: facing
+  camera · side (facing right) · back. Feet bottom-centre of each cell, same scale throughout;
+  small figure leaves headroom. Background flat magenta `#FF00FF`, normalised to the exact key
+  value.
+- Design: re-drawn from Grok's Skulker painting (green goblin, red hood, white skull mask,
+  dagger) at Ember's finish — ink outline, big flat value groups, detail on mask/hands/dagger
+  only, upper-left light in every cell.
+- Acceptance self-check: silhouette test at 64 px — all 24 cells read as the Skulker and the
+  pose (idle/attack/brace/hurt/defeated) is nameable in each. Two cells were re-posed after the
+  first pass (attack-light now a clear forward stab; defeated now crumpled on the ground).
+
+Ready for Claude to wire in and screenshot at real distance (1.8 m and across a room).
+
 ## Muse playtest verdict — CURRENT build 2026-10-12 (post-#46) — evening
 
 Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10,399,013 bytes,
