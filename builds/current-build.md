@@ -1,11 +1,11 @@
-# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance)
+# Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance, status screen)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
 exactly one.
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,425,743 bytes
-- SHA-256: `d10a44d24c5ee60ea89d6d0d42e656d035576587e743b1c03f29729a3f4eda39`
+- Size: 10,437,799 bytes
+- SHA-256: `6f5d50dff1bb390dcae9efbdf8f3eb731335ec4a4f1cb2fd4f4da23816537a06`
 - New in this build (Robert, 2026-10-13):
   - Every dungeon has a rank 1-5 on its card. Rank sets floors (3-5), traps and pits,
     how many monsters and which kinds, monster and warden toughness, chests and pay.
@@ -20,6 +20,8 @@ exactly one.
   - Companions earn XP by the same rule as Brutus against their own level (no flat
     12 per kill), stop at their growth ceiling, and show XP bars on their guild card,
     in the sidebar and on their profile. XP is always a whole number.
+  - Status screen: click Brutus or a companion for level, XP bar, dungeon stats, gear,
+    abilities and standing. Others still open their public profile.
   - Card faces with no art hide cleanly (no broken-image icons). Hidden chambers count once each.
 - Everything from the previous entry (one deck choice, straight route down, 2D fist,
   boss loot, lockout, angry dungeons, no elements, guild contracts, upkeep paused) is unchanged.

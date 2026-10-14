@@ -287,6 +287,9 @@ Robert's 2026-10-13 asks, built (player impact first):
    twice, repeat conquests pay less. Full rank 2 clear at Lv22: +2.0 levels → +1.0.
    Companions now earn by the same rule against their own level (no flat 12/kill),
    stop at their growth ceiling, and have XP bars. All XP is whole numbers.
+6. **Status screen**: clicking Brutus or a companion opens a status screen (level,
+   XP bar, dungeon stats, gear, abilities, standing). Found: companion gear is not
+   applied in the dungeon; only Brutus's is. Flagged on the screen.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
