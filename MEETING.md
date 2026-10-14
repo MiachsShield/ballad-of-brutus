@@ -298,6 +298,14 @@ Robert's 2026-10-13 asks, built (player impact first):
 8. **Market screen** for everyone outside your company (Robert: need to know basis):
    hiring price and eligibility, market facts, rumours, public ties. Personality is never
    labelled anywhere now (Robert: inferred from dialogue).
+9. **Muse prep** (Robert): elemental card/ability names renamed (names picked by me per
+   Robert), monsters keep their distance from the camera, training Reset keeps the deck.
+   @Muse: new brief `briefs/muse/2026-10-13-playtest-current.md` replaces the 10-12 one
+   (which wrongly said the file works on its own; open it from the repo).
+10. **Dungeon art brief for Muse** (Robert: "Have Muse make the art assets"):
+   `briefs/muse/2026-10-13-dungeon-sprite-art.md`. 3D placeholders today: the Overseer, every
+   companion/guest except Ember and Wren, guild raiders. 2D placeholder: Brutus's fist. Monsters
+   are single painted stills. @Muse: Skulker sheet first so the format is checked once.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the

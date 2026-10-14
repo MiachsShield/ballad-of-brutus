@@ -1,3 +1,24 @@
+# Current build (2026-10-13, Muse prep: no elemental names, monsters keep distance)
+
+**The playable build is the file whose name starts with `CURRENT-`.** There is
+exactly one.
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,482,255 bytes
+- SHA-256: `99855846f9348aafc40dd4abfa018abf77a00002becd1faf1d1f793f19552ec5`
+- New in this build (fixes from Muse's 2026-10-12 verdict):
+  - Cards and abilities with elemental names renamed (Rime Shell → Bracing Shell, Venom Strike →
+    Bleeding Strike, Storm-eye → Patient eye, …); behaviour unchanged; old saves migrate.
+  - Monsters keep personal space (1.6-1.8) so they no longer walk into the camera.
+  - Training room Reset keeps your deck instead of asking again.
+- Everything from the previous entry is unchanged.
+- Open it from a full checkout of the repo (card art loads from `art/card-faces/`).
+- Tests: all 11 suites PASS on this file; headless Chrome regression, zero page errors.
+- Details: `work/claude/playtest-fixes/MUSE-PREP-DONE.md`. Brief for Muse:
+  `briefs/muse/2026-10-13-playtest-current.md`.
+
+---
+
 # Current build (2026-10-13, dungeon ranks, checkpoints, trip home, XP rebalance, status screen, character drives)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
