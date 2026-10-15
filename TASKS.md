@@ -98,7 +98,7 @@ passes.
 | [x] done (Kavi, 2026-09-16, playtested) | K9: Second Wind stun-only card replacing the F-keybind (after Claude C3) | Appears only while stunned, no deck footprint otherwise |
 | [ ] open | K10: SFX P2 (dungeon ambience/interactions) + P3 (overworld UI), procedural like P0/P1 | Waveform checks as in P0/P1 |
 | [ ] queued | Region map + takeover/settlement implementation | After Claude C1/C2 specs land |
-| [ ] queued · **Muse** | Dungeon character art (Robert 2026-10-13: Muse makes it): Overseer, Brutus's fist, Skulker/Brute/Stalker/Grazer sheets, 6 class sheets, rare-monster variants | `briefs/muse/2026-10-13-dungeon-sprite-art.md` |
+| [ ] queued · **Muse** | Dungeon character art (Robert 2026-10-13: Muse makes it): Overseer, Brutus's fist, Skulker/Brute/Stalker/Grazer sheets, 6 class sheets, rare-monster variants | `briefs/muse/2026-10-13-dungeon-sprite-art.md` + guide `art/visual-guide/dungeon-sprites/` (inked cel; run `sprite_check.py` before handing over) |
 
 ## Unassigned
 

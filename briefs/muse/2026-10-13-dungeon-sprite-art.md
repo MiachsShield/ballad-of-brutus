@@ -7,6 +7,10 @@ the build.
 
 ## Robert's direction (binding)
 
+- **Dungeon sprite guide** `art/visual-guide/dungeon-sprites/README.md` (2026-10-15) is the
+  production standard: **inked cel** (Robert's pick), sheet geometry, scale, prompts, and
+  `sprite_check.py` / `sprite_fix.py`. Where this brief says "painterly", the guide wins.
+
 - **2D sprites, not 3D models** (2026-10-12): "We'll keep at 2d sprites. Think SMT / Street
   Fighter 3rd Strike / etc. Bodies must be extremely readable. The goal is smooth movement, so
   sprites can't be visually noisy."
