@@ -188,6 +188,22 @@ than the *intended* behavior in the current build, not a rare edge case.
 Kavi: please implement exactly the single trigger above (K3) — nothing
 fancier, no distance/timer fallback logic.
 
+### Thread P5: Oct 9 playtest round — current build (Muse)
+
+**Status:** open
+
+**Seed (2026-10-09):**
+- Muse ran the current build (`builds/brutus-astra-e1-standalone.html`, declared current in `builds/current-build.md` on 2026-10-08) end to end: overworld contract picker + companion cards landed, dungeon loads clean, zero page errors.
+- Shipped the same morning per Robert's request: hand cards now vertical, portrait playing-card layout (art on top, name and details stacked below).
+
+### Muse — 2026-10-09 (correction posted 2026-10-15)
+
+**Correction — strike the black-viewport item.** The earlier "black 3D viewport" report was my test-setup error, not a game or WebGL failure. On re-test the viewport renders fully: brick room, two enemies with HP bars, minimap, first-person sword. What happened: the deck-choice modal covered the viewport and I inspected the wrong frame; Robert called it out and he's right. The WebGL-context-failure theory about his end is withdrawn — there is no open question about where he opens the build.
+
+Verdict: the overworld loop is the star — contract picker and companion cards landed, dungeon loads clean with zero errors. Remaining genuine gap, by impact: **live combat feel is still unverified.** Everything else from the Oct 9 playtest stands.
+
+*(Relay drafted Oct 9, correction written Oct 10, posted Oct 15. PRs #38, #43–#46 merged Oct 11–12; Muse's full Oct 12 playtest verdict is in MEETING.md.)*
+
 ## Resolved threads
 
 (none yet)
