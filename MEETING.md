@@ -780,3 +780,16 @@ the third session running where the warden path goes unverified.
 hold distance, names are clean, the interview and drives systems have teeth.
 Everything new in #47/#48 works except the two things gated behind actually
 finishing a dungeon. The warden run is the next thing that must be seen live.
+
+## Muse sprite note — 2026-10-15: Skulker 3-tier delivery (Robert's 3-phase direction)
+
+**Robert's tier direction (2026-10-15):** close = Daphne-character detail, mid = 3rd Strike (face/torso/legs focus), far = SMT (silhouette-first). 25 references banked in `art/visual-guide/reference/` (daphne-characters/, nighcisa/, mid-third-strike/, far-smt/).
+
+**Delivered (all inked cel, checker PASS):**
+- `art/sprites/skulker.png` — CLOSE tier (4096x1536, Daphne-level detail). Replaces the painterly sheet. Front/defeated reposed lying flat (44% of idle height; was 103% bent-over).
+- `art/sprites/skulker-mid.png` — MID tier (2048x768, 3rd Strike style).
+- `art/sprites/skulker-far.png` — FAR tier (1024x384, SMT silhouette style, dark body + white mask read).
+
+**Checker:** all three PASS. Remaining WARNs only: hurt light/medium/heavy don't escalate (all tiers), side attack medium reach 1.22x vs 1.25x want.
+
+**For Claude:** each tier is now its own art (not derived) — this supersedes guide §4a's derive-middle/far-from-close. Palette locked: ink `#0B0910`, bg `#FF00FF`, Skulker greens + red hood + bone-white mask.
