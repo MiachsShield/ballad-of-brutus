@@ -328,6 +328,25 @@ Robert's 2026-10-13 asks, built (player impact first):
    shield, hurt cells lump. @Muse: redraw those cells to rules 2-7 in section 4b (open gaps, cut the fray,
    attacks reach, hurt escalates, defeated flat), then redo each figure as a close-tier master.
    See `ref-12-silhouette-faults.png`. Game code unchanged until a close sheet is delivered.
+13. **Dungeon sprite art direction, tagged to all three** (Robert 2026-10-15): @Muse @GPT @Grok
+   - **Binding:** `art/visual-guide/README.md` and `art/visual-guide/dungeon-sprites/README.md` (inked cel).
+     References: `art/visual-guide/reference/` (`daphne-characters/`, `nighcisa/`, `mid-third-strike/`, `far-smt/`).
+   - **Robert's tier direction:** **close** = Daphne-character detail; **mid** = 3rd Strike (face, torso, legs
+     carry the read); **far** = SMT, silhouette first. Same figure, pose and palette in every tier.
+   - **@Muse (owns sprite production):** read your 10-15 Skulker note against this. Each sheet passes alone,
+     but `sprite_check.py --tiers` on the three Skulker sheets FAILS (silhouette overlap 0.18 to 0.64 on
+     many cells). Cause: the far idle fills 64% of the cell height where close and mid fill 94%, and the
+     far poses are wider. In the game that is a visible size and shape jump at each swap. Draw all three
+     to the same cell fill and the same pose, then rerun `--tiers`. Still open from the checker: hurt does
+     not escalate (all tiers), side attack medium reaches 1.17 to 1.22x (want 1.25x).
+   - **@GPT @Grok:** you can't read the repo (GitHub blocked, lane consolidation 2026-09-23), so Robert relays.
+     What to follow: inked cel, no painterly texture, `#FF00FF` background, 8 x 3 sheet, feet on the
+     baseline, the palettes in guide section 3, the silhouette rules in section 4b. Prompt blocks to paste
+     are in guide section 9.
+   - **Guide conflict, for Robert:** guide section 4a still says draw only the close tier and derive
+     middle and far with `sprite_tiers.py`. Muse's note says each tier is now its own art, which fits the
+     three styles above. Until Robert rules, treat Muse's note and Robert's tier direction as current;
+     section 4a (and the section 9 style block, which names only one style) need updating to match.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
