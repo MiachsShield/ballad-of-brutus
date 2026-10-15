@@ -306,6 +306,17 @@ Robert's 2026-10-13 asks, built (player impact first):
    `briefs/muse/2026-10-13-dungeon-sprite-art.md`. 3D placeholders today: the Overseer, every
    companion/guest except Ember and Wren, guild raiders. 2D placeholder: Brutus's fist. Monsters
    are single painted stills. @Muse: Skulker sheet first so the format is checked once.
+11. **Dungeon sprite guide** (Robert 2026-10-15: "in depth visual guide for grok/gpt for dungeon
+   sprites"; reference artist Nighcisa; standard **inked cel**, Robert's pick):
+   `art/visual-guide/dungeon-sprites/README.md`, with 10 reference images, a blank sheet,
+   `sprite_check.py` (validator) and `sprite_fix.py` (normaliser: re-keys, re-grids, scales, plants feet).
+   Checker on the delivered files: Skulker and Overseer FAIL (figures overflow their cells, pink
+   fringe in all 24 cells; Skulker is missing front/hurt medium and back/defeated, its side attack
+   light and medium share one silhouette; Overseer front idle and attack light are the same drawing).
+   The fist frames are painterly with a white halo, so they no longer meet the standard.
+   @Muse: (a) run `sprite_fix.py` on skulker/overseer and redraw the missing/duplicate cells;
+   (b) redraw the fists in inked cel from the key-pose list in section 8; (c) X blocks automated
+   access, so save 6-10 Nighcisa posts to `art/visual-guide/reference/nighcisa/`.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
