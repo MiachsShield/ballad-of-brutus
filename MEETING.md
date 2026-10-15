@@ -317,6 +317,17 @@ Robert's 2026-10-13 asks, built (player impact first):
    @Muse: (a) run `sprite_fix.py` on skulker/overseer and redraw the missing/duplicate cells;
    (b) redraw the fists in inked cel from the key-pose list in section 8; (c) X blocks automated
    access, so save 6-10 Nighcisa posts to `art/visual-guide/reference/nighcisa/`.
+12. **Three detail tiers + silhouette read** (Robert 2026-10-15: close / middle / far sprites; "Muse sprites
+   are not reaching proper silhouette read"): guide sections 4a and 4b in
+   `art/visual-guide/dungeon-sprites/README.md`. The model draws only the **close** master (4096x1536,
+   512 px cells, Daphne-level face/hands/weapon); `sprite_tiers.py` derives middle (2048x768) and far
+   (1024x384). `sprite_check.py` now measures silhouette read at 64 px and `--tiers` checks the three agree.
+   Findings on Muse's current sheets after `sprite_fix.py`: Skulker side defeated stands at 86% of idle
+   height (must be under 50%, lying flat), side attack light = medium (IoU 0.94), front/hurt medium and
+   back/defeated still missing; Overseer front attack light = idle (IoU 0.99), maul merges with body and
+   shield, hurt cells lump. @Muse: redraw those cells to rules 2-7 in section 4b (open gaps, cut the fray,
+   attacks reach, hurt escalates, defeated flat), then redo each figure as a close-tier master.
+   See `ref-12-silhouette-faults.png`. Game code unchanged until a close sheet is delivered.
 
 Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (every
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
