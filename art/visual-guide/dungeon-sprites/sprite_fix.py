@@ -9,28 +9,41 @@ What it does:
   1. Keys the background (exact #FF00FF and the pink spill around it) with a hard edge.
   2. Finds every separate shape and gives it to the cell its centre sits in, so a sword tip
      poking into the next cell goes back to its owner and slivers from neighbours disappear.
-  3. Scales each row so its idle figure stands 230 px (head 18 px from the top, feet on the
+  3. Scales each row so its idle figure stands 230 px at 256 px cells (scaled for the tier; head 18 px from the top, feet on the
      baseline 8 px above the bottom): the same creature is the same height from every side.
      Cells that would still overflow are shrunk on their own and reported.
   4. Puts each figure's feet on the baseline and its body centre on the cell's centre line.
-  5. Writes a clean 2048 x 768 sheet on exact #FF00FF (or transparent with --alpha).
+  5. Writes a clean sheet (4096 x 1536 close, 2048 x 768 middle, 1024 x 384 far) on exact #FF00FF (or transparent with --alpha).
 
 Usage:
-  python3 sprite_fix.py raw.png art/sprites/brute.png [--alpha] [--no-scale]
+  python3 sprite_fix.py raw.png art/sprites/brute.png [--alpha] [--no-scale] [--tier close|middle|far]
+    (tier is read from the input width when omitted: 4096 close, 2048 middle, 1024 far; folders default to close)
   python3 sprite_fix.py poses/ art/sprites/brute.png      # a folder of one-pose images
     The folder holds r1c1.png ... r3c8.png (row 1-3, column 1-8, as in the sheet template),
     each one figure on #FF00FF or on transparency, any size. Missing files become empty cells.
 Then run sprite_check.py on the output.
 Needs: pip install pillow numpy scipy
 """
+import os
 import sys
 import numpy as np
 from PIL import Image
 from scipy import ndimage
 
-CELL, COLS, ROWS = 256, 8, 3
-BASE = CELL - 8
-TOP = 18
+COLS, ROWS = 8, 3
+TIERS = {'close': 512, 'middle': 256, 'far': 128}   # cell size per detail tier
+CELL = 512
+K = CELL / 256.0            # everything below is written for 256 px cells and scaled by K
+BASE = CELL - round(8 * K)
+TOP = round(18 * K)
+
+
+def set_tier(name):
+    global CELL, K, BASE, TOP
+    CELL = TIERS[name]
+    K = CELL / 256.0
+    BASE = CELL - max(2, round(8 * K))
+    TOP = max(3, round(18 * K))
 KEY = np.array([255, 0, 255], dtype=np.uint8)
 
 
@@ -67,20 +80,30 @@ def compose_folder(folder):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    argv = sys.argv[1:]
+    tier = None
+    if '--tier' in argv:
+        i = argv.index('--tier'); tier = argv[i + 1]; del argv[i:i + 2]
+    args = [a for a in argv if not a.startswith('--')]
     alpha_out = '--alpha' in sys.argv
     rescale = '--no-scale' not in sys.argv
     if len(args) != 2:
         print(__doc__)
         return 2
     src, dst = args
-    import os
+    if tier is None:
+        tier = 'close'
+        if not os.path.isdir(src):
+            w = Image.open(src).width
+            tier = {4096: 'close', 2048: 'middle', 1024: 'far'}.get(w, 'close')
+    set_tier(tier)
+    print(f'tier: {tier} ({CELL} px cells, {CELL * COLS} x {CELL * ROWS} sheet)')
     if os.path.isdir(src):
         im = compose_folder(src)
     else:
         im = Image.open(src).convert('RGBA')
     if im.size != (CELL * COLS, CELL * ROWS):
-        print(f'note: input is {im.size}; resizing to 2048 x 768 first')
+        print(f'note: input is {im.size}; resizing to {CELL * COLS} x {CELL * ROWS} first')
         im = im.resize((CELL * COLS, CELL * ROWS), Image.LANCZOS)
     arr = np.array(im)
     fg = ~background_mask(arr[..., :3]) & (arr[..., 3] > 127)
@@ -105,7 +128,7 @@ def main():
         if sl is None:
             continue
         m = labels[sl] == i
-        if m.sum() < 25:
+        if m.sum() < 25 * K * K:
             continue
         cy, cx = ndimage.center_of_mass(m)
         shapes.append((i, sl, int(m.sum()), cy + sl[0].start, cx + sl[1].start))
@@ -166,7 +189,8 @@ def main():
     for (r, c), (img, bx) in sorted(crops.items()):
         s = row_scale[r]
         w, h = img.width * s, img.height * s
-        fit = min(1.0, (CELL - 6) / w, (BASE - 2) / h)
+        m_ = max(3, round(4 * K))
+        fit = min(1.0, (CELL - 2 * m_) / w, (BASE - 2) / h)
         if fit < 1.0:
             report.append(f'row {r + 1} col {c + 1}: shrunk to {fit:.0%} to fit its cell')
             s *= fit
@@ -179,7 +203,7 @@ def main():
         a[pink, :3] = (11, 9, 16)  # leftover magenta spill on the edge becomes ink outline
         sc = Image.fromarray(a, 'RGBA')
         x = int(round(c * CELL + CELL / 2 - bx * s))
-        x = max(c * CELL + 3, min(x, c * CELL + CELL - 3 - nw))
+        x = max(c * CELL + m_, min(x, c * CELL + CELL - m_ - nw))
         y = r * CELL + BASE - nh
         out.alpha_composite(sc, (x, y))
     if not alpha_out:

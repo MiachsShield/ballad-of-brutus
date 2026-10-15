@@ -14,6 +14,8 @@ Contents
 2. Inked cel, exactly
 3. Palette
 4. The sheet: format, states, directions
+4a. Detail tiers: close, middle, far
+4b. Silhouette read (the hard rules)
 5. Size and scale
 6. Poses that read in a fight
 7. Figure bible (every sprite, its job, its locked details)
@@ -103,12 +105,17 @@ note.
 ---
 
 ## 4. The sheet: format, states, directions
+4a. Detail tiers: close, middle, far
+4b. Silhouette read (the hard rules)
 
 ![Sheet template](ref-02-sheet-template.png)
 
-- **One PNG per figure, 2048 × 768: 8 columns × 3 rows of 256 × 256 cells.**
+- **The master is the close tier: one PNG per figure, 4096 × 1536, 8 columns × 3 rows of 512 × 512
+  cells** (section 4a). Middle (2048 × 768, 256 px cells) and far (1024 × 384, 128 px cells) are
+  derived from it by `sprite_tiers.py`. Pixel numbers elsewhere in this guide are written for a
+  256 px cell; multiply by 2 for the close tier and halve for far.
 - **Background flat `#FF00FF`** (exact), or a transparent PNG. A blank canvas is in this folder
-  (`blank-sheet-2048x768-magenta.png`).
+  (`blank-sheet-2048x768-magenta.png`; scale it 2x for the close master).
 - **Feet on the baseline,** 8 px above the bottom of each cell. Horizontally, the body's centre
   sits on the cell's centre line. Weapons and cloaks may reach toward the edges but must stay
   3 px inside the cell.
@@ -142,6 +149,79 @@ Ember's sheet shows the order and finish:
 
 **First-person frames** (Brutus's fists and boot) are not sheets: one transparent 1024 × 1024 PNG
 per frame (section 8).
+
+---
+
+## 4a. Detail tiers: close, middle, far
+
+![Three tiers](ref-11-three-tiers.png)
+
+Robert, 2026-10-15: keep the close-up appeal of the Nighcisa/Daphne reference, and keep fights
+readable at range. So every figure ships in three tiers of the **same drawing**, and the game
+swaps them by distance (like level-of-detail models).
+
+| Tier | Sheet | Cell | Style | Used |
+|---|---|---|---|---|
+| **Close** | 4096 x 1536 | 512 px | Inked cel body, plus the Daphne-level treatment on face, hands and weapon | Normal fight range (monsters stop about 1.7 m away); first-person fists and boots always |
+| **Middle** | 2048 x 768 | 256 px | Inked cel: flat colour groups, one hard shadow step, hard ink contour | Mid-room, about 4 to 10 m |
+| **Far** | 1024 x 384 | 128 px | Silhouette first: simplified outline, 6 to 7 flats, one accent colour, heavier contour | Across the room or down a corridor, beyond about 10 m |
+
+Cutover distances are a starting guess, to be tuned in play. The game blends with a buffer zone
+so a sprite sitting on a boundary doesn't flicker between tiers.
+
+**Only the close tier is drawn by an image model.** Middle and far are produced by
+`sprite_tiers.py` (section 10), so a figure is one drawing job, not three, and the tiers cannot
+drift apart. Middle may want a quick hand touch-up; far should not.
+
+### What "Daphne-level" means in the close tier
+
+The body stays flat inked cel (it must animate and tint cleanly). The extra appeal goes in
+exactly four places, taken from the Nighcisa feed:
+
+1. **Face.** Big eyes with a dark lash line, an iris colour that contrasts with the hair (purple
+   hair, green eyes; dark hair, teal eyes), one hard highlight. Clear eyebrow shapes. One
+   expression per figure (class figures stay neutral).
+2. **Hair.** Two or three big flat shapes plus one accent lock (the teal tuft, a red flower).
+   Braids and side locks give the head its silhouette.
+3. **Hands and weapon.** Drawn fully: fingers, knuckle wraps, bracer buckles, the weapon's
+   ornament. These are the 3 places where the eye lands at close range.
+4. **Trim.** A brass (or gold) second line along cloth and armour edges, tracing the contour.
+
+Plus two finish rules that cost nothing:
+- **Shadows shift hue.** The one shadow step goes cooler and slightly violet (skin goes warmer in
+  the light), not just darker. This is the cheapest appeal gain.
+- **Cute body, nasty feature.** Monsters keep a harmless idle and reveal the nasty feature only
+  in the attack cells (maw opens, claws extend). Nighcisa's snow rabbit is the model.
+
+Still never: texture noise, gradients across the body, glow or rim light, painted backgrounds.
+
+**Consistency rule across tiers:** same pose, same palette, same silhouette. The checker
+compares them (`sprite_check.py --tiers`) and fails a set whose silhouettes drift apart.
+
+---
+
+## 4b. Silhouette read (the hard rules)
+
+Muse's first sheets did not read as silhouettes (`ref-12-silhouette-faults.png`). The test is
+the sheet filled solid and shrunk to 64 px per cell; `sprite_check.py` now measures it.
+
+![Silhouette faults](ref-12-silhouette-faults.png)
+
+1. **Name the creature and the move from the black shape alone.** If you can't, the drawing is
+   wrong, not the checker.
+2. **Open gaps.** Weapon, free arm and body must be separated by background wherever they
+   overlap in a strike. A maul pressed against a shield and torso is one blob. Hold the weapon
+   out from the body, or put it on the far side.
+3. **Cut the fray.** Torn cloaks, fur tufts and spikes become ragged edge noise at small size.
+   Use two or three big shaped tatters per figure, not a fringe. (Fail at edge ratio above 2.2.)
+4. **Attacks reach.** In the side row, attack light reaches at least 1.1x the idle width and
+   medium at least 1.25x: a limb or weapon must leave the body. Heavy (monsters: brace) goes
+   low and wide, not long.
+5. **No two poses alike.** Any two cells in a row above 90% overlap fail (idle = attack light was
+   the Overseer's fault).
+6. **Hurt escalates.** Light, medium, heavy each change more from idle than the one before.
+7. **Defeated is flat.** Under 50% of idle height, so it reads as down across a room.
+8. **Stay inside the cell.** No cropping, no pieces cut by the border.
 
 ---
 
@@ -287,6 +367,10 @@ world as the monsters they hit.
 Image models are good at style and bad at grids. Don't ask for a whole 8 × 3 sheet in one image:
 cells come out off-grid, sizes drift, poses repeat and props change. Work like this:
 
+**Step 0: you are drawing the close tier.** Ask for large images (1024 x 1024 or bigger) with face,
+hand and weapon detail (section 4a). Middle and far are made by script afterwards; never ask a
+model for them.
+
 **Step 1: the model sheet.** One image, the creature three times (front, side facing right,
 back), idle, on flat `#FF00FF`. Iterate until it's on-model. This image is the reference for
 everything after it.
@@ -295,8 +379,11 @@ everything after it.
 the model sheet as a reference image (both tools accept image input). Name the files
 `r1c1.png` … `r3c8.png` (row, column).
 
-**Step 3: compose and clean.** `python3 sprite_fix.py poses/ art/sprites/<name>.png`, then check
-it (section 11).
+**Step 3: compose and clean.** `python3 sprite_fix.py poses/ art/sprites/<name>-close.png`
+(close is the default for a folder), then check it (section 11).
+
+**Step 4: derive the other tiers.** `python3 sprite_tiers.py art/sprites/<name>-close.png
+art/sprites/<name>`, then `sprite_check.py --tiers` on all three (sections 10 and 11).
 
 **Style block** (paste at the start of every prompt):
 
@@ -345,31 +432,52 @@ cells and rows, feet floating, pink fringe from the key. `sprite_fix.py` fixes t
 
 ```
 pip install pillow numpy scipy
-python3 sprite_fix.py raw-sheet.png art/sprites/brute.png    # a generated sheet
-python3 sprite_fix.py poses/ art/sprites/brute.png           # a folder of r1c1.png ... r3c8.png
+python3 sprite_fix.py raw-sheet.png art/sprites/brute-close.png   # a generated sheet
+python3 sprite_fix.py poses/ art/sprites/brute-close.png          # a folder of r1c1.png ... r3c8.png
+python3 sprite_fix.py raw.png out.png --tier middle               # tier is read from the width otherwise
 ```
 
 It keys the background with a hard edge and turns leftover pink spill into outline; gives each
 figure its own cell (splitting figures that touch, returning stray weapon tips to their owner,
-dropping slivers of neighbours); scales each row so idle stands 230 px; and puts feet on the
-baseline. It reports cells it had to shrink and cells left empty.
+dropping slivers of neighbours); scales each row so idle stands 230 px (at 256 px cells; scaled for
+the tier); and puts feet on the baseline. It reports cells it had to shrink and cells left empty.
 
 It does **not** fix drawing faults: a missing pose, the wrong prop, an off-model face, two
 columns with the same pose. Regenerate those.
+
+### Deriving the middle and far tiers: `sprite_tiers.py`
+
+```
+python3 sprite_tiers.py art/sprites/brute-close.png art/sprites/brute
+# writes brute-middle.png (2048 x 768) and brute-far.png (1024 x 384)
+```
+
+Middle: shrinks 2x, flattens to about 28 colours, re-inks a hard 3 px contour. Far: shrinks 4x,
+simplifies the silhouette (closes pinholes, rounds frayed edges, drops specks), flattens to 7
+colours while keeping the most saturated one as the accent, and draws a 2 px contour. Both draw
+the contour inside the edge so the silhouette extent is identical across tiers. It can't rescue a
+weak close-tier silhouette; fix that at the source.
 
 ---
 
 ## 11. Checking: `sprite_check.py` and the human pass
 
 ```
-python3 sprite_check.py art/sprites/brute.png
+python3 sprite_check.py art/sprites/brute-close.png           # tier read from the width
+python3 sprite_check.py --tiers art/sprites/brute-close.png art/sprites/brute-middle.png art/sprites/brute-far.png
+python3 sprite_check.py --sil art/sprites/brute-close.png sil.png   # see the 64 px silhouettes
 python3 sprite_check.py --fp art/sprites/fist/*.png
 ```
 
 **Fails:** wrong size or background; a figure touching its cell border (it bleeds into the next
 cell in the game); pink fringe; an empty cell; idle heights differing between rows by more than
 12%; first-person frames that aren't transparent or have a light halo.
-**Warns:** feet off the baseline; two poses with the same silhouette; small fringe.
+**Silhouette fails (section 4b):** blob (no gaps between limbs and weapon), shredded or ragged edge,
+two poses in a row above 90% overlap, a side-row attack that doesn't reach past idle, a defeated
+pose that isn't flat. **Tier fails:** the same cell differing between tiers (silhouette overlap
+below 0.70).
+**Warns:** feet off the baseline; poses above 80% overlap; busy edges; hurt that doesn't escalate;
+small fringe; tier drift between 0.70 and 0.80.
 
 Then a human (Muse) checks what code can't:
 1. Silhouette test at 64 px (`ref-04-silhouette-test.png`): can you name the creature and the
@@ -388,6 +496,7 @@ Then a human (Muse) checks what code can't:
 | Grok paintings (old monsters) | Beautiful but noisy: texture everywhere, reads as mud when small and tinted | Redraw in inked cel (section 2) |
 | Skulker sheet | Figures overflow their cells; pink fringe on every edge; two poses missing (front/hurt medium, back/defeated); side-row attack light and medium share a silhouette | Run `sprite_fix.py`; generate the two missing cells; redraw one of the two attacks |
 | Overseer sheet | Overflow and fringe as above; swords appeared in the first pass (fixed by Muse); front idle and attack light are the same drawing | Run `sprite_fix.py` (passes after); redraw attack light as a maul jab |
+| Both sheets, silhouette read | Ragged fur and cloth turn the edge to noise; weapon, arm and body merge; poses barely change; Skulker side defeated stands at 86% of idle height instead of lying down | Section 4b rules, now measured by the checker; redraw the cells it names |
 | Fist frames | Painterly, no ink: doesn't match the monsters. White halo around the cut-out. Idle, wind-ups and strike differ too little. Framing is the old single centred fist | Redraw in inked cel at the corner staging (section 8) |
 
 ---
@@ -417,7 +526,21 @@ Use the feed for what Daphne does well in a first-person dungeon:
 - how characters sit in calm moments (camp) versus in a fight;
 - restraint: serious tone without grime.
 
-Take framing, readability and tone from it, not the 3D rendering: our figures are inked cel 2D.
+Take framing, readability and tone from it, not the 3D rendering: our figures are inked cel 2D with
+close-tier detail (section 4a).
+
+**What Robert's saved posts teach (2026-10-15):**
+- Detail sits on the face, hands and weapon; everything else is big simple shapes.
+- Each figure uses few hues plus one accent; pale or warm figures stand out against a cold dark
+  dungeon.
+- Trim (gold edging, bracers, buckles) traces the contour and pulls the eye along it.
+- Materials read from value and highlight placement alone, not texture.
+- Every figure has one asymmetric element (one pauldron, a pouch and rope on one hip) and a
+  head shape and trailing shape of its own (ears, tail, hat, wings, horns).
+- Poses have one diagonal line of action; low camera angles make figures heroic.
+- Monsters are cute round bodies with one nasty feature (the snow rabbit's maw and claws, the
+  trolls' grins), shown in the attack, not the idle.
+- Shadows shift hue (warm in light, cool in shadow).
 X blocks automated access, so these images aren't in the repo yet. **Muse or Robert: save 6–10
 posts that show monster encounters and camp scenes to `../reference/nighcisa/`** (one line in
 `MEETING.md` per image saying which post it came from), so every model can be shown them.
