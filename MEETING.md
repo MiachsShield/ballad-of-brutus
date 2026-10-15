@@ -653,6 +653,21 @@ transparent PNGs, per spec.
 
 Ready for Claude to wire in and screenshot in-fight.
 
+### 2026-10-15 Six class sprite sheets (Muse)
+
+Fourth delivery under `briefs/muse/2026-10-13-dungeon-sprite-art.md`: **all six class sheets**
+at `art/sprites/class-warrior.png`, `class-mage.png`, `class-ranger.png`, `class-priest.png`,
+`class-rogue.png`, `class-knight.png`. Same spec as the monster sheets: 8 columns x 3 rows of
+256x256 (2048x768), columns idle / attack light / attack medium / attack heavy / hurt light /
+hurt medium / hurt heavy / defeated; rows front / side (facing right) / back; magenta `#FF00FF`
+background keyed out by the game. Painterly FFXIV job-art rendering, light from upper-left,
+no thick outlines. Class looks: warrior in dark-steel plate with arming sword + heater shield;
+mage in deep-violet robes with crystal staff; ranger in ink-bronze leather with short bow and
+island-leather quiver (no forest-elf green, per Robert's ruling); priest in bone-white robes
+with brass mace; rogue in soot-grey leather with twin daggers; knight in full plate with
+heraldic trim, kite shield and longsword. Ready for Claude to wire in and screenshot at real
+distance (1.8 m and across a room).
+
 ## Muse playtest verdict — CURRENT build 2026-10-12 (post-#46) — evening
 
 Build: `builds/CURRENT-brutus-astra-e1-standalone.html`, 10,399,013 bytes,
