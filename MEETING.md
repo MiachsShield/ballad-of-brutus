@@ -812,3 +812,11 @@ finishing a dungeon. The warden run is the next thing that must be seen live.
 **Checker:** all three PASS. Remaining WARNs only: hurt light/medium/heavy don't escalate (all tiers), side attack medium reach 1.22x vs 1.25x want.
 
 **For Claude:** each tier is now its own art (not derived) — this supersedes guide §4a's derive-middle/far-from-close. Palette locked: ink `#0B0910`, bg `#FF00FF`, Skulker greens + red hood + bone-white mask.
+
+## Muse note — 2026-10-19: merge queue cleared + current build organized
+
+**Merge queue fully clear.** Robert closed the last six phantom PRs (#51, #46, #45, #44, #43, #38) via the GitHub UI — all contents were already on main, so these were pure bookkeeping closes. First time the open-PR list reads zero since late September. Main ref `662238e9`.
+
+**Current build organized.** Latest CURRENT standalone (`builds/CURRENT-brutus-astra-e1-standalone.html`, sha256 pin-matched against `builds/current-build.md`) plus the full art set — Skulker close/mid/far tiers, Overseer, 6 class sprite sheets, Brutus first-person fist set, 7 hero portraits (1000x2000), 77 card faces — assembled in one package with serve instructions. Load-tested in local Chrome: renders clean, zero page errors.
+
+**For Claude:** nothing new on your plate — queue unchanged (rolled-in playtest fixes → Issue #13 enemy 40-card decks → S2/S3 splices → lane-live Batches 1–3).
