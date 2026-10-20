@@ -1,3 +1,13 @@
+# Current build (2026-10-19, overworld voices)
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10,486,842 bytes
+- SHA-256: `bfbfb5c468abfad15064eccfe6a8182e77349f8a53262dc384d8a12ee44066d1`
+- New: Chronicle dispatch cards open with a character's own shouted line ("I CAN'T BELIEVE X WAS KICKED OUT OF Y!!"); facts underneath. See `work/claude/voice-world/DONE.md`.
+
+---
+Previous entry:
+
 # Current build (2026-10-13, Muse prep: no elemental names, monsters keep distance)
 
 **The playable build is the file whose name starts with `CURRENT-`.** There is
