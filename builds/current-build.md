@@ -1,3 +1,13 @@
+# Current build (2026-10-20, enemy cards)
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10504077 bytes
+- SHA-256: `79117caa169e1ca53b227d11f7e4a29cbd79dc65a73eb7bc1ee4770921c8329e`
+- New: enemies play 40-card decks (hand of 3, energy cost, named cards in the log; riders drain / shove / brace). Skulker, Brute, Stalker and the Overseer are live; Zombie, Cultist and Dire Hound decks wait for sprites. See `work/claude/enemy-cards/DONE.md`.
+
+---
+Previous entry:
+
 # Current build (2026-10-20, overworld voices + Doom-style turning)
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
