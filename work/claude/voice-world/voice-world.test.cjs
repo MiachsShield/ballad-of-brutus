@@ -2,7 +2,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const src=fs.readFileSync(__dirname+'/voice-world.js','utf8');
 assert(!/["`$]/.test(src.replace(/\/\*[\s\S]*?\*\//,'')) && !/[\\]/.test(src.replace(/\/\*[\s\S]*?\*\//,'')),'embed-safe characters only');
-const ctx={S:{guilds:{g:{name:'Ember Hall'}},agents:[{id:1,name:'Ana',alive:true},{id:2,name:'Bo',alive:true,epithet:'the Loud'},{id:3,name:'Cy',alive:false}]},
+const ctx={S:{guilds:{g:{name:'Ember Hall'}},agents:[{id:1,name:'Ana',alive:true,region:'N'},{id:2,name:'Bo',alive:true,epithet:'the Loud',personality:'Proud',region:'N'},{id:4,name:'Di',alive:true,personality:'Cautious',region:'S'},{id:3,name:'Cy',alive:false}]},
  dispatchCard:e=>'['+e.title+'|'+e.body+']'};
 vm.createContext(ctx);vm.runInContext(src,ctx);
 const card=(body,kind,id=5)=>vm.runInContext('dispatchCard('+JSON.stringify({id,kind,body,title:'T',actors:[{id:1,name:'Ana'}]})+')',ctx);
@@ -10,6 +10,10 @@ let r=card('Ana is released from Ember Hall.','major');
 assert(/I can't believe Ana was kicked out of Ember Hall!/.test(r),r);
 assert(/Bo, the Loud|Bo - /.test(r)&&/Ana is released/.test(r),'speaker is a bystander and facts kept: '+r);
 assert(!/Ana\|/.test(r.split('|')[0]),'speaker is not the subject');
+// speaker prefers someone from the subject's region; personality shapes the framing
+for(const id of [5,6,7,8])assert(/Bo, the Loud/.test(card('Ana died','death',id)),'near speaker');
+assert(/lifts their chin|speaks to the room|plants themselves/.test(card('Ana died','death')),'proud stage');
+assert(/never have let it come|reflects on all|who told you first/.test(card('Ana died','death')),'proud aside');
 assert(/never forgets/.test(card('x','revenge')));
 assert(/A bounty on Ana/.test(card('A bounty goes up on Ana','drama')));
 assert(/Ana is gone/.test(card('Ana died in the dark','death')));

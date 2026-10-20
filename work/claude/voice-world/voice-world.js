@@ -13,12 +13,32 @@ function vwGuildIn(body){
 }
 function vwSpeaker(e){
  try{
-  const used=new Set((e.actors||[]).map(a=>a.id));
+  const acts=(e.actors||[]);
+  const used=new Set(acts.map(a=>a.id));
   const pool=((S&&S.agents)||[]).filter(a=>a&&a.alive!==false&&a.name&&!used.has(a.id));
   if(!pool.length)return null;
-  return pool[(Number(e.id)||0)%pool.length];
+  const full=((S&&S.agents)||[]);
+  const subj=acts.map(x=>full.find(a=>a&&a.id===x.id)).filter(Boolean);
+  const near=pool.filter(p=>subj.some(x=>(x.affiliation&&x.affiliation===p.affiliation)||(x.region&&x.region===p.region)));
+  const from=near.length?near:pool;
+  return from[(Number(e.id)||0)%from.length];
  }catch(err){return null;}
 }
+const VW_STAGE={
+ Loyal:['catches your sleeve and speaks low','stops mid-chore and turns to you','comes over before you can pass'],
+ Cautious:['glances over their shoulder first','pulls you into a doorway','keeps their voice down'],
+ Proud:['plants themselves in your path','speaks to the room as much as to you','lifts their chin'],
+ Ambitious:['falls into step beside you','leans in with a bright, quick look','has clearly been waiting to tell someone'],
+ Mercenary:['holds out a hand, then thinks better of it','does not look up from counting','shrugs and tells you anyway']
+};
+const VW_ASIDE={
+ Loyal:['They deserved better than this.','I keep thinking about it.','Somebody ought to stand by them.'],
+ Cautious:['I am keeping my head down. You should too.','Do not repeat where you heard it.','Nothing good comes of getting involved.'],
+ Proud:['I would never have let it come to that.','It reflects on all of us.','Remember who told you first.'],
+ Ambitious:['Somebody is going to rise on the back of this.','There is an opening in it, if you are quick.','Mark my words, this changes things.'],
+ Mercenary:['Not my business. Unless someone is paying.','It will all come down to coin, it always does.','Stay and I will tell you the rest, for a fee.']
+};
+function vwPick(list,n){return list[(Math.abs(Number(n)||0))%list.length];}
 function vwLine(e){
  const body=String(e.body||''), A=(e.actors&&e.actors[0]&&e.actors[0].name)||'', B=(e.actors&&e.actors[1]&&e.actors[1].name)||'';
  const G=vwGuildIn(body), who=A||'Somebody', cant='I can'+VW_AP+'t believe ';
@@ -47,9 +67,13 @@ dispatchCard=function(e){
  let sp=null, line='';
  try{if(e&&!e.voiced){sp=vwSpeaker(e);line=vwLine(e);}}catch(err){sp=null;}
  if(!sp||!line)return vwDispatchCardBase.apply(this,arguments);
+ const pers=VW_STAGE[sp.personality]?sp.personality:'Mercenary';
+ const seed=(Number(e.id)||0)+(Number(sp.id)||0);
+ const aside=vwPick(VW_ASIDE[pers],seed);
+ const stage=vwPick(VW_STAGE[pers],seed+1);
  const clone=Object.assign({},e,{
-  title:VW_LQ+line+VW_RQ,
-  body:sp.name+(sp.epithet?', '+sp.epithet:'')+'. The facts: '+(e.body||''),
+  title:VW_LQ+line+' '+aside+VW_RQ,
+  body:sp.name+(sp.epithet?', '+sp.epithet+',':'')+' '+stage+'. What it comes to: '+(e.body||''),
   voiced:true});
  return vwDispatchCardBase.call(this,clone);
 };

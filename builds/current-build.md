@@ -2,7 +2,7 @@
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
 - Size: 10486713 bytes
-- SHA-256: `56c0598ed5b7371be48a9fb75428c02e03088b21a667c7478ef5a469821cd427`
+- SHA-256: `037fe27abca2df2b3dd34cdfa0c00821e4707a8dc6e5edd2662194d8a08f9602`
 - New: Chronicle dispatch cards open with a character's own line ("I can't believe X was kicked out of Y!"), sentence case; facts underneath. See `work/claude/voice-world/DONE.md`.
 
 ---
