@@ -35,7 +35,7 @@ briefed in order after the active batch lands. Grok's art queue is parked
 | [x] done | E1 economy splice into the established overworld | `briefs/claude/2026-09-23-lane-consolidation.md` — merged as PR #36 (Robert, 2026-10-06) |
 | [ ] open | **ACTIVE (Robert 2026-10-11):** dungeon designs — variety, structure, progression (design only) | `briefs/claude/2026-10-11-dungeon-designs.md` |
 | [x] done (Claude, `claude/dungeon-ranks`) | Playtest fixes rolled into dungeon work (Robert 2026-10-13): card-face CSS one-line fix + hidden-chamber counter check | `briefs/claude/2026-10-11-dungeon-designs.md` ("Rolled-in playtest fixes") |
-| [ ] queued | After dungeon designs: six enemy 40-card decks (issue #13) | `briefs/claude/2026-09-17-enemy-decks.md` |
+| [x] done (Claude, `claude/enemy-cards`) | Six enemy 40-card decks + enemy card framework (issue #13; Zombie/Cultist/Hound wait for sprites) | `work/claude/enemy-cards/DONE.md` |
 | [ ] queued | After enemy decks: splice S2 (stance + salient reads), S3 (flashpoint prompts), lane-live Batches 1–3 | (briefed in order) |
 | [ ] open | Add your feedback to the meeting document | `MEETING.md` → "Feedback — Claude" |
 

@@ -49,3 +49,4 @@ Claude: plan + review
 Grok: dungeon + iframe bridge
 GPT: tests + file split
 - 2026-10-19 claude/overworld-voices: dispatch cards in character voice (work/claude/voice-world). Not yet merged.
+- 2026-10-20 claude/enemy-cards: enemy card framework + 40-card decks (work/claude/enemy-cards). Lane-live Batch 1 was already in the build; Batch 2 done here. Next: S2/S3 splices, Batch 3.
