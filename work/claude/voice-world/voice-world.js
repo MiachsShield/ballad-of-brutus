@@ -25,11 +25,11 @@ function vwSpeaker(e){
  }catch(err){return null;}
 }
 const VW_STAGE={
- Loyal:['catches your sleeve and speaks low','stops mid-chore and turns to you','comes over before you can pass'],
- Cautious:['glances over their shoulder first','pulls you into a doorway','keeps their voice down'],
- Proud:['plants themselves in your path','speaks to the room as much as to you','lifts their chin'],
- Ambitious:['falls into step beside you','leans in with a bright, quick look','has clearly been waiting to tell someone'],
- Mercenary:['holds out a hand, then thinks better of it','does not look up from counting','shrugs and tells you anyway']
+ Loyal:['{N} catches my sleeve, {p} voice low and unsteady.','{N} sets down what {s} is carrying and meets my eyes.','{N} steps into my path, hands twisting together.','{N} finds me in the crowd and does not let go of my arm.'],
+ Cautious:['{N} checks the doorway behind {o} before {s} speaks.','{N} pulls me into the shadow of a wall, {p} eyes darting.','{N} waits until the crowd thins, then whispers.','{N} will not look at me. {N} talks to the floor.'],
+ Proud:['{N} plants {o}self in front of me, chin high.','{N} speaks loud enough for the whole street to hear.','{N} stops me with a raised hand, as if it were {p} right.','{N} draws {o}self up and fixes me with a stare.'],
+ Ambitious:['{N} falls into step beside me, grinning like a cat.','{N} leans in, {p} eyes bright, {p} words quick.','{N} has been waiting for me. It shows.','{N} takes my elbow and steers me out of the crowd.'],
+ Mercenary:['{N} holds out a hand, palm up, then thinks better of it.','{N} does not look up from counting coins.','{N} shrugs, then drops {p} voice anyway.','{N} leans on a post and watches me with half a smile.']
 };
 const VW_ASIDE={
  Loyal:['They deserved better than this.','I keep thinking about it.','Somebody ought to stand by them.'],
@@ -38,6 +38,13 @@ const VW_ASIDE={
  Ambitious:['Somebody is going to rise on the back of this.','There is an opening in it, if you are quick.','Mark my words, this changes things.'],
  Mercenary:['Not my business. Unless someone is paying.','It will all come down to coin, it always does.','Stay and I will tell you the rest, for a fee.']
 };
+function vwPron(a){const g=a&&a.gender;return g==='Female'?{s:'she',o:'her',p:'her'}:g==='Male'?{s:'he',o:'him',p:'his'}:{s:'they',o:'them',p:'their'};}
+function vwBeat(sp,tpl){
+ const pr=vwPron(sp), first=String(sp.name).split(' ')[0];
+ let out=tpl.split('{N}').join(first).split('{p}').join(pr.p).split('{s}').join(pr.s);
+ out=out.split('{o}self').join(pr.o==='them'?'themselves':pr.o+'self').split('{o}').join(pr.o);
+ return out;
+}
 function vwPick(list,n){return list[(Math.abs(Number(n)||0))%list.length];}
 function vwLine(e){
  const body=String(e.body||''), A=(e.actors&&e.actors[0]&&e.actors[0].name)||'', B=(e.actors&&e.actors[1]&&e.actors[1].name)||'';
@@ -70,10 +77,12 @@ dispatchCard=function(e){
  const pers=VW_STAGE[sp.personality]?sp.personality:'Mercenary';
  const seed=(Number(e.id)||0)+(Number(sp.id)||0);
  const aside=vwPick(VW_ASIDE[pers],seed);
- const stage=vwPick(VW_STAGE[pers],seed+1);
+ const beat=vwBeat(sp,vwPick(VW_STAGE[pers],seed+1));
+ const facts=(e.body||'')+(e.effect?' '+e.effect:'');
  const clone=Object.assign({},e,{
-  title:VW_LQ+line+' '+aside+VW_RQ,
-  body:sp.name+(sp.epithet?', '+sp.epithet+',':'')+' '+stage+'. What it comes to: '+(e.body||''),
+  title:beat,
+  body:VW_LQ+line+VW_RQ+' '+VW_LQ+aside+VW_RQ,
+  effect:facts,
   voiced:true});
  return vwDispatchCardBase.call(this,clone);
 };
