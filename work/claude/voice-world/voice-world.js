@@ -21,27 +21,26 @@ function vwSpeaker(e){
 }
 function vwLine(e){
  const body=String(e.body||''), A=(e.actors&&e.actors[0]&&e.actors[0].name)||'', B=(e.actors&&e.actors[1]&&e.actors[1].name)||'';
- const G=vwGuildIn(body), a=vwUp(A), b=vwUp(B), g=vwUp(G);
- const who=a||'SOMEBODY', cant='I CAN'+VW_AP+'T BELIEVE ';
- if(e.kind==='dungeon')return 'THE DOOR IS OPEN!! SOMEBODY GO IN BEFORE THE GOOD STUFF IS GONE!!';
- if(e.kind==='revenge')return a?who+' NEVER FORGETS!! I SAID SO!! I SAID SO AT THE TIME!!':'NOBODY FORGETS ANYTHING AROUND HERE!!';
- if(!A&&/Among people|hasn.t dealt with/i.test(body))return 'THE NUMBERS ARE IN AND I DO NOT LIKE THEM!! SO MANY PEOPLE GONE, AND NOBODY WILL SAY WHERE!!';
+ const G=vwGuildIn(body), who=A||'Somebody', cant='I can'+VW_AP+'t believe ';
+ if(e.kind==='dungeon')return 'The door is open! Somebody go in before the good stuff is gone.';
+ if(e.kind==='revenge')return A?A+' never forgets. I said so at the time.':'Nobody forgets anything around here.';
+ if(!A&&/Among people|hasn.t dealt with/i.test(body))return 'The numbers are in and I do not like them. So many people gone, and nobody will say where.';
  const rep=/standing changed from (-?[0-9]+) to (-?[0-9]+)/i.exec(body);
- if(rep&&A)return Number(rep[2])>=Number(rep[1])?who+' IS SUDDENLY EVERYBODY'+VW_AP+'S FAVOURITE!! SINCE WHEN?! WHAT DID THEY DO?!':'NOBODY WILL SAY '+who+VW_AP+'S NAME OUT LOUD ANYMORE!! WHAT DID THEY DO?!';
- if(/bounty/i.test(body))return a?'A BOUNTY ON '+who+'?! WHO IS PAYING FOR THAT?! WHO IS COLLECTING?!':'SOMEBODY PUT A BOUNTY UP!! GO LOOK!!';
- if(/died|dead|death|killed|does not come back|doesn.t come back|didn.t come back|doesn.t survive/i.test(body))return cant+who+' IS GONE!! SOMEBODY TELL ME IT ISN'+VW_AP+'T TRUE!!';
- if(/is released|kicked|is broken|is finished|stands down|bench/i.test(body))return cant+who+' WAS KICKED OUT OF '+(g||'THE GUILD')+'!! AFTER EVERYTHING!!';
- if(/walks out|packs quietly|leaves|works for them now|poach|out from under/i.test(body))return cant+who+' WALKED OUT ON '+(g||'THEM')+'!! JUST LIKE THAT!!';
- if(/signs on|joins|hire|signed|buys out|bought out/i.test(body))return who+' HAS A NEW EMPLOYER!! DID YOU SEE THE PRICE?! I DID NOT SEE THE PRICE!!';
- if(/lifts|robbed|coffers|spoils|papers|stolen|steal/i.test(body))return cant+who+' GOT ROBBED!! IN BROAD DAYLIGHT!! WITH WITNESSES!!';
- if(/confirmed|are they or|seen together|colleagues|make up/i.test(body))return b?cant+who+' AND '+b+'!! I KNEW IT!! I KNEW IT THE WHOLE TIME!!':who+' HAS BEEN SEEN WITH SOMEONE!! DO NOT ASK ME WHO!!';
- if(/spreads word|puts it about|slander|puts a story|dirt|forges|impersonat/i.test(body))return 'DID YOU HEAR WHAT IS BEING SAID ABOUT '+(b||who)+'?! I HEARD IT FROM THREE PEOPLE!!';
- if(/clash|fight|duel|wins the fight/i.test(body))return who+(b?' AND '+b:'')+' WENT AT IT!! I SAW IT MYSELF!! I WAS RIGHT THERE!!';
- if(/auction|hammer|sold/i.test(body))return (g||who)+' IS SELLING OFF ITS BEST!! GET THERE EARLY!!';
- if(/sponsor|invited|gift/i.test(body))return who+' GOT THE NICE THING!! GOOD FOR THEM!! I AM NOT BITTER!!';
- if(/loyalty|upkeep|payroll|desertion/i.test(body))return 'NOBODY HAS BEEN PAID!! I AM NOT NAMING NAMES!! BUT SOMEBODY HAS NOT BEEN PAID!!';
- if(/reaches lv|retrains/i.test(body))return who+' IS A WHOLE DIFFERENT PERSON NOW!! DID YOU SEE?!';
- return 'YOU HAVE TO HEAR THIS!! IT IS ABOUT '+who+'!! I CAN'+VW_AP+'T EVEN SAY IT!!';
+ if(rep&&A)return Number(rep[2])>=Number(rep[1])?who+' is suddenly everybody'+VW_AP+'s favourite. Since when? What did they do?':'Nobody will say '+who+VW_AP+'s name out loud anymore. What did they do?';
+ if(/bounty/i.test(body))return A?'A bounty on '+who+'? Who is paying for that? Who is collecting?':'Somebody put a bounty up. Go and look.';
+ if(/died|dead|death|killed|does not come back|doesn.t come back|didn.t come back|doesn.t survive/i.test(body))return cant+who+' is gone. Somebody tell me it isn'+VW_AP+'t true.';
+ if(/is released|kicked|is broken|is finished|stands down|bench/i.test(body))return cant+who+' was kicked out of '+(G||'the guild')+'! After everything!';
+ if(/walks out|packs quietly|leaves|works for them now|poach|out from under/i.test(body))return cant+who+' walked out on '+(G||'them')+'. Just like that.';
+ if(/signs on|joins|hire|signed|buys out|bought out/i.test(body))return who+' has a new employer. Did you see the price? I did not see the price.';
+ if(/lifts|robbed|coffers|spoils|papers|stolen|steal/i.test(body))return cant+who+' got robbed. In broad daylight. With witnesses.';
+ if(/confirmed|are they or|seen together|colleagues|make up/i.test(body))return B?cant+who+' and '+B+'! I knew it. I knew it the whole time.':who+' has been seen with someone. Do not ask me who.';
+ if(/spreads word|puts it about|slander|puts a story|dirt|forges|impersonat/i.test(body))return 'Did you hear what is being said about '+(B||who)+'? I heard it from three people.';
+ if(/clash|fight|duel|wins the fight/i.test(body))return who+(B?' and '+B:'')+' went at it. I saw it myself. I was right there.';
+ if(/auction|hammer|sold/i.test(body))return (G||who)+' is selling off its best. Get there early.';
+ if(/sponsor|invited|gift/i.test(body))return who+' got the nice thing. Good for them. I am not bitter.';
+ if(/loyalty|upkeep|payroll|desertion/i.test(body))return 'Somebody has not been paid. I am not naming names.';
+ if(/reaches lv|retrains/i.test(body))return who+' is a whole different person now. Did you see?';
+ return 'You have to hear this. It is about '+who+'. I can'+VW_AP+'t even say it.';
 }
 const vwDispatchCardBase=dispatchCard;
 dispatchCard=function(e){

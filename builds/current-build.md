@@ -1,9 +1,9 @@
 # Current build (2026-10-19, overworld voices)
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,486,842 bytes
-- SHA-256: `bfbfb5c468abfad15064eccfe6a8182e77349f8a53262dc384d8a12ee44066d1`
-- New: Chronicle dispatch cards open with a character's own shouted line ("I CAN'T BELIEVE X WAS KICKED OUT OF Y!!"); facts underneath. See `work/claude/voice-world/DONE.md`.
+- Size: 10486713 bytes
+- SHA-256: `56c0598ed5b7371be48a9fb75428c02e03088b21a667c7478ef5a469821cd427`
+- New: Chronicle dispatch cards open with a character's own line ("I can't believe X was kicked out of Y!"), sentence case; facts underneath. See `work/claude/voice-world/DONE.md`.
 
 ---
 Previous entry:
