@@ -46,3 +46,4 @@ Goal: split 2.7.1 into shell / world / dungeon.
 Claude: plan + review
 Grok: dungeon + iframe bridge
 GPT: tests + file split
+- 2026-10-19 claude/overworld-voices: dispatch cards in character voice (work/claude/voice-world). Not yet merged.
