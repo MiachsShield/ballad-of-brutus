@@ -36,6 +36,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 - Claude (2026-10-19): Doom-style turning (Robert: fighting a strafing enemy must not be frustrating because of controls): held turn ramps 145 -> 261 deg/s, tap stays fine, facing still manual; wall slide and instant start/stop were already in (`work/claude/doom-movement/`). Composed into CURRENT, all suites green, live training-room check. Next: Muse replays a Skulker fight and a full clear. Branch `claude/doom-movement`.
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: S1 playable overworld splice candidate implemented on `astra/overworld-splice-1` (2026-09-20). World lifecycle and four-verb dungeon encounters wired; deterministic and integration checks pass. Browser/visual acceptance pending. Resume from `work/astra/overworld-splice-1/RUNBOOK.md`.
+- Claude (2026-10-19): dungeon voices, design only: characters vocalize events instead of third-person narration (`work/claude/dungeon-designs/VOICE.md`); seven questions for Robert, sample lines are placeholders. Branch `claude/dungeon-voices`.
 
 ## Next
 - Kavi: view pass-2 Bear Hug Break face in the Grok session; land JPEG on PR #3 if it passes the break read.
@@ -47,3 +48,4 @@ Goal: split 2.7.1 into shell / world / dungeon.
 Claude: plan + review
 Grok: dungeon + iframe bridge
 GPT: tests + file split
+- 2026-10-19 claude/overworld-voices: dispatch cards in character voice (work/claude/voice-world). Not yet merged.

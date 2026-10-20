@@ -1,22 +1,12 @@
-# Current build (2026-10-19, Doom-style turning)
-
-**The playable build is the file whose name starts with `CURRENT-`.** There is
-exactly one.
+# Current build (2026-10-20, overworld voices + Doom-style turning)
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10,484,049 bytes
-- SHA-256: `e47ffb05966cf6495f4e56cb544c3745c58dfdddb118eac8de060130e71eec3d`
-- New in this build (Robert, 2026-10-19):
-  - Turning is Doom-style: a tap is a fine 145 deg/s nudge, and holding a turn ramps to 261 deg/s
-    (1.8x) after 0.10 s, so you can keep a moving enemy in front of you. Facing is still manual.
-  - Nothing else about movement, cards, targeting, enemies or allies changed. Wall sliding and
-    instant start/stop were already in and were left alone.
-- Everything from the previous entry is unchanged.
-- Open it from a full checkout of the repo (card art loads from `art/card-faces/`).
-- Tests: all suites PASS on this file; headless Chrome training-room check, zero page errors.
-- Details: `work/claude/doom-movement/DONE.md`.
+- Size: 10,491,380 bytes
+- SHA-256: `77512592208e3c64b7a77a8fc248f1fc0b1fdb999b04693fbacc8f9558c1e8b3`
+- New: Dungeon turning ramps up while the stick is held (Doom-style, work/claude/doom-movement). Chronicle dispatch cards open with a character's own line ("I can't believe X was kicked out of Y!"), sentence case; facts underneath. See `work/claude/voice-world/DONE.md`.
 
 ---
+Previous entry:
 
 # Current build (2026-10-13, Muse prep: no elemental names, monsters keep distance)
 
