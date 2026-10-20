@@ -1,9 +1,9 @@
-# Current build (2026-10-19, overworld voices)
+# Current build (2026-10-20, overworld voices + Doom-style turning)
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`
-- Size: 10486713 bytes
-- SHA-256: `d413090925a97f480447501fad48a6bb48407a3c3a96e77d12d5fc7a9d58e0ec`
-- New: Chronicle dispatch cards open with a character's own line ("I can't believe X was kicked out of Y!"), sentence case; facts underneath. See `work/claude/voice-world/DONE.md`.
+- Size: 10,491,380 bytes
+- SHA-256: `77512592208e3c64b7a77a8fc248f1fc0b1fdb999b04693fbacc8f9558c1e8b3`
+- New: Dungeon turning ramps up while the stick is held (Doom-style, work/claude/doom-movement). Chronicle dispatch cards open with a character's own line ("I can't believe X was kicked out of Y!"), sentence case; facts underneath. See `work/claude/voice-world/DONE.md`.
 
 ---
 Previous entry:
