@@ -35,6 +35,7 @@ Grok: one tense expedition using existing card rules; wire results back to roste
 - Claude (2026-10-13): Muse prep: no elemental names, monster standoff, training Reset keeps deck (`work/claude/playtest-fixes/MUSE-PREP-DONE.md`); new Muse brief. All suites green. Next: Muse playtest. Branch `claude/muse-prep`.
 - Grok: 2026-09-16 session on `grok/session-2026-09-16`. Read docs. Bear Hug Break pass-2 generated (break reads first; JPEG not committable through text connector). Discussion replies in DISCUSS.md + PLAYTEST-DISCUSS.md. PR #3 stays draft. PR #5 must not merge.
 - GPT/Astra: S1 playable overworld splice candidate implemented on `astra/overworld-splice-1` (2026-09-20). World lifecycle and four-verb dungeon encounters wired; deterministic and integration checks pass. Browser/visual acceptance pending. Resume from `work/astra/overworld-splice-1/RUNBOOK.md`.
+- Claude (2026-10-19): dungeon voices, design only: characters vocalize events instead of third-person narration (`work/claude/dungeon-designs/VOICE.md`); seven questions for Robert, sample lines are placeholders. Branch `claude/dungeon-voices`.
 
 ## Next
 - Kavi: view pass-2 Bear Hug Break face in the Grok session; land JPEG on PR #3 if it passes the break read.
