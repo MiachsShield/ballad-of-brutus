@@ -1,3 +1,9 @@
+# Code layout (2026-10-23)
+All game code is in `src/`; build with `node build.cjs`, test with `node tests/run-all.cjs`.
+The playable build is `builds/CURRENT-brutus.html`. Never edit the built file or the
+baseline for a feature: add a patch under `src/` and list it in `build.cjs`.
+Map: `docs/code-map.md`. People: `docs/people.md`.
+
 # Agent rules
 Grok, Claude, GPT. Read AGENT_HANDOFF.md first.
 Edit only your files. Do not force-push.
