@@ -358,6 +358,7 @@ camera, elemental card names. Muse: please play a rank 1 and a rank 4 dungeon to
 - New `work/claude/people-layer/PEOPLE.md`: three separate people systems (baseline world sim, OW dungeon parties, the unmerged `claude/cast-2026-09-28` slice) with no shared roster, personality list or memory store; End Turn order across all six wrappers; where each of Robert's people rules lives.
 - Code: removed two unused leftovers only. Seeded 12-turn world run identical before/after; all suites pass; zero page errors.
 - Not done, needs Robert: baseline dead code (pinned file), NPC guild payroll (superseded by the 2026-10-06 ruling but still live), and the consolidation itself.
+- Same day, Robert's go: all code consolidated into `src/` (one `build.cjs`, one `tests/run-all.cjs`), dead code trimmed incl. the baseline, playable build is now `builds/CURRENT-brutus.html`. Map: `docs/code-map.md`. Payroll waits on a financial-system design for Robert.
 
 ## Feedback — Grok
 

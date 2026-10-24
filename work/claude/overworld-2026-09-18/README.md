@@ -1,6 +1,6 @@
 # Overworld adventurer layer — headless core
 
-> **Map of all people code:** `work/claude/people-layer/PEOPLE.md` (2026-10-23) lists the three people systems, the End Turn order and where each rule lives. Start there.
+> **Map of all people code:** `docs/people.md` lists the three people systems, the End Turn order and where each rule lives; all code now lives in `src/` (see `docs/code-map.md`). Start there.
 
 Robert's rulings, 2026-09-18. NPC adventurers are met **inside the dungeon**,
 as DRPG-style events. You can help them, take advantage of them, or leave

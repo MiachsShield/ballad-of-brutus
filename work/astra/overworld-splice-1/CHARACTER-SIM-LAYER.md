@@ -1,6 +1,6 @@
 # Character-to-character simulation layer
 
-> **Map of all people code:** `work/claude/people-layer/PEOPLE.md` (2026-10-23) lists the three people systems, the End Turn order and where each rule lives. Start there.
+> **Map of all people code:** `docs/people.md` lists the three people systems, the End Turn order and where each rule lives; all code now lives in `src/` (see `docs/code-map.md`). Start there.
 
 This S1 reconstruction carries forward the earlier Brutus character work: a Sims-esque world where people are not static roster entries but agents whose chemistry, choices, loyalties, grudges, vulnerabilities, and rivalries create consequences.
 
