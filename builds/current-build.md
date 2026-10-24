@@ -1,3 +1,13 @@
+# Current build (2026-10-23, people-layer cleanup)
+
+- File: `builds/CURRENT-brutus-astra-e1-standalone.html`
+- Size: 10503837 bytes
+- SHA-256: `7e0f702be02a09ee8af5bca6ec63f0677e7e99a287c98ef2f0ef7ef5eba869b1`
+- No gameplay change. Removed an unused personality-label table (`status-world.js`) and an unused all-caps helper (`voice-world.js`). A seeded 12-turn world run is identical before and after. New map of all people code: `work/claude/people-layer/PEOPLE.md`.
+
+---
+Previous entry:
+
 # Current build (2026-10-20, enemy cards)
 
 - File: `builds/CURRENT-brutus-astra-e1-standalone.html`

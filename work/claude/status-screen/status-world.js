@@ -21,8 +21,6 @@ const ST_ARCH={ // copy of the dungeon's ALLY_ARCHETYPES numbers (dungeon frame,
  Priest:{hp:58,energy:95,move:'Smite',tier:'medium',windup:950,recovery:750,dmg:13,cost:10},
  Warrior:{hp:78,energy:85,move:'Javelin',tier:'medium',windup:800,recovery:650,dmg:15,cost:9},
  Knight:{hp:92,energy:80,move:'Shield Bash',tier:'heavy',windup:900,recovery:800,dmg:19,cost:11}};
-const ST_PERSONA={Ambitious:'Chases fame and a better class.',Loyal:'Follows allies and lovers. Slow to leave.',Mercenary:'Follows the money. Wants better gear.',
- Cautious:'Wants armour. Avoids needless risk.',Proud:'Has something to prove. Remembers slights.'};
 function stIsCompanion(a){return !!a&&a.alive&&a.joined&&(S.roster||[]).some(m=>m.id===a.id);}
 function stPct(x){return Math.round(x*100);}
 function stSec(ms){return (ms/1000).toFixed(ms%1000?1:0)+' s';}

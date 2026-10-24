@@ -1,12 +1,12 @@
 /* Overworld voices (Robert, 2026-10-19: change overworld info to be coming from characters
    themselves: I CAN'T BELIEVE X WAS KICKED OUT OF Y!!).
-   Dispatch cards now lead with a character's own shouted line. The speaker is a bystander
+   Dispatch cards now lead with a character's own line, in sentence case (all caps was dropped,
+   2026-10-20: an eyesore in game writing). The speaker is a bystander
    (someone alive who is not in the story), picked from the card id so it never changes between
    renders. The original facts stay under the quote, so no information is lost.
    Display only: nothing here touches state, saves or the dispatch list itself.
    Source text must stay free of double quotes, backticks, backslashes and dollar signs. */
 const VW_AP=String.fromCharCode(39), VW_LQ=String.fromCharCode(8220), VW_RQ=String.fromCharCode(8221);
-function vwUp(s){return String(s).toUpperCase();}
 function vwGuildIn(body){
  try{for(const g of Object.values((S&&S.guilds)||{})){if(g&&g.name&&body.includes(g.name))return g.name;}}catch(err){}
  return '';

@@ -23,4 +23,6 @@ The protocol is in `briefs/README.md`. Robert's settled decisions are in
 - `art/` — reference, card faces, sprite work.
 - `work/` — per-model output lands here via branches named
   `<model>/<slug>`.
+- `work/claude/people-layer/PEOPLE.md` — where every person (adventurers,
+  townsfolk, companions, the named cast) lives in the code.
 - `snapshots/` — legacy snapshots.

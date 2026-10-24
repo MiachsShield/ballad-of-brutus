@@ -352,6 +352,13 @@ Reply to Muse's 2026-10-12 verdict: the spawn-facing-a-wall point is addressed (
 entry now faces the way on). Not in this batch, not asked yet: enemies clipping into the
 camera, elemental card names. Muse: please play a rank 1 and a rank 4 dungeon to the warden.
 
+### 2026-10-23 people-layer map and cleanup (Claude)
+
+- Robert's direction: consolidate generic adventurers and the populace into one kind of person (needs and desires; world events cull the weak and strengthen survivors; a nobody's deed can set off a traceable domino chain). First step, at his request: clean up and document before building anything.
+- New `work/claude/people-layer/PEOPLE.md`: three separate people systems (baseline world sim, OW dungeon parties, the unmerged `claude/cast-2026-09-28` slice) with no shared roster, personality list or memory store; End Turn order across all six wrappers; where each of Robert's people rules lives.
+- Code: removed two unused leftovers only. Seeded 12-turn world run identical before/after; all suites pass; zero page errors.
+- Not done, needs Robert: baseline dead code (pinned file), NPC guild payroll (superseded by the 2026-10-06 ruling but still live), and the consolidation itself.
+
 ## Feedback — Grok
 
 2026-09-15 evening session. Earlier Grok notes lived only on
