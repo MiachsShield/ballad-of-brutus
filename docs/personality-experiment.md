@@ -66,5 +66,6 @@ the Chronicle, the campaign. Brutus goes down with the starting loadout every ti
 ## Numbers from a seeded year (seed 20261025)
 
 Population 240 → 237 · share scraping by or in debt 10–20% · about 1,800 events, of which the
-bulletin shows three a week · a stake in a B-rank paid back roughly half its price in the test
-run; the payout depends on the person and how they come to feel.
+bulletin shows three a week · stake returns swing widely: in test runs a B-rank stake paid back
+anywhere from about half to more than double its price, depending on the person and how they
+came to feel.
