@@ -11,4 +11,8 @@ Robert: "Make a separate build. Label it personality experiment. We'll use bulle
   backed a B-rank, every tab, reload keeps the week, training room opens, phone width fits,
   zero page errors.
 - Brief: `briefs/muse/2026-10-25-personality-experiment.md`.
-- Not done (not asked): wiring any of this into the main overworld.
+- Connected to the real dungeon (Robert: "Connect please"): Expeditions tab, the main build's
+  dungeon openings rank 1-5, deck choice, contract + checkpoint resume, results feed gold, news
+  and feelings; unclaimed openings go to NPCs. Headless: deployed, dungeon opened at the card's
+  rank with the Priest deck, exited, result applied; End week locked underground; zero errors.
+- Not done (not asked): companions, loot, XP in the experiment; wiring any of this into the main overworld.

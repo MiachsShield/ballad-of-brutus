@@ -33,4 +33,30 @@ assert.strictEqual(JSON.stringify(w), JSON.stringify(copy), 'reloaded world dive
 const a = S.create(7), b = S.create(7);
 for (let i = 0; i < 10; i++) { S.step(a); S.step(b); }
 assert.strictEqual(JSON.stringify(a), JSON.stringify(b), 'seeded runs differ');
+// expeditions: the board, one trip a week, rewards, checkpoints, and someone else claims what Brutus leaves
+const x = S.create(11);
+S.step(x);
+const open = x.board.filter(d => !d.closed);
+assert(open.length >= 3, 'board has openings');
+const d0 = open[0], c = S.brutusDeploy(x, d0.id).contract;
+assert(c && c.rank >= 1 && c.rank <= 5 && c.kind && c.name, 'contract shape for the dungeon frame');
+assert(S.brutusDeploy(x, open[1].id).error, 'one expedition at a time');
+let g = x.brutus.gold, res = S.brutusReturn(x, { kills: 2, deepestFloor: 0, brutusDowned: false, delveState: { v: 1, checkpointLabel: 'first floor entrance', progress: { kills: 2 } } });
+assert(!res.won && x.brutus.gold === g, 'unfinished pays nothing');
+assert(d0.delve && d0.delve.checkpointLabel, 'checkpoint kept for re-entry');
+assert(S.canDelve(x), 'once a week');
+S.step(x);
+if (!d0.closed) {
+  const c2 = S.brutusDeploy(x, d0.id).contract;
+  assert(c2.delve, 'checkpoint goes back down with the contract');
+  const need = { hunt: { kills: 5 }, relic: { secretsFound: 1 }, depth: { deepestFloor: 2 }, armor: { brutesBroken: 1 } }[d0.kind];
+  res = S.brutusReturn(x, Object.assign({ brutusDowned: false }, need));
+  assert(res.won && x.brutus.gold === g + d0.reward && d0.closed && !d0.delve, 'a finished job pays and closes');
+}
+assert.deepStrictEqual(S.brutusReturn(x, {}), null, 'a stray result is ignored');
+const d1 = x.board.find(d => !d.closed);
+S.step(x); if (x.board.find(d => d.id === d1.id && !d.closed)) { S.brutusDeploy(x, d1.id); S.brutusReturn(x, { brutusDowned: true }); }
+for (let i = 0; i < 8; i++) S.step(x);
+assert(x.events.some(e => e.kind === 'claim'), 'NPCs claim closed openings');
+assert(x.events.some(e => e.kind === 'expedition' && e.brutus), 'expeditions make news');
 console.log('personality-sim ok', { week: w.week, pop, strained: +strained.toFixed(3), events: w.events.length, stake: { paid: Math.round(stake.paid), left: stake.left } });

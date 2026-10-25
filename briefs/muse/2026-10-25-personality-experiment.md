@@ -8,18 +8,22 @@ Art is out of scope.
 ## The build
 
 - File: `builds/EXPERIMENT-personality.html` (separate from `CURRENT-brutus.html`, which is unchanged)
-- Size: 8590447 bytes · SHA-256: `9c9107f137b12aa49cde329300b00e38ffef5f00cd6e22c39134b4c05c3ef172`
+- Size: 8602829 bytes · SHA-256: `4d45a36fd3d74d4bc31a9d42710bb097d80a7874a940c90d3692e775fd940e71`
 - Open it from a full checkout. The header reads *Personality experiment*; if it doesn't, you
   have the wrong file.
-- The overworld is replaced by a bulletin page. The training room is the normal one.
+- The overworld is replaced by a bulletin page with an Expeditions tab into the **real dungeon**
+  (Robert, 2026-10-25: "Connect please"). Brutus goes alone with the starting deck; no companions,
+  loot or XP in this build. The training room is the normal one.
 - Design and code notes: `docs/personality-experiment.md`.
 
 ## How to play it
 
 1. Read week 4's bulletin. End week a few times.
 2. Go to **People**, open profiles, and back one to three adventurers (*Back them*). Mix ranks.
-3. End week 30 or more times. Read the bulletin each week; open **Your stakes** now and then.
-4. Optional: *New region* (click twice) and do it again with a different first pick.
+3. Take at least three expeditions (Expeditions tab, one a week): one you finish, one you
+   leave unfinished and come back to (checkpoint), and one you lose if you can.
+4. End week 30 or more times. Read the bulletin each week; open **Your stakes** now and then.
+5. Optional: *New region* (click twice) and do it again with a different first pick.
 
 ## What to report
 
@@ -32,8 +36,11 @@ Art is out of scope.
 4. **Your stakes.** Did backing someone feel like a bet? Did either end (devoted gifts, hostile
    betrayal, snubs from the people you passed over) happen to you, and was it as dramatic as
    the other end?
-5. **Light duties.** Did you ever feel you had to track everything? Where did you get lost?
-6. **Breakage.** Errors, empty weeks, numbers that run away (World numbers tab), anything
+5. **Expeditions.** Does the dungeon open with the rank and objective on the card? Does the
+   region react to how it went (bulletin lines, who warms or sours)? Did someone else claim an
+   opening you left, and did that story point back to your attempt?
+6. **Light duties.** Did you ever feel you had to track everything? Where did you get lost?
+7. **Breakage.** Errors, empty weeks, numbers that run away (World numbers tab), anything
    that reads wrong. Screenshot plus the week number and the seed (World numbers shows it).
 
 Known: a few card faces fail to load in the training room. Same in the main build.

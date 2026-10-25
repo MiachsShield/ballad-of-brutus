@@ -50,6 +50,9 @@ dialog ul{margin:4px 0 10px 18px;padding:0}
 .row2{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .notice{background:#2a3a1f;border:1px solid #7fbf6a66;padding:8px 12px;border-radius:3px;margin:0 0 12px}
 .notice.bad{background:#3a221f;border-color:#e07a6a66}
+.pips{color:var(--gold);letter-spacing:2px}
+.deck{display:inline-flex;gap:6px;align-items:center}
+.deck button[aria-pressed=true]{background:#a28b63;color:#101b22}
 .nums td:last-child{text-align:right;font-variant-numeric:tabular-nums}
 svg text{fill:var(--dim);font-size:11px}
 @media (max-width:720px){.wrap{display:block}nav{width:auto;display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:0}nav button{width:auto;border-left:0;border-bottom:3px solid transparent;white-space:nowrap}nav button[aria-current=page]{border-bottom-color:var(--gold)}main{padding:14px 16px}th:nth-child(5),td:nth-child(5){display:none}}
@@ -68,6 +71,7 @@ svg text{fill:var(--dim);font-size:11px}
 <div class="wrap">
   <nav aria-label="Sections">
     <button data-tab="bulletin" aria-current="page">Bulletin</button>
+    <button data-tab="expeditions">Expeditions</button>
     <button data-tab="people">People</button>
     <button data-tab="guilds">Guilds</button>
     <button data-tab="stakes">Your stakes</button>
@@ -148,8 +152,18 @@ function voice(e){
     brawl:'"'+A+' picked a fight with '+B+' for fun. For fun!"',
     callout:'"'+A+' told '+B+' exactly what everyone was thinking."',
     odd:'"'+A+' thanked '+B+' for hitting them. I\'m not making this up."',
-    return:'"'+A+' crawled back out of the slums. Good for them."'
+    return:'"'+A+' crawled back out of the slums. Good for them."',
+    claim:'"'+A+' walked out of '+(e.place||'that place')+' like it was nothing. Next round\'s on '+A+'."'
   };
+  if(k==='expedition'){
+    var fans=S.alive(w).filter(function(p){return p.feel[S.BRUTUS]!=null;});
+    var sp=e.won?fans.sort(function(a,b){return b.feel[S.BRUTUS]-a.feel[S.BRUTUS];})[0]:fans.sort(function(a,b){return a.feel[S.BRUTUS]-b.feel[S.BRUTUS];})[0];
+    var f=sp?sp.feel[S.BRUTUS]:0;
+    var line=e.won?(f>40?'"Told you. Told every one of you."':'"Fine. He did it. Doesn\'t mean I have to like him."')
+      :e.downed?(f<-30?'"Carried out like a sack of turnips. Best thing I\'ve seen all year."':'"Rough one. He\'ll be back down there, you watch."')
+      :'"Came back with nothing. Happens to everyone. Mostly to him."';
+    return {speaker:sp||null,line:line};
+  }
   if(e.brutus&&k==='devoted')return {speaker:person(e.actors[0]),line:'"You backed me when nobody would. This is yours."',toYou:true};
   if(e.brutus&&k==='hostile')return {speaker:null,line:'"I hear '+A+' has been selling stories about you. To anyone with a coin."',toYou:true};
   return {speaker:null,line:V[k]||null};
@@ -201,6 +215,38 @@ function viewGuilds(){
   });
   return h+'</div>';
 }
+var DECKS=['Warrior','Priest'];
+function viewExpeditions(){
+  var no=S.canDelve(w), deck=w.brutus.deck||'Warrior', open=(w.board||[]).filter(function(d){return !d.closed;}).sort(function(a,b){return a.rank-b.rank;});
+  var h='<h2>Expeditions</h2><p class="sub">Take Brutus into the real dungeon, alone, once a week. Whatever he leaves unfinished, someone else claims when it closes, and everyone hears how it went.</p>';
+  if(notice)h+='<div class="notice'+(notice.bad?' bad':'')+'">'+esc(notice.text)+'</div>';
+  h+='<p class="deck">Deck: '+DECKS.map(function(k){return '<button data-deck="'+k+'" aria-pressed="'+(k===deck)+'">'+k+'</button>';}).join('')+'</p>';
+  if(no)h+='<p class="notice">'+esc(no)+'</p>';
+  h+='<div class="grid">'+open.map(function(d){
+    return '<div class="card"><p class="muted" style="margin:0">'+esc(d.region)+' · closes after week '+d.expires+'</p><h2>'+esc(d.name)+'</h2>'+
+      '<p class="fact"><span class="pips" aria-label="Rank '+d.rank+' of 5">'+'●'.repeat(d.rank)+'○'.repeat(5-d.rank)+'</span> Rank '+d.rank+'</p>'+
+      '<p class="fact">'+esc(d.desc)+'</p><p><b>'+esc(d.objective)+'</b> · '+fmt(d.reward)+' gold</p>'+
+      (d.delve&&d.delve.checkpointLabel?'<p class="muted">Checkpoint saved: '+esc(d.delve.checkpointLabel)+'. You resume there.</p>':'')+
+      '<button class="go" data-delve="'+d.id+'" '+(no?'disabled':'')+'>Go down</button></div>';
+  }).join('')+'</div>';
+  var done=(w.board||[]).filter(function(d){return d.closed&&d.by!=null;}).slice(-6).reverse();
+  if(done.length)h+='<h2 style="margin-top:18px">Recently cleared</h2><ul>'+done.map(function(d){return '<li>'+esc(d.name)+' (rank '+d.rank+'): '+esc(d.by===S.BRUTUS?'Brutus':w.people[d.by].name)+'</li>';}).join('')+'</ul>';
+  return h;
+}
+function loadout(){return {stats:{hp:0,energy:0,atk:2,def:0},procs:[],cards:[],setElements:[],deck:w.brutus.deck||'Warrior'};}
+function deploy(id){
+  var r=S.brutusDeploy(w,id);
+  if(r.error){notice={bad:true,text:r.error};render();return;}
+  save();notice=null;render();
+  window.parent.postMessage({type:'enterDungeon',turn:w.week,loadout:loadout(),party:[],contract:r.contract,campaign:null},'*');
+}
+function returned(result){
+  var r=S.brutusReturn(w,result);if(!r)return;
+  if(r.failedToOpen)notice={bad:true,text:'The dungeon could not open. Nothing was spent; try again.'};
+  else notice=r.won?{text:'Back up from '+r.dungeon.name+' with the job done. +'+fmt(r.reward)+' gold.'}:{bad:true,text:result.brutusDowned?'Brutus was dragged back up from '+r.dungeon.name+'. People will talk.':'Back from '+r.dungeon.name+' with the job unfinished.'+(r.dungeon.delve?' Checkpoint saved.':'')};
+  save();tab='bulletin';render();
+}
+window.addEventListener('message',function(ev){var m=ev.data||{};if(ev.source===window.parent&&m.type==='dungeonResult')returned(m.result||{});});
 function viewStakes(){
   var mine=w.stakes.filter(function(s){return s.by===S.BRUTUS;});
   var h='<h2>Your stakes</h2><p class="sub">Back someone from their profile. You pay up front; they pay you a quarter of their hauls for 26 weeks. How they feel about you decides the rest.</p>';
@@ -248,17 +294,21 @@ function profile(id){
 function render(){
   $('week').textContent=w.week;$('gold').textContent=fmt(w.brutus.gold);
   document.querySelectorAll('nav button').forEach(function(b){if(b.dataset.tab===tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
-  $('main').innerHTML={bulletin:viewBulletin,people:viewPeople,guilds:viewGuilds,stakes:viewStakes,numbers:viewNumbers}[tab]();
+  $('end').disabled=!!w.pending;$('end').title=w.pending?'Finish the expedition first':'';
+  $('main').innerHTML={bulletin:viewBulletin,expeditions:viewExpeditions,people:viewPeople,guilds:viewGuilds,stakes:viewStakes,numbers:viewNumbers}[tab]();
   var q=$('q');if(q){q.oninput=function(){query=q.value.toLowerCase();var pos=q.selectionStart;render();var n=$('q');n.focus();n.setSelectionRange(pos,pos);};}
+  document.querySelectorAll('[data-delve]').forEach(function(el){el.onclick=function(){deploy(+el.dataset.delve);};});
+  document.querySelectorAll('[data-deck]').forEach(function(el){el.onclick=function(){w.brutus.deck=el.dataset.deck;save();render();};});
   document.querySelectorAll('[data-p]').forEach(function(el){el.onclick=function(ev){ev.stopPropagation();if(el.dataset.p!=='')profile(+el.dataset.p);};});
 }
 document.querySelectorAll('nav button').forEach(function(b){b.onclick=function(){tab=b.dataset.tab;render();};});
-$('end').onclick=function(){notice=null;S.step(w);save();tab='bulletin';render();window.scrollTo(0,0);};
+$('end').onclick=function(){if(w.pending)return;notice=null;S.step(w);save();tab='bulletin';render();window.scrollTo(0,0);};
 $('newWorld').onclick=function(){if(!confirmNew())return;fresh(Date.now());notice={text:'A new region. Seed '+w.seed+'.'};tab='bulletin';render();};
 function confirmNew(){var b=$('newWorld');if(b.dataset.armed){delete b.dataset.armed;b.textContent='New region';return true;}b.dataset.armed='1';b.textContent='Click again to start over';setTimeout(function(){delete b.dataset.armed;b.textContent='New region';},3000);return false;}
 // the shell watches for a run id on #living to know when a new run starts
 var marker=document.createElement('div');marker.id='living';marker.hidden=true;document.body.appendChild(marker);
 if(!load())fresh(20261025);
+if(w.pending){w.pending=null;save();}   // a reload mid-expedition loses that trip, as in the main build
 marker.dataset.runId='px-'+w.seed;
 window.PXWorld=function(){return w;};
 // the dungeon frame asks the overworld about NPC parties it meets; this experiment has none

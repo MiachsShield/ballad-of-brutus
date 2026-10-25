@@ -92,6 +92,7 @@
       var c = sample(w, w.people, 2), a = c[0], b = c[1];
       if (a.lover == null && b.lover == null && a.kin.indexOf(b.id) < 0) { a.lover = b.id; b.lover = a.id; adj(w, a, b, 50); adj(w, b, a, 50); }
     }
+    board(w);
     return w;
   }
   function addKin(a, b) { if (a.kin.indexOf(b.id) < 0) a.kin.push(b.id); if (b.kin.indexOf(a.id) < 0) b.kin.push(a.id); }
@@ -286,6 +287,7 @@
     riots(w);
     refill(w);
     labor(w);
+    board(w);
 
     A = alive(w);
     w.series.pop.push(A.length);
@@ -698,6 +700,100 @@
     });
   }
 
+  // ---------------------------------------------------------------- Brutus's expeditions (the real dungeon)
+  // The dungeon board: the same openings the main build uses. Brutus takes one down into the real
+  // dungeon frame; whatever he doesn't finish, someone else claims when it closes. Openings roll on
+  // their own random stream (w.drng), so a world where Brutus never delves plays out as before.
+  var THEMES = [
+    ['The Gilded Sepulchre', 'Li Trice', 'relic', 'Find one hidden chamber', 'A buried salon has opened under the silk quarter. Three guilds insist the treasure belongs to them. None can locate the stairs.'],
+    ['The Hollow Crown', 'Marium', 'hunt', 'Defeat five enemies', 'Something under the old royal mint is wearing a crown. This has attracted the usual crowd of people willing to kneel for money.'],
+    ['The Thorn Cathedral', 'Beloufi', 'depth', 'Reach the third floor', 'The foundations have split. The sponsors want a brave expedition, preferably one whose clothing survives the publicity.'],
+    ['The Ashen Stair', 'Reyjar', 'armor', 'Break one Brute stance', 'A monster is blocking the old fortress road. The gate captain has called it a strategic closure and gone home.'],
+    ['The Sunken Tribunal', 'Themelios', 'hunt', 'Defeat five enemies', 'An abandoned court is taking visitors again. Its inhabitants still object to being interrupted.'],
+    ['The Violet Fault', 'Ayusti', 'relic', 'Find one hidden chamber', 'A new fissure glows beneath the arena. The owner is already charging admission to the danger.'],
+    ['The Quiet House', 'Edinius', 'depth', 'Reach the third floor', 'Nobody admits building it. Several people have sent invoices.']];
+  var REWARD = [0, 20000, 35000, 60000, 110000, 200000];
+  function onStream(w, key, fn) { var keep = w.rng; if (w[key] == null) w[key] = (w.seed ^ 0x9E3779B9) >>> 0; w.rng = w[key]; try { return fn(); } finally { w[key] = w.rng; w.rng = keep; } }
+  function brutusActor(w) { return { id: BRUTUS, name: 'Brutus', fame: 60 + Math.max(0, w.brutus.rep || 0) }; }
+  function objectiveMet(d, r) {
+    if (r.brutusDowned) return false;
+    return d.kind === 'hunt' ? (r.kills || 0) >= 5 : d.kind === 'relic' ? (r.secretsFound || 0) >= 1 : d.kind === 'depth' ? (r.deepestFloor || 0) >= 2 : (r.brutesBroken || 0) >= 1;
+  }
+  function board(w) {
+    if (!w.board) w.board = [];
+    // whatever closes unfinished, someone of that rank claims
+    w.board.forEach(function (d) {
+      if (d.closed || d.expires >= w.week) return;
+      d.closed = true; delete d.delve;
+      var letter = RANKS[d.rank - 1], who = alive(w).filter(function (p) { return p.rank === letter && !p.jail; });
+      if (!who.length) return;
+      var p = maxBy(sample(w, who, 4), function (x) { return x.fame + uni(w, 0, 30); });
+      var pay = d.reward * .6;
+      if (p.guild != null) { w.guilds[p.guild].treasury += pay * .4; pay *= .6; }
+      p.purse += pay; p.fame += 3 + d.rank * 2; d.by = p.id;
+      ev(w, p.name + (d.tried ? ' cleared ' + d.name + ', the job Brutus came up without.' : ' cleared ' + d.name + ' before anyone else could. ' + fmt(d.reward * .6) + ' gold.'),
+        [p], d.tried != null ? d.tried : null, 'claim', .5 + d.rank * .3, { place: d.name });
+    });
+    onStream(w, 'drng', function () {
+      var open = w.board.filter(function (d) { return !d.closed; }).length, first = !w.boardSeq;
+      while (open < 4 && (first || R(w) < .5)) {
+        w.boardSeq = (w.boardSeq || 0) + 1;
+        var t = THEMES[(w.boardSeq - 1) % THEMES.length], k = +weighted(w, ['1', '2', '3', '4', '5'], [25, 30, 22, 15, 8]);
+        w.board.push({ id: w.boardSeq, name: t[0], region: t[1], kind: t[2], objective: t[3], desc: t[4], rank: k,
+          reward: Math.round(REWARD[k] * uni(w, .85, 1.2) / 500) * 500, opened: w.week, expires: w.week + randint(w, 3, 5), closed: false });
+        open++; if (!first && open >= 3) break;
+      }
+    });
+    if (w.board.length > 40) w.board = w.board.filter(function (d) { return !d.closed || d.expires >= w.week - 8; });
+  }
+  function canDelve(w) {
+    if (w.pending) return 'Brutus is already underground.';
+    if (w.brutus.delved === w.week) return 'Brutus has been down once this week. End the week first.';
+    return null;
+  }
+  // returns the contract the dungeon frame expects (rank, kind, name, and checkpoint state to resume)
+  function brutusDeploy(w, id) {
+    var d = (w.board || []).find(function (x) { return x.id === id && !x.closed; });
+    if (!d) return { error: 'That opening has closed.' };
+    var no = canDelve(w); if (no) return { error: no };
+    w.pending = { id: d.id, week: w.week };
+    var c = { id: d.id, name: d.name, kind: d.kind, objective: d.objective, rank: d.rank, reward: d.reward };
+    if (d.delve) c.delve = d.delve;
+    return { contract: c };
+  }
+  function brutusReturn(w, r) {
+    var pend = w.pending; w.pending = null; r = r || {};
+    if (!pend) return null;
+    var d = (w.board || []).find(function (x) { return x.id === pend.id; });
+    if (!d || r.initializationFailed) return { failedToOpen: true };
+    w.brutus.delved = w.week;
+    var P2 = r.delveState && r.delveState.progress, all = r;
+    if (P2) { all = {}; for (var k in r) all[k] = r[k]; for (k in P2) all[k] = Math.max(all[k] || 0, P2[k] || 0); all.brutusDowned = r.brutusDowned; }
+    var won = !d.closed && objectiveMet(d, all), B = brutusActor(w), e, A = alive(w), M = w.M;
+    M.expeditions = (M.expeditions || 0) + 1;
+    if (won) {
+      w.brutus.gold += d.reward; w.brutus.rep = (w.brutus.rep || 0) + d.rank * 2; d.closed = true; d.by = BRUTUS; delete d.delve; M.brutusWins = (M.brutusWins || 0) + 1;
+      e = ev(w, 'Brutus came up from ' + d.name + ' with the job done: ' + d.objective.toLowerCase() + '. ' + fmt(d.reward) + ' gold.', [B], null, 'expedition', 1 + d.rank * .5, { brutus: true, won: true, rank: d.rank });
+      // the Proud read: admirers warm to him, the envious sour
+      A.forEach(function (p) { var c = PRED[p.type + '>' + BRUTUS_TYPE]; adj(w, p, BRUTUS, (c === 'D' || c === 'F' ? 2 : -2) * (1 + d.rank / 3)); });
+    } else {
+      w.brutus.rep = (w.brutus.rep || 0) - (r.brutusDowned ? d.rank : 0); d.tried = null;
+      e = ev(w, r.brutusDowned ? 'Brutus was dragged back up from ' + d.name + ', beaten.' : 'Brutus came back from ' + d.name + ' with the job unfinished.', [B], null, 'expedition', r.brutusDowned ? .8 + d.rank * .4 : .5, { brutus: true, won: false, downed: !!r.brutusDowned, rank: d.rank });
+      d.tried = e;
+      if (r.brutusDowned) A.forEach(function (p) { if (feel(w, p, BRUTUS) < -20) adj(w, p, BRUTUS, -2); });
+    }
+    if (d.closed || r.brutusDowned || (r.wardenSlain && r.bossChestLooted)) delete d.delve; else if (r.delveState) d.delve = r.delveState;
+    // someone always has something to say about it
+    var loud = A.filter(function (p) { return !p.jail; }), fan = maxBy(loud, function (p) { return feel(w, p, BRUTUS); }), foe = minBy(loud, function (p) { return feel(w, p, BRUTUS); });
+    if (won && foe && feel(w, foe, BRUTUS) < -30 && R(w) < .6)
+      ev(w, foe.name + ' tells anyone who will listen that ' + d.name + ' was a soft job and Brutus got lucky.', [foe], e, 'callout', .6, { brutus: true });
+    else if (!won && r.brutusDowned && foe && feel(w, foe, BRUTUS) < -30)
+      ev(w, foe.name + ' buys a round to celebrate Brutus being carried out of ' + d.name + '.', [foe], e, 'humiliation', .7, { brutus: true });
+    else if (won && fan && feel(w, fan, BRUTUS) > 60 && R(w) < .5)
+      ev(w, fan.name + ' was waiting at the top of the stairs when Brutus came up from ' + d.name + '.', [fan], e, 'follow', .5, { brutus: true });
+    return { won: won, reward: won ? d.reward : 0, event: e, dungeon: d };
+  }
+
   // ---------------------------------------------------------------- reading the world
   function chainDepth(w, id) { var d = 0, seen = {}; while (id != null && !seen[id]) { seen[id] = 1; d++; id = w.events[id].because; } return d; }
   function chain(w, id) { var out = [], seen = {}; while (id != null && !seen[id]) { seen[id] = 1; out.unshift(w.events[id]); id = w.events[id].because; } return out; }
@@ -711,7 +807,7 @@
   function standing(p) { var r = p.purse / cost(p); return r < 0 ? 'in debt' : r < 2 ? 'scraping by' : r < 8 ? 'getting by' : r < 20 ? 'comfortable' : 'flush'; }
   function feelWord(f) { return f > 75 ? 'devoted' : f > 40 ? 'warm' : f > 10 ? 'fair' : f > -30 ? 'cool' : f > -60 ? 'resentful' : 'hostile'; }
 
-  var API = { create: create, step: step, brutusBack: brutusBack, brutusStakeCost: brutusStakeCost, bulletin: bulletin, chain: chain, chainDepth: chainDepth,
+  var API = { create: create, step: step, brutusBack: brutusBack, brutusDeploy: brutusDeploy, brutusReturn: brutusReturn, canDelve: canDelve, objectiveMet: objectiveMet, brutusStakeCost: brutusStakeCost, bulletin: bulletin, chain: chain, chainDepth: chainDepth,
     alive: alive, live: live, leader: leader, gname: gname, cost: cost, feel: feel, standing: standing, feelWord: feelWord, RANKS: RANKS, TYPES: TYPES, PRED: PRED, BRUTUS: BRUTUS };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.PXSim = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
