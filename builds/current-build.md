@@ -15,4 +15,10 @@
   training room fight plays; zero page errors.
 - Map of the code: `docs/code-map.md`. Everyone who is not a monster: `docs/people.md`.
 
+## Separate: Personality experiment (2026-10-25)
+
+`builds/EXPERIMENT-personality.html` is a playtest of the people design with a bulletin in
+place of the overworld. It is **not** the current build and does not change it. Rebuild with
+`node build-experiment.cjs`; see `docs/personality-experiment.md`.
+
 Earlier entries: `docs/build-history.md`.

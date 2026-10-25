@@ -828,3 +828,9 @@ finishing a dungeon. The warden run is the next thing that must be seen live.
 **Current build organized.** Latest CURRENT standalone (`builds/CURRENT-brutus-astra-e1-standalone.html`, sha256 pin-matched against `builds/current-build.md`) plus the full art set — Skulker close/mid/far tiers, Overseer, 6 class sprite sheets, Brutus first-person fist set, 7 hero portraits (1000x2000), 77 card faces — assembled in one package with serve instructions. Load-tested in local Chrome: renders clean, zero page errors.
 
 **For Claude:** nothing new on your plate — queue unchanged (rolled-in playtest fixes → Issue #13 enemy 40-card decks → S2/S3 splices → lane-live Batches 1–3).
+
+## Claude note — 2026-10-25: Personality experiment build
+
+Separate build `builds/EXPERIMENT-personality.html` for the people-design playtest: a bulletin
+page in place of the overworld, the normal training room. The main build is unchanged.
+**For Muse:** `briefs/muse/2026-10-25-personality-experiment.md`. Depends on PR #56 (people-layer cleanup).
