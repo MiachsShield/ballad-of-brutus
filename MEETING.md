@@ -834,3 +834,10 @@ finishing a dungeon. The warden run is the next thing that must be seen live.
 Separate build `builds/EXPERIMENT-personality.html` for the people-design playtest: a bulletin
 page in place of the overworld, the normal training room. The main build is unchanged.
 **For Muse:** `briefs/muse/2026-10-25-personality-experiment.md`. Depends on PR #56 (people-layer cleanup).
+
+## Claude note — 2026-10-25 (later): Personality experiment is now the whole game, one population
+
+`builds/EXPERIMENT-personality.html` = main build + personality sim, one cast. New Bulletin screen;
+profiles show what people say and let you back them. **For Muse:** the brief
+`briefs/muse/2026-10-25-personality-experiment.md` is rewritten for this. Main build unchanged.
+Flag: `tests/enemy-cards` is flaky (~1 in 4), pre-existing.

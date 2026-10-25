@@ -3,12 +3,17 @@
 A separate playtest build of the people design in the doc *Brutus Financial System Design*:
 D–S ranks, weekly survival costs, eleven one-word personality types in place of alignment,
 hungers, stakes (adventurers traded like stocks), crime, schemes, riots and the labor market,
-all running whether anyone looks or not. A walkable overworld isn't built yet, so the player
-sees the world through a **bulletin**, and goes into the **real dungeon** from an Expeditions tab.
+all running whether anyone looks or not.
 
-**Play:** `builds/EXPERIMENT-personality.html` (from a full checkout, so card art loads in the
-training room). **Rebuild:** `node build-experiment.cjs`. **Test:** `node tests/personality-sim.test.cjs`
-(also part of `node tests/run-all.cjs`).
+Since 2026-10-25 ("Build all facets" → **one population**) it is the whole game: the main
+overworld with every system in it (companions, recruiting, interviews, XP, loot, contracts and
+guild rights, conquest, the Chronicle, the campaign, the real dungeon), where the game's people
+and guilds **are** the sim's people and guilds. Anyone you recruit, fight beside, back or read
+about is one person with one set of feelings.
+
+**Play:** `builds/EXPERIMENT-personality.html` (from a full checkout, so card art loads).
+**Rebuild:** `node build-experiment.cjs`. **Test:** `node tests/personality-sim.test.cjs` (also in
+`node tests/run-all.cjs`); in a browser, `python3 tools/playtest-harness/personality-experiment.py`.
 
 The main build, `builds/CURRENT-brutus.html`, is not changed by any of this.
 
@@ -16,56 +21,56 @@ The main build, `builds/CURRENT-brutus.html`, is not changed by any of this.
 
 | File | What it does |
 | --- | --- |
-| `src/experiment/world-sim.js` | The whole world, one week per `step(w)`. Plain JSON state, seeded RNG, no UI. Node (`require`) and browser (`window.PXSim`) |
-| `src/experiment/overworld.html` | The page that replaces the overworld frame: Bulletin, Expeditions, People, Guilds, Your stakes, World numbers |
-| `build-experiment.cjs` | Builds the main file, then swaps its overworld frame for the page above (sim inlined) and labels the header "Personality experiment" |
-| `tests/personality-sim.test.cjs` | A year runs stable, Brutus can back someone, bulletins never leak secrets, saves reload identically, seeds repeat; expeditions pay, keep checkpoints, and unclaimed openings go to NPCs |
+| `src/experiment/world-sim.js` | The region, one week per `step(w)`. Plain JSON state, no UI. Node (`require`) and browser (`window.PXSim`). `fromCast` builds it from a game's people; `kill`, `setGuild`, `setHeld`, `adopt`, `outcome`, `claim`, `news` let the game report what it did |
+| `src/experiment/one-population.js` | Overworld patch, loaded after every main-build patch: keeps game and sim one population, adds the Bulletin screen, the World screen's bulletin, "What people say about them" and *Back them* on profiles |
+| `build-experiment.cjs` | Main build's patches + the two files above; labels the header PERSONALITY EXPERIMENT |
+| `tests/personality-sim.test.cjs` | The sim alone: a stable year, stakes, no secrets in the bulletin, identical reloads and seeds. Built from a cast: ranks from levels, held company, host deaths/moves/recruits, world-event deaths traced to the event, expeditions and claims, compact saves |
+| `tools/playtest-harness/personality-experiment.py` | Headless browser: recruit, gift, release, a real expedition with the party, a stake from a profile, game and sim agree on who is alive and where, reload, new run, a 52-turn soak |
 
-## What the player does
+## Who owns what
 
-- **End week.** The region moves: hauls, costs, hungers, crime, schemes, coups, riots, signings.
-- **Read the bulletin.** The week's three biggest public stories. Each opens with a line from
-  someone who'd care (kin, a lover, a rival, a guildmate), then the plain fact. Schemes still
-  in the dark never appear; they show up when exposed.
-- **Back someone.** From their profile: pay ten weeks of their living costs up front, take a
-  quarter of their hauls for 26 weeks. How they come to feel about Brutus decides the rest:
-  devoted backers get gifts unasked; hostile ones stop paying and sell stories about him.
-  Others notice who he backed and who he passed over.
+| The sim decides | The game decides |
+| --- | --- |
+| Life and death, rank, money, guild membership | Class, level, abilities, items, feats |
+| Feelings, lovers, feuds (one store: the game's `affection` is a view of the sim's feeling toward Brutus) | Interviews, recruiting, wages, companions, gifts and visits (they move the sim's feelings) |
+| Crime, schemes, riots, coups, successions | Dungeons, contracts and guild rights, conquest, XP |
+| The labor market: walkouts, signings, poaching, free agents, slums, guilds folding and founding | World events (the culling), assassinations, feud duels, the campaign |
+| Arrivals and heirs (each newcomer gets a full game record from `makeAgent`) | The Chronicle |
 
-- **Go down.** The Expeditions tab lists four or so openings (the main build's dungeons,
-  rank 1-5, an objective and a reward). Pick Warrior or Priest, then *Go down*: the real dungeon
-  opens with that rank and objective, Brutus alone. Once a week; End week is locked while he is
-  underground. Finish the objective and the gold is his and the opening closes; fall short and
-  the checkpoint is kept for next week. Openings he doesn't finish, an adventurer of that rank
-  claims when they close (if he tried and failed, the story links back to his attempt).
-  Everyone reads the result: admirers warm to him, the envious sour, and his loudest critic or
-  biggest fan usually has something to say in the bulletin.
+Each End Turn: the game's turn runs; whatever it changed (a death, a hire, a recruit, a gift, guild
+money, Brutus's gold) goes into the sim as news; the sim runs one week; its results go back into
+the game. Game systems the sim replaces are switched off in the experiment only: the game's own
+arrivals, delve deaths and romance rolls (`agentLifeTick` keeps levelling, feats and finds for
+whoever the sim sent down), guild hiring, guild turnover, and payroll quits (`celebrityTick` keeps
+fame, sponsor money for Brutus's people, and gifts).
 
-That is all. Everything else is the people acting on their own.
+Ranks come from level: at the start the top 2% are S, the next 6% A, 14% B, 28% C, the rest D.
+A promotion lifts a level that is below its rank's floor. Brutus's company is *held*: off the market
+and out of the economy, still in the social web (they can be robbed, seduced, fallen for).
 
-Not carried over from the main overworld (it isn't in this build): companions and the party,
-recruiting, XP and levels, loot and equipment, guild contracts and guests, conquest and lockouts,
-the Chronicle, the campaign. Brutus goes down with the starting loadout every time.
+## What the player sees that is new
 
-## Rules the page keeps
+- **Bulletin** (sidebar): the turn's three biggest public stories, each with a line from someone
+  who'd care, then the fact, then the people (click any name for their profile). *About you*, *Your
+  stakes*, earlier turns, and World numbers (playtest only). The World screen opens with the turn's
+  bulletin.
+- **Profiles** gain *What people say about them*: rank, how they're getting by (a word), who they
+  are close to and can't stand, how they see you, what they did lately, and *Back them*.
+- **Expeditions** are the game's own. How one went is news: admirers warm to Brutus, the envious
+  sour, someone usually says so, and a companion who dies down there is traced to that trip.
+  Openings nobody finishes are claimed by an adventurer of that rank when they close; if Brutus tried
+  and failed, the claim points back to his attempt.
+- **World events** that kill are one story ("The beast tide hits hard…"), each death traced to it.
 
-- Personality is never labelled. Profiles show rank, guild, how they're getting by (a word),
-  who they're close to and can't stand, and what they did lately.
-- Money and feelings show as words (*scraping by*, *warm*, *resentful*), not numbers, except
-  Brutus's own gold and stake payouts.
-- "Trace this story" and World numbers are marked playtest-only; they exist so testers can
-  check that causes are real. A shipped version would drop them.
-- Saves the whole world to this browser each week (about 2.5 MB a year), so a reload plays out
-  exactly the same. *New region* (click twice) starts over with a new seed.
-- The dungeon frame asks the overworld about NPC parties it meets; the experiment answers
-  "none". The training room works unchanged.
-- Reloading the page mid-expedition loses that trip (as in the main build).
-- Dungeon openings roll on their own random stream, so a seeded world plays out the same until
-  the first NPC claims one.
+## Rules kept
 
-## Numbers from a seeded year (seed 20261025)
+- Personality is never labelled; read it from what people do and say.
+- Money and feelings show as words, except Brutus's own gold and stake payouts.
+- "Trace this story" and World numbers are playtest-only.
+- The region saves beside the game's save (`brutus-px-world-v1`, about 1 MB a year after compacting).
+  A run saved by the main build loads and gets a region built from its people.
 
-Population 240 → 237 · share scraping by or in debt 10–20% · about 1,800 events, of which the
-bulletin shows three a week · stake returns swing widely: in test runs a B-rank stake paid back
-anywhere from about half to more than double its price, depending on the person and how they
-came to feel.
+## Numbers (headless, 52 turns)
+
+About 225 people and 12–17 guilds hold steady; 20–28% scraping by or in debt; about 250 deaths a year
+(most from the game's world events), about 220 arrivals; End Turn about half a second headless.

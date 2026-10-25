@@ -67,7 +67,7 @@ Load order top to bottom, as in `build.cjs`.
 | `src/text/element-renames.js` | Last build step: renames elemental card and ability names in the whole file |
 | `tools/ow-sim.js` | Runs dungeon-party waves in node and prints who survived |
 | `tools/playtest-harness/` | Playwright scripts that play the build in a headless browser |
-| `src/experiment/`, `build-experiment.cjs` | The separate Personality experiment build; see `docs/personality-experiment.md`. Not part of `build.cjs` |
+| `src/experiment/`, `build-experiment.cjs` | The separate Personality experiment build: main build + personality sim + one-population patch; see `docs/personality-experiment.md`. Not part of `build.cjs` |
 
 ## Inside the baseline
 

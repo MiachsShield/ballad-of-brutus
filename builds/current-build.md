@@ -17,8 +17,9 @@
 
 ## Separate: Personality experiment (2026-10-25)
 
-`builds/EXPERIMENT-personality.html` is a playtest of the people design with a bulletin in
-place of the overworld. It is **not** the current build and does not change it. Rebuild with
-`node build-experiment.cjs`; see `docs/personality-experiment.md`.
+`builds/EXPERIMENT-personality.html` — 10594052 bytes, SHA-256
+`83791d37a3b58c2980bcc49e3f9b41ef29b71e9dd777ff3e798bb0a613c757d9`. The full game with one
+population: its people and guilds are the personality sim's (see `docs/personality-experiment.md`).
+It is **not** the current build and does not change it. Rebuild with `node build-experiment.cjs`.
 
 Earlier entries: `docs/build-history.md`.

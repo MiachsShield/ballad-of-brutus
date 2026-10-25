@@ -16,6 +16,12 @@
  * Every deed is an event with a `because` link to the event that caused it.
  * Design: Claude doc "Brutus Financial System Design". Model tuned in Python first (same numbers).
  * Works in node (module.exports) and the browser (window.PXSim). State is plain JSON (save/load).
+ *
+ * Two ways to start: create(seed) rolls its own strangers (tests, tuning); fromCast(seed, cast, guilds)
+ * takes a host game's existing people. In the experiment build the host is the main overworld
+ * (src/experiment/one-population.js): it reports deaths, hires, recruits and expeditions in
+ * (kill, setGuild, setHeld, adopt, outcome, claim, news) and reads everything else out.
+ * People in Brutus's company are `held`: off the market, out of the economy, still in the social web.
  */
 (function (root) {
   'use strict';
@@ -50,7 +56,9 @@
   var NEG = {};
   ('crime accusation assault murder swindle humiliation undercut revenge crackdown betrayal report brawl callout exposed blackmail ' +
    'scapegoat walkout purge coup riot snub fall ruin defection hostile inherit heir duel twist switch odd conflict').split(' ').forEach(function (k) { NEG[k] = 1; });
-  var BRUTUS = 'B';            // Brutus takes part as a backer only
+  // Runtime hooks (not saved): a host game can name newcomers and new guilds, and hear about them.
+  var hooks = { name: null, born: null, guildName: null, guild: null };
+  var BRUTUS = 'B';            // Brutus: backer, employer, expedition leader; never a sim person
   var BRUTUS_TYPE = 'Proud';   // a crass, discarded, arrogant noble: others read him as they read the Proud
 
   // ---------------------------------------------------------------- rng (mulberry32, state kept in the world)
@@ -77,7 +85,7 @@
   // ---------------------------------------------------------------- world
   function create(seed, opts) {
     opts = opts || {};
-    var w = { v: 1, seed: seed >>> 0, rng: seed >>> 0, week: 0, n0: opts.population || 240, people: [], guilds: [], events: [], secrets: [], stakes: [],
+    var w = { v: 1, seed: seed >>> 0, rng: seed >>> 0, week: 0, n0: opts.population != null ? opts.population : 240, people: [], guilds: [], events: [], secrets: [], stakes: [],
       used: {}, cool: 0, brutus: { gold: opts.gold == null ? 250000 : opts.gold, rep: 0 },
       M: { deaths: 0, dropouts: 0, arrivals: 0, riots: 0, coups: 0, crimes: 0, murders: 0, schemes: 0, exposed: 0, stakes: 0, devoted: 0, hostile: 0, snubs: 0, promos: 0, demos: 0,
         signings: 0, poaches: 0, walkouts: 0, collapses: 0, foundings: 0, to_slums: 0 },
@@ -87,12 +95,11 @@
     GUILD_NAMES.forEach(function (n, gi) { w.guilds.push({ id: gi, name: n, leader: null, treasury: uni(w, 5e4, 6e5), dead: false }); });
     w.people.forEach(function (p) { if (R(w) < .8) p.guild = Math.floor(R(w) * w.guilds.length); });
     w.guilds.forEach(function (g) { var mem = w.people.filter(function (p) { return p.guild === g.id; }); if (mem.length) g.leader = maxBy(mem, function (p) { return ri(p.rank) * 10 + p.fame; }).id; });
-    for (i = 0; i < 40; i++) { var ab = sample(w, w.people, 2); addKin(ab[0], ab[1]); }
-    for (i = 0; i < 30; i++) {
+    for (i = 0; i < (w.people.length > 1 ? 40 : 0); i++) { var ab = sample(w, w.people, 2); addKin(ab[0], ab[1]); }
+    for (i = 0; i < (w.people.length > 1 ? 30 : 0); i++) {
       var c = sample(w, w.people, 2), a = c[0], b = c[1];
       if (a.lover == null && b.lover == null && a.kin.indexOf(b.id) < 0) { a.lover = b.id; b.lover = a.id; adj(w, a, b, 50); adj(w, b, a, 50); }
     }
-    board(w);
     return w;
   }
   function addKin(a, b) { if (a.kin.indexOf(b.id) < 0) a.kin.push(b.id); if (b.kin.indexOf(a.id) < 0) b.kin.push(a.id); }
@@ -102,11 +109,12 @@
     var m = choice(w, SYL1) + choice(w, SYL2) + ' ' + choice(w, ['the Younger', 'the Second', 'of the Docks', 'Halfhand']); w.used[m] = 1; return m;
   }
   function person(w, rank, purse, type, why) {
-    var p = { id: w.people.length, name: name(w), type: type || choice(w, TYPES), rank: rank, purse: purse == null ? P[rank][3] * uni(w, 2, 8) : purse,
+    var p = { id: w.people.length, name: hooks.name ? hooks.name(w) : name(w), type: type || choice(w, TYPES), rank: rank, purse: purse == null ? P[rank][3] * uni(w, 2, 8) : purse,
       guild: null, alive: true, slums: false, jail: 0, broke: 0, fame: { D: 2, C: 8, B: 25, A: 60, S: 120 }[rank] * uni(w, .5, 1.5), rep: 0,
       feel: {}, kin: [], lover: null, hunger: uni(w, 0, 40), crimes: 0, bent: lognorm(w, 0, 1.1), last: why == null ? null : why, hit: 0, grudge: {},
       spare: 0, unguilded: 0, born: w.week };
     w.people.push(p);
+    if (hooks.born) hooks.born(w, p);
     return p;
   }
   function typeOf(w, id) { return id === BRUTUS ? BRUTUS_TYPE : w.people[id].type; }
@@ -122,6 +130,7 @@
   function leader(w, g) { if (g == null) return null; var id = w.guilds[g].leader; return id == null ? null : w.people[id]; }
 
   function ev(w, text, actors, because, kind, weight, extra) {
+    if (w.host && kind === 'coop') return null;   // small kindnesses move feelings but are never news; the host doesn't keep them
     actors = actors.filter(function (a) { return a; });
     var e = { id: w.events.length, week: w.week, text: text, actors: actors.map(function (a) { return a.id; }), because: because == null ? null : because,
       kind: kind || 'deed', weight: weight == null ? 1 : weight, fame: actors.reduce(function (s, a) { return s + (a.fame || 0); }, 0) };
@@ -179,9 +188,11 @@
     });
     A.forEach(function (p) {
       if (!p.alive) return;
+      if (p.held) { p.hunger = Math.min(100, p.hunger + uni(w, 4, 9)); return; }
       if (p.jail > 0) { p.jail--; return; }
       var r = P[p.rank], c = cost(p) * (p.guild != null ? 1 : 1.25) * shock, inc = r[9];
       if (R(w) < r[0]) {
+        p.delved = w.week;
         if (R(w) < r[8]) {
           p.alive = false; M.deaths++;
           var e = ev(w, p.name + ' went down into a ' + p.rank + '-rank dungeon and did not come back.', [p], p.purse < cost(p) * 2 ? why(w, p) : null, 'death', 1 + ri(p.rank));
@@ -287,7 +298,6 @@
     riots(w);
     refill(w);
     labor(w);
-    board(w);
 
     A = alive(w);
     w.series.pop.push(A.length);
@@ -348,7 +358,7 @@
         Masochist: p.name + ' begs ' + q.name + ' for the hardest job going, and gets it.' };
       if (t === 'Kind') { var amt = Math.min(Math.max(0, p.purse) * .2, cost(q) * 3); p.purse -= amt; q.purse += amt; }
       if (t === 'Greedy') { p.purse += cost(p) * 2; q.purse += cost(q) * 2; }
-      if (t === 'Pragmatic' && q.guild != null && R(w) < .3 && p.guild !== q.guild && w.guilds[p.guild == null ? q.guild : p.guild].leader !== p.id) {
+      if (t === 'Pragmatic' && !p.held && q.guild != null && R(w) < .3 && p.guild !== q.guild && w.guilds[p.guild == null ? q.guild : p.guild].leader !== p.id) {
         var old = p.guild; p.guild = q.guild;
         ev(w, p.name + ' walks out on ' + gname(w, old) + ' for a better deal at ' + gname(w, q.guild) + '.', [p], cause, 'switch', .8);
       }
@@ -375,7 +385,7 @@
     var A = alive(w), M = w.M;
     var strained = A.filter(function (p) { return p.purse < cost(p) * 2; }).length / Math.max(1, A.length);
     A.forEach(function (p) {
-      if (!p.alive || p.jail) return;
+      if (!p.alive || p.jail || p.held) return;
       var run = p.purse / Math.max(1, cost(p)), strain = run < 0 ? 4 : run < 2 ? 2.5 : run < 8 ? 1 : .5;
       var young = p.rank === 'D' ? 1.6 : 1, rec = p.crimes ? 4 : 1, pp = PROP[p.type][0], pv = PROP[p.type][1], e;
       if (R(w) < .0035 * p.bent * strain * young * rec * pp * (1 + 2 * strained)) {
@@ -561,7 +571,7 @@
 
   function riots(w) {
     var A = alive(w), M = w.M;
-    var pool = A.filter(function (p) { return p.purse < cost(p) * 2; }).concat(w.people.filter(function (p) { return p.slums; }));
+    var pool = A.filter(function (p) { return !p.held && p.purse < cost(p) * 2; }).concat(w.people.filter(function (p) { return p.slums; }));
     var share = pool.length / Math.max(1, A.length), gs = live(w);
     if (share > .30 && w.cool <= 0 && gs.length && R(w) < (share - .30) * 2.5) {
       w.cool = 4; M.riots++;
@@ -619,7 +629,7 @@
       var mem = A.filter(function (p) { return p.guild === g.id; }), room = SIZE[L.type] - mem.length;
       var hall = mem.reduce(function (s, p) { return s + cost(p); }, 0) * .35 + 1;
       if (g.treasury < hall * 3) return;
-      A.filter(function (p) { return p.guild == null && !p.jail && p.alive; }).sort(function (a, b) { return value(b) - value(a); }).slice(0, Math.max(0, Math.min(room, 5))).forEach(function (p) {
+      A.filter(function (p) { return p.guild == null && !p.jail && !p.held && p.alive; }).sort(function (a, b) { return value(b) - value(a); }).slice(0, Math.max(0, Math.min(room, 5))).forEach(function (p) {
         if (ri(p.rank) > ri(L.rank) + 1) return;
         var u = utility(w, p, g, A), best = Math.max.apply(null, gs.filter(function (h) { return h !== g; }).map(function (h) { return utility(w, p, h, A); }).concat([-60]));
         if (u > -60 && u >= best - 15 && R(w) < .6) {
@@ -652,7 +662,7 @@
       }
     });
     A.forEach(function (p) {
-      if (p.guild != null || p.jail || !p.alive || R(w) > .35) return;
+      if (p.guild != null || p.jail || p.held || !p.alive || R(w) > .35) return;
       var opts = [];
       gs.forEach(function (g) {
         var L = leader(w, g.id);
@@ -662,7 +672,7 @@
       if (opts.length) { var b = maxBy(opts, function (o) { return o[0]; }); if (b[0] > -70) { p.guild = b[1].id; M.signings++; } }
     });
     A.forEach(function (p) {
-      if (!p.alive) return;
+      if (!p.alive || p.held) return;
       if (p.guild == null) {
         p.unguilded++;
         if (p.unguilded > 8 && p.purse < cost(p) * 2 && R(w) < .15) {
@@ -685,13 +695,14 @@
       }
     });
     A.some(function (p) {
-      if (!(p.rank === 'A' || p.rank === 'S') || ['Ambitious', 'Proud', 'Demanding', 'Vengeful'].indexOf(p.type) < 0 || p.purse <= cost(p) * 9 || R(w) >= .015) return false;
+      if (p.held || !(p.rank === 'A' || p.rank === 'S') || ['Ambitious', 'Proud', 'Demanding', 'Vengeful'].indexOf(p.type) < 0 || p.purse <= cost(p) * 9 || R(w) >= .015) return false;
       if (p.guild != null && w.guilds[p.guild].leader === p.id) return false;
-      var names = NEW_GUILDS.filter(function (n) { return !w.guilds.some(function (g) { return g.name === n; }); });
-      if (!names.length) return true;
+      var names = hooks.guildName ? [hooks.guildName(w, p)] : NEW_GUILDS.filter(function (n) { return !w.guilds.some(function (g) { return g.name === n; }); });
+      if (!names.length || !names[0]) return true;
       var old = p.guild, oL = leader(w, old);
       var g = { id: w.guilds.length, name: names[0], leader: p.id, treasury: p.purse * .6, dead: false };
       p.purse *= .4; w.guilds.push(g); p.guild = g.id; M.foundings++;
+      if (hooks.guild) hooks.guild(w, g, p);
       var e = ev(w, p.name + ' raises a new banner: ' + g.name + '.', [p], oL ? p.grudge[oL.id] : null, 'founding', 2, { guild: g.id });
       A.filter(function (q) { return q.guild === old && q !== p && feel(w, q, p) > 40 && (!oL || q !== oL); }).slice(0, 4).forEach(function (q) {
         q.guild = g.id; ev(w, q.name + ' leaves ' + gname(w, old) + ' to join ' + p.name + '.', [q, p], e, 'follow', .6);
@@ -700,98 +711,136 @@
     });
   }
 
-  // ---------------------------------------------------------------- Brutus's expeditions (the real dungeon)
-  // The dungeon board: the same openings the main build uses. Brutus takes one down into the real
-  // dungeon frame; whatever he doesn't finish, someone else claims when it closes. Openings roll on
-  // their own random stream (w.drng), so a world where Brutus never delves plays out as before.
-  var THEMES = [
-    ['The Gilded Sepulchre', 'Li Trice', 'relic', 'Find one hidden chamber', 'A buried salon has opened under the silk quarter. Three guilds insist the treasure belongs to them. None can locate the stairs.'],
-    ['The Hollow Crown', 'Marium', 'hunt', 'Defeat five enemies', 'Something under the old royal mint is wearing a crown. This has attracted the usual crowd of people willing to kneel for money.'],
-    ['The Thorn Cathedral', 'Beloufi', 'depth', 'Reach the third floor', 'The foundations have split. The sponsors want a brave expedition, preferably one whose clothing survives the publicity.'],
-    ['The Ashen Stair', 'Reyjar', 'armor', 'Break one Brute stance', 'A monster is blocking the old fortress road. The gate captain has called it a strategic closure and gone home.'],
-    ['The Sunken Tribunal', 'Themelios', 'hunt', 'Defeat five enemies', 'An abandoned court is taking visitors again. Its inhabitants still object to being interrupted.'],
-    ['The Violet Fault', 'Ayusti', 'relic', 'Find one hidden chamber', 'A new fissure glows beneath the arena. The owner is already charging admission to the danger.'],
-    ['The Quiet House', 'Edinius', 'depth', 'Reach the third floor', 'Nobody admits building it. Several people have sent invoices.']];
-  var REWARD = [0, 20000, 35000, 60000, 110000, 200000];
-  function onStream(w, key, fn) { var keep = w.rng; if (w[key] == null) w[key] = (w.seed ^ 0x9E3779B9) >>> 0; w.rng = w[key]; try { return fn(); } finally { w[key] = w.rng; w.rng = keep; } }
+  // ---------------------------------------------------------------- Brutus's expeditions and the dungeon board
+  // The host game runs the board and the real dungeon; the sim hears how it went and who claimed what.
   function brutusActor(w) { return { id: BRUTUS, name: 'Brutus', fame: 60 + Math.max(0, w.brutus.rep || 0) }; }
-  function objectiveMet(d, r) {
-    if (r.brutusDowned) return false;
-    return d.kind === 'hunt' ? (r.kills || 0) >= 5 : d.kind === 'relic' ? (r.secretsFound || 0) >= 1 : d.kind === 'depth' ? (r.deepestFloor || 0) >= 2 : (r.brutesBroken || 0) >= 1;
+  // an opening nobody finished goes to an adventurer of its rank; returns the event id
+  function claim(w, d) {
+    var letter = RANKS[Math.max(1, Math.min(5, d.rank || 2)) - 1], who = alive(w).filter(function (p) { return p.rank === letter && !p.jail && !p.held; });
+    if (!who.length) return null;
+    var p = maxBy(sample(w, who, 4), function (x) { return x.fame + uni(w, 0, 30); });
+    var pay = d.reward * .6;
+    if (p.guild != null) { w.guilds[p.guild].treasury += pay * .4; pay *= .6; }
+    p.purse += pay; p.fame += 3 + d.rank * 2; d.by = p.id;
+    return ev(w, p.name + (d.tried != null ? ' cleared ' + d.name + ', the job Brutus came up without.' : ' cleared ' + d.name + ' before anyone else could. ' + fmt(d.reward * .6) + ' gold.'),
+      [p], d.tried != null ? d.tried : null, 'claim', .5 + d.rank * .3, { place: d.name });
   }
-  function board(w) {
-    if (!w.board) w.board = [];
-    // whatever closes unfinished, someone of that rank claims
-    w.board.forEach(function (d) {
-      if (d.closed || d.expires >= w.week) return;
-      d.closed = true; delete d.delve;
-      var letter = RANKS[d.rank - 1], who = alive(w).filter(function (p) { return p.rank === letter && !p.jail; });
-      if (!who.length) return;
-      var p = maxBy(sample(w, who, 4), function (x) { return x.fame + uni(w, 0, 30); });
-      var pay = d.reward * .6;
-      if (p.guild != null) { w.guilds[p.guild].treasury += pay * .4; pay *= .6; }
-      p.purse += pay; p.fame += 3 + d.rank * 2; d.by = p.id;
-      ev(w, p.name + (d.tried ? ' cleared ' + d.name + ', the job Brutus came up without.' : ' cleared ' + d.name + ' before anyone else could. ' + fmt(d.reward * .6) + ' gold.'),
-        [p], d.tried != null ? d.tried : null, 'claim', .5 + d.rank * .3, { place: d.name });
-    });
-    onStream(w, 'drng', function () {
-      var open = w.board.filter(function (d) { return !d.closed; }).length, first = !w.boardSeq;
-      while (open < 4 && (first || R(w) < .5)) {
-        w.boardSeq = (w.boardSeq || 0) + 1;
-        var t = THEMES[(w.boardSeq - 1) % THEMES.length], k = +weighted(w, ['1', '2', '3', '4', '5'], [25, 30, 22, 15, 8]);
-        w.board.push({ id: w.boardSeq, name: t[0], region: t[1], kind: t[2], objective: t[3], desc: t[4], rank: k,
-          reward: Math.round(REWARD[k] * uni(w, .85, 1.2) / 500) * 500, opened: w.week, expires: w.week + randint(w, 3, 5), closed: false });
-        open++; if (!first && open >= 3) break;
-      }
-    });
-    if (w.board.length > 40) w.board = w.board.filter(function (d) { return !d.closed || d.expires >= w.week - 8; });
-  }
-  function canDelve(w) {
-    if (w.pending) return 'Brutus is already underground.';
-    if (w.brutus.delved === w.week) return 'Brutus has been down once this week. End the week first.';
-    return null;
-  }
-  // returns the contract the dungeon frame expects (rank, kind, name, and checkpoint state to resume)
-  function brutusDeploy(w, id) {
-    var d = (w.board || []).find(function (x) { return x.id === id && !x.closed; });
-    if (!d) return { error: 'That opening has closed.' };
-    var no = canDelve(w); if (no) return { error: no };
-    w.pending = { id: d.id, week: w.week };
-    var c = { id: d.id, name: d.name, kind: d.kind, objective: d.objective, rank: d.rank, reward: d.reward };
-    if (d.delve) c.delve = d.delve;
-    return { contract: c };
-  }
-  function brutusReturn(w, r) {
-    var pend = w.pending; w.pending = null; r = r || {};
-    if (!pend) return null;
-    var d = (w.board || []).find(function (x) { return x.id === pend.id; });
-    if (!d || r.initializationFailed) return { failedToOpen: true };
-    w.brutus.delved = w.week;
-    var P2 = r.delveState && r.delveState.progress, all = r;
-    if (P2) { all = {}; for (var k in r) all[k] = r[k]; for (k in P2) all[k] = Math.max(all[k] || 0, P2[k] || 0); all.brutusDowned = r.brutusDowned; }
-    var won = !d.closed && objectiveMet(d, all), B = brutusActor(w), e, A = alive(w), M = w.M;
+  // how the region takes an expedition of Brutus's (and of anyone who went down with him)
+  function outcome(w, d, won, downed, party) {
+    var B = brutusActor(w), e, A = alive(w), M = w.M, crew = (party || []).map(function (i) { return w.people[i]; }).filter(function (p) { return p && p.alive; });
+    var who = 'Brutus' + (crew.length ? (crew.length === 1 ? ' and ' + crew[0].name : ', ' + crew.slice(0, -1).map(function (p) { return p.name; }).join(', ') + ' and ' + crew[crew.length - 1].name) : '');
     M.expeditions = (M.expeditions || 0) + 1;
     if (won) {
-      w.brutus.gold += d.reward; w.brutus.rep = (w.brutus.rep || 0) + d.rank * 2; d.closed = true; d.by = BRUTUS; delete d.delve; M.brutusWins = (M.brutusWins || 0) + 1;
-      e = ev(w, 'Brutus came up from ' + d.name + ' with the job done: ' + d.objective.toLowerCase() + '. ' + fmt(d.reward) + ' gold.', [B], null, 'expedition', 1 + d.rank * .5, { brutus: true, won: true, rank: d.rank });
+      w.brutus.rep = (w.brutus.rep || 0) + d.rank * 2; M.brutusWins = (M.brutusWins || 0) + 1;
+      e = ev(w, who + ' came up from ' + d.name + ' with the job done: ' + d.objective.toLowerCase() + '. ' + fmt(d.reward) + ' gold.', [B].concat(crew), null, 'expedition', 1 + d.rank * .5, { brutus: true, won: true, rank: d.rank, place: d.name });
+      crew.forEach(function (p) { p.fame += 4 + d.rank * 2; adj(w, p, BRUTUS, 5); });
       // the Proud read: admirers warm to him, the envious sour
       A.forEach(function (p) { var c = PRED[p.type + '>' + BRUTUS_TYPE]; adj(w, p, BRUTUS, (c === 'D' || c === 'F' ? 2 : -2) * (1 + d.rank / 3)); });
     } else {
-      w.brutus.rep = (w.brutus.rep || 0) - (r.brutusDowned ? d.rank : 0); d.tried = null;
-      e = ev(w, r.brutusDowned ? 'Brutus was dragged back up from ' + d.name + ', beaten.' : 'Brutus came back from ' + d.name + ' with the job unfinished.', [B], null, 'expedition', r.brutusDowned ? .8 + d.rank * .4 : .5, { brutus: true, won: false, downed: !!r.brutusDowned, rank: d.rank });
-      d.tried = e;
-      if (r.brutusDowned) A.forEach(function (p) { if (feel(w, p, BRUTUS) < -20) adj(w, p, BRUTUS, -2); });
+      w.brutus.rep = (w.brutus.rep || 0) - (downed ? d.rank : 0);
+      e = ev(w, downed ? who + (crew.length ? ' were' : ' was') + ' dragged back up from ' + d.name + ', beaten.' : who + ' came back from ' + d.name + ' with the job unfinished.', [B].concat(crew), null, 'expedition', downed ? .8 + d.rank * .4 : .5, { brutus: true, won: false, downed: !!downed, rank: d.rank, place: d.name });
+      if (downed) A.forEach(function (p) { if (feel(w, p, BRUTUS) < -20) adj(w, p, BRUTUS, -2); });
     }
-    if (d.closed || r.brutusDowned || (r.wardenSlain && r.bossChestLooted)) delete d.delve; else if (r.delveState) d.delve = r.delveState;
     // someone always has something to say about it
-    var loud = A.filter(function (p) { return !p.jail; }), fan = maxBy(loud, function (p) { return feel(w, p, BRUTUS); }), foe = minBy(loud, function (p) { return feel(w, p, BRUTUS); });
+    var loud = A.filter(function (p) { return !p.jail && crew.indexOf(p) < 0; }), fan = maxBy(loud, function (p) { return feel(w, p, BRUTUS); }), foe = minBy(loud, function (p) { return feel(w, p, BRUTUS); });
     if (won && foe && feel(w, foe, BRUTUS) < -30 && R(w) < .6)
       ev(w, foe.name + ' tells anyone who will listen that ' + d.name + ' was a soft job and Brutus got lucky.', [foe], e, 'callout', .6, { brutus: true });
-    else if (!won && r.brutusDowned && foe && feel(w, foe, BRUTUS) < -30)
+    else if (!won && downed && foe && feel(w, foe, BRUTUS) < -30)
       ev(w, foe.name + ' buys a round to celebrate Brutus being carried out of ' + d.name + '.', [foe], e, 'humiliation', .7, { brutus: true });
     else if (won && fan && feel(w, fan, BRUTUS) > 60 && R(w) < .5)
       ev(w, fan.name + ' was waiting at the top of the stairs when Brutus came up from ' + d.name + '.', [fan], e, 'follow', .5, { brutus: true });
-    return { won: won, reward: won ? d.reward : 0, event: e, dungeon: d };
+    return e;
+  }
+
+  // ---------------------------------------------------------------- host game (one population)
+  // Build the world from a game's existing cast instead of rolling strangers. cast: [{name, level,
+  // guild (index into guilds or null), held (in Brutus's company), type, lover (cast index)}];
+  // guilds: [{name, treasury}]. Ranks come from level percentiles: top 2% S, next 6% A, 14% B, 28% C.
+  function fromCast(seed, cast, guilds, opts) {
+    opts = opts || {};
+    var w = create(seed, { population: 0, gold: opts.gold });
+    w.host = true; w.n0 = opts.population || cast.length; w.guilds = [];
+    guilds.forEach(function (g, gi) { w.guilds.push({ id: gi, name: g.name, leader: null, treasury: g.treasury != null ? g.treasury : uni(w, 5e4, 6e5), dead: false }); });
+    var order = cast.map(function (c, i) { return i; }).sort(function (a, b) { return (cast[b].level || 0) - (cast[a].level || 0) || a - b; });
+    var cut = [.02, .08, .22, .50], rankOf = {};
+    order.forEach(function (ci, k) { var f = k / Math.max(1, cast.length); rankOf[ci] = f < cut[0] ? 'S' : f < cut[1] ? 'A' : f < cut[2] ? 'B' : f < cut[3] ? 'C' : 'D'; });
+    var keepName = hooks.name, keepBorn = hooks.born; hooks.name = null; hooks.born = null;
+    try {
+      cast.forEach(function (c, i) {
+        var r = rankOf[i], p = person(w, r, P[r][3] * uni(w, 2, 10), TYPES.indexOf(c.type) >= 0 ? c.type : null);
+        delete w.used[p.name]; p.name = c.name; w.used[c.name] = 1;
+        p.guild = c.guild == null ? null : c.guild; p.held = !!c.held; if (p.held) p.guild = null;
+      });
+    } finally { hooks.name = keepName; hooks.born = keepBorn; }
+    cast.forEach(function (c, i) { var j = c.lover; if (j != null && w.people[j] && w.people[i].lover == null && w.people[j].lover == null) { w.people[i].lover = j; w.people[j].lover = i; adj(w, w.people[i], w.people[j], 50); adj(w, w.people[j], w.people[i], 50); } });
+    w.guilds.forEach(function (g) { var mem = w.people.filter(function (p) { return p.guild === g.id; }); if (mem.length) g.leader = maxBy(mem, function (p) { return ri(p.rank) * 10 + p.fame; }).id; });
+    w.lvlFloor = {}; RANKS.split('').forEach(function (k) { var ls = cast.filter(function (c, i) { return rankOf[i] === k; }).map(function (c) { return c.level || 0; }); w.lvlFloor[k] = ls.length ? Math.min.apply(null, ls) : 0; });
+    var i;
+    for (i = 0; i < Math.round(cast.length / 6); i++) { var ab = sample(w, w.people, 2); addKin(ab[0], ab[1]); }
+    for (i = 0; i < Math.round(cast.length / 8); i++) {
+      var c2 = sample(w, w.people, 2), a = c2[0], b = c2[1];
+      if (a.lover == null && b.lover == null && a.kin.indexOf(b.id) < 0) { a.lover = b.id; b.lover = a.id; adj(w, a, b, 50); adj(w, b, a, 50); }
+    }
+    return w;
+  }
+  // someone the host game created on its own (a hire, a recruit): rank from level, by the floors fromCast found
+  function adopt(w, info) {
+    var f = w.lvlFloor || { D: 0, C: 10, B: 15, A: 20, S: 30 }, lv = info.level || 1, r = 'D';
+    RANKS.split('').forEach(function (k) { if (lv >= f[k]) r = k; });
+    var keepName = hooks.name, keepBorn = hooks.born; hooks.name = null; hooks.born = null; var p;
+    try { p = person(w, r, P[r][3] * uni(w, 1, 4), TYPES.indexOf(info.type) >= 0 ? info.type : null); } finally { hooks.name = keepName; hooks.born = keepBorn; }
+    delete w.used[p.name]; p.name = info.name; w.used[info.name] = 1;
+    p.guild = info.guild == null ? null : info.guild; p.held = !!info.held; if (p.held) p.guild = null;
+    w.M.arrivals++;
+    return p;
+  }
+  // things the host game decided: a death, a guild move, joining or leaving Brutus's company
+  function kill(w, id, text, kind, because, weight) {
+    var p = w.people[id]; if (!p || !p.alive) return null;
+    p.alive = false; w.M.deaths++;
+    var e = ev(w, text || p.name + ' is dead.', [p], because == null ? null : because, kind || 'death', weight == null ? 1 + ri(p.rank) : weight);
+    inherit(w, p, e);
+    return e;
+  }
+  function setGuild(w, id, gid, text, kind, because) {
+    var p = w.people[id]; if (!p || !p.alive) return null;
+    var old = p.guild; p.held = false; p.guild = gid; p.unguilded = 0;
+    if (gid != null && w.guilds[gid].dead) w.guilds[gid].dead = false;
+    if (old != null && old !== gid && w.guilds[old].leader === p.id) w.guilds[old].leader = null;
+    return text ? ev(w, text, [p], because == null ? null : because, kind || 'signing', .6 + value(p) / 300) : null;
+  }
+  function setHeld(w, id, held, text, because) {
+    var p = w.people[id]; if (!p || !p.alive) return null;
+    if (held && p.guild != null && w.guilds[p.guild].leader === p.id) w.guilds[p.guild].leader = null;
+    if (held) { p.guild = null; adj(w, p, BRUTUS, 10); }
+    p.held = !!held; p.unguilded = 0;
+    return text ? ev(w, text, [{ id: BRUTUS, name: 'Brutus', fame: 60 }, p], because == null ? null : because, held ? 'signing' : 'walkout', held ? 1 + value(p) / 200 : .8, { brutus: true }) : null;
+  }
+  // a story the host game tells (a world event, a catastrophe)
+  function news(w, text, ids, because, kind, weight, extra) {
+    return ev(w, text, (ids || []).map(function (i) { return i === BRUTUS ? { id: BRUTUS, name: 'Brutus', fame: 60 } : w.people[i]; }), because, kind, weight, extra);
+  }
+  // keep a long-running host save small: forget feelings about (and of) the dead, round the rest
+  function compact(w) {
+    var gone = {};
+    w.people.forEach(function (p) { if (!p.alive && !p.slums) gone[p.id] = 1; });
+    w.people.forEach(function (p) {
+      if (gone[p.id]) { p.feel = {}; p.grudge = {}; return; }
+      var keep = {}, k;
+      p.kin.forEach(function (i) { keep[i] = 1; }); if (p.lover != null) keep[p.lover] = 1; for (k in p.grudge) keep[k] = 1;
+      for (k in p.feel) { if (gone[k] && !keep[k]) delete p.feel[k]; else p.feel[k] = Math.round(p.feel[k]); }
+      p.purse = Math.round(p.purse); p.hunger = Math.round(p.hunger); p.rep = Math.round(p.rep); p.fame = Math.round(p.fame * 10) / 10; p.bent = Math.round(p.bent * 100) / 100; p.spare = Math.round(p.spare);
+    });
+    w.guilds.forEach(function (g) { g.treasury = Math.round(g.treasury); });
+    w.stakes.forEach(function (st) { st.paid = Math.round(st.paid); st.amt = Math.round(st.amt); });
+    w.events.forEach(function (e) { delete e.score; e.fame = Math.round(e.fame); });
+    return w;
+  }
+  function addGuild(w, name, treasury) { var g = { id: w.guilds.length, name: name, leader: null, treasury: treasury || 0, dead: false }; w.guilds.push(g); return g; }
+  function dropGuild(w, gid) {
+    var g = w.guilds[gid]; if (!g || g.dead) return;
+    g.dead = true; g.leader = null;
+    w.people.forEach(function (p) { if (p.alive && p.guild === gid) { p.guild = null; p.unguilded = 0; } });
   }
 
   // ---------------------------------------------------------------- reading the world
@@ -807,7 +856,8 @@
   function standing(p) { var r = p.purse / cost(p); return r < 0 ? 'in debt' : r < 2 ? 'scraping by' : r < 8 ? 'getting by' : r < 20 ? 'comfortable' : 'flush'; }
   function feelWord(f) { return f > 75 ? 'devoted' : f > 40 ? 'warm' : f > 10 ? 'fair' : f > -30 ? 'cool' : f > -60 ? 'resentful' : 'hostile'; }
 
-  var API = { create: create, step: step, brutusBack: brutusBack, brutusDeploy: brutusDeploy, brutusReturn: brutusReturn, canDelve: canDelve, objectiveMet: objectiveMet, brutusStakeCost: brutusStakeCost, bulletin: bulletin, chain: chain, chainDepth: chainDepth,
+  var API = { hooks: hooks, fromCast: fromCast, adopt: adopt, adj: adj, news: news, compact: compact, kill: kill, setGuild: setGuild, setHeld: setHeld, addGuild: addGuild, dropGuild: dropGuild, claim: claim, outcome: outcome, value: value,
+    create: create, step: step, brutusBack: brutusBack,  brutusStakeCost: brutusStakeCost, bulletin: bulletin, chain: chain, chainDepth: chainDepth,
     alive: alive, live: live, leader: leader, gname: gname, cost: cost, feel: feel, standing: standing, feelWord: feelWord, RANKS: RANKS, TYPES: TYPES, PRED: PRED, BRUTUS: BRUTUS };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.PXSim = API;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
